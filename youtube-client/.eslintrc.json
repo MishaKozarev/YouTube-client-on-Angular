@@ -36,6 +36,7 @@
             "style": "kebab-case"
           }
         ],
+        "@typescript-eslint/no-explicit-any": "error",
         "import/prefer-default-export": "off",
         "no-console": 0
       }
