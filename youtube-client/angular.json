@@ -107,6 +107,9 @@
               "src/**/*.component.html"
             ]
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }
