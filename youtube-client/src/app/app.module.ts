@@ -6,13 +6,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './header/header.component';
 import { SearchItemComponent } from './search/search-item/search-item.component';
 import { SearchResultsComponent } from './search/search-results/search-results.component';
+import { SearchSettingComponent } from './header/search-setting/search-setting.component';
+import { FilterComponent } from './header/filter/filter.component';
+import { UserLoginComponent } from './header/user-login/user-login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     SearchResultsComponent,
-    SearchItemComponent
+    SearchItemComponent,
+    SearchSettingComponent,
+    FilterComponent,
+    UserLoginComponent
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
