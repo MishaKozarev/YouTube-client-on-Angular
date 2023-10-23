@@ -9,6 +9,7 @@ import { SearchResultsComponent } from './search/search-results/search-results.c
 import { SearchSettingComponent } from './header/search-setting/search-setting.component';
 import { FilterComponent } from './header/filter/filter.component';
 import { UserLoginComponent } from './header/user-login/user-login.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { UserLoginComponent } from './header/user-login/user-login.component';
     FilterComponent,
     UserLoginComponent
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
   providers: [],
   bootstrap: [AppComponent]
 })
