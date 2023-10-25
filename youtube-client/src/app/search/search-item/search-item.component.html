@@ -1,21 +1,21 @@
-<mat-card class="card">
+<mat-card *ngIf="itemCard" class="card">
   <img
+    mat-card-image
     class="card__image"
-    src="https://i.ytimg.com/vi/Fdf5aTYRW0E/default.jpg"
+    [src]="itemCard.snippet.thumbnails.high.url"
     width="223px"
     height="123px"
     alt="card" />
-  <mat-card-content class="card__icons-block">
+  <mat-card-content>
     <img src="../../../assets/icon-viewed.png" alt="icon" />
-    <span>100</span>
+    <mat-card-subtitle>{{itemCard.statistics.viewCount}}</mat-card-subtitle>
     <img src="../../../assets/icon-liked.png" alt="icon" />
-    <span>100</span>
+    <mat-card-subtitle>{{itemCard.statistics.likeCount}}</mat-card-subtitle>
     <img src="../../../assets/icon-dislike.png" alt="icon" />
-    <span>100</span>
+    <mat-card-subtitle>{{itemCard.statistics.dislikeCount}}</mat-card-subtitle>
     <img src="../../../assets/icon-comment.png" alt="icon" />
-    <span>100</span>
-    <mat-icon color="primary">grad</mat-icon>
+    <mat-card-subtitle>{{itemCard.statistics.commentCount}}</mat-card-subtitle>
   </mat-card-content>
-  <mat-card-title class="card__title">{{ title }}</mat-card-title>
+  <mat-card-title class="card__title">{{itemCard.snippet.title}}</mat-card-title>
   <button class="card__btn" mat-flat-button color="primary">more ...</button>
 </mat-card>

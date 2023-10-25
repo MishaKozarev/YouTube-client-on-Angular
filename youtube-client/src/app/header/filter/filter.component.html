@@ -1,8 +1,11 @@
-<p>Sorting by:</p>
-<button class="header__btn-filter-search" color="primary" mat-button>
-  Search
-</button>
-<button class="header__btn-filter-count" color="primary" mat-button>
-  Count of views
-</button>
-<input class="header__filter-field" matInput type="text" />
+<div *ngIf="isShow" class="header__sorting-wrapper">
+  <p>Sorting by:</p>
+  <button class="header__btn-filter-search" color="primary" mat-button>
+    Search
+  </button>
+  <button class="header__btn-filter-count" color="primary" mat-button>
+    Count of views
+  </button>
+  <input class="header__filter-field" matInput type="text" />
+</div>
+

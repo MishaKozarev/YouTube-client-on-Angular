@@ -771,3 +771,4 @@ export const dataResponse: SearchResponse = {
     }
   ]
 };
+

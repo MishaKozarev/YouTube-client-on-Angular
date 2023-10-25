@@ -7,19 +7,29 @@
     align-items: center;
     justify-content: space-between;
     margin-top: 20px;
-    padding: 20px 0;
+    padding: 20px;
     border-bottom: 5px solid blue;
 }
 
-
-.card__icons-block span{
-    margin: 0 10px 0 0;
+.card span{
+    font-size: 10px;
 }
+
 .card__title {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 700;
     color: #4F4F4F;
 }
 .card__btn {
     width: 120px;
+}
+mat-card-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+mat-card-subtitle {
+    font-size: 12px;
 }
