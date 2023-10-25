@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -6,8 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  public show: boolean = false
-  onClicked(show: boolean): void {
-    this.show = show
+  public isShow?: boolean;
+  @Output() public clickChange: EventEmitter<boolean> = new EventEmitter();
+  showFilterBlock() {
+    this.isShow = !this.isShow;
+    this.clickChange.emit(this.isShow);
   }
 }

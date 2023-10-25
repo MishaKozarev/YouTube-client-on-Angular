@@ -1,18 +1,11 @@
-.header,
-.filter {
+.header {
     background: #D9D8D8;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-.header {
     height: 80px;
     position: relative;
-
-}
-.filter {
-    height: 50px;
 }
 
 .search__result {

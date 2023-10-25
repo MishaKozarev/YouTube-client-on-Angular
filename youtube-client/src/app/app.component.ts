@@ -6,6 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'youtube-client';
-  show: boolean = true;
+  public show: boolean = false;
+  onClicked(show: boolean): void {
+    this.show = show
+  }
 }

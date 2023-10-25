@@ -1,2 +1,20 @@
-<app-search-setting (clickChange)="onClicked($event)" class="header__search-setting"></app-search-setting>
-<app-user-login class="header__user"></app-user-login>
+<img class="header__logo" src="../../../assets/icon-youtube.png" alt="icon" />
+<input class="header__search-field" matInput type="text" />
+<button class="header__btn-search" color="primary" mat-raised-button>
+  Search
+</button>
+<button mat-icon-button (click)="showFilterBlock()">
+  <img
+  class="header__icon-setting"
+  src="../../../assets/search_settings.png"
+  alt="icon" />
+</button>
+<p class="header__user-text">Your name</p>
+<img
+  class="header__icon-user"
+  src="../../../assets/icon-login.png"
+  alt="icon" />
+
+
+
+

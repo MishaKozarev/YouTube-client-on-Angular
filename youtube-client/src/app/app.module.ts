@@ -10,8 +10,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FilterComponent } from './header/filter/filter.component';
 import { HeaderComponent } from './header/header.component';
-import { SearchSettingComponent } from './header/search-setting/search-setting.component';
-import { UserLoginComponent } from './header/user-login/user-login.component';
 import { SearchItemComponent } from './search/search-item/search-item.component';
 import { SearchResultsComponent } from './search/search-results/search-results.component';
 
@@ -21,9 +19,7 @@ import { SearchResultsComponent } from './search/search-results/search-results.c
     HeaderComponent,
     SearchResultsComponent,
     SearchItemComponent,
-    SearchSettingComponent,
     FilterComponent,
-    UserLoginComponent
   ],
   imports: [
     BrowserModule,
