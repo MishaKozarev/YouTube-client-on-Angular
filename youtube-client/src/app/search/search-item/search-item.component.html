@@ -1,1 +1,21 @@
-<p>search-item works!</p>
+<mat-card class="card">
+  <img
+    class="card__image"
+    src="https://i.ytimg.com/vi/Fdf5aTYRW0E/default.jpg"
+    width="223px"
+    height="123px"
+    alt="card" />
+  <mat-card-content class="card__icons-block">
+    <img src="../../../assets/icon-viewed.png" alt="icon" />
+    <span>100</span>
+    <img src="../../../assets/icon-liked.png" alt="icon" />
+    <span>100</span>
+    <img src="../../../assets/icon-dislike.png" alt="icon" />
+    <span>100</span>
+    <img src="../../../assets/icon-comment.png" alt="icon" />
+    <span>100</span>
+    <mat-icon color="primary">grad</mat-icon>
+  </mat-card-content>
+  <mat-card-title class="card__title">{{ title }}</mat-card-title>
+  <button class="card__btn" mat-flat-button color="primary">more ...</button>
+</mat-card>
