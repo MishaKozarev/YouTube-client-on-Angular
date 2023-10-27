@@ -1,4 +1,4 @@
 export enum Styles {
-    borderColor = 'border-color',
-    empty = ''
+  borderColor = 'border-color',
+  empty = ''
 }

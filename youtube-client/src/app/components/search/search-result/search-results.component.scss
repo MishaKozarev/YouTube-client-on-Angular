@@ -1,3 +1,7 @@
+.search__result-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
 .search__item {
     display: flex;
     align-items: center;

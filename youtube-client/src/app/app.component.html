@@ -1,3 +1,8 @@
-<app-header (clickChange)="onClicked($event)" class="header"></app-header>
-<app-filter [isShow]="show" class="filter"></app-filter>
-<app-search-results class="search__result"></app-search-results>
+<app-header
+  (clickIsShow)="onClickedShowFilerBlock($event)"
+  (clickShowItems)="onClickedGetResponse($event)"
+  class="header"></app-header>
+<app-filter [isShow]="showFilterBlock" class="filter"></app-filter>
+<app-search-results
+  [items]="itemResponse"
+  class="search__result"></app-search-results>

@@ -1,4 +1,6 @@
-<app-search-item
-  *ngFor="let item of items"
-  [itemCard]="item"
-  class="search__item"></app-search-item>
+<div class="search__result-container">
+  <app-search-item
+    *ngFor="let item of items"
+    [itemCard]="item"
+    class="search__item"></app-search-item>
+</div>

@@ -1,6 +1,10 @@
 <img class="header__logo" src="../../../assets/icon-youtube.png" alt="icon" />
-<input class="header__search-field" matInput type="text" />
-<button class="header__btn-search" color="primary" mat-raised-button>
+<input [(ngModel)]="search" class="header__search-field" type="text" />
+<button
+  class="header__btn-search"
+  color="primary"
+  (click)="addSearchResponse()"
+  mat-raised-button>
   Search
 </button>
 <button mat-icon-button (click)="showFilterBlock()">

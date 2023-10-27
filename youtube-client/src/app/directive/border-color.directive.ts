@@ -1,6 +1,14 @@
-import { Directive, ElementRef, Input, OnChanges, Renderer2, SimpleChanges } from '@angular/core';
-import { DateMock } from '../constants/mock-date';
+import {
+  Directive,
+  ElementRef,
+  Input,
+  OnChanges,
+  Renderer2,
+  SimpleChanges
+} from '@angular/core';
+
 import { ColorBorder } from '../constants/color-border';
+import { DateMock } from '../constants/mock-date';
 import { Styles } from '../constants/styles';
 
 @Directive({
@@ -9,8 +17,15 @@ import { Styles } from '../constants/styles';
 export class BorderColorDirective implements OnChanges {
   @Input() publishAt!: string;
 
-  constructor(private elemRef: ElementRef, private render2: Renderer2) {
-    this.render2.setStyle(this.elemRef.nativeElement, Styles.borderColor, Styles.empty);
+  constructor(
+    private elemRef: ElementRef,
+    private render2: Renderer2
+  ) {
+    this.render2.setStyle(
+      this.elemRef.nativeElement,
+      Styles.borderColor,
+      Styles.empty
+    );
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -19,7 +34,11 @@ export class BorderColorDirective implements OnChanges {
     }
   }
   private addColor(color: string) {
-    this.render2.setStyle(this.elemRef.nativeElement, Styles.borderColor, color);
+    this.render2.setStyle(
+      this.elemRef.nativeElement,
+      Styles.borderColor,
+      color
+    );
   }
 
   private changeBorderColor() {
@@ -27,16 +46,13 @@ export class BorderColorDirective implements OnChanges {
     const daysCount = Math.ceil(
       Math.abs(Date.now() - date.getTime()) / (1000 * 3600 * 24)
     );
-    if (daysCount < DateMock.week ) {
+    if (daysCount < DateMock.week) {
       this.addColor(ColorBorder.blue);
-    }
-    else if (daysCount < DateMock.month) {
+    } else if (daysCount < DateMock.month) {
       this.addColor(ColorBorder.green);
-    }
-    else if (daysCount < DateMock.halfYear) {
+    } else if (daysCount < DateMock.halfYear) {
       this.addColor(ColorBorder.yellow);
-    }
-    else {
+    } else {
       this.addColor(ColorBorder.red);
     }
   }
