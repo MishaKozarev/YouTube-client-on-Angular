@@ -8,10 +8,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { FilterComponent } from './header/filter/filter.component';
-import { HeaderComponent } from './header/header.component';
-import { SearchItemComponent } from './search/search-item/search-item.component';
-import { SearchResultsComponent } from './search/search-results/search-results.component';
+import { FilterComponent } from './components/header/filter/filter.component';
+import { HeaderComponent } from './components/header/header.component';
+import { SearchItemComponent } from './components/search/search-item/search-item.component';
+import { SearchResultsComponent } from './components/search/search-result/search-results.component';
 import { BorderColorDirective } from './directive/border-color.directive';
 
 @NgModule({
