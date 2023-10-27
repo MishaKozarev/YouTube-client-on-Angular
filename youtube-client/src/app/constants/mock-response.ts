@@ -1,4 +1,4 @@
-import { SearchResponse } from './model/search-response.model';
+import { SearchResponse } from '../model/search-response.model';
 
 export const dataResponse: SearchResponse = {
   TODO: 'TO BE UPDATED',
@@ -14,7 +14,7 @@ export const dataResponse: SearchResponse = {
       etag: '"Fznwjl6JEQdo1MGvHOGaz_YanRU/tmmI1yiRrmLWlKikXk1gD3TXsUI"',
       id: 'YN8zNnV0sK8',
       snippet: {
-        publishedAt: '2019-05-30T12:42:19.000Z',
+        publishedAt: '2023-05-30T12:42:19.000Z',
         channelId: 'UCg8ss4xW9jASrqWGP30jXiw',
         title: 'Angular 8 - Быстрый курс за 60 минут',
         description:
@@ -96,7 +96,7 @@ export const dataResponse: SearchResponse = {
       etag: '"Fznwjl6JEQdo1MGvHOGaz_YanRU/uto79F2R8W05GFpiUAcLdFGs7PQ"',
       id: 'Fdf5aTYRW0E',
       snippet: {
-        publishedAt: '2019-01-23T17:46:58.000Z',
+        publishedAt: '2023-10-23T17:46:58.000Z',
         channelId: 'UC29ju8bIPH5as8OGnQzwJyA',
         title: 'Angular Crash Course',
         description:
@@ -152,7 +152,7 @@ export const dataResponse: SearchResponse = {
       etag: '"Fznwjl6JEQdo1MGvHOGaz_YanRU/6e0k9ik7TThWpqueHGOhTRIN1-A"',
       id: 'k5E2AVpwsko',
       snippet: {
-        publishedAt: '2017-09-05T16:48:15.000Z',
+        publishedAt: '2023-09-05T16:48:15.000Z',
         channelId: 'UCWv7vMbMWH4-V0ZXdmDpPBA',
         title:
           'Angular Tutorial for Beginners: Learn Angular from Scratch | Mosh',
@@ -236,7 +236,7 @@ export const dataResponse: SearchResponse = {
       etag: '"Fznwjl6JEQdo1MGvHOGaz_YanRU/cDwx4Ds5-J9CmiqmazUetzrLZKY"',
       id: 'Rf54BH35yrY',
       snippet: {
-        publishedAt: '2019-09-04T15:00:12.000Z',
+        publishedAt: '2023-10-11T15:00:12.000Z',
         channelId: 'UCg8ss4xW9jASrqWGP30jXiw',
         title: 'Angular 8 Основы. Полный Курс для начинающих',
         description:
@@ -317,7 +317,7 @@ export const dataResponse: SearchResponse = {
       etag: '"Fznwjl6JEQdo1MGvHOGaz_YanRU/_99tEunMszVYvCj2-1aUTKgOoSY"',
       id: 'm0yGx2MGZWg',
       snippet: {
-        publishedAt: '2018-05-13T07:44:08.000Z',
+        publishedAt: '2023-10-25T07:44:08.000Z',
         channelId: 'UCe_H8hzx9WV7Ca7Ps5gt72Q',
         title: 'Что такое Angular. Обзор возможностей',
         description:
@@ -393,7 +393,7 @@ export const dataResponse: SearchResponse = {
       etag: '"Fznwjl6JEQdo1MGvHOGaz_YanRU/GuGydXnkvpl-L4ntYhAaLNiseZ4"',
       id: 'VAkio68d51A',
       snippet: {
-        publishedAt: '2019-02-25T00:09:23.000Z',
+        publishedAt: '2023-08-25T00:09:23.000Z',
         channelId: 'UCZ9qFEC82qM6Pk-54Q4TVWA',
         title: 'What is Angular? (Explained for Beginners)',
         description:
@@ -544,7 +544,7 @@ export const dataResponse: SearchResponse = {
       etag: '"Fznwjl6JEQdo1MGvHOGaz_YanRU/96JEWzuOaAgaHrcnKhmatlZzPME"',
       id: 'rc3E4tplFCU',
       snippet: {
-        publishedAt: '2019-10-29T15:00:14.000Z',
+        publishedAt: '2023-10-25T15:00:14.000Z',
         channelId: 'UCg8ss4xW9jASrqWGP30jXiw',
         title: 'Angular 40 вопросов для собеседования',
         description:
@@ -704,7 +704,7 @@ export const dataResponse: SearchResponse = {
       etag: '"Fznwjl6JEQdo1MGvHOGaz_YanRU/KuFm1jGNMzgjE2VlAEsPgRVra4o"',
       id: 'G0bBLvWXBvc',
       snippet: {
-        publishedAt: '2019-09-16T16:53:41.000Z',
+        publishedAt: '2023-10-16T16:53:41.000Z',
         channelId: 'UCsBjURrPoezykLs9EqgamOA',
         title: 'Angular for Beginners - Let\'s build a Tic-Tac-Toe PWA',
         description:

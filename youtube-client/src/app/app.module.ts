@@ -12,6 +12,7 @@ import { FilterComponent } from './header/filter/filter.component';
 import { HeaderComponent } from './header/header.component';
 import { SearchItemComponent } from './search/search-item/search-item.component';
 import { SearchResultsComponent } from './search/search-results/search-results.component';
+import { BorderColorDirective } from './directive/border-color.directive';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { SearchResultsComponent } from './search/search-results/search-results.c
     SearchResultsComponent,
     SearchItemComponent,
     FilterComponent,
+    BorderColorDirective
   ],
   imports: [
     BrowserModule,

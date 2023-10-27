@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Item } from 'src/app/model/search-item.model';
 
 @Component({
@@ -6,7 +6,7 @@ import { Item } from 'src/app/model/search-item.model';
   templateUrl: './search-item.component.html',
   styleUrls: ['./search-item.component.scss']
 })
-export class SearchItemComponent implements OnInit{
-  ngOnInit(): void {}
+export class SearchItemComponent {
   @Input() public itemCard?: Item;
+  public publishAt!: string;
 }
