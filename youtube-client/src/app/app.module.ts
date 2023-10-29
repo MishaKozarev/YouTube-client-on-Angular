@@ -14,6 +14,9 @@ import { FilterComponent } from './components/header/filter/filter.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SearchItemComponent } from './components/search/search-item/search-item.component';
 import { SearchResultsComponent } from './components/search/search-result/search-results.component';
+import { SortDatePipe } from './pipes/sort-date/sort-date.pipe';
+import { SortViewPipe } from './pipes/sort-view/sort-view.pipe';
+import { SortWordPipe } from './pipes/sort-word/sort-word.pipe';
 import { BorderColorDirective } from './directive/border-color.directive';
 
 @NgModule({
@@ -23,7 +26,10 @@ import { BorderColorDirective } from './directive/border-color.directive';
     SearchResultsComponent,
     SearchItemComponent,
     FilterComponent,
-    BorderColorDirective
+    BorderColorDirective,
+    SortDatePipe,
+    SortViewPipe,
+    SortWordPipe
   ],
   imports: [
     BrowserModule,

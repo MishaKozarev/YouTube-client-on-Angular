@@ -1,6 +1,6 @@
 <div class="search__result-container">
   <app-search-item
-    *ngFor="let item of items"
+    *ngFor="let item of items | sortDate: isSortDate : ascendDate | sortView: isSortView : ascendView | sortWord: filterInputValue"
     [itemCard]="item"
     class="search__item"></app-search-item>
 </div>

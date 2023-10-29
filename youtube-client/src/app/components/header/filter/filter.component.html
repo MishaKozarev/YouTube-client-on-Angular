@@ -1,11 +1,15 @@
 <div *ngIf="isShow" class="header__sorting-wrapper">
   <p>Sorting by:</p>
-  <button mat-button class="header__btn-filter-search" color="primary">
+  <button (click)="sortByDate()" mat-button class="header__btn-filter-search" color="primary">
     Date
   </button>
-  <button mat-button class="header__btn-filter-count" color="primary">
+  <button (click)="sortByView()" mat-button class="header__btn-filter-count" color="primary">
     Count of views
   </button>
   <mat-label class="header__filter-label">by word or sentence</mat-label>
-  <input matInput class="header__filter-input" type="text" />
+  <input matInput
+    #filterInput
+    (keyup)="getFilterInputValue(filterInput.value)"
+    class="header__filter-input"
+    type="text" />
 </div>
