@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/quotes */
+/* eslint-disable max-len */
 import { SearchResponse } from '../model/search-response.model';
 
 export const dataResponse: SearchResponse = {
