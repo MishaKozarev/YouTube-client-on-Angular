@@ -8,7 +8,7 @@ export class SortWordPipe implements PipeTransform {
   public transform = (items: Item[], value: string) => {
     if (!value) return items;
     return items.filter((item) => {
-      const channelTitle = item.snippet.channelTitle.toLowerCase();
+      const channelTitle = item.snippet.title.toLowerCase();
       return channelTitle.includes(value.toLowerCase());
     });
   };
