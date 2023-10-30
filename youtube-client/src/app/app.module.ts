@@ -10,7 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { FilterComponent } from './components/header/filter/filter.component';
+import { FilterComponent } from './components/filter/filter.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SearchItemComponent } from './components/search/search-item/search-item.component';
 import { SearchResultsComponent } from './components/search/search-result/search-results.component';
