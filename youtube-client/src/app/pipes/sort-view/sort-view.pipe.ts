@@ -1,3 +1,5 @@
+/* eslint class-methods-use-this: 0 */
+
 import { Pipe, PipeTransform } from '@angular/core';
 
 import { Item } from '../../model/search-item.model';

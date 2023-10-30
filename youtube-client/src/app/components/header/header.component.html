@@ -1,9 +1,11 @@
 <div class="header__container">
   <img class="header__logo" src="../../../assets/icon-youtube.png" alt="icon" />
-  <input (keyup)="keyUpEnter($event)" [(ngModel)]="search" class="header__search-field" type="text" />
-  <app-custom-button
-    (click)="addSearchResponse()"
-    class="header__btn-search">
+  <input
+    (keyup)="keyUpEnter($event)"
+    [(ngModel)]="search"
+    class="header__search-field"
+    type="text" />
+  <app-custom-button (click)="addSearchResponse()" class="header__btn-search">
     <ng-content></ng-content>
   </app-custom-button>
   <button mat-icon-button (click)="showFilterBlock()">
@@ -17,5 +19,3 @@
     <app-logo class="header__user"></app-logo>
   </div>
 </div>
-
-

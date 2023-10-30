@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { EventType } from '@angular/router';
 import { dataResponse } from 'src/app/constants/mock-response';
 import { Item } from 'src/app/model/search-item.model';
 

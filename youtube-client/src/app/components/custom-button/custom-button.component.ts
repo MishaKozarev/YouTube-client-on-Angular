@@ -5,6 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './custom-button.component.html',
   styleUrls: ['./custom-button.component.scss']
 })
-export class CustomButtonComponent {
-
-}
+export class CustomButtonComponent {}

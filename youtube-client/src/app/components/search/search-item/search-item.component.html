@@ -12,9 +12,13 @@
     alt="card" />
   <mat-card-content class="card__content">
     <img src="../../../assets/icon-viewed.png" alt="icon" />
-    <mat-card-subtitle class="card__subtitle">{{ itemCard.statistics.viewCount }}</mat-card-subtitle>
+    <mat-card-subtitle class="card__subtitle">{{
+      itemCard.statistics.viewCount
+    }}</mat-card-subtitle>
     <img src="../../../assets/icon-liked.png" alt="icon" />
-    <mat-card-subtitle class="card__subtitle">{{ itemCard.statistics.likeCount }}</mat-card-subtitle>
+    <mat-card-subtitle class="card__subtitle">{{
+      itemCard.statistics.likeCount
+    }}</mat-card-subtitle>
     <img src="../../../assets/icon-dislike.png" alt="icon" />
     <mat-card-subtitle class="card__subtitle">{{
       itemCard.statistics.dislikeCount
@@ -28,6 +32,6 @@
     itemCard.snippet.title
   }}</mat-card-title>
   <app-custom-button class="card__btn" color="primary">
-  <ng-content></ng-content>
+    <ng-content></ng-content>
   </app-custom-button>
 </mat-card>

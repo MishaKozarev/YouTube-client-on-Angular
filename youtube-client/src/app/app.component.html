@@ -1,12 +1,14 @@
 <app-header
   (clickIsShow)="onClickedShowFilerBlock($event)"
   (clickShowItems)="onClickedGetResponse($event)"
-  class="header">Search</app-header>
+  class="header"
+  >Search</app-header
+>
 <app-filter
   [isShow]="showFilterBlock"
-  (onSortDate)="onClickedSortDate()"
-  (onSortView)="onClickedSortView()"
-  (onSortWord)="onClickedSortWord($event)"
+  (eventSortDate)="onClickedSortDate()"
+  (eventSortView)="onClickedSortView()"
+  (eventSortWord)="onClickedSortWord($event)"
   class="filter"></app-filter>
 <app-search-results
   [items]="itemResponse"

@@ -7,16 +7,16 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class FilterComponent {
   @Input() public isShow?: boolean;
-  @Output() onSortDate: EventEmitter<void> = new EventEmitter();
-  @Output() onSortView: EventEmitter<void> = new EventEmitter();
-  @Output() onSortWord: EventEmitter<string> = new EventEmitter();
+  @Output() eventSortDate: EventEmitter<void> = new EventEmitter();
+  @Output() eventSortView: EventEmitter<void> = new EventEmitter();
+  @Output() eventSortWord: EventEmitter<string> = new EventEmitter();
   sortByDate(): void {
-    this.onSortDate.emit();
+    this.eventSortDate.emit();
   }
   sortByView(): void {
-    this.onSortView.emit();
+    this.eventSortView.emit();
   }
   getFilterInputValue(value: string): void {
-    this.onSortWord.emit(value);
+    this.eventSortWord.emit(value);
   }
 }

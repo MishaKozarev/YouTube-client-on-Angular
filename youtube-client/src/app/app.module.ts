@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { CustomButtonComponent } from './components/custom-button/custom-button.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LogoComponent } from './components/header/logo/logo.component';
@@ -19,7 +20,6 @@ import { BorderColorDirective } from './directive/border-color.directive';
 import { SortDatePipe } from './pipes/sort-date/sort-date.pipe';
 import { SortViewPipe } from './pipes/sort-view/sort-view.pipe';
 import { SortWordPipe } from './pipes/sort-word/sort-word.pipe';
-import { CustomButtonComponent } from './components/custom-button/custom-button.component';
 
 @NgModule({
   declarations: [
