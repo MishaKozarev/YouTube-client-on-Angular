@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { EventType } from '@angular/router';
 import { dataResponse } from 'src/app/constants/mock-response';
 import { Item } from 'src/app/model/search-item.model';
 
@@ -20,6 +21,11 @@ export class HeaderComponent {
   @Output() public clickShowItems: EventEmitter<Item[]> = new EventEmitter();
   addSearchResponse() {
     if (this.search.length > 0) {
+      this.clickShowItems.emit(this.items);
+    }
+  }
+  keyUpEnter(event: KeyboardEvent) {
+    if (this.search.length > 0 && event.code === 'Enter') {
       this.clickShowItems.emit(this.items);
     }
   }

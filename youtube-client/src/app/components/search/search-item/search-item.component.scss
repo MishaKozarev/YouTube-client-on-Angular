@@ -22,15 +22,15 @@
     color: #4F4F4F;
 }
 .card__btn {
-    width: 120px;
+    height: 44px;
 }
-mat-card-content {
+.card__content {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
 }
 
-mat-card-subtitle {
+.card__subtitle {
     font-size: 12px;
 }

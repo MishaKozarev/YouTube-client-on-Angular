@@ -10,22 +10,24 @@
     width="223px"
     height="123px"
     alt="card" />
-  <mat-card-content>
+  <mat-card-content class="card__content">
     <img src="../../../assets/icon-viewed.png" alt="icon" />
-    <mat-card-subtitle>{{ itemCard.statistics.viewCount }}</mat-card-subtitle>
+    <mat-card-subtitle class="card__subtitle">{{ itemCard.statistics.viewCount }}</mat-card-subtitle>
     <img src="../../../assets/icon-liked.png" alt="icon" />
-    <mat-card-subtitle>{{ itemCard.statistics.likeCount }}</mat-card-subtitle>
+    <mat-card-subtitle class="card__subtitle">{{ itemCard.statistics.likeCount }}</mat-card-subtitle>
     <img src="../../../assets/icon-dislike.png" alt="icon" />
-    <mat-card-subtitle>{{
+    <mat-card-subtitle class="card__subtitle">{{
       itemCard.statistics.dislikeCount
     }}</mat-card-subtitle>
     <img src="../../../assets/icon-comment.png" alt="icon" />
-    <mat-card-subtitle>{{
+    <mat-card-subtitle class="card__subtitle">{{
       itemCard.statistics.commentCount
     }}</mat-card-subtitle>
   </mat-card-content>
   <mat-card-title class="card__title">{{
     itemCard.snippet.title
   }}</mat-card-title>
-  <button class="card__btn" mat-flat-button color="primary">more ...</button>
+  <app-custom-button class="card__btn" color="primary">
+  <ng-content></ng-content>
+  </app-custom-button>
 </mat-card>

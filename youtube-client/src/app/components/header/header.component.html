@@ -1,17 +1,21 @@
-<img class="header__logo" src="../../../assets/icon-youtube.png" alt="icon" />
-<input [(ngModel)]="search" class="header__search-field" type="text" />
-<button
-  class="header__btn-search"
-  color="primary"
-  (click)="addSearchResponse()"
-  mat-raised-button>
-  Search
-</button>
-<button mat-icon-button (click)="showFilterBlock()">
-  <img
-    class="header__icon-setting"
-    src="../../../assets/search_settings.png"
-    alt="icon" />
-</button>
-<p class="header__user-text">Your name</p>
-<app-logo></app-logo>
+<div class="header__container">
+  <img class="header__logo" src="../../../assets/icon-youtube.png" alt="icon" />
+  <input (keyup)="keyUpEnter($event)" [(ngModel)]="search" class="header__search-field" type="text" />
+  <app-custom-button
+    (click)="addSearchResponse()"
+    class="header__btn-search">
+    <ng-content></ng-content>
+  </app-custom-button>
+  <button mat-icon-button (click)="showFilterBlock()">
+    <img
+      class="header__icon-setting"
+      src="../../../assets/search_settings.png"
+      alt="icon" />
+  </button>
+  <div class="header__user-container">
+    <p class="header__user-text">Your name</p>
+    <app-logo class="header__user"></app-logo>
+  </div>
+</div>
+
+

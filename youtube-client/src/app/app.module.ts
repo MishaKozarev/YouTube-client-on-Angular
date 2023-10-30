@@ -19,6 +19,7 @@ import { BorderColorDirective } from './directive/border-color.directive';
 import { SortDatePipe } from './pipes/sort-date/sort-date.pipe';
 import { SortViewPipe } from './pipes/sort-view/sort-view.pipe';
 import { SortWordPipe } from './pipes/sort-word/sort-word.pipe';
+import { CustomButtonComponent } from './components/custom-button/custom-button.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { SortWordPipe } from './pipes/sort-word/sort-word.pipe';
     BorderColorDirective,
     SortDatePipe,
     SortViewPipe,
-    SortWordPipe
+    SortWordPipe,
+    CustomButtonComponent
   ],
   imports: [
     BrowserModule,
