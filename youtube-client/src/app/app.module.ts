@@ -18,6 +18,7 @@ import { SortDatePipe } from './pipes/sort-date/sort-date.pipe';
 import { SortViewPipe } from './pipes/sort-view/sort-view.pipe';
 import { SortWordPipe } from './pipes/sort-word/sort-word.pipe';
 import { BorderColorDirective } from './directive/border-color.directive';
+import { LogoComponent } from './components/header/logo/logo.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { BorderColorDirective } from './directive/border-color.directive';
     BorderColorDirective,
     SortDatePipe,
     SortViewPipe,
-    SortWordPipe
+    SortWordPipe,
   ],
   imports: [
     BrowserModule,
@@ -40,7 +41,8 @@ import { BorderColorDirective } from './directive/border-color.directive';
     MatCardModule,
     MatIconModule,
     MatFormFieldModule,
-    FormsModule
+    FormsModule,
+    LogoComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
