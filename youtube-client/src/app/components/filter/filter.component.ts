@@ -5,7 +5,6 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   templateUrl: './filter.component.html',
   styleUrls: ['./filter.component.scss']
 })
-
 export class FilterComponent {
   @Input() public isShow?: boolean;
   @Output() onSortDate: EventEmitter<void> = new EventEmitter();

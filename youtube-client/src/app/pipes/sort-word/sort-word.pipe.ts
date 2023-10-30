@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+
 import { Item } from '../../model/search-item.model';
 
 @Pipe({
@@ -13,4 +14,3 @@ export class SortWordPipe implements PipeTransform {
     });
   };
 }
-

@@ -12,13 +12,13 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FilterComponent } from './components/filter/filter.component';
 import { HeaderComponent } from './components/header/header.component';
+import { LogoComponent } from './components/header/logo/logo.component';
 import { SearchItemComponent } from './components/search/search-item/search-item.component';
 import { SearchResultsComponent } from './components/search/search-result/search-results.component';
+import { BorderColorDirective } from './directive/border-color.directive';
 import { SortDatePipe } from './pipes/sort-date/sort-date.pipe';
 import { SortViewPipe } from './pipes/sort-view/sort-view.pipe';
 import { SortWordPipe } from './pipes/sort-word/sort-word.pipe';
-import { BorderColorDirective } from './directive/border-color.directive';
-import { LogoComponent } from './components/header/logo/logo.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,7 @@ import { LogoComponent } from './components/header/logo/logo.component';
     BorderColorDirective,
     SortDatePipe,
     SortViewPipe,
-    SortWordPipe,
+    SortWordPipe
   ],
   imports: [
     BrowserModule,
