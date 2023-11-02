@@ -7,7 +7,7 @@ import { Item } from 'src/app/model/search-item.model';
   styleUrls: ['./search-results.component.scss']
 })
 export class SearchResultsComponent {
-  @Input() items!: Item[];
+  @Input() items: Item[] = [];
   @Input() ascendDate!: boolean;
   @Input() isSortDate!: boolean;
   @Input() ascendView!: boolean;

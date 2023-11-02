@@ -1,37 +1,21 @@
 <mat-card
-  *ngIf="itemCard"
+  *ngIf="item"
   class="card"
   appBorderColor
-  [publishAt]="itemCard.snippet.publishedAt">
+  [publishAt]="item.snippet.publishedAt">
   <img
     mat-card-image
     class="card__image"
-    [src]="itemCard.snippet.thumbnails.high.url"
+    [src]="item.snippet.thumbnails.high.url"
     width="223px"
     height="123px"
     alt="card" />
   <mat-card-content class="card__content">
-    <img src="../../../assets/icon-viewed.png" alt="icon" />
-    <mat-card-subtitle class="card__subtitle">{{
-      itemCard.statistics.viewCount
-    }}</mat-card-subtitle>
-    <img src="../../../assets/icon-liked.png" alt="icon" />
-    <mat-card-subtitle class="card__subtitle">{{
-      itemCard.statistics.likeCount
-    }}</mat-card-subtitle>
-    <img src="../../../assets/icon-dislike.png" alt="icon" />
-    <mat-card-subtitle class="card__subtitle">{{
-      itemCard.statistics.dislikeCount
-    }}</mat-card-subtitle>
-    <img src="../../../assets/icon-comment.png" alt="icon" />
-    <mat-card-subtitle class="card__subtitle">{{
-      itemCard.statistics.commentCount
-    }}</mat-card-subtitle>
+    <app-card-icon [item]="item" class="icon-block"></app-card-icon>
   </mat-card-content>
-  <mat-card-title class="card__title">{{
-    itemCard.snippet.title
-  }}</mat-card-title>
+
+  <mat-card-title class="card__title">{{ item.snippet.title }}</mat-card-title>
   <app-custom-button class="card__btn" color="primary">
-    <ng-content></ng-content>
+    more...
   </app-custom-button>
 </mat-card>

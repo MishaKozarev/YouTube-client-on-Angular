@@ -14,6 +14,7 @@ import { CustomButtonComponent } from './components/custom-button/custom-button.
 import { FilterComponent } from './components/filter/filter.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LogoComponent } from './components/header/logo/logo.component';
+import { CardIconComponent } from './components/search/search-item/card-icon/card-icon.component';
 import { SearchItemComponent } from './components/search/search-item/search-item.component';
 import { SearchResultsComponent } from './components/search/search-result/search-results.component';
 import { BorderColorDirective } from './directive/border-color.directive';
@@ -32,7 +33,8 @@ import { SortWordPipe } from './pipes/sort-word/sort-word.pipe';
     SortDatePipe,
     SortViewPipe,
     SortWordPipe,
-    CustomButtonComponent
+    CustomButtonComponent,
+    CardIconComponent
   ],
   imports: [
     BrowserModule,
