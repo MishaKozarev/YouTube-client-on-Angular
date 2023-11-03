@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Item } from './model/search-item.model';
+import { Item } from './youtube/models/search-item.model';
 
 @Component({
   selector: 'app-root',

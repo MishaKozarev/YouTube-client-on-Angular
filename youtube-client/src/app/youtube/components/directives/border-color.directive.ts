@@ -1,7 +1,7 @@
 import { Directive, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
 
-import { DateMock } from '../constants/mock-date';
-import { Styles } from '../constants/styles';
+import { DateMock } from '../../../constants/mock-date';
+import { Styles } from '../../../constants/styles';
 
 @Directive({
   selector: '[appBorderColor]'

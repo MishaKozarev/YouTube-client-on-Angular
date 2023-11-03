@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { dataResponse } from 'src/app/constants/mock-response';
-import { Item } from 'src/app/model/search-item.model';
+import { Item } from 'src/app/youtube/models/search-item.model';
 
 @Component({
   selector: 'app-header',
