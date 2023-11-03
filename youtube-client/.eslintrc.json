@@ -28,6 +28,8 @@
         "import/newline-after-import": "error",
         "import/no-duplicates": "error",
         "max-len": ["error", 120],
+        "ignoreStrings": 0,
+        "ignoreTemplateLiterals": 0,
         "simple-import-sort/imports": "error",
         "simple-import-sort/exports": "error",
         // TypeScript Eslint rules
