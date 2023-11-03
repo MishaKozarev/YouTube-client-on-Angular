@@ -4,6 +4,7 @@
       let item of items
         | sortDate: sortService.isSortDate : sortService.ascendDate
         | sortView: sortService.isSortView : sortService.ascendView
+        | sortWord: sortService.filterValue
     "
     [item]="item"
     class="search__item">

@@ -1,14 +1,14 @@
 <div class="header__sorting-wrapper">
   <p>Sorting by:</p>
   <button
-    (click)="handleSortByDate($event)"
+    (click)="addSortByDate($event)"
     mat-button
     class="header__btn-filter-search"
     color="primary">
     Date
   </button>
   <button
-    (click)="handleSortByView($event)"
+    (click)="addSortByView($event)"
     mat-button
     class="header__btn-filter-count"
     color="primary">
@@ -17,8 +17,7 @@
   <mat-label class="header__filter-label">by word or sentence</mat-label>
   <input
     matInput
-    #filterInput
-    (keyup)="getFilterInputValue(filterInput.value)"
+    [(ngModel)]="sortService.filterValue"
     class="header__filter-input"
     type="text" />
 </div>

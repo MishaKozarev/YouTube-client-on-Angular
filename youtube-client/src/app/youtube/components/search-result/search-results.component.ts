@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Item } from 'src/app/youtube/models/search-item.model';
+
 import { SearchResultService } from '../../services/search-result/search-result.service';
 import { SortService } from '../../services/sort/sort.service';
 
@@ -8,18 +9,15 @@ import { SortService } from '../../services/sort/sort.service';
   templateUrl: './search-results.component.html',
   styleUrls: ['./search-results.component.scss']
 })
-export class SearchResultsComponent {
+export class SearchResultsComponent implements OnInit {
+  public items: Item[] = [];
 
   constructor(
     public resultsService: SearchResultService,
     public sortService: SortService
   ) {}
 
-  items: Item[] = this.resultsService.getMockItems();
-
-
-
-
-
-
+  ngOnInit(): void {
+    this.items = this.resultsService.getMockItems();
+  }
 }

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IconLinks } from 'src/app/constants/icon-link';
+import { IconLinks } from 'src/app/youtube/constants/icon-link';
 import { SearchCard } from 'src/app/youtube/models/search-cards.model';
 import { Item } from 'src/app/youtube/models/search-item.model';
 

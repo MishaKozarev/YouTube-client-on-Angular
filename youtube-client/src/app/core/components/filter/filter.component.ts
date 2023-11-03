@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { SearchResultService } from 'src/app/youtube/services/search-result/search-result.service';
 import { SortService } from 'src/app/youtube/services/sort/sort.service';
 
@@ -10,22 +10,14 @@ import { SortService } from 'src/app/youtube/services/sort/sort.service';
 export class FilterComponent {
   constructor(
     public resultsService: SearchResultService,
-    public sortService: SortService,
-  ) {};
-
+    public sortService: SortService
+  ) {}
   public isShow: boolean = this.resultsService.showFilterBlock;
 
-
-  getFilterInputValue(value: string): void {
-  }
-
-  handleSortByDate(event: Event) {
+  public addSortByDate(event: Event): void {
     this.sortService.sortByDate(event);
-    console.log(this.isShow)
   }
-  handleSortByView(event: Event) {
+  public addSortByView(event: Event): void {
     this.sortService.sortByView(event);
-    console.log("sortByView")
-
   }
 }

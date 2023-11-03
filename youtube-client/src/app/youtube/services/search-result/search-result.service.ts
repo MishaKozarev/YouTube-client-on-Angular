@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { dataResponse } from 'src/app/constants/mock-response';
+import { dataResponse } from 'src/app/youtube/constants/mock-response';
+
 import { Item } from '../../models/search-item.model';
 import { SearchResponse } from '../../models/search-response.model';
 
@@ -17,12 +18,11 @@ export class SearchResultService {
   }
 
   getIsShow() {
-    this.showFilterBlock = !this.showFilterBlock
+    this.showFilterBlock = !this.showFilterBlock;
   }
 
   getIsShowSearchResultBlock(event: Event) {
     event.preventDefault();
     this.showSearchResult = true;
   }
-  constructor() { }
 }

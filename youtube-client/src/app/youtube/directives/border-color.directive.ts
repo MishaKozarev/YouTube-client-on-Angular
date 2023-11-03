@@ -1,7 +1,8 @@
 import { Directive, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
 
-import { DateMock } from '../../../constants/mock-date';
-import { Styles } from '../../../constants/styles';
+import { ColorBorder } from '../constants/color-border';
+import { DateMock } from '../constants/mock-date';
+import { Styles } from '../constants/styles';
 
 @Directive({
   selector: '[appBorderColor]'
@@ -20,13 +21,13 @@ export class BorderColorDirective implements OnInit {
       Math.abs(Date.now() - date.getTime()) / (1000 * 3600 * 24)
     );
     if (daysCount < DateMock.week) {
-      color = 'blue';
+      color = ColorBorder.blue;
     } else if (daysCount < DateMock.month) {
-      color = 'green';
+      color = ColorBorder.green;
     } else if (daysCount < DateMock.halfYear) {
-      color = 'yellow';
+      color = ColorBorder.yellow;
     } else {
-      color = 'red';
+      color = ColorBorder.red;
     }
     this.render2.setStyle(
       this.elemRef.nativeElement,

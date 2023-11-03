@@ -5,20 +5,18 @@ import { SharedModule } from '@shared/shared.module';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { FilterComponent } from './components/filter/filter.component';
-import { HeaderComponent } from './components/header/header.component';
-import { LogoComponent } from './components/header/logo/logo.component';
+import { CoreModule } from './core/core.module';
 import { YoutubeModule } from './youtube/youtube.module';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FilterComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     YoutubeModule,
     BrowserAnimationsModule,
     SharedModule,
-    LogoComponent
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

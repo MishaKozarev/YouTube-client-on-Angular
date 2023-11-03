@@ -1,5 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { Item } from 'src/app/youtube/models/search-item.model';
+import { Component } from '@angular/core';
 import { SearchResultService } from 'src/app/youtube/services/search-result/search-result.service';
 
 @Component({
@@ -9,16 +8,13 @@ import { SearchResultService } from 'src/app/youtube/services/search-result/sear
 })
 export class HeaderComponent {
   constructor(private resultsService: SearchResultService) {}
-  items?: Item[];
   public isShow: boolean = this.resultsService.showFilterBlock;
   public search: string = '';
 
-  @Output() public clickShowItems: EventEmitter<Item[]> = new EventEmitter();
-
-  handleShowResult(event: Event) {
+  public handleShowResult(event: Event): void {
     this.resultsService.getIsShowSearchResultBlock(event);
   }
-  keyUpEnter(event: KeyboardEvent) {
+  public keyUpEnter(event: KeyboardEvent): void {
     if (this.search.length > 0 && event.code === 'Enter') {
       this.resultsService.getIsShowSearchResultBlock(event);
     }

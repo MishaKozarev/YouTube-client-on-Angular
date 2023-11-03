@@ -8,8 +8,7 @@ export class SortService {
   public ascendView: boolean = true;
   public isSortDate: boolean = false;
   public isSortView: boolean = false;
-
-  constructor() { }
+  public filterValue: string = '';
 
   public sortByDate(event: Event): void {
     event.preventDefault();

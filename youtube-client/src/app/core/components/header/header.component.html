@@ -1,13 +1,18 @@
 <div class="header__container">
   <div class="header__row">
-    <img class="header__logo" src="../../../assets/icon-youtube.png" alt="icon" />
+    <img
+      class="header__logo"
+      src="../../../assets/icon-youtube.png"
+      alt="icon" />
     <input
       (keyup)="keyUpEnter($event)"
       [(ngModel)]="search"
       class="header__search-field"
       type="text" />
-    <app-custom-button (click)="handleShowResult($event)"> Search </app-custom-button>
-    <button mat-icon-button (click)="isShow=!isShow">
+    <app-custom-button (click)="handleShowResult($event)">
+      Search
+    </app-custom-button>
+    <button mat-icon-button (click)="isShow = !isShow">
       <img
         class="header__icon-setting"
         src="../../../assets/search_settings.png"
@@ -15,7 +20,10 @@
     </button>
     <div class="header__user-container">
       <p class="header__user-text">Your name</p>
-      <app-logo class="header__user"></app-logo>
+      <img
+        class="header__icon-user"
+        src="../../../assets/icon-login.png"
+        alt="icon" />
     </div>
   </div>
   <app-filter class="header__filter" *ngIf="isShow"></app-filter>
