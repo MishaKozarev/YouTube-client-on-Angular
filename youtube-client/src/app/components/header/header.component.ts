@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { dataResponse } from 'src/app/constants/mock-response';
 import { Item } from 'src/app/youtube/models/search-item.model';
+import { SearchResultService } from 'src/app/youtube/services/search-result/search-result.service';
 
 @Component({
   selector: 'app-header',
@@ -8,24 +8,19 @@ import { Item } from 'src/app/youtube/models/search-item.model';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  items?: Item[] = dataResponse?.items;
-  public isShow?: boolean;
+  constructor(private resultsService: SearchResultService) {}
+  items?: Item[];
+  public isShow: boolean = this.resultsService.showFilterBlock;
   public search: string = '';
-  @Output() public clickIsShow: EventEmitter<boolean> = new EventEmitter();
-  showFilterBlock() {
-    this.isShow = !this.isShow;
-    this.clickIsShow.emit(this.isShow);
-  }
 
   @Output() public clickShowItems: EventEmitter<Item[]> = new EventEmitter();
-  addSearchResponse() {
-    if (this.search.length > 0) {
-      this.clickShowItems.emit(this.items);
-    }
+
+  handleShowResult(event: Event) {
+    this.resultsService.getIsShowSearchResultBlock(event);
   }
   keyUpEnter(event: KeyboardEvent) {
     if (this.search.length > 0 && event.code === 'Enter') {
-      this.clickShowItems.emit(this.items);
+      this.resultsService.getIsShowSearchResultBlock(event);
     }
   }
 }

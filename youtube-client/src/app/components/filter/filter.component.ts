@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { SearchResultService } from 'src/app/youtube/services/search-result/search-result.service';
+import { SortService } from 'src/app/youtube/services/sort/sort.service';
 
 @Component({
   selector: 'app-filter',
@@ -6,17 +8,24 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./filter.component.scss']
 })
 export class FilterComponent {
-  @Input() public isShow?: boolean;
-  @Output() eventSortDate: EventEmitter<void> = new EventEmitter();
-  @Output() eventSortView: EventEmitter<void> = new EventEmitter();
-  @Output() eventSortWord: EventEmitter<string> = new EventEmitter();
-  sortByDate(): void {
-    this.eventSortDate.emit();
-  }
-  sortByView(): void {
-    this.eventSortView.emit();
-  }
+  constructor(
+    public resultsService: SearchResultService,
+    public sortService: SortService,
+  ) {};
+
+  public isShow: boolean = this.resultsService.showFilterBlock;
+
+
   getFilterInputValue(value: string): void {
-    this.eventSortWord.emit(value);
+  }
+
+  handleSortByDate(event: Event) {
+    this.sortService.sortByDate(event);
+    console.log(this.isShow)
+  }
+  handleSortByView(event: Event) {
+    this.sortService.sortByView(event);
+    console.log("sortByView")
+
   }
 }

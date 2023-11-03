@@ -1,10 +1,9 @@
-<div class="search__result-container">
+<div *ngIf="resultsService.showSearchResult" class="search__result-container">
   <app-search-item
     *ngFor="
       let item of items
-        | sortDate: isSortDate : ascendDate
-        | sortView: isSortView : ascendView
-        | sortWord: filterInputValue
+        | sortDate: sortService.isSortDate : sortService.ascendDate
+        | sortView: sortService.isSortView : sortService.ascendView
     "
     [item]="item"
     class="search__item">

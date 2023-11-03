@@ -1,14 +1,14 @@
-<div *ngIf="isShow" class="header__sorting-wrapper">
+<div class="header__sorting-wrapper">
   <p>Sorting by:</p>
   <button
-    (click)="sortByDate()"
+    (click)="handleSortByDate($event)"
     mat-button
     class="header__btn-filter-search"
     color="primary">
     Date
   </button>
   <button
-    (click)="sortByView()"
+    (click)="handleSortByView($event)"
     mat-button
     class="header__btn-filter-count"
     color="primary">

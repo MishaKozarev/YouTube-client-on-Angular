@@ -1,18 +1,21 @@
 <app-header
-  (clickIsShow)="onClickedShowFilerBlock($event)"
-  (clickShowItems)="onClickedGetResponse($event)"
   class="header"></app-header>
-<app-filter
-  [isShow]="showFilterBlock"
+  <!-- (clickShowItems)="onClickedGetResponse($event)" -->
+
+  <!-- (clickIsShow)="onClickedShowFilerBlock($event)" -->
+<!-- <app-filter
   (eventSortDate)="onClickedSortDate()"
   (eventSortView)="onClickedSortView()"
   (eventSortWord)="onClickedSortWord($event)"
-  class="filter"></app-filter>
+  class="filter"></app-filter> -->
+  <!-- [isShow]="showFilterBlock" -->
+
 <app-search-results
-  [items]="itemResponse"
-  [ascendDate]="ascendDate"
+  class="search__result"></app-search-results>
+  <!-- [ascendDate]="ascendDate"
   [isSortDate]="isSortDate"
   [ascendView]="ascendView"
   [filterInputValue]="filterInputValue"
-  [isSortView]="isSortView"
-  class="search__result"></app-search-results>
+  [isSortView]="isSortView" -->
+  <!-- [items]="itemResponse" -->
+

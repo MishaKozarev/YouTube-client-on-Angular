@@ -1,5 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { Item } from 'src/app/youtube/models/search-item.model';
+import { SearchResultService } from '../../services/search-result/search-result.service';
+import { SortService } from '../../services/sort/sort.service';
 
 @Component({
   selector: 'app-search-results',
@@ -7,10 +9,17 @@ import { Item } from 'src/app/youtube/models/search-item.model';
   styleUrls: ['./search-results.component.scss']
 })
 export class SearchResultsComponent {
-  @Input() items: Item[] = [];
-  @Input() ascendDate!: boolean;
-  @Input() isSortDate!: boolean;
-  @Input() ascendView!: boolean;
-  @Input() isSortView!: boolean;
-  @Input() filterInputValue!: string;
+
+  constructor(
+    public resultsService: SearchResultService,
+    public sortService: SortService
+  ) {}
+
+  items: Item[] = this.resultsService.getMockItems();
+
+
+
+
+
+
 }
