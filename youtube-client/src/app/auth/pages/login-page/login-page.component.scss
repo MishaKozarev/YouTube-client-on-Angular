@@ -1,0 +1,46 @@
+.login {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login__container {
+    margin-top: 100px;
+    width: 30%;
+    max-width: 334px;
+    background: #F2F2F2;
+    padding: 20px;
+}
+
+.login__block {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 20px 0;
+}
+
+.login__block label{
+    font-size: 10px;
+    color: #828282;
+    margin: 0 0 5px 0;
+}
+
+.login__block input{
+    height: 37px;
+    background: #E0E0E0;
+    border: none;
+}
+
+.login__title {
+    font-size: 18px;
+}
+
+.login__btn {
+    background: #2F80ED;
+    width: 124px;
+    height: 30px;
+    font-size: 12px;
+    border: none;
+    border-radius: 6px;
+    color: white;
+}

@@ -21,14 +21,6 @@ import { SortWordPipe } from './pipes/sort-word/sort-word.pipe';
     SortWordPipe
   ],
   imports: [CommonModule, SharedModule],
-  exports: [
-    SearchResultsComponent,
-    SearchItemComponent,
-    CardIconComponent,
-    BorderColorDirective,
-    SortDatePipe,
-    SortViewPipe,
-    SortWordPipe
-  ]
+
 })
 export class YoutubeModule {}
