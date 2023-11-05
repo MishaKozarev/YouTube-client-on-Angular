@@ -9,6 +9,8 @@ import { BorderColorDirective } from './directives/border-color.directive';
 import { SortDatePipe } from './pipes/sort-date/sort-date.pipe';
 import { SortViewPipe } from './pipes/sort-view/sort-view.pipe';
 import { SortWordPipe } from './pipes/sort-word/sort-word.pipe';
+import { MainPageComponent } from './pages/main-page/main-page.component';
+import { DetailPageComponent } from './pages/detail-page/detail-page.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { SortWordPipe } from './pipes/sort-word/sort-word.pipe';
     BorderColorDirective,
     SortDatePipe,
     SortViewPipe,
-    SortWordPipe
+    SortWordPipe,
+    MainPageComponent,
+    DetailPageComponent
   ],
   imports: [CommonModule, SharedModule],
 
