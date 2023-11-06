@@ -1,12 +1,27 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Item } from 'src/app/youtube/models/search-item.model';
+
+import { DetailsService } from '../../services/services/details.service';
 
 @Component({
   selector: 'app-search-item',
   templateUrl: './search-item.component.html',
   styleUrls: ['./search-item.component.scss']
 })
-export class SearchItemComponent {
+export class SearchItemComponent implements OnInit {
   @Input() public item!: Item;
   public publishAt!: string;
+  public id = '';
+  public routerLink = '';
+
+  constructor(public service: DetailsService) {}
+
+  ngOnInit() {
+    this.id = this.item.id;
+    this.routerLink = `details/${this.id}`;
+  }
+
+  public setVideoData() {
+    this.service.setVideoInfo(this.id);
+  }
 }

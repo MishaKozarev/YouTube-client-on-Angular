@@ -1,18 +1,19 @@
 <div class="details">
+  <a routerLink="/youtube">
     <button class="details__btn">
-        <div class="arrow_back"></div>
+      <div class="arrow_back"></div>
     </button>
-    <div class="details__container">
-      <img src="../../../../assets/video.png" alt="video" class="video_img" />
-      <div class="details__content">
-        <div class="title_container">
-          <p class="video_title">Kuji Podcast #19</p>
-          <p class="date">Thursday, May 20, 2019</p>
-        </div>
-        <p class="description_title">Description:</p>
-        <p class="description_content"></p>
-        <p class="description_content"></p>
-        <app-card-icon class="statictic"></app-card-icon>
+  </a>
+  <div class="details__container">
+    <img [src]="service.imgSrc" alt="video" class="video_img" />
+    <div appBorderColor [publishAt]="publishData" class="details__content">
+      <div class="title_container">
+        <p class="video_title">{{ service.videoTitle }}</p>
+        <p class="date">{{ service.date }}</p>
       </div>
+      <p class="description_title">Description:</p>
+      <p class="description_content">{{ service.videoTitle }}</p>
+      <app-card-icon class="statictic"></app-card-icon>
     </div>
   </div>
+</div>

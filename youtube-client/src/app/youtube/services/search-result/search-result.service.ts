@@ -25,4 +25,7 @@ export class SearchResultService {
     event.preventDefault();
     this.showSearchResult = true;
   }
+  getItemById(id: string) {
+    return this.mockItems.find((item) => item.id === id);
+  }
 }
