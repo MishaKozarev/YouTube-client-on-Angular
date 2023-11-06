@@ -7,13 +7,15 @@
   <div class="details__container">
     <img [src]="service.imgSrc" alt="video" class="video_img" />
     <div appBorderColor [publishAt]="publishData" class="details__content">
-      <div class="title_container">
-        <p class="video_title">{{ service.videoTitle }}</p>
-        <p class="date">{{ service.date }}</p>
+      <div class="details__box">
+        <div class="title_container">
+          <p class="video_title">{{ service.videoTitle }}</p>
+          <p class="date">{{ service.publishDate | date: 'fullDate' }}</p>
+        </div>
+        <p class="description_title">Description:</p>
+        <p class="description_content">{{ service.videoTitle }}</p>
       </div>
-      <p class="description_title">Description:</p>
-      <p class="description_content">{{ service.videoTitle }}</p>
-      <app-card-icon class="statictic"></app-card-icon>
+      <app-card-icon [item]="currentItem" class="statistic"></app-card-icon>
     </div>
   </div>
 </div>

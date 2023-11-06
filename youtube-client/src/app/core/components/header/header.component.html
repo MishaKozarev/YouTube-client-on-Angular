@@ -25,6 +25,11 @@
         src="../../../assets/icon-login.png"
         alt="icon" />
     </div>
+    <app-custom-button
+      class="{{ loginService.buttonLogoutClass }}"
+      (click)="logOut()">
+      Logout
+    </app-custom-button>
   </div>
   <app-filter class="header__filter" *ngIf="isShow"></app-filter>
 </div>

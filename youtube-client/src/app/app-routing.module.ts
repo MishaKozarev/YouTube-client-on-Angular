@@ -1,28 +1,24 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { LoginPageComponent } from './auth/pages/login-page/login-page.component';
+import { authGuard } from './auth/guards/auth.guard';
 import { NotFoundComponent } from './core/pages/not-found/not-found.component';
-import { DetailPageComponent } from './youtube/pages/detail-page/detail-page.component';
-import { MainPageComponent } from './youtube/pages/main-page/main-page.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: LoginPageComponent
+    redirectTo: 'login',
+    pathMatch: 'full'
   },
   {
-    path: 'main',
-    component: MainPageComponent
+    path: 'login',
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule)
   },
   {
     path: 'youtube',
     loadChildren: () =>
-      import('./youtube/youtube.module').then((m) => m.YoutubeModule)
-  },
-  {
-    path: 'main',
-    component: DetailPageComponent
+      import('./youtube/youtube.module').then((m) => m.YoutubeModule),
+    canActivate: [authGuard]
   },
   {
     path: '**',

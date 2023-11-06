@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoginService } from 'src/app/auth/services/login.service';
 import { SearchResultService } from 'src/app/youtube/services/search-result/search-result.service';
 
 @Component({
@@ -7,7 +9,11 @@ import { SearchResultService } from 'src/app/youtube/services/search-result/sear
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  constructor(private resultsService: SearchResultService) {}
+  constructor(
+    private resultsService: SearchResultService,
+    public loginService: LoginService,
+    private router: Router
+  ) {}
   public isShow: boolean = this.resultsService.showFilterBlock;
   public search: string = '';
 
@@ -19,4 +25,10 @@ export class HeaderComponent {
       this.resultsService.getIsShowSearchResultBlock(event);
     }
   }
+  public logOut = () => {
+    if (this.loginService.isUserAuthenticated) {
+      this.loginService.logOut();
+      this.router.navigate(['']);
+    }
+  };
 }

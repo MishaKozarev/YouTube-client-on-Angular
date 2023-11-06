@@ -3,8 +3,6 @@ import { IconLinks } from 'src/app/youtube/constants/icon-link';
 import { SearchCard } from 'src/app/youtube/models/search-cards.model';
 import { Item } from 'src/app/youtube/models/search-item.model';
 
-import { DetailsService } from '../../services/services/details.service';
-
 @Component({
   selector: 'app-card-icon',
   templateUrl: './card-icon.component.html',
@@ -12,7 +10,6 @@ import { DetailsService } from '../../services/services/details.service';
 })
 export class CardIconComponent implements OnInit {
   @Input() item!: Item;
-  constructor(public service: DetailsService) {}
   imagesIcon: SearchCard[] = [];
 
   ngOnInit(): void {

@@ -1,3 +1,5 @@
+@import "../../../../styles.scss";
+
 .header__container{
     max-width: 1200px;
     width: 1200px;
@@ -65,4 +67,12 @@
     font-size: 12px;
     color:#4F4F4F;
     margin: 0 10px 0 0;
+}
+
+.login_button {
+    display: block;
+}
+
+.hidden {
+    display: none;
 }

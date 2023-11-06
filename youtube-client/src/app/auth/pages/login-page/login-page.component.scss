@@ -1,46 +1,72 @@
-.login {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+@import '../../../../styles.scss';
+
+.login_main {
+    margin: 50px auto;
 }
 
-.login__container {
-    margin-top: 100px;
-    width: 30%;
-    max-width: 334px;
-    background: #F2F2F2;
-    padding: 20px;
-}
-
-.login__block {
+.login_form {
+    box-sizing: border-box;
+    padding: 25px 20px;
+    margin: auto;
+    width: 350px;
+    height: 250px;
     display: flex;
     flex-direction: column;
-    margin: 0 0 20px 0;
+    background-color: $login-background;
+    border-radius: 8px;
+
+    .title {
+        color: $black;
+        font-size: 1.125rem;
+        font-weight: 700;
+    }
+
+    .input_label {
+        margin-left: 10px;
+        color: $font-grey;
+        font-size: 0.685rem;
+        margin-bottom: 2px;
+    }
+
+    .input {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0 10px;
+        border: none;
+        background-color: $input-background;
+        width: 305px;
+        height: 37px;
+        margin-bottom: 5px;
+    }
+
+    .button_login {
+        cursor: pointer;
+        margin-right: 10px;
+        border-radius: 5px;
+        margin-top: 25px;
+        align-self: flex-end;
+        border: none;
+        color: $white-color;
+        background-color: $blue-color;
+        width: 124px;
+        box-shadow: 5px 0px 3px $blue-color;
+        transition: .5s;
+        font-size: .75rem;
+        font-weight: 400;
+        height: 40px;
+
+        &:hover {
+            background-color: $blue-color-hover;
+            box-shadow: 5px 0px 3px $blue-color-hover;
+        }
+    }
+
 }
 
-.login__block label{
-    font-size: 10px;
-    color: #828282;
-    margin: 0 0 5px 0;
-}
-
-.login__block input{
-    height: 37px;
-    background: #E0E0E0;
-    border: none;
-}
-
-.login__title {
-    font-size: 18px;
-}
-
-.login__btn {
-    background: #2F80ED;
-    width: 124px;
-    height: 30px;
-    font-size: 12px;
-    border: none;
-    border-radius: 6px;
-    color: white;
+.error_message {
+    align-self: flex-end;
+    color: $red;
+    margin-right: 10px;
+    font-size: 0.6rem;
+    min-height: 13px;
 }

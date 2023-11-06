@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Item } from 'src/app/youtube/models/search-item.model';
 
-import { DetailsService } from '../../services/services/details.service';
+import { DetailsService } from '../../services/details/details.service';
 
 @Component({
   selector: 'app-search-item',
@@ -10,7 +10,6 @@ import { DetailsService } from '../../services/services/details.service';
 })
 export class SearchItemComponent implements OnInit {
   @Input() public item!: Item;
-  public publishAt!: string;
   public id = '';
   public routerLink = '';
 
