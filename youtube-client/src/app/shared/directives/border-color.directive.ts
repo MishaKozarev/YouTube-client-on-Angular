@@ -1,8 +1,8 @@
 import { Directive, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
 
-import { ColorBorder } from '../constants/color-border';
-import { DateMock } from '../constants/mock-date';
-import { Styles } from '../constants/styles';
+import { ColorBorder } from '../../youtube/constants/color-border';
+import { DateMock } from '../../youtube/constants/mock-date';
+import { Styles } from '../../youtube/constants/styles';
 
 @Directive({
   selector: '[appBorderColor]'

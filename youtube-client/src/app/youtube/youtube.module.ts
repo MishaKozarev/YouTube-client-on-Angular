@@ -5,7 +5,6 @@ import { SharedModule } from '@shared/shared.module';
 import { CardIconComponent } from './components/card-icon/card-icon.component';
 import { SearchItemComponent } from './components/search-item/search-item.component';
 import { SearchResultsComponent } from './components/search-result/search-results.component';
-import { BorderColorDirective } from './directives/border-color.directive';
 import { DetailPageComponent } from './pages/detail-page/detail-page.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { SortDatePipe } from './pipes/sort-date/sort-date.pipe';
@@ -18,7 +17,6 @@ import { YoutubeRoutingModule } from './youtube-routing.module';
     SearchResultsComponent,
     SearchItemComponent,
     CardIconComponent,
-    BorderColorDirective,
     SortDatePipe,
     SortViewPipe,
     SortWordPipe,
