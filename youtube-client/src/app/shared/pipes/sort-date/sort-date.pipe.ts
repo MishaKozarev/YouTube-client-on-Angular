@@ -1,7 +1,7 @@
 /* eslint class-methods-use-this: 0 */
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { Item } from '../../models/search-item.model';
+import { Item } from '../../../youtube/models/search-item.model';
 
 @Pipe({
   name: 'sortDate'
