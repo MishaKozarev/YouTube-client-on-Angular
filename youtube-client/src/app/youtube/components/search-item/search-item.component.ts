@@ -16,7 +16,7 @@ export class SearchItemComponent implements OnInit {
   constructor(public service: DetailsService) {}
 
   ngOnInit() {
-    this.id = this.item.id;
+    this.id = this.item.id.videoId;
     this.routerLink = `details/${this.id}`;
   }
 

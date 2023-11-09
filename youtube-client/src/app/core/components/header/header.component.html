@@ -4,14 +4,19 @@
       class="header__logo"
       src="../../../assets/icon-youtube.png"
       alt="icon" />
-    <input
-      (keyup)="keyUpEnter($event)"
-      [(ngModel)]="search"
+
+
+    <form (ngSubmit)="sendFormInfo(searchInput.value)">
+      <input
+      #searchInput
+      type="text"
+      name="search"
+      id="search"
+      (input)="changeInputValue(searchInput.value)"
       class="header__search-field"
-      type="text" />
-    <app-custom-button (click)="handleShowResult($event)">
-      Search
-    </app-custom-button>
+      />
+    </form>
+
     <button mat-icon-button (click)="isShow = !isShow">
       <img
         class="header__icon-setting"

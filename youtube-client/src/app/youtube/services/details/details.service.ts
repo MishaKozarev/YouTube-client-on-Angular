@@ -21,7 +21,7 @@ export class DetailsService {
   public publishDate = '';
 
   public setVideoInfo(id: string) {
-    const currentVideo = this.items.find((item) => item.id === id) as Item;
+    const currentVideo = this.items.find((item) => item.id.videoId === id) as Item;
     this.imgSrc = currentVideo.snippet.thumbnails.high.url;
     this.videoTitle = currentVideo.snippet.title;
     this.description = currentVideo.snippet.localized.description;

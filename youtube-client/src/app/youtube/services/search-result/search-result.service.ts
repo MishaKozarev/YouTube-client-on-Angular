@@ -26,6 +26,6 @@ export class SearchResultService {
     this.showSearchResult = true;
   }
   getItemById(id: string) {
-    return this.mockItems.find((item) => item.id === id);
+    return this.mockItems.find((item) => item.id.videoId === id);
   }
 }

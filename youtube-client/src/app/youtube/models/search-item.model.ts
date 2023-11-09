@@ -1,10 +1,16 @@
 export interface Item {
   kind: string;
   etag: string;
-  id: string;
+  id: ItemId;
   snippet: Snippet;
   statistics: Statistics;
 }
+
+interface ItemId {
+  kind: string;
+  videoId: string;
+}
+
 interface Snippet {
   publishedAt: string;
   channelId: string;

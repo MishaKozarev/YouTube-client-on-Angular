@@ -1,7 +1,7 @@
-<div *ngIf="resultsService.showSearchResult" class="search__result-container">
+<div *ngIf="videos$ | async as videos$" class="search__result-container">
   <app-search-item
     *ngFor="
-      let item of items
+      let item of videos$.items
         | sortDate: sortService.isSortDate : sortService.ascendDate
         | sortView: sortService.isSortView : sortService.ascendView
         | sortWord: sortService.filterValue
