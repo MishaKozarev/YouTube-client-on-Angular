@@ -1,18 +1,2 @@
-<app-header
-  (clickIsShow)="onClickedShowFilerBlock($event)"
-  (clickShowItems)="onClickedGetResponse($event)"
-  class="header"></app-header>
-<app-filter
-  [isShow]="showFilterBlock"
-  (eventSortDate)="onClickedSortDate()"
-  (eventSortView)="onClickedSortView()"
-  (eventSortWord)="onClickedSortWord($event)"
-  class="filter"></app-filter>
-<app-search-results
-  [items]="itemResponse"
-  [ascendDate]="ascendDate"
-  [isSortDate]="isSortDate"
-  [ascendView]="ascendView"
-  [filterInputValue]="filterInputValue"
-  [isSortView]="isSortView"
-  class="search__result"></app-search-results>
+<app-header class="header"></app-header>
+<router-outlet></router-outlet>

@@ -1,0 +1,23 @@
+<main class="login_main">
+  <form
+    class="login_form"
+    (ngSubmit)="submitForm(inputLogin.value, inputPassword.value)">
+    <p class="title">Login</p>
+    <label for="inputLogin" class="input_label">login</label>
+    <input
+      #inputLogin
+      id="inputLogin"
+      type="text"
+      class="input"
+      (keyup)="clearErrorMessage()" />
+    <label for="inputPassword" class="input_label">password</label>
+    <input
+      #inputPassword
+      id="inputPassword"
+      type="password"
+      class="input"
+      (keyup)="clearErrorMessage()" />
+    <span class="error_message">{{ errorMessage }}</span>
+    <button class="button_login">Login</button>
+  </form>
+</main>

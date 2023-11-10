@@ -1,0 +1,21 @@
+<div class="details">
+  <a routerLink="/youtube">
+    <button class="details__btn">
+      <div class="arrow_back"></div>
+    </button>
+  </a>
+  <div class="details__container">
+    <img [src]="service.imgSrc" alt="video" class="video_img" />
+    <div appBorderColor [publishAt]="publishData" class="details__content">
+      <div class="details__box">
+        <div class="title_container">
+          <p class="video_title">{{ service.videoTitle }}</p>
+          <p class="date">{{ service.publishDate | date: 'fullDate' }}</p>
+        </div>
+        <p class="description_title">Description:</p>
+        <p class="description_content">{{ service.videoTitle }}</p>
+      </div>
+      <app-card-icon [item]="currentItem" class="statistic"></app-card-icon>
+    </div>
+  </div>
+</div>
