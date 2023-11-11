@@ -1,5 +1,7 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, debounceTime, filter, switchMap } from 'rxjs';
+import { BehaviorSubject, debounceTime, filter, Observable, switchMap } from 'rxjs';
+import { SearchResponse } from '../../models/search-response.model';
 import { ResponseService } from '../response/response.service';
 
 interface IStateQuery {
@@ -19,11 +21,11 @@ export class SearchFormService {
     length: 0
   });
 
-  public videos$ = this.stateQuery.asObservable()
+  public videos$: Observable<SearchResponse> = this.stateQuery.asObservable()
     .pipe(
-      filter(query => query.value.length > 3),
+      filter(query => query.value.length >= 3),
       debounceTime(1000),
-      switchMap(query => this.responseService.getList(query.value, '6'))
+      switchMap(query => this.responseService.getList(query.value, '2'))
     )
 
   public changeQuery(query: string, length: number) {

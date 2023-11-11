@@ -2,7 +2,7 @@
 /* eslint-disable max-len */
 import { SearchResponse } from '../models/search-response.model';
 
-export const dataResponse: SearchResponse = {
+export const a: SearchResponse = {
   TODO: 'TO BE UPDATED',
   kind: 'youtube#videoListResponse',
   etag: '"Fznwjl6JEQdo1MGvHOGaz_YanRU/Cmodw7c5XPTM8Yg3kMXelihxek4"',

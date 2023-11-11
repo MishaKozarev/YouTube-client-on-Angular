@@ -1,26 +1,18 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Item } from 'src/app/youtube/models/search-item.model';
-
-import { DetailsService } from '../../services/details/details.service';
 
 @Component({
   selector: 'app-search-item',
   templateUrl: './search-item.component.html',
   styleUrls: ['./search-item.component.scss']
 })
-export class SearchItemComponent implements OnInit {
+export class SearchItemComponent {
   @Input() public item!: Item;
-  public id = '';
-  public routerLink = '';
 
-  constructor(public service: DetailsService) {}
+  constructor(private router: Router) {}
 
-  ngOnInit() {
-    this.id = this.item.id.videoId;
-    this.routerLink = `details/${this.id}`;
-  }
-
-  public setVideoData() {
-    this.service.setVideoInfo(this.id);
+  onOpenDetailedPageById(itemId: unknown) {
+    this.router.navigate(['/youtube', itemId]);
   }
 }

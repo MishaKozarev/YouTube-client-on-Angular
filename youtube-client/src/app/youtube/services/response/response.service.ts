@@ -1,40 +1,51 @@
-import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, switchMap } from 'rxjs';
+import { map, mergeMap, Observable } from 'rxjs';
 import { SearchResponse } from '../../models/search-response.model';
+import { Item } from '../../models/search-item.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ResponseService {
   private readonly SEARCH_URL: string = 'search?';
-  private readonly SEARCH_VIDEO: string = 'video?';
-  constructor(
-    private http: HttpClient
-  ) { }
-  link = 'https://www.googleapis.com/youtube/v3/search?';
-  link2 = 'https://www.googleapis.com/youtube/v3/videos?';
-  key = 'key=AIzaSyD36PxvMa8w4wNrP6pPrExAWS_B_aqi9p0';
+  private readonly SEARCH_VIDEO: string = 'videos';
+
+  constructor(private http: HttpClient) { }
+
   public getList(
     textInput: string = '',
-    maxItems: string = '5'
-  ) {
+    maxItems: string = '2'
+  ): Observable<SearchResponse> {
     const params: HttpParams = new HttpParams()
       .set('type', 'video')
       .set('part', 'snippet')
-      .set('maxItems', maxItems)
+      .set('maxResults', maxItems)
       .set('q', textInput)
-    return this.http.get<SearchResponse>(`${this.link}${this.key}`, {params})
+    return this.http.get<SearchResponse>(`${this.SEARCH_URL}`, {params})
       .pipe(
-        map((videoResponse: SearchResponse) => {
-          const videoItemsId = videoResponse.items
+        map((response: SearchResponse) => {
+          const itemsId = response.items
           .map((item) => item.id.videoId)
           .join(',')
-          return videoItemsId
+          return itemsId
         }),
-        switchMap((videoItemsId) => {
-          return this.http.get<SearchResponse>(`${this.link2}${this.key}&id=${videoItemsId}&part=snippet,statistics`)
-        })
+        mergeMap((itemsId) => {
+          const params: HttpParams = new HttpParams()
+            .set('id', itemsId)
+            .set('part', 'snippet,statistics')
+          return this.http.get<SearchResponse>(`${this.SEARCH_VIDEO}`, {params});
+        }),
       )
+  }
+
+  getItemById(id: string): Observable<Item[]> {
+    const params = new HttpParams()
+      .set('part', 'snippet,statistics')
+      .set('id', id);
+    return this.http.get<SearchResponse>(`${this.SEARCH_VIDEO}`, {params})
+      .pipe(
+          map((response) => response.items),
+      );
   }
 }

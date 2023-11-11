@@ -5,15 +5,15 @@
     </button>
   </a>
   <div class="details__container">
-    <img [src]="service.imgSrc" alt="video" class="video_img" />
-    <div appBorderColor [publishAt]="publishData" class="details__content">
+    <img [src]="currentItem.snippet.thumbnails.high.url" alt="video" class="video_img" />
+    <div appBorderColor class="details__content">
       <div class="details__box">
         <div class="title_container">
-          <p class="video_title">{{ service.videoTitle }}</p>
-          <p class="date">{{ service.publishDate | date: 'fullDate' }}</p>
+          <p class="video_title">{{currentItem.snippet.channelTitle}}</p>
+          <p class="date">{{ currentItem.snippet.publishedAt | date: 'fullDate' }}</p>
         </div>
         <p class="description_title">Description:</p>
-        <p class="description_content">{{ service.videoTitle }}</p>
+        <p class="description_content">{{currentItem.snippet.title}}</p>
       </div>
       <app-card-icon [item]="currentItem" class="statistic"></app-card-icon>
     </div>
