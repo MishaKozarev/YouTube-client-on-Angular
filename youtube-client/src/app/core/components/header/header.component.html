@@ -1,19 +1,25 @@
 <div class="header__container">
   <div class="header__row">
+    <ng-container *ngIf="buttonLogTextContent$ | async as buttonLogTextContent">
+      <app-custom-button class="login_button" (click)="logout()">
+        {{ buttonLogTextContent }}
+      </app-custom-button>
+    </ng-container>
     <img
       class="header__logo"
       src="../../../assets/icon-youtube.png"
       alt="icon" />
 
-      <form (ngSubmit)="sendFormInfo(searchInput.value)" class="header__search-form">
+    <form
+      (ngSubmit)="sendFormInfo(searchInput.value)"
+      class="header__search-form">
       <input
-      #searchInput
-      type="text"
-      name="search"
-      id="search"
-      (input)="changeInputValue(searchInput.value)"
-      class="header__search-field"
-      />
+        #searchInput
+        type="text"
+        name="search"
+        id="search"
+        (input)="changeInputValue(searchInput.value)"
+        class="header__search-field" />
     </form>
 
     <button mat-icon-button (click)="isShow = !isShow">
@@ -29,11 +35,6 @@
         src="../../../assets/icon-login.png"
         alt="icon" />
     </div>
-    <app-custom-button
-      class="{{ loginService.buttonLogoutClass }}"
-      (click)="logOut()">
-      Logout
-    </app-custom-button>
   </div>
   <app-filter class="header__filter" *ngIf="isShow"></app-filter>
 </div>

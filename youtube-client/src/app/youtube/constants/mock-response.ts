@@ -95,6 +95,6 @@ export const a: SearchResponse = {
         favoriteCount: '0',
         commentCount: '170'
       }
-    },
+    }
   ]
 };

@@ -20,7 +20,7 @@ export class LoginPageComponent {
     if (!login || !password) {
       this.errorMessage = 'fields must be completed';
     } else {
-      this.loginService.logIn();
+      this.loginService.login();
       this.router.navigate(['/youtube']);
     }
   }

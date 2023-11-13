@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {  ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LoginService } from 'src/app/auth/services/login.service';
+
 import { Item } from '../../models/search-item.model';
 import { ResponseService } from '../../services/response/response.service';
 
@@ -12,6 +13,8 @@ import { ResponseService } from '../../services/response/response.service';
 export class DetailPageComponent implements OnInit {
   currentItem!: Item;
   currentId = '';
+  public isAuthUser$ = this.loginService.isAuth$;
+  public isAuthUser!: boolean;
 
   constructor(
     public router: Router,
@@ -20,7 +23,10 @@ export class DetailPageComponent implements OnInit {
     private loginService: LoginService
   ) {}
   ngOnInit(): void {
-    if (!this.loginService.isUserAuthenticated) {
+    this.isAuthUser$.subscribe((value) => {
+      this.isAuthUser = value;
+    });
+    if (!this.isAuthUser) {
       this.router.navigate(['/login']);
     }
     this.activatedRoute.params.subscribe((params) => {
@@ -30,9 +36,9 @@ export class DetailPageComponent implements OnInit {
     this.responseService.getItemById(this.currentId).subscribe({
       next: ([item]) => {
         if (item) {
-            this.currentItem = item;
-        }}
-    },
-    )
+          this.currentItem = item;
+        }
+      }
+    });
   }
 }

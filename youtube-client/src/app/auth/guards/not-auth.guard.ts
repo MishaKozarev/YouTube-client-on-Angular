@@ -4,18 +4,18 @@ import { CanActivateFn, Router } from '@angular/router';
 import { LoginService } from '../services/login.service';
 
 @Injectable({ providedIn: 'root' })
-export class AuthGuardService {
+export class NotAuthGuardService {
   constructor(
     private router: Router,
     private loginService: LoginService
   ) {}
 
   navigateToPage() {
-    if (this.loginService.isAuthUser()) {
+    if (!this.loginService.isAuthUser()) {
       return true;
     }
-    return this.router.navigate(['/login']);
+    return this.router.navigate(['/youtube']);
   }
 }
-export const AuthGuard: CanActivateFn = () =>
-  inject(AuthGuardService).navigateToPage();
+export const NotAuthGuard: CanActivateFn = () =>
+  inject(NotAuthGuardService).navigateToPage();

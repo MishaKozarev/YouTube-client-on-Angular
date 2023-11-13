@@ -1,23 +1,33 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-  public isUserAuthenticated = !!localStorage.getItem('authToken');
-  public buttonLogoutClass = localStorage.getItem('authToken')
-    ? 'login_button'
-    : 'hidden';
+  private isAuth: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
+    !!localStorage.getItem('authToken')
+  );
+  public isAuth$: Observable<boolean> = this.isAuth.asObservable();
+  private btnTextContent: BehaviorSubject<string> = new BehaviorSubject(
+    localStorage.getItem('authToken') ? 'Logout' : 'Login'
+  );
+  public btnTextContent$: Observable<string> =
+    this.btnTextContent.asObservable();
 
-  public logIn = () => {
-    localStorage.setItem('authToken', '123456');
-    this.isUserAuthenticated = true;
-    this.buttonLogoutClass = 'login_button';
-  };
+  public isAuthUser(): boolean {
+    return !!localStorage.getItem('authToken');
+  }
 
-  public logOut = () => {
+  public login(): void {
+    localStorage.setItem('authToken', '12345678');
+    this.isAuth.next(true);
+    this.btnTextContent.next('Logout');
+  }
+
+  public logout(): void {
     localStorage.removeItem('authToken');
-    this.isUserAuthenticated = false;
-    this.buttonLogoutClass = 'hidden';
-  };
+    this.isAuth.next(false);
+    this.btnTextContent.next('Login');
+  }
 }

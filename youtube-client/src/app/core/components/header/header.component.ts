@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { LoginService } from 'src/app/auth/services/login.service';
 import { SearchFormService } from 'src/app/youtube/services/search-form/search-form.service';
 import { ShowFilterBlockService } from 'src/app/youtube/services/show-filter-block/show-filter-block.service';
@@ -9,28 +10,38 @@ import { ShowFilterBlockService } from 'src/app/youtube/services/show-filter-blo
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   constructor(
-    public loginService: LoginService,
+    private loginService: LoginService,
     private router: Router,
     private searchFormService: SearchFormService,
     private showFilterBlockService: ShowFilterBlockService
   ) {}
-  public isShow: boolean = this.showFilterBlockService.showFilterBlock;
-  public search: string = '';
 
-  public logOut = () => {
-    if (this.loginService.isUserAuthenticated) {
-      this.loginService.logOut();
-      this.router.navigate(['']);
+  public isShow: boolean = this.showFilterBlockService.showFilterBlock;
+  public isAuntUser$: Observable<boolean> = this.loginService.isAuth$;
+  public isAuntUser!: boolean;
+  public buttonLogTextContent$: Observable<string> =
+    this.loginService.btnTextContent$;
+
+  ngOnInit(): void {
+    this.isAuntUser$.subscribe((value) => {
+      this.isAuntUser = value;
+    });
+  }
+
+  public logout(): void {
+    if (this.isAuntUser) {
+      this.loginService.logout();
+      this.router.navigate(['/login']);
     }
   }
 
-  public changeInputValue(query: string) {
+  public changeInputValue(query: string): void {
     this.searchFormService.changeQuery(query, 3);
   }
 
-  public sendFormInfo(query: string) {
+  public sendFormInfo(query: string): void {
     this.searchFormService.changeQuery(query, 0);
   }
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { ResponseService } from '../../services/response/response.service';
 import { SearchFormService } from '../../services/search-form/search-form.service';
 import { SortService } from '../../services/sort/sort.service';
@@ -14,6 +15,6 @@ export class SearchResultsComponent {
   constructor(
     public sortService: SortService,
     private searchFormService: SearchFormService,
-    public responseService: ResponseService,
+    public responseService: ResponseService
   ) {}
 }
