@@ -1,23 +1,61 @@
-<main class="login_main">
-  <form
-    class="login_form"
-    (ngSubmit)="submitForm(inputLogin.value, inputPassword.value)">
-    <p class="title">Login</p>
-    <label for="inputLogin" class="input_label">login</label>
+<main class="login__container">
+  <form class="login__form" [formGroup]="loginForm" (ngSubmit)="submitForm()">
+    <p class="login__title">Login</p>
+    <label for="inputLogin" class="login__label">login</label>
     <input
       #inputLogin
-      id="inputLogin"
       type="text"
-      class="input"
+      class="login__input"
+      formControlName="login"
       (keyup)="clearErrorMessage()" />
-    <label for="inputPassword" class="input_label">password</label>
+    <div
+      *ngIf="
+        loginForm.controls.login.invalid &&
+        (loginForm.controls.login.dirty || loginForm.controls.login.touched)
+      "
+      class="login__error-container">
+      <span
+        *ngIf="
+          loginForm.controls.login.errors &&
+          loginForm.controls.login.errors['required']
+        "
+        class="login__error-message"
+        >{{ loginErrorMessage }}</span
+      >
+      <span
+        *ngIf="
+          loginForm.controls.login.errors &&
+          loginForm.controls.login.errors['email']
+        "
+        class="login__error-message"
+        >The login email is invalid</span
+      >
+    </div>
+    <label for="inputPassword" class="login__label">password</label>
     <input
       #inputPassword
-      id="inputPassword"
       type="password"
-      class="input"
-      (keyup)="clearErrorMessage()" />
-    <span class="error_message">{{ errorMessage }}</span>
-    <button class="button_login">Login</button>
+      class="login__input"
+      formControlName="password"
+      (keyup)="checkPasswordValidation()" />
+    <div
+      *ngIf="
+        loginForm.controls.password.invalid &&
+        (loginForm.controls.password.dirty ||
+          loginForm.controls.password.touched)
+      "
+      class="login__error-container">
+      <span
+        *ngIf="
+          loginForm.controls.password.errors &&
+          loginForm.controls.password.errors['required'] &&
+          errorMessage === ''
+        "
+        class="login__error-message"
+        >Please enter a password</span
+      >
+    </div>
+    <span class="login__error-message">{{ errorMessage }}</span>
+    <button class="login__btn">Login</button>
   </form>
 </main>

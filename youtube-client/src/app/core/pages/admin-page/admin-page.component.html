@@ -1,15 +1,166 @@
 <main class="admin__container">
-    <form class="admin__form">
-      <p class="admin__title">Create new card</p>
-      <label for="inputTitle" class="admin__label">Title</label>
-      <input #inputTitle type="text" class="admin__input" />
-      <label for="inputDescription" class="admin__label">Description</label>
-      <input #inputDescription type="text" class="admin__input" />
-      <label for="inputImg" class="admin__label">Img</label>
-      <input #inputImg type="text" class="admin__input" />
-      <label for="inputLink" class="admin__label">Link video</label>
-      <input #inputLink type="text" class="admin__input" />
-      <span class="error_message"> errorMessage</span>
-      <button class="btn-create">Create card</button>
-    </form>
-  </main>
+  <form [formGroup]="adminForm" class="admin__form">
+    <p class="admin__title">Create new card</p>
+
+    <label for="inputTitle" class="admin__label">Title</label>
+    <input
+      formControlName="title"
+      #inputTitle
+      type="text"
+      class="admin__input" />
+    <div
+      *ngIf="
+        adminForm.controls.title.invalid &&
+        (adminForm.controls.title.dirty || adminForm.controls.title.touched)
+      "
+      class="error-container">
+      <span
+        *ngIf="
+          adminForm.controls.title.errors &&
+          adminForm.controls.title.errors['required']
+        "
+        class="error_message"
+        >Please enter a title</span
+      >
+      <span
+        *ngIf="
+          adminForm.controls.title.errors &&
+          adminForm.controls.title.errors['minlength']
+        "
+        class="error_message"
+        >The title is too short</span
+      >
+      <span
+        *ngIf="
+          adminForm.controls.title.errors &&
+          adminForm.controls.title.errors['maxlength']
+        "
+        class="error_message"
+        >The title is too long</span
+      >
+    </div>
+
+    <label for="inputDescription" class="admin__label">Description</label>
+    <input
+      formControlName="description"
+      #inputDescription
+      type="text"
+      class="admin__input" />
+    <div
+      *ngIf="
+        adminForm.controls.description.invalid &&
+        (adminForm.controls.description.dirty ||
+          adminForm.controls.description.touched)
+      "
+      class="error-container">
+      <span
+        *ngIf="
+          adminForm.controls.title.errors &&
+          adminForm.controls.title.errors['required']
+        "
+        class="error_message"
+        >Please enter a description</span
+      >
+      <span
+        *ngIf="
+          adminForm.controls.description.errors &&
+          adminForm.controls.description.errors['maxlength']
+        "
+        class="error_message"
+        >The description is too long</span
+      >
+    </div>
+
+    <label for="inputImg" class="admin__label">Img</label>
+    <input formControlName="img" #inputImg type="text" class="admin__input" />
+    <div
+      *ngIf="
+        adminForm.controls.img.invalid &&
+        (adminForm.controls.img.dirty || adminForm.controls.img.touched)
+      "
+      class="error-container">
+      <span
+        *ngIf="
+          adminForm.controls.img.errors &&
+          adminForm.controls.img.errors['required']
+        "
+        class="error_message"
+        >Please enter a link to the image</span
+      >
+    </div>
+
+    <label for="inputLink" class="admin__label">Link video</label>
+    <input formControlName="link" #inputLink type="text" class="admin__input" />
+    <div
+      *ngIf="
+        adminForm.controls.link.invalid &&
+        (adminForm.controls.link.dirty || adminForm.controls.link.touched)
+      "
+      class="error-container">
+      <span
+        *ngIf="
+          adminForm.controls.link.errors &&
+          adminForm.controls.link.errors['required']
+        "
+        class="error_message"
+        >Please enter a link to the video</span
+      >
+    </div>
+
+    <label for="inputDate" class="admin__label">Date</label>
+    <input
+      #inputDate
+      type="text"
+      class="admin__input"
+      formControlName="date"
+      placeholder="dd.mm.year"
+      (input)="checkDate()" />
+    <div
+      *ngIf="
+        adminForm.controls.date.invalid &&
+        (adminForm.controls.date.dirty || adminForm.controls.date.touched)
+      "
+      class="error-container">
+      <span
+        *ngIf="
+          adminForm.controls.date.errors &&
+          adminForm.controls.date.errors['required']
+        "
+        class="error_message"
+        >Please enter a creation date</span
+      >
+    </div>
+    <span class="error_message">{{ dateErrorMessage }}</span>
+
+    <div class="tags-container">
+      <label for="inputTag" class="admin__label">Tags</label>
+      <div class="input-button-container">
+        <input
+          #inputTag
+          type="text"
+          class="input-tag"
+          formControlName="tag"
+          (input)="clearErrorMessage()" />
+        <button class="add_button" (click)="addNewTag()">+</button>
+      </div>
+      <div
+        *ngIf="
+          adminForm.controls.tag.invalid &&
+          (adminForm.controls.tag.dirty || adminForm.controls.tag.touched)
+        "
+        class="error-container">
+        <span
+          *ngIf="
+            adminForm.controls.tag.errors &&
+            adminForm.controls.tag.errors['required']
+          "
+          class="error_message"
+          >Please enter a tag</span
+        >
+      </div>
+      <span class="error_message">{{ tagErrorMessage }}</span>
+    </div>
+
+    <button class="btn-create">Create card</button>
+  </form>
+</main>

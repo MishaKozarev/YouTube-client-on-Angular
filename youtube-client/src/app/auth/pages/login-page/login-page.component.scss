@@ -1,35 +1,34 @@
 @import '../../../../global.scss';
 
-.login_main {
+.login__container {
     margin: 50px auto;
 }
 
-.login_form {
+.login__form {
     box-sizing: border-box;
     padding: 25px 20px;
     margin: auto;
     width: 350px;
-    height: 250px;
+    height: max-content;
     display: flex;
     flex-direction: column;
     background-color: $login-background;
     border-radius: 8px;
 
-    .title {
+    .login__title {
         color: $black;
         font-size: 1.125rem;
         font-weight: 700;
     }
 
-    .input_label {
+    .login__label {
         margin-left: 10px;
         color: $font-grey;
         font-size: 0.685rem;
         margin-bottom: 2px;
     }
 
-    .input {
-        width: 100%;
+    .login__input {
         box-sizing: border-box;
         padding: 0 10px;
         border: none;
@@ -39,7 +38,7 @@
         margin-bottom: 5px;
     }
 
-    .button_login {
+    .login__btn {
         cursor: pointer;
         margin-right: 10px;
         border-radius: 5px;
@@ -63,10 +62,11 @@
 
 }
 
-.error_message {
-    align-self: flex-end;
+.login__error-container {
+    display: flex;
+}
+.login__error-message {
     color: $red;
-    margin-right: 10px;
+    margin-left: 10px;
     font-size: 0.6rem;
-    min-height: 13px;
 }
