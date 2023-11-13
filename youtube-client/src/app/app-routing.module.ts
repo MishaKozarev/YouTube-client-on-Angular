@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AuthGuard } from './auth/guards/auth.guard';
 import { NotAuthGuard } from './auth/guards/not-auth.guard';
+import { AdminPageComponent } from './core/pages/admin-page/admin-page.component';
 import { NotFoundComponent } from './core/pages/not-found/not-found.component';
 
 const routes: Routes = [
@@ -21,6 +22,10 @@ const routes: Routes = [
     loadChildren: () =>
       import('./youtube/youtube.module').then((m) => m.YoutubeModule),
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'admin',
+    component: AdminPageComponent
   },
   {
     path: '**',

@@ -1,0 +1,72 @@
+@import '../../../../global.scss';
+
+.admin__container {
+    margin: 50px auto;
+}
+
+.admin__form {
+    box-sizing: border-box;
+    padding: 35px 20px 25px;
+    margin: auto;
+    width: 432px;
+    height: 493px;
+    display: flex;
+    flex-direction: column;
+    background-color: $login-background;
+    border-radius: 8px;
+
+    .admin__title {
+        color: $black;
+        font-size: 1.437rem;
+        font-weight: 700;
+        margin-bottom: 30px;
+    }
+
+    .admin__label {
+        margin-left: 10px;
+        color: $font-grey;
+        font-size: 0.685rem;
+        margin-bottom: 2px;
+    }
+
+    .admin__input {
+        min-width: 100%;
+        box-sizing: border-box;
+        padding: 0 10px;
+        border: none;
+        background-color: $input-background;
+        height: 44px;
+        margin-bottom: 5px;
+    }
+
+    .btn-create {
+        cursor: pointer;
+        margin-right: 5px;
+        border-radius: 5px;
+        margin-top: 45px;
+        align-self: flex-end;
+        border: none;
+        color: $white-color;
+        background-color: $blue-color;
+        width: 188px;
+        box-shadow: 5px 0px 3px $blue-color;
+        transition: .5s;
+        font-size: .94rem;
+        font-weight: 400;
+        height: 37px;
+
+        &:hover {
+            background-color: $blue-color-hover;
+            box-shadow: 5px 0px 3px $blue-color-hover;
+        }
+    }
+
+}
+
+.error_message {
+    align-self: flex-end;
+    color: $red;
+    margin-right: 10px;
+    font-size: 0.6rem;
+    min-height: 13px;
+}
