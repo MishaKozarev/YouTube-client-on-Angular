@@ -44,9 +44,10 @@ export class LoginPageComponent implements OnInit {
     if (this.loginForm.status === 'INVALID') {
       if (this.loginForm.value.login === '') {
         this.loginErrorMessage = '';
-        this.errorMessage = 'Please enter a login email';
+        this.errorMessage = 'please enter the correct email and password';
       } else if (this.loginForm.value.password === '') {
-        this.errorMessage = 'Please enter a password';
+        this.passwordErrorMessage = '';
+        this.errorMessage = 'please enter the correct email and password';
       }
     } else {
       this.loginService.isAuthUser();

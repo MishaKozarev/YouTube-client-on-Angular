@@ -37,11 +37,23 @@
         margin-bottom: 5px;
     }
 
+    .admin__input-error {
+        color: $red;
+        border: 2px solid $red;
+        outline-color: $red;
+        min-width: 100%;
+        box-sizing: border-box;
+        padding: 0 10px;
+        background-color: $input-background;
+        height: 44px;
+        margin-bottom: 5px;
+    }
+
     .tags {
         border: 1px solid $font-grey;
         border-radius: 10px;
         padding: 10px;
-        margin-bottom: 10px;
+        margin: 20px 0 0 0;
     }
 
         .tags__box-btn {
@@ -61,9 +73,8 @@
 
     .btn-create {
         cursor: pointer;
-        margin-right: 5px;
+        margin: 20px 5px 0 0;
         border-radius: 5px;
-        margin-top: 45px;
         align-self: flex-end;
         border: none;
         color: $white-color;
@@ -80,22 +91,27 @@
             box-shadow: 5px 0px 3px $blue-color-hover;
         }
     }
-
+    .btn-create-error {
+        cursor: pointer;
+        margin: 20px 5px 0 0;
+        border-radius: 5px;
+        align-self: flex-end;
+        border: none;
+        color: $white-color;
+        background-color: $font-grey;
+        width: 188px;
+        box-shadow: 5px 0px 3px $font-grey;
+        transition: .5s;
+        font-size: .94rem;
+        font-weight: 400;
+        height: 37px;
+    }
 }
 
 .error_message {
     align-self: flex-end;
     color: $red;
     margin-right: 10px;
-    font-size: 0.6rem;
+    font-size: 0.8rem;
     min-height: 13px;
-}
-
-.empty {
-    color: $red;
-
-    input {
-        border: 1px solid $red;
-        outline-color: $red;
-    }
 }

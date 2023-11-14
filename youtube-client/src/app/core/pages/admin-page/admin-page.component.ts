@@ -9,6 +9,8 @@ import {
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/auth/services/login.service';
 
+import { validationDate } from '../../validator/date-validator.validator';
+
 @Component({
   selector: 'app-admin-page',
   templateUrl: './admin-page.component.html',
@@ -24,7 +26,7 @@ export class AdminPageComponent implements OnInit {
     description: FormControl<string | null>;
     img: FormControl<string | null>;
     link: FormControl<string | null>;
-    date: FormControl<string | null>;
+    date: FormControl;
     tags: FormArray;
   }>;
   constructor(
@@ -42,7 +44,7 @@ export class AdminPageComponent implements OnInit {
       description: ['', [Validators.required, Validators.maxLength(255)]],
       img: ['', [Validators.required]],
       link: ['', [Validators.required]],
-      date: ['', [Validators.required]],
+      date: ['', [Validators.required, validationDate]],
       tags: this.fb.array([this.createTag()])
     });
   }
@@ -66,21 +68,6 @@ export class AdminPageComponent implements OnInit {
   resetForm() {
     this.adminForm.reset();
     this.adminForm.setControl('tags', this.fb.array([this.createTag()]));
-  }
-
-  public checkDate() {
-    this.dateErrorMessage = '';
-    const date = this.adminForm.value.date!;
-    const dateArray = date?.split('-');
-    if (date) {
-      if (!/\d./.test(date)) {
-        this.dateErrorMessage = 'Date must not contain letters';
-      } else if (dateArray.length !== 3) {
-        this.dateErrorMessage = 'Enter the date in the specified format';
-      } else if (!(new Date(dateArray.reverse().join('-')) < new Date())) {
-        this.dateErrorMessage = 'The date is invalid';
-      }
-    }
   }
 
   public clearErrorMessage() {

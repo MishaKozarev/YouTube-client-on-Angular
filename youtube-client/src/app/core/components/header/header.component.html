@@ -28,13 +28,13 @@
         src="../../../assets/search_settings.png"
         alt="icon" />
     </button>
-    <div class="header__user-container">
+    <a (click)="toAdmin()" class="header__user-container">
       <p class="header__user-text">Your name</p>
       <img
         class="header__icon-user"
         src="../../../assets/icon-login.png"
         alt="icon" />
-    </div>
+    </a>
   </div>
   <app-filter class="header__filter" *ngIf="isShow"></app-filter>
 </div>

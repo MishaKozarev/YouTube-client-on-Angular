@@ -9,8 +9,8 @@
       class="{{
         loginForm.controls.login.invalid &&
         (loginForm.controls.login.dirty || loginForm.controls.login.touched)
-        ? 'login__input-error'
-        : 'login__input'
+          ? 'login__input-error'
+          : 'login__input'
       }}"
       formControlName="login"
       (keyup)="clearErrorMessage()" />
@@ -44,10 +44,12 @@
       type="password"
       class="{{
         loginForm.controls.password.invalid &&
-        (loginForm.controls.password.dirty || loginForm.controls.password.touched)
-        ? 'login__input-error'
-        : 'login__input'
+        (loginForm.controls.password.dirty ||
+          loginForm.controls.password.touched)
+          ? 'login__input-error'
+          : 'login__input'
       }}"
+      (keyup)="clearErrorMessage()"
       formControlName="password" />
     <div
       *ngIf="
@@ -77,13 +79,8 @@
       >
     </div>
     <span class="login__error-message">{{ errorMessage }}</span>
-    <button
-    class="{{
-      loginForm.controls.password.invalid &&
-      (loginForm.controls.password.dirty || loginForm.controls.password.touched)
-      ? 'login__btn-error'
-      : 'login__btn'
-    }}"
-    >Login</button>
+    <button class="{{ loginForm.invalid ? 'login__btn-error' : 'login__btn' }}">
+      Login
+    </button>
   </form>
 </main>
