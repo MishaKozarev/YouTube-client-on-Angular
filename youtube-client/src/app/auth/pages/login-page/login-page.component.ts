@@ -10,6 +10,7 @@ import {
 import { Router } from '@angular/router';
 
 import { LoginService } from '../../services/login.service';
+import { validationPassword } from '../../validator/password-validator.validator';
 
 @Component({
   selector: 'app-login-page',
@@ -24,6 +25,7 @@ export class LoginPageComponent implements OnInit {
 
   public errorMessage = '';
   public loginErrorMessage = 'Please enter a login email';
+  public passwordErrorMessage = 'Please enter a password';
 
   constructor(
     private loginService: LoginService,
@@ -34,7 +36,7 @@ export class LoginPageComponent implements OnInit {
   ngOnInit() {
     this.loginForm = this.fb.group({
       login: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]]
+      password: ['', [Validators.required, validationPassword]]
     });
   }
 
@@ -55,27 +57,5 @@ export class LoginPageComponent implements OnInit {
 
   public clearErrorMessage() {
     this.errorMessage = '';
-  }
-
-  public checkPasswordValidation(): void {
-    this.errorMessage = '';
-    if (this.loginForm.value.password!.length < 8) {
-      this.errorMessage =
-        "Your password isn't strong enough: must be at least 8 characters long";
-    } else if (!this.loginForm.value.password!.match(/[A-Z]/)) {
-      this.errorMessage =
-        "Your password isn't strong enough: must contain at least one capital letter";
-    } else if (!this.loginForm.value.password!.match(/[a-z]/)) {
-      this.errorMessage =
-        "Your password isn't strong enough: must contain at least one capital letter";
-    } else if (!this.loginForm.value.password!.match(/\d/)) {
-      this.errorMessage =
-        "Your password isn't strong enough: must contain at least one number";
-    } else if (
-      !this.loginForm.value.password!.match(/[[!@#$&*"'./|/\\+^`~_=]/)
-    ) {
-      this.errorMessage =
-        "Your password isn't strong enough: must contain at least one special character";
-    }
   }
 }

@@ -6,7 +6,12 @@
       id="inputLogin"
       #inputLogin
       type="text"
-      class="login__input"
+      class="{{
+        loginForm.controls.login.invalid &&
+        (loginForm.controls.login.dirty || loginForm.controls.login.touched)
+        ? 'login__input-error'
+        : 'login__input'
+      }}"
       formControlName="login"
       (keyup)="clearErrorMessage()" />
     <div
@@ -37,7 +42,12 @@
       id="inputPassword"
       #inputPassword
       type="password"
-      class="login__input"
+      class="{{
+        loginForm.controls.password.invalid &&
+        (loginForm.controls.password.dirty || loginForm.controls.password.touched)
+        ? 'login__input-error'
+        : 'login__input'
+      }}"
       formControlName="password" />
     <div
       *ngIf="
@@ -49,14 +59,31 @@
       <span
         *ngIf="
           loginForm.controls.password.errors &&
-          loginForm.controls.password.errors['required'] &&
-          errorMessage === ''
+          loginForm.controls.password.errors['required']
         "
         class="login__error-message"
-        >Please enter a password</span
+        >{{ passwordErrorMessage }}</span
+      >
+      <span
+        *ngIf="
+          loginForm.controls.password.errors &&
+          loginForm.controls.password.errors['validationPassword'] &&
+          loginForm.controls.password.errors['validationPassword'].value
+        "
+        class="login__error-message"
+        >{{
+          loginForm.controls.password.errors['validationPassword'].errorMessage
+        }}</span
       >
     </div>
     <span class="login__error-message">{{ errorMessage }}</span>
-    <button class="login__btn">Login</button>
+    <button
+    class="{{
+      loginForm.controls.password.invalid &&
+      (loginForm.controls.password.dirty || loginForm.controls.password.touched)
+      ? 'login__btn-error'
+      : 'login__btn'
+    }}"
+    >Login</button>
   </form>
 </main>

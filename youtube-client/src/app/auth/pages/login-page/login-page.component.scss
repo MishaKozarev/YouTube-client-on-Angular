@@ -37,6 +37,17 @@
         height: 37px;
         margin-bottom: 5px;
     }
+    .login__input-error {
+        color: $red;
+        border: 1px solid $red;
+        outline-color: $red;
+        box-sizing: border-box;
+        padding: 0 10px;
+        background-color: $input-background;
+        width: 305px;
+        height: 37px;
+        margin-bottom: 5px;
+    }
 
     .login__btn {
         cursor: pointer;
@@ -58,6 +69,22 @@
             background-color: $blue-color-hover;
             box-shadow: 5px 0px 3px $blue-color-hover;
         }
+    }
+    .login__btn-error {
+        cursor: pointer;
+        margin-right: 10px;
+        border-radius: 5px;
+        margin-top: 25px;
+        align-self: flex-end;
+        border: none;
+        color: $white-color;
+        background-color: $font-grey;
+        width: 124px;
+        box-shadow: 5px 0px 3px $font-grey;
+        transition: .5s;
+        font-size: .75rem;
+        font-weight: 400;
+        height: 40px;
     }
 }
 
