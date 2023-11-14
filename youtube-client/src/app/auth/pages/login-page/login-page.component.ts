@@ -19,7 +19,7 @@ import { LoginService } from '../../services/login.service';
 export class LoginPageComponent implements OnInit {
   public loginForm!: FormGroup<{
     login: FormControl<string | null>;
-    password: FormControl<string | null>;
+    password: FormControl;
   }>;
 
   public errorMessage = '';
@@ -57,7 +57,7 @@ export class LoginPageComponent implements OnInit {
     this.errorMessage = '';
   }
 
-  public checkPasswordValidation() {
+  public checkPasswordValidation(): void {
     this.errorMessage = '';
     if (this.loginForm.value.password!.length < 8) {
       this.errorMessage =

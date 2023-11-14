@@ -23,10 +23,9 @@
     }
 
     .admin__label {
-        margin-left: 10px;
+        margin: 10px 0 2px 10px;
         color: $font-grey;
         font-size: 0.685rem;
-        margin-bottom: 2px;
     }
 
     .admin__input {
@@ -38,6 +37,28 @@
         height: 44px;
         margin-bottom: 5px;
     }
+
+    .tags {
+        border: 1px solid $font-grey;
+        border-radius: 10px;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+        .tags__box-btn {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+            .tags__btn-reset {
+                background: #ff7b7b;
+                border: none;
+                border-radius: 5px;
+                width: 78px;
+                font-weight: 700;
+                cursor: pointer;
+            }
 
     .btn-create {
         cursor: pointer;
@@ -69,4 +90,13 @@
     margin-right: 10px;
     font-size: 0.6rem;
     min-height: 13px;
+}
+
+.empty {
+    color: red;
+
+    input {
+        border: 1px solid red;
+        outline-color: red;
+    }
 }

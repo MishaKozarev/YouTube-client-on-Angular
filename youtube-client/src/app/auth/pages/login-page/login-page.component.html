@@ -3,6 +3,7 @@
     <p class="login__title">Login</p>
     <label for="inputLogin" class="login__label">login</label>
     <input
+      id="inputLogin"
       #inputLogin
       type="text"
       class="login__input"
@@ -33,11 +34,11 @@
     </div>
     <label for="inputPassword" class="login__label">password</label>
     <input
+      id="inputPassword"
       #inputPassword
       type="password"
       class="login__input"
-      formControlName="password"
-      (keyup)="checkPasswordValidation()" />
+      formControlName="password" />
     <div
       *ngIf="
         loginForm.controls.password.invalid &&

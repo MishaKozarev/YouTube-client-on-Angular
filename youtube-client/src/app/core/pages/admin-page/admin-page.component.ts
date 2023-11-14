@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {
+  FormArray,
   FormBuilder,
   FormControl,
   FormGroup,
   Validators
 } from '@angular/forms';
+import { Router } from '@angular/router';
+import { LoginService } from 'src/app/auth/services/login.service';
 
 @Component({
   selector: 'app-admin-page',
@@ -14,7 +17,7 @@ import {
 export class AdminPageComponent implements OnInit {
   public dateErrorMessage = '';
   public tagErrorMessage = '';
-  public tagsArray: string[] = [];
+  public errorMessage = '';
 
   public adminForm!: FormGroup<{
     title: FormControl<string | null>;
@@ -22,9 +25,13 @@ export class AdminPageComponent implements OnInit {
     img: FormControl<string | null>;
     link: FormControl<string | null>;
     date: FormControl<string | null>;
-    tag: FormControl<string | null>;
+    tags: FormArray;
   }>;
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private loginService: LoginService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.adminForm = this.fb.group({
@@ -36,14 +43,35 @@ export class AdminPageComponent implements OnInit {
       img: ['', [Validators.required]],
       link: ['', [Validators.required]],
       date: ['', [Validators.required]],
-      tag: ['', [Validators.required]]
+      tags: this.fb.array([this.createTag()])
     });
+  }
+
+  get tags() {
+    return this.adminForm.get('tags') as FormArray;
+  }
+
+  addTags() {
+    if (this.tags.status === 'VALID' && this.tags.length < 5) {
+      this.tags.push(this.createTag());
+    }
+  }
+
+  createTag(): FormGroup {
+    return this.fb.group({
+      tag: ['', Validators.required]
+    });
+  }
+
+  resetForm() {
+    this.adminForm.reset();
+    this.adminForm.setControl('tags', this.fb.array([this.createTag()]));
   }
 
   public checkDate() {
     this.dateErrorMessage = '';
     const date = this.adminForm.value.date!;
-    const dateArray = date?.split('.');
+    const dateArray = date?.split('-');
     if (date) {
       if (!/\d./.test(date)) {
         this.dateErrorMessage = 'Date must not contain letters';
@@ -59,9 +87,13 @@ export class AdminPageComponent implements OnInit {
     this.tagErrorMessage = '';
   }
 
-  public addNewTag() {
-    if (this.adminForm.value.tag) {
-      this.tagErrorMessage = 'You must enter text to add in the field';
+  public onSubmit() {
+    if (this.adminForm.invalid) {
+      this.errorMessage = 'please fill out the form';
+    } else {
+      this.loginService.isAuthUser();
+      this.loginService.login();
+      this.router.navigate(['/youtube']);
     }
   }
 }
