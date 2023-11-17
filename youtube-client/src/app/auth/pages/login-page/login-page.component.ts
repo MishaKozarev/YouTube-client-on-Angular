@@ -40,6 +40,14 @@ export class LoginPageComponent implements OnInit {
     });
   }
 
+  get login() {
+    return this.loginForm.get('login') as FormControl;
+  }
+
+  get password() {
+    return this.loginForm.get('password') as FormControl;
+  }
+
   public submitForm() {
     if (this.loginForm.status === 'INVALID') {
       if (this.loginForm.value.login === '') {

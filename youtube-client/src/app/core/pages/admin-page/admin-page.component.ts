@@ -22,7 +22,7 @@ export class AdminPageComponent implements OnInit {
   public errorMessage = '';
 
   public adminForm!: FormGroup<{
-    title: FormControl<string | null>;
+    title: FormControl;
     description: FormControl<string | null>;
     img: FormControl<string | null>;
     link: FormControl<string | null>;
@@ -51,6 +51,26 @@ export class AdminPageComponent implements OnInit {
 
   get tags() {
     return this.adminForm.get('tags') as FormArray;
+  }
+
+  get title() {
+    return this.adminForm.get('title') as FormControl<string | null>;
+  }
+
+  get description() {
+    return this.adminForm.get('description') as FormControl<string | null>;
+  }
+
+  get img() {
+    return this.adminForm.get('img') as FormControl<string | null>;
+  }
+
+  get link() {
+    return this.adminForm.get('link') as FormControl<string | null>;
+  }
+
+  get date() {
+    return this.adminForm.get('date') as FormControl<string | null>;
   }
 
   addTags() {
