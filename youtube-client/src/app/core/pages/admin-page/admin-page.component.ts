@@ -22,9 +22,9 @@ export class AdminPageComponent implements OnInit {
   public errorMessage = '';
   public adminForm!: FormGroup<{
     title: FormControl;
-    description: FormControl<string | null>;
-    img: FormControl<string | null>;
-    link: FormControl<string | null>;
+    description: FormControl;
+    img: FormControl;
+    link: FormControl;
     date: FormControl;
     tags: FormArray;
   }>;
@@ -53,23 +53,23 @@ export class AdminPageComponent implements OnInit {
   }
 
   get title() {
-    return this.adminForm.get('title') as FormControl<string | null>;
+    return this.adminForm.get('title') as FormControl;
   }
 
   get description() {
-    return this.adminForm.get('description') as FormControl<string | null>;
+    return this.adminForm.get('description') as FormControl;
   }
 
   get img() {
-    return this.adminForm.get('img') as FormControl<string | null>;
+    return this.adminForm.get('img') as FormControl;
   }
 
   get link() {
-    return this.adminForm.get('link') as FormControl<string | null>;
+    return this.adminForm.get('link') as FormControl;
   }
 
   get date() {
-    return this.adminForm.get('date') as FormControl<string | null>;
+    return this.adminForm.get('date') as FormControl;
   }
 
   addTags() {

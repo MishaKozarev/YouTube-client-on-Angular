@@ -48,13 +48,9 @@
         >{{ passwordErrorMessage }}</span
       >
       <span
-        *ngIf="
-          password.errors &&
-          password.errors['validationPassword'] &&
-          password.errors['validationPassword'].value
-        "
+        *ngIf="password.errors && password.errors['validationPassword']"
         class="login__error-message"
-        >{{ password.errors['validationPassword'].errorMessage }}</span
+        >{{ password.errors['errorMessage'] }}</span
       >
     </div>
     <span class="login__error-message">{{ errorMessage }}</span>
