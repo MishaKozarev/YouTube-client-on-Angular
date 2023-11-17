@@ -26,6 +26,14 @@ export class LoginPageComponent implements OnInit {
   public errorMessage = '';
   public loginErrorMessage = 'Please enter a login email';
   public passwordErrorMessage = 'Please enter a password';
+  public loginError = this.login.errors;
+  public loginInvalid = this.login.invalid;
+  public loginTouched = this.login.touched;
+  public loginDirty = this.login.dirty;
+  public passwordError = this.password.errors;
+  public passwordInvalid = this.password.invalid;
+  public passwordTouched = this.password.touched;
+  public passwordDirty = this.password.dirty;
 
   constructor(
     private loginService: LoginService,

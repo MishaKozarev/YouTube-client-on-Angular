@@ -7,22 +7,22 @@
       #inputLogin
       type="text"
       class="{{
-        login.invalid && (login.dirty || login.touched)
+        loginInvalid && (loginDirty || loginTouched)
           ? 'login__input-error'
           : 'login__input'
       }}"
       formControlName="login"
       (keyup)="clearErrorMessage()" />
     <div
-      *ngIf="login.invalid && (login.dirty || login.touched)"
+      *ngIf="loginInvalid && (loginDirty || loginTouched)"
       class="login__error-container">
       <span
-        *ngIf="login.errors && login.errors['required']"
+        *ngIf="loginError && loginError['required']"
         class="login__error-message"
         >{{ loginErrorMessage }}</span
       >
       <span
-        *ngIf="login.errors && login.errors['email']"
+        *ngIf="loginError && loginError['email']"
         class="login__error-message"
         >The login email is invalid</span
       >
@@ -33,32 +33,32 @@
       #inputPassword
       type="password"
       class="{{
-        password.invalid && (password.dirty || password.touched)
+        passwordInvalid && (passwordDirty || passwordTouched)
           ? 'login__input-error'
           : 'login__input'
       }}"
       (keyup)="clearErrorMessage()"
       formControlName="password" />
     <div
-      *ngIf="password.invalid && (password.dirty || password.touched)"
+      *ngIf="passwordInvalid && (passwordDirty || passwordTouched)"
       class="login__error-container">
       <span
-        *ngIf="password.errors && password.errors['required']"
+        *ngIf="passwordError && passwordError['required']"
         class="login__error-message"
         >{{ passwordErrorMessage }}</span
       >
       <span
         *ngIf="
-          password.errors &&
-          password.errors['validationPassword'] &&
-          password.errors['validationPassword'].value
+          passwordError &&
+          passwordError['validationPassword'] &&
+          passwordError['validationPassword'].value
         "
         class="login__error-message"
-        >{{ password.errors['validationPassword'].errorMessage }}</span
+        >{{ passwordError['validationPassword'].errorMessage }}</span
       >
     </div>
     <span class="login__error-message">{{ errorMessage }}</span>
-    <button class="{{ loginForm.invalid ? 'login__btn-error' : 'login__btn' }}">
+    <button class="{{ passwordInvalid ? 'login__btn-error' : 'login__btn' }}">
       Login
     </button>
   </form>
