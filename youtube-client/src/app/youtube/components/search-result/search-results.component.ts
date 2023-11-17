@@ -10,11 +10,14 @@ import { SortService } from '../../services/sort/sort.service';
   styleUrls: ['./search-results.component.scss']
 })
 export class SearchResultsComponent {
+  // public videos$ = this.store.select(
+  //   (state) => state.customCardsState.customCards
+  // );
   public videos$ = this.searchFormService.videos$;
 
   constructor(
     public sortService: SortService,
     private searchFormService: SearchFormService,
-    public responseService: ResponseService
+    public responseService: ResponseService // private store: Store<AppState>
   ) {}
 }
