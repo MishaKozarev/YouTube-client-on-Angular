@@ -17,16 +17,18 @@
       <div
         *ngIf="title.invalid && (title.dirty || title.touched)"
         class="error-container">
-        <span *ngIf="titleError && titleError['required']" class="error_message"
+        <span
+          *ngIf="title.errors && title.errors['required']"
+          class="error_message"
           >Please enter a title</span
         >
         <span
-          *ngIf="titleError && titleError['minlength']"
+          *ngIf="title.errors && title.errors['minlength']"
           class="error_message"
           >The title is too short</span
         >
         <span
-          *ngIf="titleError && titleError['maxlength']"
+          *ngIf="title.errors && title.errors['maxlength']"
           class="error_message"
           >The title is too long</span
         >
@@ -51,12 +53,12 @@
         "
         class="error-container">
         <span
-          *ngIf="descriptionError && descriptionError['required']"
+          *ngIf="description.errors && description.errors['required']"
           class="error_message"
           >Please enter a description</span
         >
         <span
-          *ngIf="descriptionError && descriptionError['maxlength']"
+          *ngIf="description.errors && description.errors['maxlength']"
           class="error_message"
           >The description is too long</span
         >
@@ -78,7 +80,7 @@
       <div
         *ngIf="img.invalid && (img.dirty || img.touched)"
         class="error-container">
-        <span *ngIf="imgError && imgError['required']" class="error_message"
+        <span *ngIf="img.errors && img.errors['required']" class="error_message"
           >Please enter a link to the image</span
         >
       </div>
@@ -98,7 +100,9 @@
         <div
           *ngIf="link.invalid && (link.dirty || link.touched)"
           class="error-container">
-          <span *ngIf="linkError && linkError['required']" class="error_message"
+          <span
+            *ngIf="link.errors && link.errors['required']"
+            class="error_message"
             >Please enter a link to the video</span
           >
         </div>
@@ -120,17 +124,19 @@
       <div
         *ngIf="date.invalid && (date.dirty || date.touched)"
         class="error-container">
-        <span *ngIf="dateError && dateError['required']" class="error_message"
+        <span
+          *ngIf="date.errors && date.errors['required']"
+          class="error_message"
           >Please enter a creation date</span
         >
         <span
           *ngIf="
-            dateError &&
-            dateError['validationDate'] &&
-            dateError['validationDate'].value
+            date.errors &&
+            date.errors['validationDate'] &&
+            date.errors['validationDate'].value
           "
           class="error_message"
-          >{{ dateError['validationDate'].errorMessage }}</span
+          >{{ date.errors['validationDate'].errorMessage }}</span
         >
       </div>
       <span class="error_message">{{ dateErrorMessage }}</span>

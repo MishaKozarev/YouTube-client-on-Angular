@@ -20,12 +20,6 @@ export class AdminPageComponent implements OnInit {
   public dateErrorMessage = '';
   public tagErrorMessage = '';
   public errorMessage = '';
-  public titleError = this.title.errors;
-  public descriptionError = this.description.errors;
-  public imgError = this.img.errors;
-  public linkError = this.link.errors;
-  public dateError = this.date.errors;
-
   public adminForm!: FormGroup<{
     title: FormControl;
     description: FormControl<string | null>;
