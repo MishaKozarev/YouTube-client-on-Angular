@@ -26,7 +26,7 @@ export function validationPassword(control: FormControl) {
         validationPassword: {
           value: true,
           errorMessage:
-            "Password isn't strong enough: must contain at least one capital letter"
+            "Password isn't strong enough: must contain at least one lowercase letter"
         }
       };
     }
