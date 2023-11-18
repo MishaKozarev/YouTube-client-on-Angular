@@ -34,7 +34,13 @@ export class HeaderComponent implements OnInit {
     if (this.isAuntUser) {
       this.loginService.logout();
       this.router.navigate(['/login']);
+    } else {
+      this.router.navigate(['/login']);
     }
+  }
+
+  public toAdmin(): void {
+    this.router.navigate(['/admin']);
   }
 
   public changeInputValue(query: string): void {
