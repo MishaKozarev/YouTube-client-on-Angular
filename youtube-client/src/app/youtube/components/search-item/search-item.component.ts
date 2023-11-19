@@ -8,7 +8,6 @@ import { Item } from 'src/app/youtube/models/search-item.model';
   styleUrls: ['./search-item.component.scss']
 })
 export class SearchItemComponent {
-  // @Input() public item!: CustomCard;
   @Input() public item!: Item;
 
   constructor(private router: Router) {}

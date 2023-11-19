@@ -1,21 +1,19 @@
 import { createAction, props } from '@ngrx/store';
 import { Item } from 'src/app/youtube/models/search-item.model';
 
-import { CustomCard } from '../state.model';
-
 export const getCustomCard = createAction(
   '[ADMIN_PAGE] GET CUSTOM CARD',
-  props<{ cardId: CustomCard }>()
+  props<{ cardId: Item }>()
 );
 
 export const createCustomCard = createAction(
   '[ADMIN_PAGE] CREATE CUSTOM CARD',
-  props<{ newCard: Item }>()
+  props<{ customCards: Item }>()
 );
 
 export const updateCustomCard = createAction(
   '[ADMIN_PAGE] COMPLETE CUSTOM CARD',
-  props<{ card: CustomCard }>()
+  props<{ card: Item }>()
 );
 
 export const deleteCustomCard = createAction(
@@ -25,5 +23,5 @@ export const deleteCustomCard = createAction(
 
 export const completeCustomCard = createAction(
   '[ADMIN_PAGE] DELETE CUSTOM CARD',
-  props<{ card: CustomCard }>()
+  props<{ card: Item }>()
 );
