@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SearchResultService } from 'src/app/youtube/services/search-result/search-result.service';
+import { ShowFilterBlockService } from 'src/app/youtube/services/show-filter-block/show-filter-block.service';
 import { SortService } from 'src/app/youtube/services/sort/sort.service';
 
 @Component({
@@ -9,10 +9,10 @@ import { SortService } from 'src/app/youtube/services/sort/sort.service';
 })
 export class FilterComponent {
   constructor(
-    public resultsService: SearchResultService,
+    private showFilterBlockService: ShowFilterBlockService,
     public sortService: SortService
   ) {}
-  public isShow: boolean = this.resultsService.showFilterBlock;
+  public isShow: boolean = this.showFilterBlockService.showFilterBlock;
 
   public addSortByDate(event: Event): void {
     this.sortService.sortByDate(event);

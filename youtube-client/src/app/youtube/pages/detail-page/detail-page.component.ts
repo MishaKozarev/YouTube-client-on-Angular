@@ -3,8 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { LoginService } from 'src/app/auth/services/login.service';
 
 import { Item } from '../../models/search-item.model';
-import { DetailsService } from '../../services/details/details.service';
-import { SearchResultService } from '../../services/search-result/search-result.service';
+import { ResponseService } from '../../services/response/response.service';
 
 @Component({
   selector: 'app-detail-page',
@@ -13,28 +12,33 @@ import { SearchResultService } from '../../services/search-result/search-result.
 })
 export class DetailPageComponent implements OnInit {
   currentItem!: Item;
-  id = '';
-  publishData = '';
+  currentId = '';
+  public isAuthUser$ = this.loginService.isAuth$;
+  public isAuthUser!: boolean;
 
   constructor(
-    public service: DetailsService,
-    public resultsService: SearchResultService,
     public router: Router,
-    private route: ActivatedRoute,
+    public activatedRoute: ActivatedRoute,
+    public responseService: ResponseService,
     private loginService: LoginService
   ) {}
   ngOnInit(): void {
-    if (!this.loginService.isUserAuthenticated) {
+    this.isAuthUser$.subscribe((value) => {
+      this.isAuthUser = value;
+    });
+    if (!this.isAuthUser) {
       this.router.navigate(['/login']);
     }
-    this.route.params.subscribe((params) => {
-      this.id = params['id'];
+    this.activatedRoute.params.subscribe((params) => {
+      this.currentId = params['id'];
     });
-    this.service.setVideoInfo(this.id);
-    this.publishData = this.service.publishDate;
-    const item = this.resultsService.getItemById(this.id);
-    if (item) {
-      this.currentItem = item;
-    }
+
+    this.responseService.getItemById(this.currentId).subscribe({
+      next: ([item]) => {
+        if (item) {
+          this.currentItem = item;
+        }
+      }
+    });
   }
 }

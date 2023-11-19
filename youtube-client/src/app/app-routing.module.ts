@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { authGuard } from './auth/guards/auth.guard';
+import { AuthGuard } from './auth/guards/auth.guard';
+import { NotAuthGuard } from './auth/guards/not-auth.guard';
+import { AdminPageComponent } from './core/pages/admin-page/admin-page.component';
 import { NotFoundComponent } from './core/pages/not-found/not-found.component';
 
 const routes: Routes = [
@@ -12,13 +14,18 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule)
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
+    canActivate: [NotAuthGuard]
   },
   {
     path: 'youtube',
     loadChildren: () =>
       import('./youtube/youtube.module').then((m) => m.YoutubeModule),
-    canActivate: [authGuard]
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'admin',
+    component: AdminPageComponent
   },
   {
     path: '**',
