@@ -1,8 +1,8 @@
 <div class="header__container">
   <div class="header__row">
-    <ng-container *ngIf="buttonLogTextContent$ | async as buttonLogTextContent">
+    <ng-container>
       <app-custom-button class="login_button" (click)="logout()">
-        {{ buttonLogTextContent }}
+        {{ isAuntUser?logoutTextBtn:loginTextBtn}}
       </app-custom-button>
     </ng-container>
     <img
