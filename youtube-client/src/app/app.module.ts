@@ -9,6 +9,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
+import { YoutubeCardEffects } from './store/effects/youtube-cards.effects';
 import { YoutubeInterceptorService } from './youtube/interceptors/youtube.interceptor';
 
 @NgModule({
@@ -31,7 +32,7 @@ import { YoutubeInterceptorService } from './youtube/interceptors/youtube.interc
       }
     ),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
-    EffectsModule.forRoot([])
+    EffectsModule.forRoot([YoutubeCardEffects])
   ],
   providers: [
     {

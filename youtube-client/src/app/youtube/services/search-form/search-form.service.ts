@@ -3,11 +3,12 @@ import {
   BehaviorSubject,
   debounceTime,
   filter,
+  map,
   Observable,
   switchMap
 } from 'rxjs';
 
-import { SearchResponse } from '../../models/search-response.model';
+import { Item } from '../../models/search-item.model';
 import { ResponseService } from '../response/response.service';
 
 interface IStateQuery {
@@ -25,13 +26,12 @@ export class SearchFormService {
     length: 0
   });
 
-  public videos$: Observable<SearchResponse> = this.stateQuery
-    .asObservable()
-    .pipe(
-      filter((query) => query.value.length >= 3),
-      debounceTime(1000),
-      switchMap((query) => this.responseService.getList(query.value, '10'))
-    );
+  public videos$: Observable<Item[]> = this.stateQuery.asObservable().pipe(
+    filter((query) => query.value.length >= 3),
+    debounceTime(1000),
+    switchMap((query) => this.responseService.getList(query.value, '10')),
+    map((item) => item.items)
+  );
 
   public changeQuery(query: string, length: number): void {
     this.stateQuery.next({ value: query, length });

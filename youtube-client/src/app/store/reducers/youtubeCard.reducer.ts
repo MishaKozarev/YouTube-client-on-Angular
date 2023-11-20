@@ -1,5 +1,23 @@
-import { Item } from 'src/app/youtube/models/search-item.model';
+import { createReducer, on } from '@ngrx/store';
 
-export interface YoutubeCardState {
-  youtubeCard: Item[];
-}
+import * as youtubeCardAction from '../actions/youtubeVideo.actions';
+import { initialYoutubeCardsState, YoutubeCardsState } from '../state.model';
+
+export const youtubeCardReducer = createReducer(
+  initialYoutubeCardsState,
+  on(
+    youtubeCardAction.getYoutubeCard,
+    (state): YoutubeCardsState => ({
+      ...state
+    })
+  ),
+  on(
+    youtubeCardAction.getYoutubeCardSuccess,
+    (state, { youtubeCards }): YoutubeCardsState => {
+      return {
+        ...state,
+        youtubeCards: [...youtubeCards]
+      };
+    }
+  )
+);
