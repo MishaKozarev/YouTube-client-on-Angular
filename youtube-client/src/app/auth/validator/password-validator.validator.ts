@@ -1,53 +1,43 @@
 /* eslint-disable @typescript-eslint/quotes */
-import { FormControl } from '@angular/forms';
+import { AbstractControl } from '@angular/forms';
 
-export function validationPassword(control: FormControl) {
-  if (control.value !== null && control.value !== '') {
-    if (control.value.length < 8) {
-      return {
-        validationPassword: {
-          value: true,
-          errorMessage:
-            "Password isn't strong enough: must be at least 8 characters long"
-        }
-      };
+export function validationPassword() {
+  return (control: AbstractControl) => {
+    let errorMessage = '';
+    const errorEight = control.value.length > 8;
+    const errorSpecialCharacter = control.value.match(
+      /[[!@#$&*"'./|/\\+^`~_=]/
+    );
+    const errorLowercase = control.value.match(/[a-z]/);
+    const errorCapital = control.value.match(/[A-Z]/);
+    const errorNumber = control.value.match(/\d/);
+    if (
+      errorEight &&
+      errorSpecialCharacter &&
+      errorLowercase &&
+      errorCapital &&
+      errorNumber
+    ) {
+      return null;
     }
-    if (!control.value.match(/[[!@#$&*"'./|/\\+^`~_=]/)) {
-      return {
-        validationPassword: {
-          value: true,
-          errorMessage:
-            "Password isn't strong enough: must contain at least one special character +!@#$%^&"
-        }
-      };
+    if (control.value !== null && control.value !== '') {
+      if (!errorEight) {
+        errorMessage += 'must be at least 8 characters long, ';
+      }
+      if (!errorSpecialCharacter) {
+        errorMessage +=
+          'must contain at least one special character +!@#$%^&, ';
+      }
+      if (!errorLowercase) {
+        errorMessage += 'must contain at least one lowercase letter, ';
+      }
+      if (!errorCapital) {
+        errorMessage += 'must contain at least one capital letter, ';
+      }
+      if (!errorNumber) {
+        errorMessage += 'must contain at least one number, ';
+      }
     }
-    if (!control.value.match(/[a-z]/)) {
-      return {
-        validationPassword: {
-          value: true,
-          errorMessage:
-            "Password isn't strong enough: must contain at least one capital letter"
-        }
-      };
-    }
-    if (!control.value.match(/[A-Z]/)) {
-      return {
-        validationPassword: {
-          value: true,
-          errorMessage:
-            "Password isn't strong enough: must contain at least one capital letter"
-        }
-      };
-    }
-    if (!control.value.match(/\d/)) {
-      return {
-        validationPassword: {
-          value: true,
-          errorMessage:
-            "Password isn't strong enough: must contain at least one number"
-        }
-      };
-    }
-  }
-  return null;
+    return { validationPassword: true, errorMessage };
+  };
 }

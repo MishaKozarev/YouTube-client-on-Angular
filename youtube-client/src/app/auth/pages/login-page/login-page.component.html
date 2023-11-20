@@ -7,32 +7,22 @@
       #inputLogin
       type="text"
       class="{{
-        loginForm.controls.login.invalid &&
-        (loginForm.controls.login.dirty || loginForm.controls.login.touched)
+        login.invalid && (login.dirty || login.touched)
           ? 'login__input-error'
           : 'login__input'
       }}"
       formControlName="login"
       (keyup)="clearErrorMessage()" />
     <div
-      *ngIf="
-        loginForm.controls.login.invalid &&
-        (loginForm.controls.login.dirty || loginForm.controls.login.touched)
-      "
+      *ngIf="login.invalid && (login.dirty || login.touched)"
       class="login__error-container">
       <span
-        *ngIf="
-          loginForm.controls.login.errors &&
-          loginForm.controls.login.errors['required']
-        "
+        *ngIf="login.errors && login.errors['required']"
         class="login__error-message"
         >{{ loginErrorMessage }}</span
       >
       <span
-        *ngIf="
-          loginForm.controls.login.errors &&
-          loginForm.controls.login.errors['email']
-        "
+        *ngIf="login.errors && login.errors['email']"
         class="login__error-message"
         >The login email is invalid</span
       >
@@ -43,43 +33,28 @@
       #inputPassword
       type="password"
       class="{{
-        loginForm.controls.password.invalid &&
-        (loginForm.controls.password.dirty ||
-          loginForm.controls.password.touched)
+        password.invalid && (password.dirty || password.touched)
           ? 'login__input-error'
           : 'login__input'
       }}"
       (keyup)="clearErrorMessage()"
       formControlName="password" />
     <div
-      *ngIf="
-        loginForm.controls.password.invalid &&
-        (loginForm.controls.password.dirty ||
-          loginForm.controls.password.touched)
-      "
+      *ngIf="password.invalid && (password.dirty || password.touched)"
       class="login__error-container">
       <span
-        *ngIf="
-          loginForm.controls.password.errors &&
-          loginForm.controls.password.errors['required']
-        "
+        *ngIf="password.errors && password.errors['required']"
         class="login__error-message"
         >{{ passwordErrorMessage }}</span
       >
       <span
-        *ngIf="
-          loginForm.controls.password.errors &&
-          loginForm.controls.password.errors['validationPassword'] &&
-          loginForm.controls.password.errors['validationPassword'].value
-        "
+        *ngIf="password.errors && password.errors['validationPassword']"
         class="login__error-message"
-        >{{
-          loginForm.controls.password.errors['validationPassword'].errorMessage
-        }}</span
+        >{{ password.errors['errorMessage'] }}</span
       >
     </div>
     <span class="login__error-message">{{ errorMessage }}</span>
-    <button class="{{ loginForm.invalid ? 'login__btn-error' : 'login__btn' }}">
+    <button class="{{ password.invalid ? 'login__btn-error' : 'login__btn' }}">
       Login
     </button>
   </form>

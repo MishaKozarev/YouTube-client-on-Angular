@@ -23,7 +23,6 @@ export class AdminPageComponent implements OnInit {
   public dateErrorMessage = '';
   public tagErrorMessage = '';
   public errorMessage = '';
-
   public adminForm!: FormGroup<{
     title: FormControl;
     description: FormControl;
@@ -55,6 +54,26 @@ export class AdminPageComponent implements OnInit {
 
   get tags() {
     return this.adminForm.get('tags') as FormArray;
+  }
+
+  get title() {
+    return this.adminForm.get('title') as FormControl;
+  }
+
+  get description() {
+    return this.adminForm.get('description') as FormControl;
+  }
+
+  get img() {
+    return this.adminForm.get('img') as FormControl;
+  }
+
+  get link() {
+    return this.adminForm.get('link') as FormControl;
+  }
+
+  get date() {
+    return this.adminForm.get('date') as FormControl;
   }
 
   addTags() {

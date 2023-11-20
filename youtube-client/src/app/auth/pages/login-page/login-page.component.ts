@@ -19,7 +19,7 @@ import { validationPassword } from '../../validator/password-validator.validator
 })
 export class LoginPageComponent implements OnInit {
   public loginForm!: FormGroup<{
-    login: FormControl<string | null>;
+    login: FormControl;
     password: FormControl;
   }>;
 
@@ -36,8 +36,16 @@ export class LoginPageComponent implements OnInit {
   ngOnInit() {
     this.loginForm = this.fb.group({
       login: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, validationPassword]]
+      password: ['', [Validators.required, validationPassword()]]
     });
+  }
+
+  get login() {
+    return this.loginForm.get('login') as FormControl;
+  }
+
+  get password() {
+    return this.loginForm.get('password') as FormControl;
   }
 
   public submitForm() {

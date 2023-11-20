@@ -10,38 +10,25 @@
         #inputTitle
         type="text"
         class="{{
-          adminForm.controls.title.invalid &&
-          (adminForm.controls.title.dirty || adminForm.controls.title.touched)
+          title.invalid && (title.dirty || title.touched)
             ? 'admin__input-error'
             : 'admin__input'
         }}" />
       <div
-        *ngIf="
-          adminForm.controls.title.invalid &&
-          (adminForm.controls.title.dirty || adminForm.controls.title.touched)
-        "
+        *ngIf="title.invalid && (title.dirty || title.touched)"
         class="error-container">
         <span
-          *ngIf="
-            adminForm.controls.title.errors &&
-            adminForm.controls.title.errors['required']
-          "
+          *ngIf="title.errors && title.errors['required']"
           class="error_message"
           >Please enter a title</span
         >
         <span
-          *ngIf="
-            adminForm.controls.title.errors &&
-            adminForm.controls.title.errors['minlength']
-          "
+          *ngIf="title.errors && title.errors['minlength']"
           class="error_message"
           >The title is too short</span
         >
         <span
-          *ngIf="
-            adminForm.controls.title.errors &&
-            adminForm.controls.title.errors['maxlength']
-          "
+          *ngIf="title.errors && title.errors['maxlength']"
           class="error_message"
           >The title is too long</span
         >
@@ -56,32 +43,22 @@
         #inputDescription
         type="text"
         class="{{
-          adminForm.controls.description.invalid &&
-          (adminForm.controls.description.dirty ||
-            adminForm.controls.description.touched)
+          description.invalid && (description.dirty || description.touched)
             ? 'admin__input-error'
             : 'admin__input'
         }}" />
       <div
         *ngIf="
-          adminForm.controls.description.invalid &&
-          (adminForm.controls.description.dirty ||
-            adminForm.controls.description.touched)
+          description.invalid && (description.dirty || description.touched)
         "
         class="error-container">
         <span
-          *ngIf="
-            adminForm.controls.description.errors &&
-            adminForm.controls.description.errors['required']
-          "
+          *ngIf="description.errors && description.errors['required']"
           class="error_message"
           >Please enter a description</span
         >
         <span
-          *ngIf="
-            adminForm.controls.description.errors &&
-            adminForm.controls.description.errors['maxlength']
-          "
+          *ngIf="description.errors && description.errors['maxlength']"
           class="error_message"
           >The description is too long</span
         >
@@ -96,23 +73,14 @@
         #inputImg
         type="text"
         class="{{
-          adminForm.controls.img.invalid &&
-          (adminForm.controls.img.dirty || adminForm.controls.img.touched)
+          img.invalid && (img.dirty || img.touched)
             ? 'admin__input-error'
             : 'admin__input'
         }}" />
       <div
-        *ngIf="
-          adminForm.controls.img.invalid &&
-          (adminForm.controls.img.dirty || adminForm.controls.img.touched)
-        "
+        *ngIf="img.invalid && (img.dirty || img.touched)"
         class="error-container">
-        <span
-          *ngIf="
-            adminForm.controls.img.errors &&
-            adminForm.controls.img.errors['required']
-          "
-          class="error_message"
+        <span *ngIf="img.errors && img.errors['required']" class="error_message"
           >Please enter a link to the image</span
         >
       </div>
@@ -125,22 +93,15 @@
           #inputLink
           type="text"
           class="{{
-            adminForm.controls.link.invalid &&
-            (adminForm.controls.link.dirty || adminForm.controls.link.touched)
+            link.invalid && (link.dirty || link.touched)
               ? 'admin__input-error'
               : 'admin__input'
           }}" />
         <div
-          *ngIf="
-            adminForm.controls.link.invalid &&
-            (adminForm.controls.link.dirty || adminForm.controls.link.touched)
-          "
+          *ngIf="link.invalid && (link.dirty || link.touched)"
           class="error-container">
           <span
-            *ngIf="
-              adminForm.controls.link.errors &&
-              adminForm.controls.link.errors['required']
-            "
+            *ngIf="link.errors && link.errors['required']"
             class="error_message"
             >Please enter a link to the video</span
           >
@@ -156,35 +117,26 @@
         formControlName="date"
         placeholder="dd.mm.year"
         class="{{
-          adminForm.controls.date.invalid &&
-          (adminForm.controls.date.dirty || adminForm.controls.date.touched)
+          date.invalid && (date.dirty || date.touched)
             ? 'admin__input-error'
             : 'admin__input'
         }}" />
       <div
-        *ngIf="
-          adminForm.controls.date.invalid &&
-          (adminForm.controls.date.dirty || adminForm.controls.date.touched)
-        "
+        *ngIf="date.invalid && (date.dirty || date.touched)"
         class="error-container">
         <span
-          *ngIf="
-            adminForm.controls.date.errors &&
-            adminForm.controls.date.errors['required']
-          "
+          *ngIf="date.errors && date.errors['required']"
           class="error_message"
           >Please enter a creation date</span
         >
         <span
           *ngIf="
-            adminForm.controls.date.errors &&
-            adminForm.controls.date.errors['validationDate'] &&
-            adminForm.controls.date.errors['validationDate'].value
+            date.errors &&
+            date.errors['validationDate'] &&
+            date.errors['validationDate'].value
           "
           class="error_message"
-          >{{
-            adminForm.controls.date.errors['validationDate'].errorMessage
-          }}</span
+          >{{ date.errors['validationDate'].errorMessage }}</span
         >
       </div>
       <span class="error_message">{{ dateErrorMessage }}</span>

@@ -21,8 +21,8 @@ export class HeaderComponent implements OnInit {
   public isShow: boolean = this.showFilterBlockService.showFilterBlock;
   public isAuntUser$: Observable<boolean> = this.loginService.isAuth$;
   public isAuntUser!: boolean;
-  public buttonLogTextContent$: Observable<string> =
-    this.loginService.btnTextContent$;
+  public loginTextBtn = 'login';
+  public logoutTextBtn = 'logout';
 
   ngOnInit(): void {
     this.isAuntUser$.subscribe((value) => {
