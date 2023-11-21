@@ -5,6 +5,12 @@
         {{ isAuntUser ? logoutTextBtn : loginTextBtn }}
       </app-custom-button>
     </ng-container>
+    <a (click)="routingFavoritePage()" class="header__favorite">
+      <img
+        class="header__icon-user"
+        src="../../../assets/icon-favorite.png"
+        alt="icon" />
+    </a>
     <img
       class="header__logo"
       src="../../../assets/icon-youtube.png"
@@ -28,7 +34,7 @@
         src="../../../assets/search_settings.png"
         alt="icon" />
     </button>
-    <a (click)="toAdmin()" class="header__user-container">
+    <a (click)="routingAdminPage()" class="header__user-container">
       <p class="header__user-text">Your name</p>
       <img
         class="header__icon-user"

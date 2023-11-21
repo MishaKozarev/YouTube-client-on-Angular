@@ -43,7 +43,7 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  public toAdmin(): void {
+  public routingAdminPage(): void {
     this.router.navigate(['/admin']);
   }
 
@@ -54,5 +54,9 @@ export class HeaderComponent implements OnInit {
 
   public sendFormInfo(query: string): void {
     this.searchFormService.changeQuery(query, 0);
+  }
+
+  public routingFavoritePage(): void {
+    this.router.navigate(['/favorite']);
   }
 }
