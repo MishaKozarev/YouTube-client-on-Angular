@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { LoginService } from 'src/app/auth/services/login.service';
-import { getYoutubeCard } from 'src/app/store/actions/youtubeVideo.actions';
+import { getYoutubeCard } from 'src/app/store/actions/youtube-card.actions';
 import { SearchFormService } from 'src/app/youtube/services/search-form/search-form.service';
 import { ShowFilterBlockService } from 'src/app/youtube/services/show-filter-block/show-filter-block.service';
 

@@ -1,0 +1,5 @@
+export enum CustomCardActionTypes {
+  GET = '[ADMIN_PAGE] GET CUSTOM CARD',
+  CREATE = '[ADMIN_PAGE] CREATE CUSTOM CARD',
+  DELETE = '[ADMIN_PAGE] DELETE CUSTOM CARD'
+}

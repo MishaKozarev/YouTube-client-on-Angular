@@ -1,11 +1,9 @@
 import { createAction, props } from '@ngrx/store';
 import { Item } from 'src/app/youtube/models/search-item.model';
 
-const actionYoutubeVideo = ['Video'];
-
-export const getYoutubeCard = createAction(`${actionYoutubeVideo} Fetch Video`);
+export const getYoutubeCard = createAction('[YOUTUBE_PAGE] GET YOUTUBE CARD');
 
 export const getYoutubeCardSuccess = createAction(
-  `${actionYoutubeVideo} Fetch Video Success`,
+  '[YOUTUBE_PAGE] GET YOUTUBE CARD SUCCESS',
   props<{ youtubeCards: Item[] }>()
 );

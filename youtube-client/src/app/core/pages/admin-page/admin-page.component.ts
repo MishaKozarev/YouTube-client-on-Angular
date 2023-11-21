@@ -9,7 +9,7 @@ import {
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { LoginService } from 'src/app/auth/services/login.service';
-import { createCustomCard } from 'src/app/store/actions/customCards.actions';
+import { createCustomCard } from 'src/app/store/actions/custom-card.actions';
 import { Item } from 'src/app/youtube/models/search-item.model';
 
 import { validationDate } from '../../validator/date-validator.validator';
@@ -23,6 +23,7 @@ export class AdminPageComponent implements OnInit {
   public dateErrorMessage = '';
   public tagErrorMessage = '';
   public errorMessage = '';
+  public customId = this.generateId();
   public adminForm!: FormGroup<{
     title: FormControl;
     description: FormControl;
@@ -109,11 +110,21 @@ export class AdminPageComponent implements OnInit {
     }
   }
 
-  public createCustomCard() {
+  public generateId(): string {
+    const key = 'abcdef01234567890';
+    let result = '';
+    const lengthNumber = 8;
+    for (let i = 0; i < lengthNumber; i += 1) {
+      result += key[Math.floor(Math.random() * key.length)];
+    }
+    return result;
+  }
+
+  public createCustomCard(): Item {
     return {
       kind: '',
-      etag: '',
-      id: { kind: '', videoId: '' },
+      etag: 'CustomCard',
+      id: { kind: '', videoId: this.customId },
       snippet: {
         publishedAt: this.adminForm.value.date,
         channelId: '',
@@ -158,11 +169,11 @@ export class AdminPageComponent implements OnInit {
         defaultAudioLanguage: ''
       },
       statistics: {
-        viewCount: '',
-        likeCount: '',
-        dislikeCount: '',
-        favoriteCount: '',
-        commentCount: ''
+        viewCount: '1',
+        likeCount: '0',
+        dislikeCount: '0',
+        favoriteCount: '0',
+        commentCount: '0'
       }
     };
   }

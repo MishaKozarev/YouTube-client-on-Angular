@@ -29,12 +29,16 @@
     width: 100%;
 }
 
-
-
 .icon-block {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
+}
 
+.card__img-favorite,
+.card__img-favorite {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
 }

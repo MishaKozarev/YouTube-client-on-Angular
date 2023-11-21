@@ -1,9 +1,9 @@
+<h1 class="favorite__title">Favorite card</h1>
 <div
-  *ngIf="favoriteItems"
+  *ngIf="favoriteItems$ | async as favoriteItems$"
   class="favorite__container">
   <app-favorite-item
-    *ngFor="
-      let item of favoriteItems"
+    *ngFor="let item of favoriteItems$"
     [item]="item"
     class="favorite__item">
   </app-favorite-item>

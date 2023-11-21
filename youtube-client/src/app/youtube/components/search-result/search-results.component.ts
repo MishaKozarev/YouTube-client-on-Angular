@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { combineLatest, map, Observable } from 'rxjs';
-import { AppState } from 'src/app/store/app.state';
-import { selectCustomCardsItems } from 'src/app/store/selectors/customCards.selectors';
-import { selectYoutubeCardItems } from 'src/app/store/selectors/youtubeCards.selectors';
+import { selectCustomCardsItems } from 'src/app/store/selectors/custom-card.selectors';
+import { selectYoutubeCardItems } from 'src/app/store/selectors/youtube-card.selectors';
 
 import { Item } from '../../models/search-item.model';
 import { ResponseService } from '../../services/response/response.service';
@@ -20,7 +19,7 @@ export class SearchResultsComponent implements OnInit {
   constructor(
     public sortService: SortService,
     public responseService: ResponseService,
-    private store: Store<AppState>
+    private store: Store
   ) {}
 
   ngOnInit(): void {

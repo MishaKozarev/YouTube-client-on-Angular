@@ -6,13 +6,35 @@
   <img
     mat-card-image
     class="card__image"
-    [src]="item.snippet.thumbnails.high.url"
+    [src]="
+      item.etag === 'CustomCard' ? noPhoto : item.snippet.thumbnails.high.url
+    "
     width="223px"
     height="123px"
     alt="card" />
   <mat-card-content class="card__content">
     <app-card-icon [item]="item" class="icon-block"></app-card-icon>
   </mat-card-content>
+
+  <a
+    *ngIf="item.etag !== 'CustomCard'"
+    (click)="addCardOnFavoritePage()"
+    class="card__link-favorite">
+    <img
+      class="card__img-favorite"
+      src="../../../assets/icon-favorite.png"
+      alt="icon" />
+  </a>
+
+  <a
+    *ngIf="item.etag === 'CustomCard'"
+    (click)="deleteCardOnFavoritePage(item.id.videoId)"
+    class="card__link-closed">
+    <img
+      class="card__img-favorite"
+      src="../../../assets/icon-closed.png"
+      alt="icon" />
+  </a>
 
   <mat-card-title class="card__title">{{ item.snippet.title }}</mat-card-title>
   <app-custom-button (click)="onOpenDetailedPageById(item.id)">

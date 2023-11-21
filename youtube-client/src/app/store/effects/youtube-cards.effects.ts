@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, switchMap } from 'rxjs';
 import { SearchFormService } from 'src/app/youtube/services/search-form/search-form.service';
 
-import * as YoutubeCardActions from '../actions/youtubeVideo.actions';
+import * as YoutubeCardActions from '../actions/youtube-card.actions';
 
 @Injectable()
 export class YoutubeCardEffects {

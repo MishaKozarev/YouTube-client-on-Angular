@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 
-import * as customCardAction from '../actions/customCards.actions';
+import * as customCardAction from '../actions/custom-card.actions';
 import { CustomCardsState, initialCustomCardsState } from '../state.model';
 
 export const customCardReducer = createReducer(
@@ -13,5 +13,9 @@ export const customCardReducer = createReducer(
         customCards: [...state.customCards, customCards]
       };
     }
-  )
+  ),
+  on(customCardAction.deleteCustomCard, (state: CustomCardsState, { id }) => ({
+    ...state,
+    customCards: [...state.customCards.filter((card) => card.id.videoId !== id)]
+  }))
 );
