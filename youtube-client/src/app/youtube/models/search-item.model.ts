@@ -1,5 +1,5 @@
 export interface Item {
-  kind: string;
+  kind?: string;
   etag: string;
   id: ItemId;
   snippet: Snippet;
@@ -13,25 +13,25 @@ interface ItemId {
 
 interface Snippet {
   publishedAt: string;
-  channelId: string;
+  channelId?: string;
   title: string;
   description: string;
   thumbnails: Thumbnails;
-  channelTitle: string;
+  channelTitle?: string;
   tags: string[];
-  categoryId: string;
-  liveBroadcastContent: string;
+  categoryId?: string;
+  liveBroadcastContent?: string;
   defaultLanguage?: string;
-  localized: Localized;
-  defaultAudioLanguage: string;
+  localized?: Localized;
+  defaultAudioLanguage?: string;
 }
 
 interface Thumbnails {
-  default: ThumbnailsItem;
-  medium: ThumbnailsItem;
+  default?: ThumbnailsItem;
+  medium?: ThumbnailsItem;
   high: ThumbnailsItem;
-  standard: ThumbnailsItem;
-  maxres: ThumbnailsItem;
+  standard?: ThumbnailsItem;
+  maxres?: ThumbnailsItem;
 }
 
 interface ThumbnailsItem {

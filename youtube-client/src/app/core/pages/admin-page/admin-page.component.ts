@@ -122,51 +122,20 @@ export class AdminPageComponent implements OnInit {
 
   public createCustomCard(): Item {
     return {
-      kind: '',
       etag: 'CustomCard',
       id: { kind: '', videoId: this.customId },
       snippet: {
         publishedAt: this.adminForm.value.date,
-        channelId: '',
         title: this.adminForm.value.title,
         description: this.adminForm.value.description,
         thumbnails: {
-          default: {
-            url: this.adminForm.value.link,
-            width: 120,
-            height: 90
-          },
-          medium: {
-            url: this.adminForm.value.link,
-            width: 320,
-            height: 180
-          },
           high: {
             url: this.adminForm.value.link,
             width: 480,
             height: 360
-          },
-          standard: {
-            url: this.adminForm.value.link,
-            width: 640,
-            height: 480
-          },
-          maxres: {
-            url: this.adminForm.value.link,
-            width: 1280,
-            height: 720
           }
         },
-        channelTitle: '',
-        tags: [],
-        categoryId: '',
-        liveBroadcastContent: '',
-        defaultLanguage: '',
-        localized: {
-          title: '',
-          description: ''
-        },
-        defaultAudioLanguage: ''
+        tags: []
       },
       statistics: {
         viewCount: '1',
