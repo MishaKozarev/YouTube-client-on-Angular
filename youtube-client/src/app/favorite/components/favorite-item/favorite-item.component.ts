@@ -16,12 +16,15 @@ export class FavoriteItemComponent {
     private store: Store
   ) {}
 
-  deleteCardOnFavoritePage(id: string) {
+  public deleteCardOnFavoritePage(id: string): void {
     this.store.dispatch(
       deleteFavoriteCard({
         id
       })
     );
     this.router.navigate(['/youtube']);
+  }
+  public routingOnDetailPage(id: unknown): void {
+    this.router.navigate(['/youtube', id]);
   }
 }
