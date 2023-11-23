@@ -3,7 +3,10 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { deleteCustomCard } from 'src/app/store/actions/custom-card.actions';
-import { addFavoriteCard } from 'src/app/store/actions/favorite-card.actions';
+import {
+  addFavoriteCard,
+  deleteFavoriteCard
+} from 'src/app/store/actions/favorite-card.actions';
 import { selectFavoriteCardItems } from 'src/app/store/selectors/favorite-card.selectors';
 import { Item } from 'src/app/youtube/models/search-item.model';
 
@@ -13,12 +16,12 @@ import { Item } from 'src/app/youtube/models/search-item.model';
   styleUrls: ['./search-item.component.scss']
 })
 export class SearchItemComponent implements OnInit {
-  @Input() public item!: Item;
   public noPhoto = '../../../../assets/icon-no-photo.png';
   public favoriteCards$: Observable<Item[]> = this.store.select(
     selectFavoriteCardItems
   );
   public isCardOnFavorites = false;
+  @Input() public item!: Item;
   id!: string;
   link!: string;
 
@@ -27,28 +30,30 @@ export class SearchItemComponent implements OnInit {
     private store: Store
   ) {}
   ngOnInit(): void {
+    this.id = this.item.id;
+    this.link = `/youtube/${this.id}`;
     this.favoriteCards$.subscribe((cards) => {
       this.isCardOnFavorites = !(
-        cards.findIndex((card) => card.id.videoId === this.item.id.videoId) ===
-        -1
+        cards.findIndex((card) => card.id === this.item.id) === -1
       );
     });
   }
 
-  public onOpenDetailedPageById(itemId: unknown): void {
-    this.router.navigate(['/youtube', itemId]);
+  public onOpenDetailedPageById(id: string): void {
+    this.router.navigate([`youtube/${id}`]);
   }
 
   public addCardOnFavoritePage(): void {
-    this.store.dispatch(
-      addFavoriteCard({
-        card: this.item
-      })
-    );
-    this.router.navigate(['/favorite']);
+    if (!this.isCardOnFavorites) {
+      this.store.dispatch(
+        addFavoriteCard({
+          card: this.item
+        })
+      );
+    }
   }
 
-  public deleteCardOnFavoritePage(id: string): void {
+  public deleteCustomCardCardOnPage(id: string): void {
     this.store.dispatch(
       deleteCustomCard({
         id

@@ -16,9 +16,7 @@ export const favoriteCardReducer = createReducer(
     favoriteCardAction.deleteFavoriteCard,
     (state: FavoriteCardsState, { id }) => ({
       ...state,
-      favoriteCards: [
-        ...state.favoriteCards.filter((card) => card.id.videoId !== id)
-      ]
+      favoriteCards: [...state.favoriteCards.filter((card) => card.id !== id)]
     })
   )
 );

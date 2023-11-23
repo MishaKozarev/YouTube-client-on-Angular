@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { debounceTime, filter, map, switchMap } from 'rxjs';
 import { Item } from 'src/app/youtube/models/search-item.model';
-import { SearchResponseItems } from 'src/app/youtube/models/search-response.model';
+import VideoItems from 'src/app/youtube/models/search-response.model';
 import { ResponseService } from 'src/app/youtube/services/response/response.service';
 
 import * as YoutubeCardActions from '../actions/youtube-card.actions';
@@ -42,13 +42,10 @@ export class YoutubeCardEffects {
     );
   });
 
-  private convertItemsToCards(videoItems: SearchResponseItems): Item[] {
+  private convertItemsToCards(videoItems: VideoItems): Item[] {
     return videoItems.items.map((card) => ({
       etag: 'string',
-      id: {
-        kind: 'string',
-        videoId: card.id.videoId
-      },
+      id: card.id,
       snippet: {
         publishedAt: card.snippet.publishedAt,
         title: card.snippet.title,

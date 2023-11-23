@@ -1,14 +1,9 @@
 export interface Item {
   kind?: string;
   etag: string;
-  id: ItemId;
+  id: string;
   snippet: Snippet;
   statistics: Statistics;
-}
-
-interface ItemId {
-  kind: string;
-  videoId: string;
 }
 
 interface Snippet {
@@ -51,4 +46,33 @@ export interface Statistics {
   dislikeCount: string;
   favoriteCount: string;
   commentCount: string;
+}
+
+export interface VideoItem {
+  kind: string;
+  etag: string;
+  id: ID;
+  snippet: VideoSnippet;
+}
+
+interface ID {
+  kind: string;
+  videoId: string;
+}
+
+interface VideoSnippet {
+  publishedAt: string;
+  channelId: string;
+  title: string;
+  description: string;
+  thumbnails: VideoThumbnails;
+  channelTitle: string;
+  liveBroadcastContent: string;
+  publishTime: string;
+}
+
+interface VideoThumbnails {
+  default: ThumbnailsItem;
+  medium: ThumbnailsItem;
+  high: ThumbnailsItem;
 }

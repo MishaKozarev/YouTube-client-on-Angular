@@ -16,6 +16,6 @@ export const customCardReducer = createReducer(
   ),
   on(customCardAction.deleteCustomCard, (state: CustomCardsState, { id }) => ({
     ...state,
-    customCards: [...state.customCards.filter((card) => card.id.videoId !== id)]
+    customCards: [...state.customCards.filter((card) => card.id !== id)]
   }))
 );

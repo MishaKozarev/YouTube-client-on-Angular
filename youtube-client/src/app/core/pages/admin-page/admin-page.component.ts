@@ -123,7 +123,7 @@ export class AdminPageComponent implements OnInit {
   public createCustomCard(): Item {
     return {
       etag: 'CustomCard',
-      id: { kind: '', videoId: this.customId },
+      id: this.customId,
       snippet: {
         publishedAt: this.adminForm.value.date,
         title: this.adminForm.value.title,

@@ -5,10 +5,7 @@ import { map, Observable, switchMap, tap } from 'rxjs';
 import { paginationAddInfoAction } from 'src/app/store/actions/pagination.actions';
 
 import { Item } from '../../models/search-item.model';
-import {
-  SearchResponse,
-  SearchResponseItems
-} from '../../models/search-response.model';
+import VideoItems, { SearchResponse } from '../../models/search-response.model';
 
 @Injectable({
   providedIn: 'root'
@@ -38,9 +35,9 @@ export class ResponseService {
         const params: HttpParams = new HttpParams()
           .set('id', itemsId)
           .set('part', 'snippet,statistics');
-        return this.http.get<SearchResponseItems>(`${this.SEARCH_VIDEO}`, {
-          params
-        });
+        return this.http.get<VideoItems>(
+          `${this.SEARCH_VIDEO}&id=${itemsId}&part=snippet,statistics`
+        );
       })
     );
   }
@@ -61,7 +58,7 @@ export class ResponseService {
         return videoItemsIds;
       }),
       switchMap((videoItemsIds) => {
-        return this.http.get<SearchResponseItems>(
+        return this.http.get<VideoItems>(
           `${this.SEARCH_VIDEO}&id=${videoItemsIds}&part=snippet,statistics`
         );
       })
@@ -85,7 +82,7 @@ export class ResponseService {
       .set('part', 'snippet,statistics')
       .set('id', id);
     return this.http
-      .get<SearchResponse>(`${this.SEARCH_VIDEO}`, { params })
+      .get<VideoItems>(`${this.SEARCH_VIDEO}`, { params })
       .pipe(map((response) => response.items));
   }
 }
