@@ -1,7 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 import { Item } from 'src/app/youtube/models/search-item.model';
 
-import { CustomCardActionTypes } from '../actions-type/youtube-actions-type';
+import { CustomCardActionTypes } from '../actions-type/custom-action-types';
 
 export const getCustomCard = createAction(
   CustomCardActionTypes.GET,

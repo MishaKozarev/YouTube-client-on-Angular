@@ -8,6 +8,7 @@ import { AppRoutingModule } from '../app-routing.module';
 import { FavoriteModule } from '../favorite/favorite.module';
 import { customCardReducer } from '../store/reducers/custom-card.reducer';
 import { favoriteCardReducer } from '../store/reducers/favorite-card.reducer';
+import { paginationReducer } from '../store/reducers/pagination.reducer';
 import { youtubeCardReducer } from '../store/reducers/youtube-card.reducer';
 import { FilterComponent } from './components/filter/filter.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -29,7 +30,8 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
     ReactiveFormsModule,
     StoreModule.forFeature('customCardsState', customCardReducer),
     StoreModule.forFeature('youtubeCardsState', youtubeCardReducer),
-    StoreModule.forFeature('favoriteCardsState', favoriteCardReducer)
+    StoreModule.forFeature('favoriteCardsState', favoriteCardReducer),
+    StoreModule.forFeature('pagination', paginationReducer)
   ],
   exports: [HeaderComponent]
 })

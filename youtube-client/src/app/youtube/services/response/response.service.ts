@@ -1,9 +1,14 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, mergeMap, Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { map, Observable, switchMap, tap } from 'rxjs';
+import { paginationAddInfoAction } from 'src/app/store/actions/pagination.actions';
 
 import { Item } from '../../models/search-item.model';
-import { SearchResponse } from '../../models/search-response.model';
+import {
+  SearchResponse,
+  SearchResponseItems
+} from '../../models/search-response.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,29 +17,65 @@ export class ResponseService {
   private readonly SEARCH_URL: string = 'search?';
   private readonly SEARCH_VIDEO: string = 'videos?';
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private store: Store
+  ) {}
 
-  public getList(
-    textInput: string = '',
-    maxItems: string = '10'
-  ): Observable<SearchResponse> {
+  public getList(textInput: string = '', maxItems: string = '20') {
     const params: HttpParams = new HttpParams()
       .set('type', 'video')
       .set('part', 'snippet')
       .set('maxResults', maxItems)
       .set('q', textInput);
     return this.http.get<SearchResponse>(`${this.SEARCH_URL}`, { params }).pipe(
+      tap((searchResponse) => this.savePagesToken(searchResponse)),
       map((response: SearchResponse) => {
         const itemsId = response.items.map((item) => item.id.videoId).join(',');
         return itemsId;
       }),
-      mergeMap((itemsId) => {
+      switchMap((itemsId) => {
         const params: HttpParams = new HttpParams()
           .set('id', itemsId)
           .set('part', 'snippet,statistics');
-        return this.http.get<SearchResponse>(`${this.SEARCH_VIDEO}`, {
+        return this.http.get<SearchResponseItems>(`${this.SEARCH_VIDEO}`, {
           params
         });
+      })
+    );
+  }
+
+  public getVideosOnPage(query: string, token: string, maxResults = 20) {
+    const params: HttpParams = new HttpParams()
+      .set('type', 'video')
+      .set('part', 'snippet')
+      .set('maxResults', maxResults)
+      .set('q', query)
+      .set('pageToken', token);
+    return this.http.get<SearchResponse>(`${this.SEARCH_URL}`, { params }).pipe(
+      tap((searchResponse) => this.savePagesToken(searchResponse)),
+      map((videoResponse: SearchResponse) => {
+        const videoItemsIds: string = videoResponse.items
+          .map((items) => items.id.videoId)
+          .join(',');
+        return videoItemsIds;
+      }),
+      switchMap((videoItemsIds) => {
+        return this.http.get<SearchResponseItems>(
+          `${this.SEARCH_VIDEO}&id=${videoItemsIds}&part=snippet,statistics`
+        );
+      })
+    );
+  }
+
+  private savePagesToken(searchResponse: SearchResponse) {
+    const { nextPageToken, prevPageToken } = searchResponse;
+    this.store.dispatch(
+      paginationAddInfoAction({
+        info: {
+          nextPageToken: nextPageToken || '',
+          prevPageToken: prevPageToken || ''
+        }
       })
     );
   }

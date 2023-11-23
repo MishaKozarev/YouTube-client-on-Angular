@@ -1,4 +1,4 @@
-export enum YoutubeCardActionTypes {
+export enum CustomCardActionTypes {
   GET = '[YOUTUBE_PAGE] GET YOUTUBE CARD',
   CREATE = '[YOUTUBE_PAGE] CREATE YOUTUBE CARD',
   DELETE = '[YOUTUBE_PAGE] DELETE YOUTUBE CARD'

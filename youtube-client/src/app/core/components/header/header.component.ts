@@ -3,8 +3,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { LoginService } from 'src/app/auth/services/login.service';
-import { getYoutubeCard } from 'src/app/store/actions/youtube-card.actions';
-import { SearchFormService } from 'src/app/youtube/services/search-form/search-form.service';
+import { youtubeSearchAction } from 'src/app/store/actions/youtube-card.actions';
 import { ShowFilterBlockService } from 'src/app/youtube/services/show-filter-block/show-filter-block.service';
 
 @Component({
@@ -23,7 +22,6 @@ export class HeaderComponent implements OnInit {
   constructor(
     private loginService: LoginService,
     private router: Router,
-    private searchFormService: SearchFormService,
     private showFilterBlockService: ShowFilterBlockService,
     private store: Store
   ) {}
@@ -48,12 +46,13 @@ export class HeaderComponent implements OnInit {
   }
 
   public changeInputValue(query: string): void {
-    this.searchFormService.changeQuery(query, 3);
-    this.store.dispatch(getYoutubeCard());
+    localStorage.setItem('Query', query);
+    this.store.dispatch(youtubeSearchAction({ query, queryLength: 3 }));
   }
 
   public sendFormInfo(query: string): void {
-    this.searchFormService.changeQuery(query, 0);
+    localStorage.setItem('Query', query);
+    this.store.dispatch(youtubeSearchAction({ query, queryLength: 0 }));
   }
 
   public routingFavoritePage(): void {

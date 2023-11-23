@@ -6,18 +6,21 @@ import { initialYoutubeCardsState, YoutubeCardsState } from '../state.model';
 export const youtubeCardReducer = createReducer(
   initialYoutubeCardsState,
   on(
-    youtubeCardAction.getYoutubeCard,
-    (state): YoutubeCardsState => ({
-      ...state
+    youtubeCardAction.youtubeAddCardAction,
+    (state: YoutubeCardsState, { youtubeCards }) => ({
+      ...state,
+      youtubeCards: [...state.youtubeCards, youtubeCards]
     })
   ),
   on(
-    youtubeCardAction.getYoutubeCardSuccess,
-    (state, { youtubeCards }): YoutubeCardsState => {
-      return {
-        ...state,
-        youtubeCards: [...youtubeCards]
-      };
-    }
-  )
+    youtubeCardAction.youtubeAddCardsAction,
+    (state: YoutubeCardsState, { youtubeCards }) => ({
+      ...state,
+      youtubeCards: [...state.youtubeCards, ...youtubeCards]
+    })
+  ),
+  on(youtubeCardAction.youtubeClearCardsAction, (state: YoutubeCardsState) => ({
+    ...state,
+    youtubeCards: []
+  }))
 );

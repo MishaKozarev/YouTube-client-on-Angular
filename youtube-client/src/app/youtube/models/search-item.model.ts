@@ -17,7 +17,7 @@ interface Snippet {
   title: string;
   description: string;
   thumbnails: Thumbnails;
-  channelTitle?: string;
+  channelTitle: string;
   tags: string[];
   categoryId?: string;
   liveBroadcastContent?: string;
@@ -27,7 +27,7 @@ interface Snippet {
 }
 
 interface Thumbnails {
-  default?: ThumbnailsItem;
+  default: ThumbnailsItem;
   medium?: ThumbnailsItem;
   high: ThumbnailsItem;
   standard?: ThumbnailsItem;

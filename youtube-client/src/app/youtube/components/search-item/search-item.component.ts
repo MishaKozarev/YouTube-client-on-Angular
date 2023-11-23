@@ -33,7 +33,6 @@ export class SearchItemComponent implements OnInit {
         -1
       );
     });
-    console.log(this.isCardOnFavorites);
   }
 
   public onOpenDetailedPageById(itemId: unknown): void {

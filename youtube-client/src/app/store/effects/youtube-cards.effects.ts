@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { map, switchMap } from 'rxjs';
-import { SearchFormService } from 'src/app/youtube/services/search-form/search-form.service';
+import { debounceTime, filter, map, switchMap } from 'rxjs';
+import { Item } from 'src/app/youtube/models/search-item.model';
+import { SearchResponseItems } from 'src/app/youtube/models/search-response.model';
+import { ResponseService } from 'src/app/youtube/services/response/response.service';
 
 import * as YoutubeCardActions from '../actions/youtube-card.actions';
 
@@ -9,21 +11,70 @@ import * as YoutubeCardActions from '../actions/youtube-card.actions';
 export class YoutubeCardEffects {
   constructor(
     private actions$: Actions,
-    private searchFormService: SearchFormService
+    private responseService: ResponseService
   ) {}
 
-  getYoutubeCard$ = createEffect(() => {
+  getVideoCards$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(YoutubeCardActions.getYoutubeCard),
-      switchMap(() =>
-        this.searchFormService.videos$.pipe(
-          map((youtubeCards) =>
-            YoutubeCardActions.getYoutubeCardSuccess({
-              youtubeCards
-            })
-          )
-        )
+      ofType(YoutubeCardActions.youtubeSearchAction),
+      filter(({ query, queryLength }) => query.length > queryLength),
+      debounceTime(500),
+      switchMap((action) => this.responseService.getList(action.query)),
+      map((videoItems) =>
+        YoutubeCardActions.youtubeAddCardsAction({
+          youtubeCards: this.convertItemsToCards(videoItems)
+        })
       )
     );
   });
+
+  getVideoCardsOnPage$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(YoutubeCardActions.youtubeSearchOnPageAction),
+      switchMap((action) =>
+        this.responseService.getVideosOnPage(action.query, action.token)
+      ),
+      map((videoItems) =>
+        YoutubeCardActions.youtubeAddCardsAction({
+          youtubeCards: this.convertItemsToCards(videoItems)
+        })
+      )
+    );
+  });
+
+  private convertItemsToCards(videoItems: SearchResponseItems): Item[] {
+    return videoItems.items.map((card) => ({
+      etag: 'string',
+      id: {
+        kind: 'string',
+        videoId: card.id.videoId
+      },
+      snippet: {
+        publishedAt: card.snippet.publishedAt,
+        title: card.snippet.title,
+        description: card.snippet.description,
+        thumbnails: {
+          default: {
+            url: 'string',
+            width: 480,
+            height: 360
+          },
+          high: {
+            url: card.snippet.thumbnails.high.url,
+            width: 480,
+            height: 360
+          }
+        },
+        channelTitle: 'string',
+        tags: []
+      },
+      statistics: {
+        viewCount: card.statistics.viewCount,
+        likeCount: card.statistics.likeCount,
+        dislikeCount: card.statistics.dislikeCount,
+        favoriteCount: card.statistics.favoriteCount,
+        commentCount: card.statistics.commentCount
+      }
+    }));
+  }
 }

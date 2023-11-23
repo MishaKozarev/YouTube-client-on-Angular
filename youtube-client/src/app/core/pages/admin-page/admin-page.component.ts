@@ -133,8 +133,14 @@ export class AdminPageComponent implements OnInit {
             url: this.adminForm.value.link,
             width: 480,
             height: 360
+          },
+          default: {
+            url: this.adminForm.value.link,
+            width: 480,
+            height: 360
           }
         },
+        channelTitle: '',
         tags: []
       },
       statistics: {
