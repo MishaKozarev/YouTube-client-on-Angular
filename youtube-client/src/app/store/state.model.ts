@@ -41,3 +41,10 @@ export const initialState: PaginationState = {
     page: 1
   }
 };
+
+export enum State {
+  youtubeCards = 'youtubeCardsState',
+  customCards = 'customCardsState',
+  favoriteCards = 'favoriteCardsState',
+  pagination = 'paginationState'
+}

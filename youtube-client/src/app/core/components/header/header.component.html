@@ -11,10 +11,12 @@
         src="../../../assets/icon-favorite.png"
         alt="icon" />
     </a>
-    <img
-      class="header__logo"
-      src="../../../assets/icon-youtube.png"
-      alt="icon" />
+    <a (click)="routingYoutubePage()" class="header__youtube-link">
+      <img
+        class="header__logo"
+        src="../../../assets/icon-youtube.png"
+        alt="icon" />
+    </a>
 
     <form
       (ngSubmit)="sendFormInfo(searchInput.value)"

@@ -1,9 +1,10 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
-import { YoutubeCardsState } from '../state.model';
+import { State, YoutubeCardsState } from '../state.model';
 
-export const selectYoutubeCardsState =
-  createFeatureSelector<YoutubeCardsState>('youtubeCardsState');
+export const selectYoutubeCardsState = createFeatureSelector<YoutubeCardsState>(
+  State.youtubeCards
+);
 
 export const selectYoutubeCardItems = createSelector(
   selectYoutubeCardsState,

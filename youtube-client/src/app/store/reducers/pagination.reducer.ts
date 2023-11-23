@@ -4,8 +4,6 @@ import { createReducer, on } from '@ngrx/store';
 import * as PaginationActions from '../actions/pagination.actions';
 import { initialState, PaginationState } from '../state.model';
 
-export const paginationNode = 'pagination';
-
 export const paginationReducer = createReducer(
   initialState,
   on(

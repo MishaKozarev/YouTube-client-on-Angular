@@ -58,4 +58,8 @@ export class HeaderComponent implements OnInit {
   public routingFavoritePage(): void {
     this.router.navigate(['/favorite']);
   }
+
+  public routingYoutubePage(): void {
+    this.router.navigate(['/youtube']);
+  }
 }
