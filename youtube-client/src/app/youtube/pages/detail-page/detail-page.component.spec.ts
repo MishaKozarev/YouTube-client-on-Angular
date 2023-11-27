@@ -1,10 +1,9 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { provideMockStore } from '@ngrx/store/testing';
 
 import { DetailPageComponent } from './detail-page.component';
-
-import { provideMockStore } from '@ngrx/store/testing';
-import { RouterTestingModule } from "@angular/router/testing";
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('DetailPageComponent', () => {
   let component: DetailPageComponent;

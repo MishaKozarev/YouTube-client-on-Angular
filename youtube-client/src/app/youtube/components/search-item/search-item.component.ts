@@ -2,10 +2,11 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+
 import { deleteCustomCard } from '../../../store/actions/custom-card.actions';
 import { addFavoriteCard } from '../../../store/actions/favorite-card.actions';
 import { selectFavoriteCardItems } from '../../../store/selectors/favorite-card.selectors';
-import { Item } from '../../../youtube/models/search-item.model';
+import { Item } from '../../models/search-item.model';
 
 @Component({
   selector: 'app-search-item',

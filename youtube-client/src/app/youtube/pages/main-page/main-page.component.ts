@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+
 import { paginationChangePageAction } from '../../../store/actions/pagination.actions';
 import {
   youtubeClearCardsAction,
@@ -11,7 +12,6 @@ import { selectCustomCardsItems } from '../../../store/selectors/custom-card.sel
 import { selectPaginationInfo } from '../../../store/selectors/pagination.selectors';
 import { selectYoutubeCardItems } from '../../../store/selectors/youtube-card.selectors';
 import { PaginationInfo } from '../../../store/state.model';
-
 import { Item } from '../../models/search-item.model';
 
 @Component({

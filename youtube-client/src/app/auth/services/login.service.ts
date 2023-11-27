@@ -5,7 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class LoginService {
-  private isAuth: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
+  public isAuth: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
     !!localStorage.getItem('authToken')
   );
   public isAuth$: Observable<boolean> = this.isAuth.asObservable();

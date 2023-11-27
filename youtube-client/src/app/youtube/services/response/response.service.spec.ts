@@ -1,22 +1,82 @@
-import { TestBed } from '@angular/core/testing';
+import { HttpClient } from '@angular/common/http';
+import { Store } from '@ngrx/store';
+import { of } from 'rxjs';
 
 import { ResponseService } from './response.service';
 
-import { provideMockStore } from '@ngrx/store/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-
 describe('ResponseService', () => {
-  let service: ResponseService;
+  let responseService: ResponseService;
+  let httpClientSpy: { get: jest.Mock };
+  let storeSpy: { dispatch: jest.Mock };
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [provideMockStore({})],
-      imports: [HttpClientTestingModule],
-    });
-    service = TestBed.inject(ResponseService);
+    httpClientSpy = { get: jest.fn() };
+    storeSpy = { dispatch: jest.fn() };
+    responseService = new ResponseService(
+      httpClientSpy as unknown as HttpClient,
+      storeSpy as unknown as Store
+    );
   });
 
   it('should be created', () => {
-    expect(service).toBeTruthy();
+    expect(responseService).toBeTruthy();
+  });
+
+  it('should retrieve items from the api using query', () => {
+    const textInput = 'test';
+    const maxItems = '20';
+    const responseMock = {};
+
+    httpClientSpy.get.mockReturnValue(of(responseMock));
+
+    responseService.getList(textInput, maxItems).subscribe((response) => {
+      expect(response).toEqual(responseMock);
+      expect(httpClientSpy.get).toHaveBeenCalledWith(
+        `${responseService.SEARCH_URL}`,
+        {
+          params: expect.anything()
+        }
+      );
+      expect(storeSpy.dispatch).toHaveBeenCalled();
+    });
+  });
+
+  it('should retrieve items on a specific page from the api using query', () => {
+    const query = 'test';
+    const token = 'token';
+    const maxResults = 20;
+    const responseMock = {};
+
+    httpClientSpy.get.mockReturnValue(of(responseMock));
+
+    responseService
+      .getVideosOnPage(query, token, maxResults)
+      .subscribe((response) => {
+        expect(response).toEqual(responseMock);
+        expect(httpClientSpy.get).toHaveBeenCalledWith(
+          `${responseService.SEARCH_URL}`,
+          {
+            params: expect.anything()
+          }
+        );
+        expect(storeSpy.dispatch).toHaveBeenCalled();
+      });
+  });
+
+  it('should retrieve an item by id from the api', () => {
+    const id = '12345678';
+    const responseMock = { items: [] };
+
+    httpClientSpy.get.mockReturnValue(of(responseMock));
+
+    responseService.getItemById(id).subscribe((response) => {
+      expect(response).toEqual(responseMock.items);
+      expect(httpClientSpy.get).toHaveBeenCalledWith(
+        `${responseService.SEARCH_VIDEO}`,
+        {
+          params: expect.anything()
+        }
+      );
+    });
   });
 });

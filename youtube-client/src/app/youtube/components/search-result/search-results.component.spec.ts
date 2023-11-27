@@ -1,12 +1,8 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideMockStore } from '@ngrx/store/testing';
 
 import { SearchResultsComponent } from './search-results.component';
-
-import { provideMockStore } from '@ngrx/store/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-
-
-
 
 describe('SearchResultsComponent', () => {
   let component: SearchResultsComponent;
@@ -16,7 +12,7 @@ describe('SearchResultsComponent', () => {
     TestBed.configureTestingModule({
       providers: [provideMockStore({})],
       declarations: [SearchResultsComponent],
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule]
     });
     fixture = TestBed.createComponent(SearchResultsComponent);
     component = fixture.componentInstance;

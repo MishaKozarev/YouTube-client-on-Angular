@@ -2,8 +2,8 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { map, Observable, switchMap, tap } from 'rxjs';
-import { paginationAddInfoAction } from '../../../store/actions/pagination.actions';
 
+import { paginationAddInfoAction } from '../../../store/actions/pagination.actions';
 import { Item } from '../../models/search-item.model';
 import VideoItems, { SearchResponse } from '../../models/search-response.model';
 
@@ -11,8 +11,8 @@ import VideoItems, { SearchResponse } from '../../models/search-response.model';
   providedIn: 'root'
 })
 export class ResponseService {
-  private readonly SEARCH_URL: string = 'search?';
-  private readonly SEARCH_VIDEO: string = 'videos?';
+  public SEARCH_URL: string = 'search?';
+  public SEARCH_VIDEO: string = 'videos?';
 
   constructor(
     private http: HttpClient,

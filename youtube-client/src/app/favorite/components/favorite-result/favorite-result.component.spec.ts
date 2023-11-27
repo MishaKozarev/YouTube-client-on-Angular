@@ -1,9 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { FavoriteResultComponent } from './favorite-result.component';
-
 import { provideMockStore } from '@ngrx/store/testing';
 
+import { FavoriteResultComponent } from './favorite-result.component';
 
 describe('FavoriteResultComponent', () => {
   let component: FavoriteResultComponent;

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LoginService } from '../../../auth/services/login.service';
 
+import { LoginService } from '../../../auth/services/login.service';
 import { Item } from '../../models/search-item.model';
 import { ResponseService } from '../../services/response/response.service';
 

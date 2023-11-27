@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { combineLatest, map, Observable } from 'rxjs';
+
 import { selectCustomCardsItems } from '../../../store/selectors/custom-card.selectors';
 import { selectYoutubeCardItems } from '../../../store/selectors/youtube-card.selectors';
-
 import { Item } from '../../models/search-item.model';
 import { ResponseService } from '../../services/response/response.service';
 import { SortService } from '../../services/sort/sort.service';

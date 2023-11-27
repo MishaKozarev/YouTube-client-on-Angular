@@ -1,8 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideMockStore } from '@ngrx/store/testing';
 
 import { SearchItemComponent } from './search-item.component';
-
-import { provideMockStore } from '@ngrx/store/testing';
 
 describe('SearchItemComponent', () => {
   let component: SearchItemComponent;
@@ -16,7 +15,7 @@ describe('SearchItemComponent', () => {
     fixture = TestBed.createComponent(SearchItemComponent);
     component = fixture.componentInstance;
     component.item = {
-        etag: 'CustomCard',
+      etag: 'CustomCard',
       id: '',
       snippet: {
         publishedAt: '',

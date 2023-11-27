@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+
 import { selectFavoriteCardItems } from '../../../store/selectors/favorite-card.selectors';
 import { Item } from '../../../youtube/models/search-item.model';
 import { SortService } from '../../../youtube/services/sort/sort.service';
