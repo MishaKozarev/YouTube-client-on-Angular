@@ -10,9 +10,9 @@ import { CoreModule } from './core/core.module';
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    CoreModule,
     BrowserModule,
     HttpClientModule,
-    CoreModule,
     AppRoutingModule,
     BrowserAnimationsModule
   ],
