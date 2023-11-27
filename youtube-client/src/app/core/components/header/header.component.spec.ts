@@ -2,12 +2,15 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HeaderComponent } from './header.component';
 
+import { provideMockStore } from '@ngrx/store/testing';
+
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
+      providers: [provideMockStore({})],
       declarations: [HeaderComponent]
     });
     fixture = TestBed.createComponent(HeaderComponent);

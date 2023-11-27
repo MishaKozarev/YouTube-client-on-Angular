@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { LoginService } from 'src/app/auth/services/login.service';
-import { youtubeSearchAction } from 'src/app/store/actions/youtube-card.actions';
-import { ShowFilterBlockService } from 'src/app/youtube/services/show-filter-block/show-filter-block.service';
+import { LoginService } from '../../../auth/services/login.service';
+import { youtubeSearchAction } from '../../../store/actions/youtube-card.actions';
+import { ShowFilterBlockService } from '../../../youtube/services/show-filter-block/show-filter-block.service';
 
 @Component({
   selector: 'app-header',

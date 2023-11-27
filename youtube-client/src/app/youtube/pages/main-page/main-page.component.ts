@@ -2,15 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { paginationChangePageAction } from 'src/app/store/actions/pagination.actions';
+import { paginationChangePageAction } from '../../../store/actions/pagination.actions';
 import {
   youtubeClearCardsAction,
   youtubeSearchOnPageAction
-} from 'src/app/store/actions/youtube-card.actions';
-import { selectCustomCardsItems } from 'src/app/store/selectors/custom-card.selectors';
-import { selectPaginationInfo } from 'src/app/store/selectors/pagination.selectors';
-import { selectYoutubeCardItems } from 'src/app/store/selectors/youtube-card.selectors';
-import { PaginationInfo } from 'src/app/store/state.model';
+} from '../../../store/actions/youtube-card.actions';
+import { selectCustomCardsItems } from '../../../store/selectors/custom-card.selectors';
+import { selectPaginationInfo } from '../../../store/selectors/pagination.selectors';
+import { selectYoutubeCardItems } from '../../../store/selectors/youtube-card.selectors';
+import { PaginationInfo } from '../../../store/state.model';
 
 import { Item } from '../../models/search-item.model';
 

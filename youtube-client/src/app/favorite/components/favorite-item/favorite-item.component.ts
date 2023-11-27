@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { deleteFavoriteCard } from 'src/app/store/actions/favorite-card.actions';
-import { Item } from 'src/app/youtube/models/search-item.model';
+import { deleteFavoriteCard } from '../../../store/actions/favorite-card.actions';
+import { Item } from '../../../youtube/models/search-item.model';
 
 @Component({
   selector: 'app-favorite-item',

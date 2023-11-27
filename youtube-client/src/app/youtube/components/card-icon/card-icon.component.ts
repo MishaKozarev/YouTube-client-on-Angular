@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IconLinks } from 'src/app/youtube/constants/icon-link';
-import { SearchCard } from 'src/app/youtube/models/search-cards.model';
-import { Item } from 'src/app/youtube/models/search-item.model';
+import { IconLinks } from '../../../youtube/constants/icon-link';
+import { SearchCard } from '../../../youtube/models/search-cards.model';
+import { Item } from '../../../youtube/models/search-item.model';
 
 @Component({
   selector: 'app-card-icon',
