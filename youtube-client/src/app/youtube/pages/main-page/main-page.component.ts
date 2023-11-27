@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { paginationChangePageAction } from '../../../store/actions/pagination.actions';
+import { paginationChangePageAction } from '../../../store/actions/pagination/pagination.actions';
 import {
   youtubeClearCardsAction,
   youtubeSearchOnPageAction
-} from '../../../store/actions/youtube-card.actions';
+} from '../../../store/actions/youtube-card/youtube-card.actions';
 import { selectCustomCardsItems } from '../../../store/selectors/custom-card.selectors';
 import { selectPaginationInfo } from '../../../store/selectors/pagination.selectors';
 import { selectYoutubeCardItems } from '../../../store/selectors/youtube-card.selectors';

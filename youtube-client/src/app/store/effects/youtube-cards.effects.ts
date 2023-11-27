@@ -5,7 +5,7 @@ import { Item } from 'src/app/youtube/models/search-item.model';
 import VideoItems from 'src/app/youtube/models/search-response.model';
 import { ResponseService } from 'src/app/youtube/services/response/response.service';
 
-import * as YoutubeCardActions from '../actions/youtube-card.actions';
+import * as YoutubeCardActions from '../actions/youtube-card/youtube-card.actions';
 
 @Injectable()
 export class YoutubeCardEffects {

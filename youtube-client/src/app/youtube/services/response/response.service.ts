@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { map, Observable, switchMap, tap } from 'rxjs';
 
-import { paginationAddInfoAction } from '../../../store/actions/pagination.actions';
+import { paginationAddInfoAction } from '../../../store/actions/pagination/pagination.actions';
 import { Item } from '../../models/search-item.model';
 import VideoItems, { SearchResponse } from '../../models/search-response.model';
 

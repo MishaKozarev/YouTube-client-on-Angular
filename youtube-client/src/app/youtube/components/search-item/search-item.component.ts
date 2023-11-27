@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { deleteCustomCard } from '../../../store/actions/custom-card.actions';
-import { addFavoriteCard } from '../../../store/actions/favorite-card.actions';
+import { deleteCustomCard } from '../../../store/actions/custom-card/custom-card.actions';
+import { addFavoriteCard } from '../../../store/actions/favorite-card/favorite-card.actions';
 import { selectFavoriteCardItems } from '../../../store/selectors/favorite-card.selectors';
 import { Item } from '../../models/search-item.model';
 

@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { LoginService } from '../../../auth/services/login.service';
-import { youtubeSearchAction } from '../../../store/actions/youtube-card.actions';
+import { youtubeSearchAction } from '../../../store/actions/youtube-card/youtube-card.actions';
 import { ShowFilterBlockService } from '../../../youtube/services/show-filter-block/show-filter-block.service';
 
 @Component({

@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 
-import * as favoriteCardAction from '../actions/favorite-card.actions';
+import * as favoriteCardAction from '../actions/favorite-card/favorite-card.actions';
 import { FavoriteCardsState, initialFavoriteCardsState } from '../state.model';
 
 export const favoriteCardReducer = createReducer(
