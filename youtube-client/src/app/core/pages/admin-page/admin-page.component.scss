@@ -1,0 +1,117 @@
+@import '../../../../global.scss';
+
+.admin__container {
+    margin: 50px auto;
+}
+
+.admin__form {
+    box-sizing: border-box;
+    padding: 35px 20px 25px;
+    margin: auto;
+    width: 432px;
+    display: flex;
+    flex-direction: column;
+    background-color: $login-background;
+    border-radius: 8px;
+
+    .admin__title {
+        color: $black;
+        font-size: 1.437rem;
+        font-weight: 700;
+        margin-bottom: 30px;
+    }
+
+    .admin__label {
+        margin: 10px 0 2px 10px;
+        color: $font-grey;
+        font-size: 0.685rem;
+    }
+
+    .admin__input {
+        min-width: 100%;
+        box-sizing: border-box;
+        padding: 0 10px;
+        border: none;
+        background-color: $input-background;
+        height: 44px;
+        margin-bottom: 5px;
+    }
+
+    .admin__input-error {
+        color: $red;
+        border: 2px solid $red;
+        outline-color: $red;
+        min-width: 100%;
+        box-sizing: border-box;
+        padding: 0 10px;
+        background-color: $input-background;
+        height: 44px;
+        margin-bottom: 5px;
+    }
+
+    .tags {
+        border: 1px solid $font-grey;
+        border-radius: 10px;
+        padding: 10px;
+        margin: 20px 0 0 0;
+    }
+
+        .tags__box-btn {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+            .tags__btn-reset {
+                background: #ff7b7b;
+                border: none;
+                border-radius: 5px;
+                width: 78px;
+                font-weight: 700;
+                cursor: pointer;
+            }
+
+    .btn-create {
+        cursor: pointer;
+        margin: 20px 5px 0 0;
+        border-radius: 5px;
+        align-self: flex-end;
+        border: none;
+        color: $white-color;
+        background-color: $blue-color;
+        width: 188px;
+        box-shadow: 5px 0px 3px $blue-color;
+        transition: .5s;
+        font-size: .94rem;
+        font-weight: 400;
+        height: 37px;
+
+        &:hover {
+            background-color: $blue-color-hover;
+            box-shadow: 5px 0px 3px $blue-color-hover;
+        }
+    }
+    .btn-create-error {
+        cursor: pointer;
+        margin: 20px 5px 0 0;
+        border-radius: 5px;
+        align-self: flex-end;
+        border: none;
+        color: $white-color;
+        background-color: $font-grey;
+        width: 188px;
+        box-shadow: 5px 0px 3px $font-grey;
+        transition: .5s;
+        font-size: .94rem;
+        font-weight: 400;
+        height: 37px;
+    }
+}
+
+.error_message {
+    align-self: flex-end;
+    color: $red;
+    margin-right: 10px;
+    font-size: 0.8rem;
+    min-height: 13px;
+}

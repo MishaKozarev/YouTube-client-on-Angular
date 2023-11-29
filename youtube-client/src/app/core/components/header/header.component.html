@@ -1,0 +1,40 @@
+<div class="header__container">
+  <div class="header__row">
+    <ng-container>
+      <app-custom-button class="login_button" (click)="logout()">
+        {{ isAuntUser?logoutTextBtn:loginTextBtn}}
+      </app-custom-button>
+    </ng-container>
+    <img
+      class="header__logo"
+      src="../../../assets/icon-youtube.png"
+      alt="icon" />
+
+    <form
+      (ngSubmit)="sendFormInfo(searchInput.value)"
+      class="header__search-form">
+      <input
+        #searchInput
+        type="text"
+        name="search"
+        id="search"
+        (input)="changeInputValue(searchInput.value)"
+        class="header__search-field" />
+    </form>
+
+    <button mat-icon-button (click)="isShow = !isShow">
+      <img
+        class="header__icon-setting"
+        src="../../../assets/search_settings.png"
+        alt="icon" />
+    </button>
+    <a (click)="toAdmin()" class="header__user-container">
+      <p class="header__user-text">Your name</p>
+      <img
+        class="header__icon-user"
+        src="../../../assets/icon-login.png"
+        alt="icon" />
+    </a>
+  </div>
+  <app-filter class="header__filter" *ngIf="isShow"></app-filter>
+</div>

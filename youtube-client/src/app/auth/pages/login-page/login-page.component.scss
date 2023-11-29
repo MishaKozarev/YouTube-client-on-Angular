@@ -1,0 +1,98 @@
+@import '../../../../global.scss';
+
+.login__container {
+    margin: 50px auto;
+}
+
+.login__form {
+    box-sizing: border-box;
+    padding: 25px 20px;
+    margin: auto;
+    width: 350px;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    background-color: $login-background;
+    border-radius: 8px;
+
+    .login__title {
+        color: $black;
+        font-size: 1.125rem;
+        font-weight: 700;
+    }
+
+    .login__label {
+        margin-left: 10px;
+        color: $font-grey;
+        font-size: 0.685rem;
+        margin-bottom: 2px;
+    }
+
+    .login__input {
+        box-sizing: border-box;
+        padding: 0 10px;
+        border: none;
+        background-color: $input-background;
+        width: 305px;
+        height: 37px;
+        margin-bottom: 5px;
+    }
+    .login__input-error {
+        color: $red;
+        border: 2px solid $red;
+        outline-color: $red;
+        box-sizing: border-box;
+        padding: 0 10px;
+        background-color: $input-background;
+        width: 305px;
+        height: 37px;
+        margin-bottom: 5px;
+    }
+
+    .login__btn {
+        cursor: pointer;
+        margin-right: 10px;
+        border-radius: 5px;
+        margin-top: 25px;
+        align-self: flex-end;
+        border: none;
+        color: $white-color;
+        background-color: $blue-color;
+        width: 124px;
+        box-shadow: 5px 0px 3px $blue-color;
+        transition: .5s;
+        font-size: .75rem;
+        font-weight: 400;
+        height: 40px;
+
+        &:hover {
+            background-color: $blue-color-hover;
+            box-shadow: 5px 0px 3px $blue-color-hover;
+        }
+    }
+    .login__btn-error {
+        cursor: pointer;
+        margin-right: 10px;
+        border-radius: 5px;
+        margin-top: 25px;
+        align-self: flex-end;
+        border: none;
+        color: $white-color;
+        background-color: $font-grey;
+        width: 124px;
+        box-shadow: 5px 0px 3px $font-grey;
+        transition: .5s;
+        font-size: .75rem;
+        font-weight: 400;
+        height: 40px;
+    }
+}
+
+.login__error-container {
+    display: flex;
+}
+.login__error-message {
+    color: $red;
+    margin-left: 10px;
+    font-size: 0.8rem;
+}

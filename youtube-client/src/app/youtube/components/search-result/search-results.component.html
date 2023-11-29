@@ -1,0 +1,12 @@
+<div *ngIf="videos$ | async as videos$" class="search__result-container">
+  <app-search-item
+    *ngFor="
+      let item of videos$.items
+        | sortDate: sortService.isSortDate : sortService.ascendDate
+        | sortView: sortService.isSortView : sortService.ascendView
+        | sortWord: sortService.filterValue
+    "
+    [item]="item"
+    class="search__item">
+  </app-search-item>
+</div>
