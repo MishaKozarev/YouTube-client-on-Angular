@@ -7,9 +7,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { SigninPageComponent } from './auth/pages/signin-page/signin-page.component';
 import { SignupPageComponent } from './auth/pages/signup-page/signup-page.component';
 import { NotFoundPageComponent } from './core/pages/not-found-page/not-found-page.component';
+import { HeaderComponent } from './core/components/header/header.component';
 
 @NgModule({
-  declarations: [AppComponent, SignupPageComponent, SigninPageComponent, NotFoundPageComponent],
+  declarations: [AppComponent, SignupPageComponent, SigninPageComponent, NotFoundPageComponent, HeaderComponent],
   imports: [BrowserModule, AppRoutingModule, SharedModule],
   providers: [],
   bootstrap: [AppComponent]
