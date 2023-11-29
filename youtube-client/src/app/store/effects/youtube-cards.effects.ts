@@ -9,6 +9,7 @@ import * as YoutubeCardActions from '../actions/youtube-card/youtube-card.action
 
 @Injectable()
 export class YoutubeCardEffects {
+  public text = ';';
   constructor(
     private actions$: Actions,
     private responseService: ResponseService
@@ -44,7 +45,7 @@ export class YoutubeCardEffects {
 
   private convertItemsToCards(videoItems: VideoItems): Item[] {
     return videoItems.items.map((card) => ({
-      etag: 'string',
+      etag: this.text,
       id: card.id,
       snippet: {
         publishedAt: card.snippet.publishedAt,
@@ -52,7 +53,7 @@ export class YoutubeCardEffects {
         description: card.snippet.description,
         thumbnails: {
           default: {
-            url: 'string',
+            url: this.text,
             width: 480,
             height: 360
           },
@@ -62,7 +63,7 @@ export class YoutubeCardEffects {
             height: 360
           }
         },
-        channelTitle: 'string',
+        channelTitle: this.text,
         tags: []
       },
       statistics: {

@@ -7,14 +7,14 @@ export const favoriteCardReducer = createReducer(
   initialFavoriteCardsState,
   on(
     favoriteCardAction.addFavoriteCard,
-    (state: FavoriteCardsState, { card }) => ({
+    (state: FavoriteCardsState, { card }): FavoriteCardsState => ({
       ...state,
       favoriteCards: [...state.favoriteCards, card]
     })
   ),
   on(
     favoriteCardAction.deleteFavoriteCard,
-    (state: FavoriteCardsState, { id }) => ({
+    (state: FavoriteCardsState, { id }): FavoriteCardsState => ({
       ...state,
       favoriteCards: [...state.favoriteCards.filter((card) => card.id !== id)]
     })

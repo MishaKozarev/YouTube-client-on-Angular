@@ -7,19 +7,19 @@ import {
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { API_KEY } from '../constants/youtube-api-key';
-import { YOUTUBE_LINK } from '../constants/youtube-link';
-
 @Injectable({ providedIn: 'root' })
 export class YoutubeInterceptorService implements HttpInterceptor {
+  private readonly API_KEY: string = 'AIzaSyB6qOZ7GR8hZ-gXAvQzsDDfUofhn8k1p9Q';
+  private readonly YOUTUBE_LINK: string =
+    'https://www.googleapis.com/youtube/v3';
   intercept(
     req: HttpRequest<string>,
     next: HttpHandler
   ): Observable<HttpEvent<string>> {
     return next.handle(
       req.clone({
-        url: `${YOUTUBE_LINK}/${req.url}`,
-        setParams: { key: API_KEY }
+        url: `${this.YOUTUBE_LINK}/${req.url}`,
+        setParams: { key: this.API_KEY }
       })
     );
   }

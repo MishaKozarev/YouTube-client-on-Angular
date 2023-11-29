@@ -32,9 +32,6 @@ export class ResponseService {
         return itemsId;
       }),
       switchMap((itemsId) => {
-        const params: HttpParams = new HttpParams()
-          .set('id', itemsId)
-          .set('part', 'snippet,statistics');
         return this.http.get<VideoItems>(
           `${this.SEARCH_VIDEO}&id=${itemsId}&part=snippet,statistics`
         );

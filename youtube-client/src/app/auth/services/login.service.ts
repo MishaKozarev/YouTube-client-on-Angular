@@ -11,7 +11,7 @@ export class LoginService {
   public isAuth$: Observable<boolean> = this.isAuth.asObservable();
 
   public isAuthUser(): boolean {
-    return !!localStorage.getItem('authToken');
+    return !!this.isAuth.getValue();
   }
 
   public login(): void {

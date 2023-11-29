@@ -7,20 +7,23 @@ export const youtubeCardReducer = createReducer(
   initialYoutubeCardsState,
   on(
     youtubeCardAction.youtubeAddCardAction,
-    (state: YoutubeCardsState, { youtubeCards }) => ({
+    (state: YoutubeCardsState, { youtubeCards }): YoutubeCardsState => ({
       ...state,
       youtubeCards: [...state.youtubeCards, youtubeCards]
     })
   ),
   on(
     youtubeCardAction.youtubeAddCardsAction,
-    (state: YoutubeCardsState, { youtubeCards }) => ({
+    (state: YoutubeCardsState, { youtubeCards }): YoutubeCardsState => ({
       ...state,
       youtubeCards: [...state.youtubeCards, ...youtubeCards]
     })
   ),
-  on(youtubeCardAction.youtubeClearCardsAction, (state: YoutubeCardsState) => ({
-    ...state,
-    youtubeCards: []
-  }))
+  on(
+    youtubeCardAction.youtubeClearCardsAction,
+    (state: YoutubeCardsState): YoutubeCardsState => ({
+      ...state,
+      youtubeCards: []
+    })
+  )
 );

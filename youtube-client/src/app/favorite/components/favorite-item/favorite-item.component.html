@@ -10,13 +10,15 @@
     width="223px"
     height="123px"
     alt="card" />
-  <mat-card-content class="card__content"> </mat-card-content>
-  <a (click)="deleteCardOnFavoritePage(item.id)" class="card__link-favorite">
+  <mat-card-content class="card__content"></mat-card-content>
+  <button
+    (click)="deleteCardOnFavoritePage(item.id)"
+    class="card__link-favorite">
     <img
       class="card__img-favorite"
       src="../../../assets/icon-closed.png"
       alt="icon" />
-  </a>
+  </button>
   <mat-card-title class="card__title">{{ item.snippet.title }}</mat-card-title>
   <app-custom-button (click)="routingOnDetailPage(item.id)">
     more...
