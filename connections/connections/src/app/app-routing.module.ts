@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ConversationPageComponent } from '@pages/conversation-page/conversation-page.component';
 import { GroupPageComponent } from '@pages/group-page/group-page.component';
 import { MainPageComponent } from '@pages/main-page/main-page.component';
 import { ProfilePageComponent } from '@pages/profile-page/profile-page.component';
@@ -33,6 +34,10 @@ const routes: Routes = [
   {
     path: 'group',
     component: GroupPageComponent
+  },
+  {
+    path: 'conversation',
+    component: ConversationPageComponent
   },
   {
     path: '**',

@@ -11,9 +11,10 @@ import { HeaderComponent } from './core/components/header/header.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { GroupPageComponent } from './pages/group-page/group-page.component';
+import { ConversationPageComponent } from './pages/conversation-page/conversation-page.component';
 
 @NgModule({
-  declarations: [AppComponent, SignupPageComponent, SigninPageComponent, NotFoundPageComponent, HeaderComponent, MainPageComponent, ProfilePageComponent, GroupPageComponent],
+  declarations: [AppComponent, SignupPageComponent, SigninPageComponent, NotFoundPageComponent, HeaderComponent, MainPageComponent, ProfilePageComponent, GroupPageComponent, ConversationPageComponent],
   imports: [BrowserModule, AppRoutingModule, SharedModule],
   providers: [],
   bootstrap: [AppComponent]
