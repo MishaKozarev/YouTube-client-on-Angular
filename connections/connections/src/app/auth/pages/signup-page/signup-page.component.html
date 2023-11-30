@@ -1,18 +1,74 @@
 <main class="signup__container">
-  <form class="signup__form">
+  <form [formGroup]="signupForm" (ngSubmit)="submitForm()" class="signup__form">
     <p class="signup__title">Signup</p>
+
     <div class="signup__field">
       <label for="signup-email" class="signup__label">email</label>
-      <input id="signup-email" type="text" class="signup__input" />
+      <input
+        formControlName="email"
+        id="signup-email"
+        type="text"
+        class="signup__input" />
     </div>
+    <div
+      *ngIf="email.invalid && (email.dirty || email.touched)"
+      class="signup__error-container">
+      <span
+        *ngIf="email.errors && email.errors['required']"
+        class="signup__error-message"
+        >{{ errorMessage }}</span
+      >
+      <span
+        *ngIf="email.errors && email.errors['email']"
+        class="signup__error-message"
+        >The email is invalid</span
+      >
+    </div>
+
     <div class="signup__field">
       <label for="signup-name" class="signup__label">name</label>
-      <input id="signup-name" type="text" class="signup__input" />
+      <input
+        formControlName="name"
+        id="signup-name"
+        type="text"
+        class="signup__input" />
     </div>
+    <div
+      *ngIf="name.invalid && (name.dirty || name.touched)"
+      class="signup__error-container">
+      <span
+        *ngIf="name.errors && name.errors['required']"
+        class="signup__error-message"
+        >{{ errorMessage }}</span
+      >
+    </div>
+
     <div class="signup__field">
       <label for="signup-password" class="signup__label">password</label>
-      <input id="signup-password" type="text" class="signup__input" />
+      <input
+        formControlName="password"
+        id="signup-password"
+        type="text"
+        class="signup__input" />
     </div>
-    <button class="signup__btn">SIGNUP</button>
+    <div
+      *ngIf="password.invalid && (password.dirty || password.touched)"
+      class="signup__error-container">
+      <span
+        *ngIf="password.errors && password.errors['required']"
+        class="signup__error-message"
+        >{{ errorMessage }}</span
+      >
+      <span
+        *ngIf="password.errors && password.errors['validationPassword']"
+        class="signup__error-message"
+        >{{ password.errors['errorMessage'] }}</span
+      >
+    </div>
+
+    <button
+      class="{{ password.invalid ? 'signup__btn-error' : 'signup__btn' }}">
+      SIGNUP
+    </button>
   </form>
 </main>

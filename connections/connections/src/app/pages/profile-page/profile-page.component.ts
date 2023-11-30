@@ -5,6 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './profile-page.component.html',
   styleUrls: ['./profile-page.component.scss']
 })
-export class ProfilePageComponent {
-
-}
+export class ProfilePageComponent {}

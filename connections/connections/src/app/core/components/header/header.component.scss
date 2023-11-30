@@ -7,11 +7,10 @@
     justify-content: center;
     position: relative;
     background: #e5e5e5;
-    // background: rgb(1, 29, 26);
 
     .header__row {
+        width: 100%;
         max-width: 1200px;
-        width: 1200px;
         height: 40px;
         display: flex;
         align-items: center;
