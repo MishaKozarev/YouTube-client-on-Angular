@@ -9,9 +9,10 @@ import { SignupPageComponent } from './auth/pages/signup-page/signup-page.compon
 import { NotFoundPageComponent } from './core/pages/not-found-page/not-found-page.component';
 import { HeaderComponent } from './core/components/header/header.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
+import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 
 @NgModule({
-  declarations: [AppComponent, SignupPageComponent, SigninPageComponent, NotFoundPageComponent, HeaderComponent, MainPageComponent],
+  declarations: [AppComponent, SignupPageComponent, SigninPageComponent, NotFoundPageComponent, HeaderComponent, MainPageComponent, ProfilePageComponent],
   imports: [BrowserModule, AppRoutingModule, SharedModule],
   providers: [],
   bootstrap: [AppComponent]
