@@ -10,9 +10,10 @@ import { NotFoundPageComponent } from './core/pages/not-found-page/not-found-pag
 import { HeaderComponent } from './core/components/header/header.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
+import { GroupPageComponent } from './pages/group-page/group-page.component';
 
 @NgModule({
-  declarations: [AppComponent, SignupPageComponent, SigninPageComponent, NotFoundPageComponent, HeaderComponent, MainPageComponent, ProfilePageComponent],
+  declarations: [AppComponent, SignupPageComponent, SigninPageComponent, NotFoundPageComponent, HeaderComponent, MainPageComponent, ProfilePageComponent, GroupPageComponent],
   imports: [BrowserModule, AppRoutingModule, SharedModule],
   providers: [],
   bootstrap: [AppComponent]
