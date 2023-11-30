@@ -6,6 +6,7 @@ import {
   Validators
 } from '@angular/forms';
 import { Router } from '@angular/router';
+
 import { validationPassword } from '../../validators/password.validator';
 
 @Component({
@@ -21,7 +22,10 @@ export class SignupPageComponent implements OnInit {
     password: FormControl;
   }>;
 
-  constructor(private fb: FormBuilder, private route: Router) {}
+  constructor(
+    private fb: FormBuilder,
+    private route: Router
+  ) {}
 
   ngOnInit(): void {
     this.signupForm = this.fb.group({
@@ -47,5 +51,9 @@ export class SignupPageComponent implements OnInit {
     if (this.signupForm.status === 'VALID') {
       this.route.navigate(['/signin']);
     }
+  }
+
+  public routingToSignin() {
+    this.route.navigate(['/signin']);
   }
 }

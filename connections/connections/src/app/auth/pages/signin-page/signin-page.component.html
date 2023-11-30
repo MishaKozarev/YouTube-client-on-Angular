@@ -1,14 +1,40 @@
 <main class="signin__container">
-  <form class="signin__form">
+  <form [formGroup]="signinForm" (ngSubmit)="submitForm()" class="signin__form">
     <p class="signin__title">Signin</p>
+
     <div class="signin__field">
       <label for="signin-email" class="signin__label">email</label>
-      <input id="signin-email" type="text" class="signin__input" />
+      <input formControlName="email" id="signin-email" type="text" class="signin__input" />
+      <div
+        *ngIf="email.invalid && (email.dirty || email.touched)"
+        class="signin__error-container">
+        <span
+          *ngIf="email.errors && email.errors['required']"
+          class="signin__error-message"
+          >{{ errorMessage }}</span
+        >
+      </div>
     </div>
+
     <div class="signin__field">
       <label for="signin-password" class="signin__label">password</label>
-      <input id="signin-password" type="text" class="signin__input" />
+      <input formControlName="password" id="signin-password" type="text" class="signin__input" />
+      <div
+        *ngIf="password.invalid && (password.dirty || password.touched)"
+        class="signup__error-container">
+        <span
+          *ngIf="password.errors && password.errors['required']"
+          class="signin__error-message"
+          >{{ errorMessage }}</span
+        >
+      </div>
     </div>
-    <button class="signin__btn">SIGNIN</button>
+
+    <div class="signin__link-signup">
+      <p>if you don't have an account</p>
+      <button (click)="routingToSignup()">Signup</button>
+    </div>
+    <button class="{{ signinForm.invalid ? 'signin__btn-error' : 'signin__btn' }}">
+      SIGNIN</button>
   </form>
 </main>

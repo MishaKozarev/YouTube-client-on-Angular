@@ -20,6 +20,7 @@
         color: $black;
         font-size: 1.125rem;
         font-weight: 700;
+        margin: 0 0 20px 0;
     }
 
     .signin__field {
@@ -46,6 +47,22 @@
         margin-bottom: 5px;
     }
 
+    .signin__link-signup {
+        display: flex;
+        align-items: center;
+        width: 60%;
+        margin: 0;
+
+        button {
+            border: none;
+            background: transparent;
+            height: 20px;
+            cursor: pointer;
+            color: $blue-color;
+            padding: 0 0 2px 5px;
+        }
+    }
+
     .signin__btn {
         cursor: pointer;
         margin-right: 10px;
@@ -67,4 +84,29 @@
             box-shadow: 5px 0px 3px $blue-color-hover;
         }
     }
+    .signin__btn-error {
+        cursor: pointer;
+        margin-right: 10px;
+        border-radius: 5px;
+        margin-top: 25px;
+        align-self: flex-end;
+        border: none;
+        color: $white-color;
+        background-color: $font-grey;
+        width: 124px;
+        box-shadow: 5px 0px 3px $font-grey;
+        transition: .5s;
+        font-size: .75rem;
+        font-weight: 400;
+        height: 40px;
+    }
+}
+
+.signin__error-container {
+    display: flex;
+}
+.signin__error-message {
+    color: $red;
+    margin-left: 10px;
+    font-size: 0.8rem;
 }
