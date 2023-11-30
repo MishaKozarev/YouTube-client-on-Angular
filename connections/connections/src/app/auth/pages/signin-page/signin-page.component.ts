@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators
+} from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,13 +12,16 @@ import { Router } from '@angular/router';
   templateUrl: './signin-page.component.html',
   styleUrls: ['./signin-page.component.scss']
 })
-export class SigninPageComponent implements OnInit{
+export class SigninPageComponent implements OnInit {
   public errorMessage = 'Please enter a details';
   public signinForm!: FormGroup<{
     email: FormControl;
     password: FormControl;
   }>;
-  constructor(private fb: FormBuilder, private route: Router) {}
+  constructor(
+    private fb: FormBuilder,
+    private route: Router
+  ) {}
   ngOnInit(): void {
     this.signinForm = this.fb.group({
       email: ['', [Validators.required]],
