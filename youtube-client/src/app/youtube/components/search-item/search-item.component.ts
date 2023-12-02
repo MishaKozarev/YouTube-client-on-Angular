@@ -1,11 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, Subject, takeUntil } from 'rxjs';
 import { deleteCustomCard } from 'src/app/store/actions/custom-card.actions';
 import {
   addFavoriteCard,
-  deleteFavoriteCard
 } from 'src/app/store/actions/favorite-card.actions';
 import { selectFavoriteCardItems } from 'src/app/store/selectors/favorite-card.selectors';
 import { Item } from 'src/app/youtube/models/search-item.model';
@@ -16,6 +15,7 @@ import { Item } from 'src/app/youtube/models/search-item.model';
   styleUrls: ['./search-item.component.scss']
 })
 export class SearchItemComponent implements OnInit {
+  private ngUnsubscribe$ = new Subject<void>();
   public noPhoto = '../../../../assets/icon-no-photo.png';
   public favoriteCards$: Observable<Item[]> = this.store.select(
     selectFavoriteCardItems
@@ -32,7 +32,11 @@ export class SearchItemComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.item.id;
     this.link = `/youtube/${this.id}`;
-    this.favoriteCards$.subscribe((cards) => {
+    this.favoriteCards$
+    .pipe(
+      takeUntil(this.ngUnsubscribe$)
+    )
+    .subscribe((cards) => {
       this.isCardOnFavorites = !(
         cards.findIndex((card) => card.id === this.item.id) === -1
       );
@@ -59,5 +63,10 @@ export class SearchItemComponent implements OnInit {
         id
       })
     );
+  }
+
+  ngOnDestroy(): void {
+    this.ngUnsubscribe$.next();
+    this.ngUnsubscribe$.complete();
   }
 }

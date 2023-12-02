@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, Subject, takeUntil } from 'rxjs';
 import { paginationChangePageAction } from 'src/app/store/actions/pagination.actions';
 import {
   youtubeClearCardsAction,
@@ -19,7 +19,8 @@ import { Item } from '../../models/search-item.model';
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.scss']
 })
-export class MainPageComponent implements OnInit {
+export class MainPageComponent implements OnInit, OnDestroy {
+  private ngUnsubscribe$ = new Subject<void>();
   public youtubeCard$: Observable<Item[]> = this.store.select(
     selectYoutubeCardItems
   );
@@ -33,17 +34,20 @@ export class MainPageComponent implements OnInit {
   public nextToken = '';
   constructor(
     private readonly store: Store,
-    private router: Router
   ) {}
   ngOnInit(): void {
-    this.pageInfo$.subscribe((pageInfo) => {
+    this.pageInfo$
+      .pipe(
+        takeUntil(this.ngUnsubscribe$)
+      )
+      .subscribe((pageInfo) => {
       this.currentPage = pageInfo.page;
       this.prevToken = pageInfo.prevPageToken;
       this.nextToken = pageInfo.nextPageToken;
     });
   }
 
-  public increasePage() {
+  public increasePage(): void {
     if (this.nextToken !== '') {
       const query = localStorage.getItem('Query') || '';
       this.store.dispatch(
@@ -59,7 +63,7 @@ export class MainPageComponent implements OnInit {
     }
   }
 
-  public decreasePage() {
+  public decreasePage(): void {
     const query = localStorage.getItem('Query') || '';
     if (this.currentPage > 1) {
       this.store.dispatch(
@@ -73,5 +77,10 @@ export class MainPageComponent implements OnInit {
         })
       );
     }
+  }
+
+  ngOnDestroy(): void {
+    this.ngUnsubscribe$.next();
+    this.ngUnsubscribe$.complete();
   }
 }
