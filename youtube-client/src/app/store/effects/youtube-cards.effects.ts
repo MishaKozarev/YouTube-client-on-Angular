@@ -43,35 +43,49 @@ export class YoutubeCardEffects {
   });
 
   private convertItemsToCards(videoItems: VideoItems): Item[] {
-    return videoItems.items.map((card) => ({
-      etag: 'string',
-      id: card.id,
-      snippet: {
-        publishedAt: card.snippet.publishedAt,
-        title: card.snippet.title,
-        description: card.snippet.description,
-        thumbnails: {
-          default: {
-            url: 'string',
-            width: 480,
-            height: 360
+    return videoItems.items.map((card) => {
+      const {
+        snippet: {
+          publishedAt,
+          title,
+          description,
+          thumbnails: {
+            high: { url: highUrl },
+            default: { url: defaultUrl }
           },
-          high: {
-            url: card.snippet.thumbnails.high.url,
-            width: 480,
-            height: 360
-          }
+          channelTitle,
+          tags = []
         },
-        channelTitle: 'string',
-        tags: []
-      },
-      statistics: {
-        viewCount: card.statistics.viewCount,
-        likeCount: card.statistics.likeCount,
-        dislikeCount: card.statistics.dislikeCount,
-        favoriteCount: card.statistics.favoriteCount,
-        commentCount: card.statistics.commentCount
-      }
-    }));
+        statistics: {
+          viewCount,
+          likeCount,
+          dislikeCount,
+          favoriteCount,
+          commentCount
+        }
+      } = card;
+      return {
+        etag: 'string',
+        id: card.id,
+        snippet: {
+          publishedAt,
+          title,
+          description,
+          thumbnails: {
+            default: { url: highUrl, width: 480, height: 360 },
+            high: { url: highUrl, width: 480, height: 360 }
+          },
+          channelTitle,
+          tags
+        },
+        statistics: {
+          viewCount,
+          likeCount,
+          dislikeCount,
+          favoriteCount,
+          commentCount
+        }
+      };
+    });
   }
 }
