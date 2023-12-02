@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { SharedModule } from '@shared/shared.module';
@@ -12,8 +13,9 @@ import { CoreModule } from './core/core.module';
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    CoreModule,
     AppRoutingModule,
+    CoreModule,
+    HttpClientModule,
     AuthModule,
     ConnectModule,
     SharedModule

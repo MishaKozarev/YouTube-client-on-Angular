@@ -6,6 +6,8 @@ import {
   Validators
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserDataSignup } from 'src/app/connect/models/user-data';
+import { HttpService } from 'src/app/connect/services/http/http.service';
 
 import { validationPassword } from '../../validators/password.validator';
 
@@ -16,6 +18,7 @@ import { validationPassword } from '../../validators/password.validator';
 })
 export class SignupPageComponent implements OnInit {
   public errorMessage = 'Please enter a details';
+  public errorMessageSignup = '';
   public signupForm!: FormGroup<{
     email: FormControl;
     name: FormControl;
@@ -24,7 +27,8 @@ export class SignupPageComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private route: Router
+    private route: Router,
+    private httpService: HttpService
   ) {}
 
   ngOnInit(): void {
@@ -49,7 +53,18 @@ export class SignupPageComponent implements OnInit {
 
   public submitForm() {
     if (this.signupForm.status === 'VALID') {
-      this.route.navigate(['/signin']);
+      const userData: UserDataSignup = {
+        email: this.signupForm.value.email,
+        name: this.signupForm.value.name,
+        password: this.signupForm.value.password,
+      }
+      this.httpService.registration(userData)
+      .subscribe(
+        {
+          error: (err) => this.errorMessageSignup = `Registration failed: ${err}`
+        }
+      );
+      // this.route.navigate(['/signin']);
     }
   }
 

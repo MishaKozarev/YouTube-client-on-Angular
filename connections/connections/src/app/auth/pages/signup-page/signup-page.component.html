@@ -71,6 +71,8 @@
       <button (click)="routingToSignin()">Signin</button>
     </div>
 
+    <p>{{errorMessageSignup}}</p>
+
     <button
       class="{{ password.invalid ? 'signup__btn-error' : 'signup__btn' }}">
       SIGNUP
