@@ -26,6 +26,10 @@ describe('ResponseService', () => {
     const textInput = 'test';
     const maxItems = '20';
     const responseMock = {};
+    const store = {
+      dispatch: jest.fn(),
+    };
+    const dispatchSpy = jest.spyOn(store, 'dispatch');
 
     httpClientSpy.get.mockReturnValue(of(responseMock));
 
@@ -38,6 +42,11 @@ describe('ResponseService', () => {
         }
       );
       expect(storeSpy.dispatch).toHaveBeenCalled();
+      expect(dispatchSpy).toHaveBeenCalledWith(
+        `${responseService.SEARCH_URL}`,
+        {
+          params: expect.anything()
+        });
     });
   });
 
