@@ -1,37 +1,32 @@
 export interface Item {
-  kind: string;
+  kind?: string;
   etag: string;
-  id: ItemId;
+  id: string;
   snippet: Snippet;
   statistics: Statistics;
 }
 
-interface ItemId {
-  kind: string;
-  videoId: string;
-}
-
 interface Snippet {
   publishedAt: string;
-  channelId: string;
+  channelId?: string;
   title: string;
   description: string;
   thumbnails: Thumbnails;
   channelTitle: string;
   tags: string[];
-  categoryId: string;
-  liveBroadcastContent: string;
+  categoryId?: string;
+  liveBroadcastContent?: string;
   defaultLanguage?: string;
-  localized: Localized;
-  defaultAudioLanguage: string;
+  localized?: Localized;
+  defaultAudioLanguage?: string;
 }
 
 interface Thumbnails {
   default: ThumbnailsItem;
-  medium: ThumbnailsItem;
+  medium?: ThumbnailsItem;
   high: ThumbnailsItem;
-  standard: ThumbnailsItem;
-  maxres: ThumbnailsItem;
+  standard?: ThumbnailsItem;
+  maxres?: ThumbnailsItem;
 }
 
 interface ThumbnailsItem {
@@ -51,4 +46,33 @@ export interface Statistics {
   dislikeCount: string;
   favoriteCount: string;
   commentCount: string;
+}
+
+export interface VideoItem {
+  kind: string;
+  etag: string;
+  id: ID;
+  snippet: VideoSnippet;
+}
+
+interface ID {
+  kind: string;
+  videoId: string;
+}
+
+interface VideoSnippet {
+  publishedAt: string;
+  channelId: string;
+  title: string;
+  description: string;
+  thumbnails: VideoThumbnails;
+  channelTitle: string;
+  liveBroadcastContent: string;
+  publishTime: string;
+}
+
+interface VideoThumbnails {
+  default: ThumbnailsItem;
+  medium: ThumbnailsItem;
+  high: ThumbnailsItem;
 }

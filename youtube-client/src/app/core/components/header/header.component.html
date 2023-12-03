@@ -2,13 +2,21 @@
   <div class="header__row">
     <ng-container>
       <app-custom-button class="login_button" (click)="logout()">
-        {{ isAuntUser?logoutTextBtn:loginTextBtn}}
+        {{ isAuntUser ? logoutTextBtn : loginTextBtn }}
       </app-custom-button>
     </ng-container>
-    <img
-      class="header__logo"
-      src="../../../assets/icon-youtube.png"
-      alt="icon" />
+    <a (click)="routingFavoritePage()" class="header__favorite">
+      <img
+        class="header__icon-user"
+        src="../../../assets/icon-favorite.png"
+        alt="icon" />
+    </a>
+    <a (click)="routingYoutubePage()" class="header__youtube-link">
+      <img
+        class="header__logo"
+        src="../../../assets/icon-youtube.png"
+        alt="icon" />
+    </a>
 
     <form
       (ngSubmit)="sendFormInfo(searchInput.value)"
@@ -28,7 +36,7 @@
         src="../../../assets/search_settings.png"
         alt="icon" />
     </button>
-    <a (click)="toAdmin()" class="header__user-container">
+    <a (click)="routingAdminPage()" class="header__user-container">
       <p class="header__user-text">Your name</p>
       <img
         class="header__icon-user"

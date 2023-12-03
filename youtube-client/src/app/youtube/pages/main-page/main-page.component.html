@@ -1,1 +1,15 @@
 <app-search-results></app-search-results>
+
+<ng-container *ngIf="youtubeCard$ | async as youtubeCard">
+  <ng-container *ngIf="youtubeCard.length">
+    <div class="pagination_container">
+      <button [class]="'arrow_left_btn'" (click)="decreasePage()">
+        <div class="icon_arrow_left"></div>
+      </button>
+      <p class="page">{{ currentPage }}</p>
+      <button [class]="'arrow_right_btn'" (click)="increasePage()">
+        <div class="icon_right_left"></div>
+      </button>
+    </div>
+  </ng-container>
+</ng-container>
