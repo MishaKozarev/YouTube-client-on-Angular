@@ -11,7 +11,7 @@ describe('LoginService', () => {
     expect(loginService.isAuth.getValue());
   });
 
-  it('should set auth user and update button text on login', () => {
+  it('should set user authorized', () => {
     loginService.login();
     expect(loginService.isAuth.getValue()).toBeTruthy();
   });
