@@ -6,9 +6,13 @@
   <img
     mat-card-image
     class="card__image"
+<<<<<<< HEAD
     [src]="
       item.etag === 'CustomCard' ? noPhoto : item.snippet.thumbnails.high.url
     "
+=======
+    [src]="item.snippet.thumbnails.high.url"
+>>>>>>> main
     width="223px"
     height="123px"
     alt="card" />
@@ -16,6 +20,7 @@
     <app-card-icon [item]="item" class="icon-block"></app-card-icon>
   </mat-card-content>
 
+<<<<<<< HEAD
   <button
     *ngIf="item.etag !== 'CustomCard' && !isCardOnFavorites"
     (click)="addCardOnFavoritePage()"
@@ -46,6 +51,8 @@
       alt="icon" />
   </button>
 
+=======
+>>>>>>> main
   <mat-card-title class="card__title">{{ item.snippet.title }}</mat-card-title>
   <app-custom-button (click)="onOpenDetailedPageById(item.id)">
     more...

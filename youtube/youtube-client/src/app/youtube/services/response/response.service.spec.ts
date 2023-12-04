@@ -1,10 +1,15 @@
+<<<<<<< HEAD
 import { HttpClient } from '@angular/common/http';
 import { Store } from '@ngrx/store';
 import { of } from 'rxjs';
+=======
+import { TestBed } from '@angular/core/testing';
+>>>>>>> main
 
 import { ResponseService } from './response.service';
 
 describe('ResponseService', () => {
+<<<<<<< HEAD
   let responseService: ResponseService;
   let httpClientSpy: { get: jest.Mock };
   let storeSpy: { dispatch: jest.Mock };
@@ -88,5 +93,16 @@ describe('ResponseService', () => {
         }
       );
     });
+=======
+  let service: ResponseService;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({});
+    service = TestBed.inject(ResponseService);
+  });
+
+  it('should be created', () => {
+    expect(service).toBeTruthy();
+>>>>>>> main
   });
 });

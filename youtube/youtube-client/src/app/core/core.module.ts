@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+<<<<<<< HEAD
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { isDevMode, NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -15,6 +16,13 @@ import { favoriteCardReducer } from '../store/reducers/favorite-card.reducer';
 import { paginationReducer } from '../store/reducers/pagination.reducer';
 import { youtubeCardReducer } from '../store/reducers/youtube-card.reducer';
 import { YoutubeInterceptorService } from '../youtube/interceptors/youtube.interceptor';
+=======
+import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '@shared/shared.module';
+
+import { AppRoutingModule } from '../app-routing.module';
+>>>>>>> main
 import { FilterComponent } from './components/filter/filter.component';
 import { HeaderComponent } from './components/header/header.component';
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
@@ -27,6 +35,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
     NotFoundComponent,
     AdminPageComponent
   ],
+<<<<<<< HEAD
   imports: [
     CommonModule,
     SharedModule,
@@ -58,6 +67,9 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
       multi: true
     }
   ],
+=======
+  imports: [CommonModule, SharedModule, AppRoutingModule, ReactiveFormsModule],
+>>>>>>> main
   exports: [HeaderComponent]
 })
 export class CoreModule {}
