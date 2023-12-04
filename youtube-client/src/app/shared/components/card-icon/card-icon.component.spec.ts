@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AppComponent } from './app.component';
+import { CardIconComponent } from './card-icon.component';
 
-describe('FavoritePageComponent', () => {
-  let component: AppComponent;
-  let fixture: ComponentFixture<AppComponent>;
+describe('CardIconComponent', () => {
+  let component: CardIconComponent;
+  let fixture: ComponentFixture<CardIconComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AppComponent]
+      declarations: [CardIconComponent]
     });
-    fixture = TestBed.createComponent(AppComponent);
+    fixture = TestBed.createComponent(CardIconComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

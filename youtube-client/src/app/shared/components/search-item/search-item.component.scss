@@ -29,8 +29,27 @@
     width: 100%;
 }
 
-.card__img-favorite {
+.icon-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.card__img-favorite,
+.card__img-closed {
     width: 25px;
     height: 25px;
     cursor: pointer;
+}
+
+.card__link-favorite_disabled {
+    pointer-events: none;
+    cursor: default;
+}
+
+.card__link-closed,
+.card__link-favorite {
+    border: none;
+    background: #E5E5E5;
 }

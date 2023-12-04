@@ -5,13 +5,13 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class LoginService {
-  private isAuth: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
+  public isAuth: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
     !!localStorage.getItem('authToken')
   );
   public isAuth$: Observable<boolean> = this.isAuth.asObservable();
 
   public isAuthUser(): boolean {
-    return !!localStorage.getItem('authToken');
+    return !!this.isAuth.getValue();
   }
 
   public login(): void {

@@ -47,3 +47,9 @@
     pointer-events: none;
     cursor: default;
 }
+
+.card__link-closed,
+.card__link-favorite {
+    border: none;
+    background: #E5E5E5;
+}

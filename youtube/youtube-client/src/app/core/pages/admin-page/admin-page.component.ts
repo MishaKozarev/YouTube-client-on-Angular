@@ -8,10 +8,10 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { LoginService } from 'src/app/auth/services/login.service';
-import { createCustomCard } from 'src/app/store/actions/custom-card.actions';
-import { Item } from 'src/app/youtube/models/search-item.model';
 
+import { LoginService } from '../../../auth/services/login.service';
+import { createCustomCard } from '../../../store/actions/custom-card/custom-card.actions';
+import { Item } from '../../../youtube/models/search-item.model';
 import { validationDate } from '../../validator/date-validator.validator';
 
 @Component({
@@ -24,6 +24,7 @@ export class AdminPageComponent implements OnInit {
   public tagErrorMessage = '';
   public errorMessage = '';
   public customId = this.generateId();
+  public result = '';
   public adminForm!: FormGroup<{
     title: FormControl;
     description: FormControl;
@@ -112,12 +113,11 @@ export class AdminPageComponent implements OnInit {
 
   public generateId(): string {
     const key = 'abcdef01234567890';
-    let result = '';
     const lengthNumber = 8;
     for (let i = 0; i < lengthNumber; i += 1) {
-      result += key[Math.floor(Math.random() * key.length)];
+      this.result += key[Math.floor(Math.random() * key.length)];
     }
-    return result;
+    return this.result;
   }
 
   public createCustomCard(): Item {

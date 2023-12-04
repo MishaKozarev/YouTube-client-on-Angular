@@ -5,18 +5,18 @@
         {{ isAuntUser ? logoutTextBtn : loginTextBtn }}
       </app-custom-button>
     </ng-container>
-    <a (click)="routingFavoritePage()" class="header__favorite">
+    <button (click)="routingFavoritePage()" class="header__favorite">
       <img
         class="header__icon-user"
         src="../../../assets/icon-favorite.png"
         alt="icon" />
-    </a>
-    <a (click)="routingYoutubePage()" class="header__youtube-link">
+    </button>
+    <button (click)="routingYoutubePage()" class="header__youtube-link">
       <img
         class="header__logo"
         src="../../../assets/icon-youtube.png"
         alt="icon" />
-    </a>
+    </button>
 
     <form
       (ngSubmit)="sendFormInfo(searchInput.value)"
@@ -36,13 +36,13 @@
         src="../../../assets/search_settings.png"
         alt="icon" />
     </button>
-    <a (click)="routingAdminPage()" class="header__user-container">
+    <button (click)="routingAdminPage()" class="header__user-container">
       <p class="header__user-text">Your name</p>
       <img
         class="header__icon-user"
         src="../../../assets/icon-login.png"
         alt="icon" />
-    </a>
+    </button>
   </div>
   <app-filter class="header__filter" *ngIf="isShow"></app-filter>
 </div>

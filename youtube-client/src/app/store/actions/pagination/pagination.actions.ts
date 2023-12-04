@@ -1,7 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 
-import { PaginationActionsType } from '../actions-type/pagination-action-type';
-import { PaginationInfo } from '../state.model';
+import { PaginationActionsType } from '../../actions-type/pagination-action-type';
+import { PaginationInfo } from '../../state.model';
 
 export const paginationAddInfoAction = createAction(
   PaginationActionsType.ADD_TOKEN,

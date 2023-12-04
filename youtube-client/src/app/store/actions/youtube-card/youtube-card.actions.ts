@@ -1,7 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 import { Item } from 'src/app/youtube/models/search-item.model';
 
-import { YoutubeCardActionTypes } from '../actions-type/youtube-actions-type';
+import { YoutubeCardActionTypes } from '../../actions-type/youtube-actions-type';
 
 export const youtubeAddCardAction = createAction(
   YoutubeCardActionTypes.ADD_YOUTUBE_CARD,

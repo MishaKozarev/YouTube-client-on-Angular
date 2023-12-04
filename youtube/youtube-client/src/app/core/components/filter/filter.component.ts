@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { ShowFilterBlockService } from 'src/app/youtube/services/show-filter-block/show-filter-block.service';
-import { SortService } from 'src/app/youtube/services/sort/sort.service';
+
+import { ShowFilterBlockService } from '../../../youtube/services/show-filter-block/show-filter-block.service';
+import { SortService } from '../../../youtube/services/sort/sort.service';
 
 @Component({
   selector: 'app-filter',
