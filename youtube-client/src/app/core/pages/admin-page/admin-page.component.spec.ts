@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideMockStore } from '@ngrx/store/testing';
 
 import { AdminPageComponent } from './admin-page.component';
 
@@ -8,6 +9,7 @@ describe('AdminPageComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
+      providers: [provideMockStore({})],
       declarations: [AdminPageComponent]
     });
     fixture = TestBed.createComponent(AdminPageComponent);

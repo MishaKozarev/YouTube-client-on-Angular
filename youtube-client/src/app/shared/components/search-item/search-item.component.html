@@ -16,16 +16,27 @@
     <app-card-icon [item]="item" class="icon-block"></app-card-icon>
   </mat-card-content>
 
-  <a
+  <button
     *ngIf="item.etag !== 'CustomCard' && !isCardOnFavorites"
-    (click)="addCardOnFavoritePage()">
+    (click)="addCardOnFavoritePage()"
+    class="card__link-favorite">
     <img
       class="card__img-favorite"
       src="../../../assets/icon-favorite.png"
       alt="icon" />
-  </a>
+  </button>
 
-  <a
+  <button
+    *ngIf="isCardOnFavorites && item.id"
+    (click)="deleteCardOnFavoritePage(item.id)"
+    class="card__link-closed">
+    <img
+      class="card__img-closed"
+      src="../../../assets/icon-closed.png"
+      alt="icon" />
+  </button>
+
+  <button
     *ngIf="item.etag === 'CustomCard' && item.id"
     (click)="deleteCustomCardCardOnPage(item.id)"
     class="card__link-closed">
@@ -33,7 +44,7 @@
       class="card__img-closed"
       src="../../../assets/icon-closed.png"
       alt="icon" />
-  </a>
+  </button>
 
   <mat-card-title class="card__title">{{ item.snippet.title }}</mat-card-title>
   <app-custom-button (click)="onOpenDetailedPageById(item.id)">

@@ -1,16 +1,19 @@
-import { TestBed } from '@angular/core/testing';
-
 import { SortService } from './sort.service';
 
 describe('SortDateService', () => {
-  let service: SortService;
+  let sortService: SortService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(SortService);
+    sortService = new SortService();
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
+  it('should sortByDate be true or false', () => {
+    expect(sortService.ascendDate).toBeTruthy();
+    expect(sortService.isSortDate).toBeFalsy();
+  });
+
+  it('should sortByView be true or false', () => {
+    expect(sortService.ascendView).toBeTruthy();
+    expect(sortService.isSortView).toBeFalsy();
   });
 });

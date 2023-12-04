@@ -13,4 +13,16 @@ describe('ShowFilterBlockService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('should toggle showFilterBlock property', () => {
+    expect(service.showFilterBlock).toBeFalsy();
+
+    service.getIsShow();
+
+    expect(service.showFilterBlock).toBeTruthy();
+
+    service.getIsShow();
+
+    expect(service.showFilterBlock).toBeFalsy();
+  });
 });

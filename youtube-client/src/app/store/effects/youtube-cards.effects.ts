@@ -5,10 +5,11 @@ import { Item } from 'src/app/youtube/models/search-item.model';
 import VideoItems from 'src/app/youtube/models/search-response.model';
 import { ResponseService } from 'src/app/youtube/services/response/response.service';
 
-import * as YoutubeCardActions from '../actions/youtube-card.actions';
+import * as YoutubeCardActions from '../actions/youtube-card/youtube-card.actions';
 
 @Injectable()
 export class YoutubeCardEffects {
+  public text = ';';
   constructor(
     private actions$: Actions,
     private responseService: ResponseService
@@ -43,49 +44,35 @@ export class YoutubeCardEffects {
   });
 
   private convertItemsToCards(videoItems: VideoItems): Item[] {
-    return videoItems.items.map((card) => {
-      const {
-        snippet: {
-          publishedAt,
-          title,
-          description,
-          thumbnails: {
-            high: { url: highUrl },
-            default: { url: defaultUrl }
+    return videoItems.items.map((card) => ({
+      etag: this.text,
+      id: card.id,
+      snippet: {
+        publishedAt: card.snippet.publishedAt,
+        title: card.snippet.title,
+        description: card.snippet.description,
+        thumbnails: {
+          default: {
+            url: this.text,
+            width: 480,
+            height: 360
           },
-          channelTitle,
-          tags = []
+          high: {
+            url: card.snippet.thumbnails.high.url,
+            width: 480,
+            height: 360
+          }
         },
-        statistics: {
-          viewCount,
-          likeCount,
-          dislikeCount,
-          favoriteCount,
-          commentCount
-        }
-      } = card;
-      return {
-        etag: 'string',
-        id: card.id,
-        snippet: {
-          publishedAt,
-          title,
-          description,
-          thumbnails: {
-            default: { url: highUrl, width: 480, height: 360 },
-            high: { url: highUrl, width: 480, height: 360 }
-          },
-          channelTitle,
-          tags
-        },
-        statistics: {
-          viewCount,
-          likeCount,
-          dislikeCount,
-          favoriteCount,
-          commentCount
-        }
-      };
-    });
+        channelTitle: this.text,
+        tags: []
+      },
+      statistics: {
+        viewCount: card.statistics.viewCount,
+        likeCount: card.statistics.likeCount,
+        dislikeCount: card.statistics.dislikeCount,
+        favoriteCount: card.statistics.favoriteCount,
+        commentCount: card.statistics.commentCount
+      }
+    }));
   }
 }
