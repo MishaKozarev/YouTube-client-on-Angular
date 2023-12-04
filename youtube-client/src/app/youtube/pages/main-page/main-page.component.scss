@@ -1,0 +1,46 @@
+@import '../../../../global.scss';
+
+.pagination_container {
+    margin: 30px auto 0;
+    max-width: 200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.arrow_left_btn,
+.arrow_right_btn {
+    border: none;
+    background-color: $white-color;
+}
+
+.icon_arrow_left,
+.icon_right_left {
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    background-image: url('../../../../assets/icon-left.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.icon_right_left {
+    transform: rotate(180deg);
+}
+.page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 2rem;
+    color: #2196f3;
+    margin: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 3px solid #2196f3;
+}
+
+.hidden {
+    visibility: hidden;
+}

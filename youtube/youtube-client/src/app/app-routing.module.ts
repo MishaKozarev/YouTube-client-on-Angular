@@ -5,6 +5,7 @@ import { AuthGuard } from './auth/guards/auth.guard';
 import { NotAuthGuard } from './auth/guards/not-auth.guard';
 import { AdminPageComponent } from './core/pages/admin-page/admin-page.component';
 import { NotFoundComponent } from './core/pages/not-found/not-found.component';
+import { FavoritePageComponent } from './favorite/pages/favorite-page/favorite-page.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'admin',
     component: AdminPageComponent
+  },
+  {
+    path: 'favorite',
+    component: FavoritePageComponent
   },
   {
     path: '**',

@@ -7,8 +7,11 @@ import {
   Validators
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginService } from 'src/app/auth/services/login.service';
+import { Store } from '@ngrx/store';
 
+import { LoginService } from '../../../auth/services/login.service';
+import { createCustomCard } from '../../../store/actions/custom-card/custom-card.actions';
+import { Item } from '../../../youtube/models/search-item.model';
 import { validationDate } from '../../validator/date-validator.validator';
 
 @Component({
@@ -20,6 +23,8 @@ export class AdminPageComponent implements OnInit {
   public dateErrorMessage = '';
   public tagErrorMessage = '';
   public errorMessage = '';
+  public customId = this.generateId();
+  public result = '';
   public adminForm!: FormGroup<{
     title: FormControl;
     description: FormControl;
@@ -31,7 +36,8 @@ export class AdminPageComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private loginService: LoginService,
-    private router: Router
+    private router: Router,
+    private store: Store
   ) {}
 
   ngOnInit(): void {
@@ -97,9 +103,53 @@ export class AdminPageComponent implements OnInit {
     if (this.adminForm.invalid) {
       this.errorMessage = 'please fill out the form';
     } else {
+      const customCards: Item = this.createCustomCard();
+      this.store.dispatch(createCustomCard({ customCards }));
       this.loginService.isAuthUser();
       this.loginService.login();
       this.router.navigate(['/youtube']);
     }
+  }
+
+  public generateId(): string {
+    const key = 'abcdef01234567890';
+    const lengthNumber = 8;
+    for (let i = 0; i < lengthNumber; i += 1) {
+      this.result += key[Math.floor(Math.random() * key.length)];
+    }
+    return this.result;
+  }
+
+  public createCustomCard(): Item {
+    return {
+      etag: 'CustomCard',
+      id: this.customId,
+      snippet: {
+        publishedAt: this.adminForm.value.date,
+        title: this.adminForm.value.title,
+        description: this.adminForm.value.description,
+        thumbnails: {
+          high: {
+            url: this.adminForm.value.link,
+            width: 480,
+            height: 360
+          },
+          default: {
+            url: this.adminForm.value.link,
+            width: 480,
+            height: 360
+          }
+        },
+        channelTitle: '',
+        tags: []
+      },
+      statistics: {
+        viewCount: '1',
+        likeCount: '0',
+        dislikeCount: '0',
+        favoriteCount: '0',
+        commentCount: '0'
+      }
+    };
   }
 }

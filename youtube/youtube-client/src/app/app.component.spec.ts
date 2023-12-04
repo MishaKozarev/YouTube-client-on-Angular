@@ -1,3 +1,24 @@
+<<<<<<< HEAD
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { AppComponent } from './app.component';
+
+describe('FavoritePageComponent', () => {
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [AppComponent]
+    });
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+=======
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
@@ -30,5 +51,6 @@ describe('AppComponent', () => {
     expect(compiled.querySelector('.content span')?.textContent).toContain(
       'youtube-client app is running!'
     );
+>>>>>>> main
   });
 });
