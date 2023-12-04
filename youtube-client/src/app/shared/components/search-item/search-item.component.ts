@@ -4,9 +4,12 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { deleteCustomCard } from '../../../store/actions/custom-card/custom-card.actions';
-import { addFavoriteCard } from '../../../store/actions/favorite-card/favorite-card.actions';
+import {
+  addFavoriteCard,
+  deleteFavoriteCard
+} from '../../../store/actions/favorite-card/favorite-card.actions';
 import { selectFavoriteCardItems } from '../../../store/selectors/favorite-card.selectors';
-import { Item } from '../../models/search-item.model';
+import { Item } from '../../../youtube/models/search-item.model';
 
 @Component({
   selector: 'app-search-item',
@@ -57,5 +60,13 @@ export class SearchItemComponent implements OnInit {
         id
       })
     );
+  }
+  public deleteCardOnFavoritePage(id: string): void {
+    this.store.dispatch(
+      deleteFavoriteCard({
+        id
+      })
+    );
+    this.router.navigate(['/youtube']);
   }
 }

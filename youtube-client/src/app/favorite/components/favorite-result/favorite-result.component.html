@@ -2,9 +2,9 @@
 <div
   *ngIf="favoriteItems$ | async as favoriteItems$"
   class="favorite__container">
-  <app-favorite-item
+  <app-search-item
     *ngFor="let item of favoriteItems$"
     [item]="item"
     class="favorite__item">
-  </app-favorite-item>
+  </app-search-item>
 </div>

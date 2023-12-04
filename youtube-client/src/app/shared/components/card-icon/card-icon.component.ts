@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { IconLinks } from '../../constants/icon-link';
-import { SearchCard } from '../../models/search-cards.model';
-import { Item } from '../../models/search-item.model';
+import { IconLinks } from '../../../youtube/constants/icon-link';
+import { SearchCard } from '../../../youtube/models/search-cards.model';
+import { Item } from '../../../youtube/models/search-item.model';
 
 @Component({
   selector: 'app-card-icon',

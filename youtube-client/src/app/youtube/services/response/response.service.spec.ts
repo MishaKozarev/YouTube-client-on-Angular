@@ -27,7 +27,7 @@ describe('ResponseService', () => {
     const maxItems = '20';
     const responseMock = {};
     const store = {
-      dispatch: jest.fn(),
+      dispatch: jest.fn()
     };
     const dispatchSpy = jest.spyOn(store, 'dispatch');
 
@@ -46,7 +46,8 @@ describe('ResponseService', () => {
         `${responseService.SEARCH_URL}`,
         {
           params: expect.anything()
-        });
+        }
+      );
     });
   });
 
