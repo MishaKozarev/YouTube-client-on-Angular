@@ -39,7 +39,7 @@ describe('Favorite Card Actions', () => {
   it('should create an action to add a favorite card', () => {
     const action = addFavoriteCard({ card: mockItem });
     expect({ ...action }).toEqual({
-      type: FavoriteCardActionTypes.ADD,
+      type: FavoriteCardActionTypes.ADD_FAVORITE_CARD,
       card: mockItem
     });
   });
@@ -47,7 +47,7 @@ describe('Favorite Card Actions', () => {
   it('should create an action to delete a favorite card', () => {
     const action = deleteFavoriteCard({ id: mockId });
     expect({ ...action }).toEqual({
-      type: FavoriteCardActionTypes.DELETE,
+      type: FavoriteCardActionTypes.DELETE_FAVORITE_CARD,
       id: mockId
     });
   });

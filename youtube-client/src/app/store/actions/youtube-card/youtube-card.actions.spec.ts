@@ -42,7 +42,7 @@ describe('Youtube Actions', () => {
       }
     };
     const action = youtubeAddCardAction({ youtubeCards: mockCard });
-    expect(action.type).toEqual(YoutubeCardActionTypes.ADD_CARD);
+    expect(action.type).toEqual(YoutubeCardActionTypes.ADD_YOUTUBE_CARD);
     expect(action.youtubeCards).toEqual(mockCard);
   });
 
@@ -80,13 +80,13 @@ describe('Youtube Actions', () => {
       }
     ];
     const action = youtubeAddCardsAction({ youtubeCards: mockCards });
-    expect(action.type).toEqual(YoutubeCardActionTypes.ADD_CARDS);
+    expect(action.type).toEqual(YoutubeCardActionTypes.ADD_YOUTUBE_CARDS);
     expect(action.youtubeCards).toEqual(mockCards);
   });
 
   it('should create youtubeClearCardsAction', () => {
     const action = youtubeClearCardsAction();
-    expect(action.type).toEqual(YoutubeCardActionTypes.CLEAR);
+    expect(action.type).toEqual(YoutubeCardActionTypes.CLEAR_YOUTUBE_CARDS);
   });
 
   it('should create youtubeSearchAction', () => {
@@ -96,7 +96,7 @@ describe('Youtube Actions', () => {
       query: mockQuery,
       queryLength: mockQueryLength
     });
-    expect(action.type).toEqual(YoutubeCardActionTypes.SEARCH_QUERY);
+    expect(action.type).toEqual(YoutubeCardActionTypes.SEARCH_QUERY_YOUTUBE_CARDS);
     expect(action.query).toEqual(mockQuery);
     expect(action.queryLength).toEqual(mockQueryLength);
   });
@@ -108,7 +108,7 @@ describe('Youtube Actions', () => {
       query: mockQuery,
       token: mockToken
     });
-    expect(action.type).toEqual(YoutubeCardActionTypes.SEARCH_ON_PAGE);
+    expect(action.type).toEqual(YoutubeCardActionTypes.SEARCH_ON_PAGE_YOUTUBE_CARDS);
     expect(action.query).toEqual(mockQuery);
     expect(action.token).toEqual(mockToken);
   });

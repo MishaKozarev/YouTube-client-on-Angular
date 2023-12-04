@@ -10,7 +10,7 @@ import {
 describe('Custom Actions', () => {
   it('should create a GET action', () => {
     const action = getCustomCard({ cardId: 'someCardId' });
-    expect(action.type).toBe(CustomCardActionTypes.GET);
+    expect(action.type).toBe(CustomCardActionTypes.GET_CUSTOM_CARD);
     expect(action.cardId).toBe('someCardId');
   });
 
@@ -46,13 +46,13 @@ describe('Custom Actions', () => {
       }
     };
     const action = createCustomCard({ customCards: mockItem });
-    expect(action.type).toBe(CustomCardActionTypes.CREATE);
+    expect(action.type).toBe(CustomCardActionTypes.CREATE_CUSTOM_CARD);
     expect(action.customCards).toBe(mockItem);
   });
 
   it('should create a DELETE action', () => {
     const action = deleteCustomCard({ id: 'someId' });
-    expect(action.type).toBe(CustomCardActionTypes.DELETE);
+    expect(action.type).toBe(CustomCardActionTypes.DELETE_CUSTOM_CARD);
     expect(action.id).toBe('someId');
   });
 });
