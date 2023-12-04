@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { Item, VideoItem } from './search-item.model';
 
 export default interface VideoItems {
@@ -16,16 +15,6 @@ export interface SearchResponse {
   regionCode: string;
   pageInfo: PageInfo;
   items: VideoItem[];
-=======
-import { Item } from './search-item.model';
-
-export interface SearchResponse {
-  TODO: string;
-  kind: string;
-  etag: string;
-  pageInfo: PageInfo;
-  items: Item[];
->>>>>>> main
 }
 interface PageInfo {
   totalResults: number;

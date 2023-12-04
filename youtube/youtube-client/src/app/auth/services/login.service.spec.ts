@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { LoginService } from './login.service';
 
 describe('LoginService', () => {
@@ -30,21 +29,5 @@ describe('LoginService', () => {
   it('should remove authToken from localStorage on logout', () => {
     loginService.logout();
     expect(localStorage.getItem('authToken')).toBeNull();
-=======
-import { TestBed } from '@angular/core/testing';
-
-import { LoginService } from './login.service';
-
-describe('LoginService', () => {
-  let service: LoginService;
-
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(LoginService);
-  });
-
-  it('should be created', () => {
-    expect(service).toBeTruthy();
->>>>>>> main
   });
 });

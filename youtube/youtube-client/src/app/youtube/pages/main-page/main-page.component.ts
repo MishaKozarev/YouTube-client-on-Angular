@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /* eslint-disable @ngrx/avoid-dispatching-multiple-actions-sequentially */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -15,16 +14,12 @@ import { selectPaginationInfo } from '../../../store/selectors/pagination.select
 import { selectYoutubeCardItems } from '../../../store/selectors/youtube-card.selectors';
 import { PaginationInfo } from '../../../store/state.model';
 import { Item } from '../../models/search-item.model';
-=======
-import { Component } from '@angular/core';
->>>>>>> main
 
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.scss']
 })
-<<<<<<< HEAD
 export class MainPageComponent implements OnInit {
   public youtubeCard$: Observable<Item[]> = this.store.select(
     selectYoutubeCardItems
@@ -81,6 +76,3 @@ export class MainPageComponent implements OnInit {
     }
   }
 }
-=======
-export class MainPageComponent {}
->>>>>>> main
