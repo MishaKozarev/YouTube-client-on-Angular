@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { combineLatest, map, Observable } from 'rxjs';
@@ -7,12 +6,6 @@ import { selectCustomCardsItems } from '../../../store/selectors/custom-card.sel
 import { selectYoutubeCardItems } from '../../../store/selectors/youtube-card.selectors';
 import { Item } from '../../models/search-item.model';
 import { ResponseService } from '../../services/response/response.service';
-=======
-import { Component } from '@angular/core';
-
-import { ResponseService } from '../../services/response/response.service';
-import { SearchFormService } from '../../services/search-form/search-form.service';
->>>>>>> main
 import { SortService } from '../../services/sort/sort.service';
 
 @Component({
@@ -20,7 +13,6 @@ import { SortService } from '../../services/sort/sort.service';
   templateUrl: './search-results.component.html',
   styleUrls: ['./search-results.component.scss']
 })
-<<<<<<< HEAD
 export class SearchResultsComponent implements OnInit {
   unitedVideoItems$: Observable<Item[]> | null = null;
 
@@ -42,14 +34,4 @@ export class SearchResultsComponent implements OnInit {
       })
     );
   }
-=======
-export class SearchResultsComponent {
-  public videos$ = this.searchFormService.videos$;
-
-  constructor(
-    public sortService: SortService,
-    private searchFormService: SearchFormService,
-    public responseService: ResponseService
-  ) {}
->>>>>>> main
 }
