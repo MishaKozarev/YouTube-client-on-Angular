@@ -17,6 +17,11 @@
           class="signin__error-message"
           >{{ errorMessage }}</span
         >
+        <span
+          *ngIf="email.errors && email.errors['email']"
+          class="signin__error-message"
+          >The email is invalid</span
+        >
       </div>
     </div>
 
@@ -35,6 +40,11 @@
           class="signin__error-message"
           >{{ errorMessage }}</span
         >
+        <span
+          *ngIf="password.errors && password.errors['validationPassword']"
+          class="signin__error-message"
+          >{{ password.errors['errorMessage'] }}</span
+        >
       </div>
     </div>
 
@@ -43,7 +53,9 @@
       <button (click)="routingToSignup()">Signup</button>
     </div>
     <button
-      class="{{ signinForm.invalid ? 'signin__btn-error' : 'signin__btn' }}">
+      [disabled]="signinForm.invalid || isSubmitForm || isNotFoundException"
+      class="signin__btn"
+      type="submit">
       SIGNIN
     </button>
   </form>
