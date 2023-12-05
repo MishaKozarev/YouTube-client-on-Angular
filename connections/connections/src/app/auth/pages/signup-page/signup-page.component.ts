@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserDataSignup } from 'src/app/connect/models/user-data';
-import { HttpService } from 'src/app/connect/services/http/http.service';
+import { HttpService } from 'src/app/auth/services/http/http.service';
 
 import { validationPassword } from '../../validators/password.validator';
 

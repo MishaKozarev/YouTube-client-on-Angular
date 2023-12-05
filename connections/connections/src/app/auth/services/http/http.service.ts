@@ -1,7 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { UserDataSignup } from '../../models/user-data';
+import { UserDataSignup } from '../../../connect/models/user-data';
 
+export interface SignupParams {
+  email: string;
+  name: string;
+  password: string;
+}
 
 @Injectable({
   providedIn: 'root'
