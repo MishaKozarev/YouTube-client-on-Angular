@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { UserDataSignup } from '../../../connect/models/user-data';
+import { URL_SIGNUP } from 'src/app/constant/http-signup';
+
+import { UserDataSignup } from '../../models/user-data';
 
 export interface SignupParams {
   email: string;
@@ -12,10 +14,10 @@ export interface SignupParams {
   providedIn: 'root'
 })
 export class HttpService {
-  private readonly URL: string = 'https://tasks.app.rs.school/angular/registration';
+  private readonly urlSignup: string = URL_SIGNUP;
   constructor(private http: HttpClient) {}
 
-  public registration(userData: UserDataSignup) {
-    return this.http.post(this.URL, userData);
+  public sendSignupRequest(userData: UserDataSignup) {
+    return this.http.post(this.urlSignup, userData);
   }
 }

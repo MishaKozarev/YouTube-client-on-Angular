@@ -23,6 +23,9 @@
           >The email is invalid</span
         >
       </div>
+      <span *ngIf="messageEmail" class="signup__error-message">{{
+        messageEmail
+      }}</span>
     </div>
 
     <div class="signup__field">
@@ -39,6 +42,11 @@
           *ngIf="name.errors && name.errors['required']"
           class="signup__error-message"
           >{{ errorMessage }}</span
+        >
+        <span
+          *ngIf="name.errors && name.errors['maxlength']"
+          class="signup__error-message"
+          >Maximum 40 characters allowed</span
         >
       </div>
     </div>
@@ -71,10 +79,12 @@
       <button (click)="routingToSignin()">Signin</button>
     </div>
 
-    <p>{{errorMessageSignup}}</p>
-
     <button
-      class="{{ password.invalid ? 'signup__btn-error' : 'signup__btn' }}">
+      [disabled]="
+        signupForm.invalid || isSubmitForm || isPrimaryDuplicationError
+      "
+      class="signup__btn"
+      type="submit">
       SIGNUP
     </button>
   </form>
