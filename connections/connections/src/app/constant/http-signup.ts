@@ -1,1 +1,1 @@
-export const URL_SIGNUP = 'https://tasks.app.rs.school/angular/registration';
+export const URL_SIGNUP = '/registration';
