@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 
 import { HeaderComponent } from './components/header/header.component';
@@ -15,7 +15,7 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
     ToastMessageComponent,
     ProfilePageComponent
   ],
-  imports: [CommonModule],
+  imports: [CommonModule, HttpClientModule],
   exports: [HeaderComponent, ToastMessageComponent],
   providers: [
     {
