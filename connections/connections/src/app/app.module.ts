@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthModule } from './auth/auth.module';
 import { ConnectModule } from './connect/connect.module';
 import { CoreModule } from './core/core.module';
-import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,8 +16,7 @@ import { StoreModule } from '@ngrx/store';
     CoreModule,
     AuthModule,
     ConnectModule,
-    SharedModule,
-    StoreModule.forRoot({}, {})
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
