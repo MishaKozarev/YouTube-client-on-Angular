@@ -6,9 +6,15 @@ import { HeaderComponent } from './components/header/header.component';
 import { ToastMessageComponent } from './components/toast-message/toast-message.component';
 import { HttpInterceptorService } from './interceptors/http-interceptor.interceptor';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
+import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 
 @NgModule({
-  declarations: [HeaderComponent, NotFoundPageComponent, ToastMessageComponent],
+  declarations: [
+    HeaderComponent,
+    NotFoundPageComponent,
+    ToastMessageComponent,
+    ProfilePageComponent
+  ],
   imports: [CommonModule],
   exports: [HeaderComponent, ToastMessageComponent],
   providers: [

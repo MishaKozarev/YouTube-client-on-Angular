@@ -1,0 +1,31 @@
+.profile {
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 700px;
+    min-height: 500px;
+    margin: 0 auto;
+    padding: 40px;
+    background: #F2F2F2;
+    border-radius: 10px;
+
+    &__title {
+        margin-bottom: 16px;
+        text-align: center;
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 0;
+
+        li {
+            list-style-type: none;
+        }
+    }
+}
