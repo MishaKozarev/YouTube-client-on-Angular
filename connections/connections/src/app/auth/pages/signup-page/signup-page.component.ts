@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { UserDataSignup } from 'src/app/auth/models/user-data';
 import { HttpService } from 'src/app/auth/services/http/http.service';
-import { ToastMessagesService } from 'src/app/core/services/toast-messages.service';
+import { ToastMessagesService } from 'src/app/core/services/toast-message/toast-messages.service';
 
 import { validationPassword } from '../../validators/password.validator';
 

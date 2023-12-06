@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 
-import { ToastMessagesService } from '../../services/toast-messages.service';
+import { ToastMessagesService } from '../../services/toast-message/toast-messages.service';
 
 @Component({
   selector: 'app-toast-message',
