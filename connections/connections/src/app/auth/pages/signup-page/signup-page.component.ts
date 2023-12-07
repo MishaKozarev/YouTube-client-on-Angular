@@ -9,7 +9,7 @@ import {
 import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { UserDataSignup } from 'src/app/auth/models/user-data';
-import { HttpService } from 'src/app/auth/services/http/http.service';
+import { AuthService } from 'src/app/auth/services/auth/auth.service';
 import { ToastMessagesService } from 'src/app/core/services/toast-message/toast-messages.service';
 
 import { validationPassword } from '../../validators/password.validator';
@@ -36,7 +36,7 @@ export class SignupPageComponent implements OnInit, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private route: Router,
-    private httpService: HttpService,
+    private authService: AuthService,
     private toastMessagesService: ToastMessagesService
   ) {}
 
@@ -70,7 +70,7 @@ export class SignupPageComponent implements OnInit, OnDestroy {
         name: this.signupForm.value.name,
         password: this.signupForm.value.password
       };
-      this.httpService
+      this.authService
         .sendSignupRequest(userData)
         .pipe(takeUntil(this.ngUnsubscribe$))
         .subscribe({

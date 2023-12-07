@@ -20,21 +20,21 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
     ToastMessageComponent,
     ProfilePageComponent
   ],
-  imports: [
-    CommonModule,
-    HttpClientModule,
-    StoreModule.forRoot({}, {}),
-    StoreModule.forFeature('profile', profileReducer),
-    EffectsModule.forRoot([ProfileEffects]),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
-  ],
-  exports: [HeaderComponent, ToastMessageComponent],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpInterceptorService,
       multi: true
     }
-  ]
+  ],
+  imports: [
+    CommonModule,
+    HttpClientModule,
+    StoreModule.forRoot(),
+    StoreModule.forFeature('profileState', profileReducer),
+    EffectsModule.forRoot([ProfileEffects]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
+  ],
+  exports: [HeaderComponent, ToastMessageComponent]
 })
 export class CoreModule {}

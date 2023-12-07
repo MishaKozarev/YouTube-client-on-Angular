@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { URL_PROFILE } from 'src/app/constant/http-profile';
 
-import { ProfileData } from '../../models/profile-data';
+import { UserProfile } from '../../models/profile-data';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class ProfileService {
   private readonly httpProfile = URL_PROFILE;
   constructor(private http: HttpClient) {}
 
-  public sendProfileRequest(): Observable<ProfileData> {
+  public sendProfileRequest(): Observable<UserProfile> {
     const token = localStorage.getItem('token') || '';
     const uid = localStorage.getItem('uid') || '';
     const email = localStorage.getItem('email') || '';
@@ -21,6 +21,6 @@ export class ProfileService {
       'rs-email': email,
       Authorization: `Bearer ${token}`
     };
-    return this.http.get<ProfileData>(this.httpProfile, { headers });
+    return this.http.get<UserProfile>(this.httpProfile, { headers });
   }
 }

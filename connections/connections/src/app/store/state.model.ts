@@ -1,14 +1,18 @@
-import { ProfileData } from '../core/models/profile-data';
+import { UserProfile, UserProfileError } from '../core/models/profile-data';
 
 export interface ProfileState {
-  data: ProfileData | null;
+  dataUserprofile: UserProfile | null;
+  loading: boolean;
+  error: UserProfileError | null;
 }
 
-export const initialProfileState: ProfileState = {
-  data: {
-    email: { S: 'string' },
-    name: { S: 'string' },
-    uid: { S: 'string' },
-    createdAt: { S: 'string' }
-  }
+export const initialStateProfile: ProfileState = {
+  dataUserprofile: {
+    email: { S: '' },
+    name: { S: '' },
+    uid: { S: '' },
+    createdAt: { S: '' }
+  },
+  loading: false,
+  error: null
 };

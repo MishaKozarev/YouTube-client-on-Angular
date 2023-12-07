@@ -11,7 +11,7 @@ import { Subject, takeUntil } from 'rxjs';
 import { ToastMessagesService } from 'src/app/core/services/toast-message/toast-messages.service';
 
 import { UserDataSignin, UserResponseSignin } from '../../models/user-data';
-import { HttpService } from '../../services/http/http.service';
+import { AuthService } from '../../services/auth/auth.service';
 import { validationPassword } from '../../validators/password.validator';
 
 @Component({
@@ -33,7 +33,7 @@ export class SigninPageComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private route: Router,
-    private httpService: HttpService,
+    private authService: AuthService,
     private toastMessagesService: ToastMessagesService
   ) {}
   ngOnInit(): void {
@@ -59,7 +59,7 @@ export class SigninPageComponent implements OnInit {
         email: this.signinForm.value.email,
         password: this.signinForm.value.password
       };
-      this.httpService
+      this.authService
         .sendSigninRequest(userData)
         .pipe(takeUntil(this.ngUnsubscribe$))
         .subscribe({

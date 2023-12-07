@@ -14,7 +14,7 @@ export interface SignupParams {
 @Injectable({
   providedIn: 'root'
 })
-export class HttpService {
+export class AuthService {
   private readonly urlSignup: string = URL_SIGNUP;
   private readonly urlSignin: string = URL_SIGNIN;
   constructor(private http: HttpClient) {}

@@ -1,6 +1,11 @@
-export interface ProfileData {
-  email: { S: 'string' };
-  name: { S: 'string' };
-  uid: { S: 'string' };
-  createdAt: { S: 'string' };
+export interface UserProfile {
+  email: { S: string };
+  name: { S: string };
+  uid: { S: string };
+  createdAt: { S: string };
+}
+
+export interface UserProfileError {
+  type: string;
+  message: string;
 }

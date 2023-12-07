@@ -1,25 +1,40 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { map, switchMap } from 'rxjs';
+import { catchError, map, of, switchMap } from 'rxjs';
 import { ProfileService } from 'src/app/core/services/profile/profile.service';
+import { ToastMessagesService } from 'src/app/core/services/toast-message/toast-messages.service';
 
-import { getProfileSuccess } from '../actions/profile.actions';
+import {
+  getProfileAction,
+  getProfileFailedAction,
+  getProfileSuccessfulAction
+} from '../actions/profile.actions';
 
 @Injectable()
 export class ProfileEffects {
   constructor(
     private actions$: Actions,
-    private profileService: ProfileService
+    private profileService: ProfileService,
+    private toastMessagesService: ToastMessagesService
   ) {}
 
-  getProfile$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(getProfileSuccess),
+  getProfileEffect$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(getProfileAction),
       switchMap(() =>
-        this.profileService.sendProfileRequest()
-        .pipe(
-          map(profile => getProfileSuccess({profile}))
-        ))
-    )
-  )
+        this.profileService.sendProfileRequest().pipe(
+          map((profile) =>
+            getProfileSuccessfulAction({
+              profile
+            })
+          ),
+          catchError((error) => {
+            const { message } = error.error;
+            this.toastMessagesService.showToastMessage(message, false);
+            return of(getProfileFailedAction({ error }));
+          })
+        )
+      )
+    );
+  });
 }
