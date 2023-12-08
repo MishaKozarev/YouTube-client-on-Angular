@@ -9,3 +9,7 @@ export interface UserProfileError {
   type: string;
   message: string;
 }
+
+export interface UserProfileName {
+  name: string;
+}

@@ -7,13 +7,24 @@ import {
 import { ProfileActionTypes } from '../action-type/profile-action-type';
 
 export const getProfileAction = createAction(ProfileActionTypes.GET_PROFILE);
-
 export const getProfileSuccessfulAction = createAction(
   ProfileActionTypes.GET_PROFILE_SUCCESSFUL,
   props<{ profile: UserProfile }>()
 );
-
 export const getProfileFailedAction = createAction(
   ProfileActionTypes.GET_PROFILE_FAILED,
+  props<{ error: UserProfileError }>()
+);
+
+export const updatedProfileNameAction = createAction(
+  ProfileActionTypes.UPDATE_PROFILE_NAME,
+  props<{ name: string }>()
+);
+export const updateProfileNameActionSuccess = createAction(
+  ProfileActionTypes.UPDATE_PROFILE_NAME_SUCCESSFUL,
+  props<{ name: string }>()
+);
+export const updateProfileNameActionFailed = createAction(
+  ProfileActionTypes.UPDATE_PROFILE_NAME_FAILED,
   props<{ error: UserProfileError }>()
 );

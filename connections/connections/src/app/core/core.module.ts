@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { isDevMode, NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -30,6 +31,7 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
   imports: [
     CommonModule,
     HttpClientModule,
+    ReactiveFormsModule,
     StoreModule.forRoot(),
     StoreModule.forFeature('profileState', profileReducer),
     EffectsModule.forRoot([ProfileEffects]),

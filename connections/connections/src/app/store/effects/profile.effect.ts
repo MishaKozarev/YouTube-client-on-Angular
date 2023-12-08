@@ -1,14 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { select, Store } from '@ngrx/store';
-import { catchError, filter, map, mergeMap, of, switchMap, withLatestFrom } from 'rxjs';
+import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
+import { Store } from '@ngrx/store';
+import { catchError, map, mergeMap, of, switchMap } from 'rxjs';
 import { ProfileService } from 'src/app/core/services/profile/profile.service';
 import { ToastMessagesService } from 'src/app/core/services/toast-message/toast-messages.service';
 
 import {
   getProfileAction,
   getProfileFailedAction,
-  getProfileSuccessfulAction
+  getProfileSuccessfulAction,
+  updatedProfileNameAction,
+  updateProfileNameActionFailed,
+  updateProfileNameActionSuccess
 } from '../actions/profile.actions';
 import { selectProfile } from '../selectors/profile.selectors';
 
@@ -24,8 +27,8 @@ export class ProfileEffects {
   getProfileEffect$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(getProfileAction),
-      withLatestFrom(this.store.pipe(select(selectProfile))),
-      switchMap(() =>
+      concatLatestFrom(() => this.store.select(selectProfile)),
+      mergeMap(() =>
         this.profileService.sendProfileRequest().pipe(
           map((profile) =>
             getProfileSuccessfulAction({
@@ -35,12 +38,10 @@ export class ProfileEffects {
           catchError((error) => {
             let message = error.statusText;
             if (error.status === 0) {
-              message = 'No internet connection'
+              message = 'No internet connection';
             } else {
               message = error.error.message;
             }
-
-            console.log(error);
             this.toastMessagesService.showToastMessage(message, false);
             return of(getProfileFailedAction({ error }));
           })
@@ -48,4 +49,36 @@ export class ProfileEffects {
       )
     );
   });
+
+  updateProfileEffect$ = createEffect(
+    () => {
+      return this.actions$.pipe(
+        ofType(updatedProfileNameAction),
+        switchMap((action) =>
+          this.profileService
+            .sendChangeProfileNameRequest({ name: action.name })
+            .pipe(
+              map(() => {
+                const message = 'Name updated successful';
+                this.toastMessagesService.showToastMessage(message, true);
+                return updateProfileNameActionSuccess({
+                  name: action.name
+                });
+              }),
+              catchError((error) => {
+                let message = error.statusText;
+                if (error.status === 0) {
+                  message = 'No internet connection';
+                } else {
+                  message = error.error.message;
+                }
+                this.toastMessagesService.showToastMessage(message, false);
+                return of(updateProfileNameActionFailed({ error }));
+              })
+            )
+        )
+      );
+    },
+    { dispatch: false }
+  );
 }

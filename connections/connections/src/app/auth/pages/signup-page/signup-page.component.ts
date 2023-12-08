@@ -92,7 +92,6 @@ export class SignupPageComponent implements OnInit, OnDestroy {
     this.isSubmitForm = false;
     this.isPrimaryDuplicationError = true;
     this.arrayEmailValues.push(this.submitEmailValue);
-    this.messageEmail = 'user with this email already exists';
     this.toastMessagesService.showToastMessage(err.error.message, false);
   }
 
