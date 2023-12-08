@@ -20,12 +20,12 @@
     .header__link {
         list-style-type: none;
 
-        a {
+        .header__btn {
             font-weight: 700;
-            text-decoration: none;
-            list-style-type: none;
             cursor: pointer;
             color: black;
+            border: none;
+            background: inherit;
         }
     }
 }

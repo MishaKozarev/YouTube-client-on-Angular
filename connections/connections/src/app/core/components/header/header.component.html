@@ -1,22 +1,24 @@
 <div class="header__container">
-  <ul class="header__row">
+  <div class="header__row">
     <li class="header__link">
-      <a routerLink="/signup">Signup</a>
+      <button (click)="routingToSignUp()" class="header__btn">Signup</button>
     </li>
     <li class="header__link">
-      <a routerLink="/signin">Signin</a>
+      <button (click)="routingToSignIn()" class="header__btn">Signin</button>
     </li>
     <li class="header__link">
-      <a routerLink="/main">Main</a>
+      <button (click)="routingToMain()" class="header__btn">Main</button>
     </li>
     <li class="header__link">
-      <a routerLink="/profile">Profile</a>
+      <button (click)="routingToProfile()" class="header__btn">Profile</button>
     </li>
     <li class="header__link">
-      <a routerLink="/group">Group</a>
+      <button (click)="routingToGroup()" class="header__btn">Group</button>
     </li>
     <li class="header__link">
-      <a routerLink="/conversation">Conversation</a>
+      <button (click)="routingToConversation()" class="header__btn">
+        Conversation
+      </button>
     </li>
-  </ul>
+  </div>
 </div>
