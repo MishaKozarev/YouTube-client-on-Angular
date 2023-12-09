@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { catchError, map, mergeMap, of, switchMap } from 'rxjs';
+import { catchError, map, of, switchMap } from 'rxjs';
 import { ProfileService } from 'src/app/core/services/profile/profile.service';
 import { ToastMessagesService } from 'src/app/core/services/toast-message/toast-messages.service';
 
@@ -9,6 +9,9 @@ import {
   getProfileAction,
   getProfileFailedAction,
   getProfileSuccessfulAction,
+  logoutProfileAction,
+  logoutProfileActionFailed,
+  logoutProfileActionSuccess,
   updatedProfileNameAction,
   updateProfileNameActionFailed,
   updateProfileNameActionSuccess
@@ -28,7 +31,7 @@ export class ProfileEffects {
     return this.actions$.pipe(
       ofType(getProfileAction),
       concatLatestFrom(() => this.store.select(selectProfile)),
-      mergeMap(() =>
+      switchMap(() =>
         this.profileService.sendProfileRequest().pipe(
           map((profile) =>
             getProfileSuccessfulAction({
@@ -50,35 +53,57 @@ export class ProfileEffects {
     );
   });
 
-  updateProfileEffect$ = createEffect(
-    () => {
-      return this.actions$.pipe(
-        ofType(updatedProfileNameAction),
-        switchMap((action) =>
-          this.profileService
-            .sendChangeProfileNameRequest({ name: action.name })
-            .pipe(
-              map(() => {
-                const message = 'Name updated successful';
-                this.toastMessagesService.showToastMessage(message, true);
-                return updateProfileNameActionSuccess({
-                  name: action.name
-                });
-              }),
-              catchError((error) => {
-                let message = error.statusText;
-                if (error.status === 0) {
-                  message = 'No internet connection';
-                } else {
-                  message = error.error.message;
-                }
-                this.toastMessagesService.showToastMessage(message, false);
-                return of(updateProfileNameActionFailed({ error }));
-              })
-            )
+  updateProfileEffect$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(updatedProfileNameAction),
+      switchMap((action) =>
+        this.profileService
+          .sendChangeProfileNameRequest({ name: action.name })
+          .pipe(
+            map(() => {
+              const message = 'Name updated successful';
+              this.toastMessagesService.showToastMessage(message, true);
+              return updateProfileNameActionSuccess({
+                name: action.name
+              });
+            }),
+            catchError((error) => {
+              let message = error.statusText;
+              if (error.status === 0) {
+                message = 'No internet connection';
+              } else {
+                message = error.error.message;
+              }
+              this.toastMessagesService.showToastMessage(message, false);
+              return of(updateProfileNameActionFailed({ error }));
+            })
+          )
+      )
+    );
+  });
+
+  logoutProfileEffect$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(logoutProfileAction),
+      switchMap(() =>
+        this.profileService.sendDeleteProfileRequest().pipe(
+          map(() => {
+            const message = 'You have successful logout';
+            this.toastMessagesService.showToastMessage(message, true);
+            return logoutProfileActionSuccess();
+          }),
+          catchError((error) => {
+            let message = error.statusText;
+            if (error.status === 0) {
+              message = 'No internet connection';
+            } else {
+              message = error.error.message;
+            }
+            this.toastMessagesService.showToastMessage(message, false);
+            return of(logoutProfileActionFailed({ error }));
+          })
         )
-      );
-    },
-    { dispatch: false }
-  );
+      )
+    );
+  });
 }

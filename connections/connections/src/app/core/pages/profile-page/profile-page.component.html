@@ -1,5 +1,10 @@
 <div class="profile" *ngIf="profile$ | async as profile">
-  <h2 class="profile__title">User Profile</h2>
+  <div class="profile__header">
+    <h2 class="profile__title">User Profile</h2>
+    <button (click)="logout()" type="button" class="profile__btn_logout">
+      <div class="profile__btn_logout-img"></div>
+    </button>
+  </div>
   <div class="profile__content">
     <form [formGroup]="editNameForm" (ngSubmit)="onFormSubmit()">
       <ul class="profile__list">

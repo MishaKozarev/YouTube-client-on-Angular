@@ -14,6 +14,24 @@
     background: #F2F2F2;
     border-radius: 10px;
 
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .profile__btn_logout {
+            cursor: pointer;
+            border: none;
+
+            .profile__btn_logout-img {
+                background-image: url('../../../../assets/icons-logout-profile.png');
+                background-size: 30px 30px;
+                width: 30px;
+                height: 30px;
+            }
+        }
+    }
+
     &__title {
         margin-bottom: 16px;
         text-align: center;
@@ -33,7 +51,9 @@
         }
     }
 
-    .profile__input-wrapper {
+
+
+    &__input-wrapper {
         padding: 20px;
         border: 1px solid rgb(0, 0, 0, .2);
         border-radius: 15px;
@@ -49,7 +69,7 @@
             height: 37px;
             margin-bottom: 5px;
         }
-    
+
         .profile__label {
             margin-left: 10px;
             color: $font-grey;
@@ -58,8 +78,8 @@
         }
     }
 
-    
-    .profile__btn-wrapper {
+
+    &__btn-wrapper {
         display: flex;
 
         .profile__btn {
@@ -86,6 +106,7 @@
             background-color: $font-grey;
             box-shadow: 5px 0px 3px $font-grey;
         }
+
     }
 }
 

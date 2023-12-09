@@ -5,10 +5,12 @@ import {
   FormGroup,
   Validators
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import {
   getProfileAction,
+  logoutProfileAction,
   updatedProfileNameAction
 } from 'src/app/store/actions/profile.actions';
 import { selectProfile } from 'src/app/store/selectors/profile.selectors';
@@ -27,7 +29,8 @@ export class ProfilePageComponent implements OnInit {
 
   constructor(
     private store: Store,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private route: Router
   ) {}
   ngOnInit(): void {
     this.profile$ = this.store.select(selectProfile);
@@ -41,7 +44,8 @@ export class ProfilePageComponent implements OnInit {
     return this.editNameForm.get('name') as FormControl;
   }
 
-  public onClickEdit() {
+  public onClickEdit(): void {
+    this.isEditName = true;
     this.profile$?.subscribe((profile) => {
       if (profile) {
         this.editNameForm?.setValue({
@@ -49,22 +53,26 @@ export class ProfilePageComponent implements OnInit {
         });
       }
     });
-    this.isEditName = true;
   }
 
-  public onClickCancel() {
+  public onClickCancel(): void {
     this.isEditName = false;
     this.editNameForm.reset();
   }
 
-  public onFormSubmit() {
+  public onFormSubmit(): void {
     if (this.editNameForm.status === 'VALID') {
       this.isEditName = false;
       const updatedProfileName: UserProfileName = {
         name: this.editNameForm.value.name
       };
       this.store.dispatch(updatedProfileNameAction(updatedProfileName));
-      this.isEditName = false;
     }
+  }
+
+  public logout(): void {
+    this.store.dispatch(logoutProfileAction());
+    localStorage.clear();
+    this.route.navigate(['/signin']);
   }
 }
