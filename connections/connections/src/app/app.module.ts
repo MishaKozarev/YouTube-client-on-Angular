@@ -14,8 +14,8 @@ import { CoreModule } from './core/core.module';
     BrowserModule,
     AppRoutingModule,
     CoreModule,
-    AuthModule,
     ConnectModule,
+    AuthModule,
     SharedModule
   ],
   providers: [],
