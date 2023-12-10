@@ -1,18 +1,7 @@
-import { UserProfile, UserProfileError } from '../core/models/profile-data';
+import { GroupState } from './models/group.models';
+import { ProfileState } from './models/profile.models';
 
-export interface ProfileState {
-  dataUserprofile: UserProfile | null;
-  loading: boolean;
-  error: UserProfileError | null;
+export interface AppState {
+  profile: ProfileState;
+  group: GroupState;
 }
-
-export const initialStateProfile: ProfileState = {
-  dataUserprofile: {
-    email: { S: '' },
-    name: { S: '' },
-    uid: { S: '' },
-    createdAt: { S: '' }
-  },
-  loading: false,
-  error: null
-};

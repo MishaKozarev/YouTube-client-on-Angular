@@ -13,3 +13,8 @@ export interface UserProfileError {
 export interface UserProfileName {
   name: string;
 }
+export interface ProfileState {
+  dataUserprofile: UserProfile | null;
+  loading: boolean;
+  error: UserProfileError | null;
+}

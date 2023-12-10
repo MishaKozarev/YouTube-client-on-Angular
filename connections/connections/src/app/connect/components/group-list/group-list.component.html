@@ -1,12 +1,11 @@
 <div class="group">
-    <h2 class="group__title">Groups</h2>
-    <div class="group__header"></div>
-    <div class="group__main">
-        <ul class="group__list">
-            <li class="group__item">
-                <a class="group__link">Group_1</a>
-                <button class="group__link-btn">Delete</button>
-            </li>
-        </ul>
-    </div>
+  <h2 class="group__title">Groups</h2>
+  <div class="group__header"></div>
+  <div class="group__main">
+    <ul *ngIf="groupList$ | async as groupList" class="group__list">
+      <li *ngFor="let item of groupList" class="group__item">
+        <a class="group__link">{{ item.name.S }}</a>
+      </li>
+    </ul>
+  </div>
 </div>

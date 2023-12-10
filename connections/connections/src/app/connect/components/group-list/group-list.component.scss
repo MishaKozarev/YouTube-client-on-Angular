@@ -2,8 +2,8 @@
 
 .group {
     width: 90%;
-    height: 500px;
-    margin: 20px auto;
+    height: 730px;
+    margin: 20px;
     background-color: $form-background;
     border-radius: 15px;
     padding: 20px;
@@ -25,10 +25,14 @@
         height: 80%;
         border: 1px solid rgb(0, 0, 0, .2);
         border-radius: 15px;
+        overflow: auto
     }
 
     &__list {
         padding: 0 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
     }
 
     &__item {
@@ -38,11 +42,6 @@
         border: 1px solid rgb(0, 0, 0, .2);
         border-radius: 15px;
         padding: 10px;
-
-        .group__link-btn {
-            cursor: pointer;
-            border-radius: 5px;
-        }
     }
 
 }

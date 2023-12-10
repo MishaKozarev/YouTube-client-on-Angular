@@ -2,8 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { URL_LOGOUT, URL_PROFILE } from 'src/app/constant/http-profile';
-
-import { UserProfile, UserProfileName } from '../../models/profile-data';
+import {
+  UserProfile,
+  UserProfileName
+} from 'src/app/store/models/profile.models';
 
 @Injectable({
   providedIn: 'root'

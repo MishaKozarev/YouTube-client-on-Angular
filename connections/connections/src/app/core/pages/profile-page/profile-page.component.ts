@@ -13,9 +13,11 @@ import {
   logoutProfileAction,
   updatedProfileNameAction
 } from 'src/app/store/actions/profile.actions';
+import {
+  UserProfile,
+  UserProfileName
+} from 'src/app/store/models/profile.models';
 import { selectProfile } from 'src/app/store/selectors/profile.selectors';
-
-import { UserProfile, UserProfileName } from '../../models/profile-data';
 
 @Component({
   selector: 'app-profile-page',

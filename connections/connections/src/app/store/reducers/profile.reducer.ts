@@ -8,8 +8,18 @@ import {
   logoutProfileActionSuccess,
   updateProfileNameActionSuccess
 } from '../actions/profile.actions';
-import { initialStateProfile, ProfileState } from '../state.model';
+import { ProfileState } from '../models/profile.models';
 
+export const initialStateProfile: ProfileState = {
+  dataUserprofile: {
+    email: { S: '' },
+    name: { S: '' },
+    uid: { S: '' },
+    createdAt: { S: '' }
+  },
+  loading: false,
+  error: null
+};
 export const profileReducer = createReducer(
   initialStateProfile,
   on(getProfileAction, (state): ProfileState => ({ ...state, loading: true })),
