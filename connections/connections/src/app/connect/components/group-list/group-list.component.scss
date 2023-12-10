@@ -13,19 +13,57 @@
 
     &__title {
         text-align: center;
+        color: $black;
+        font-size: 1.125rem;
+        font-weight: 700;
+        margin: 0 0 20px 0;
     }
 
     &__header {
-        height: 20%;
         border: 1px solid rgb(0, 0, 0, .2);
         border-radius: 15px;
+        padding: 20px;
+
     }
+
+    &__box-create {
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid rgb(0, 0, 0, .2);
+        font-size: 1rem;
+        font-weight: 500;
+        margin: 0 0 10px 0;
+    }
+
+    &__form {
+        border: 1px solid rgb(0, 0, 0, .2);
+        border-radius: 15px;
+        padding: 20px;
+    }
+
+    &__label {
+        margin-left: 10px;
+        color: $font-grey;
+        font-size: 1rem;
+        margin-bottom: 2px;
+    }
+
+    &__input {
+        box-sizing: border-box;
+        padding: 0 10px;
+        border: none;
+        border-radius: 10px;
+        background-color: $input-background;
+        width: 50%;
+        height: 30px;
+    }
+
 
     &__main {
         height: 80%;
         border: 1px solid rgb(0, 0, 0, .2);
         border-radius: 15px;
-        overflow: auto
+        overflow: auto;
     }
 
     &__list {
@@ -42,6 +80,54 @@
         border: 1px solid rgb(0, 0, 0, .2);
         border-radius: 15px;
         padding: 10px;
+    }
+
+    &__btn {
+        cursor: pointer;
+        border-radius: 5px;
+        align-self: flex-end;
+        border: none;
+        color: $white-color;
+        background-color: $blue-color;
+        width: 50px;
+        height: 27px;
+        box-shadow: 5px 0px 3px $blue-color;
+        transition: .5s;
+        font-size: .75rem;
+        font-weight: 400;
+        margin: 0 0 0 15px;
+
+        &:hover {
+            background-color: $blue-color-hover;
+            box-shadow: 5px 0px 3px $blue-color-hover;
+        }
+
+        }
+
+        &__btn:disabled {
+            background-color: $font-grey;
+            box-shadow: 5px 0px 3px $font-grey;
+
+        }
+    &__btn_add {
+        border: none;
+        background: inherit;
+        cursor: pointer;
+    }
+    &__btn-add-img {
+        background-image: url('../../../../assets/icon-add-group.png');
+        background-size: 30px 30px;
+        width: 30px;
+        height: 30px;
+    }
+
+    &____error-container {
+        display: flex;
+    }
+    &__error-message {
+        color: $red;
+        margin-left: 10px;
+        font-size: 0.8rem;
     }
 
 }
