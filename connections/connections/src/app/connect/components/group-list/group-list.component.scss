@@ -26,13 +26,14 @@
 
     }
 
-    &__box-create {
+    &__box-create,
+    &__box-update {
         display: flex;
         align-items: center;
         border-bottom: 1px solid rgb(0, 0, 0, .2);
         font-size: 1rem;
         font-weight: 500;
-        margin: 0 0 10px 0;
+        margin: 0 0 20px 0;
     }
 
     &__form {
@@ -110,7 +111,8 @@
 
         }
     &__btn_add,
-    &__btn_delete {
+    &__btn_delete,
+    &__btn_update {
         border: none;
         background: inherit;
         cursor: pointer;
@@ -127,6 +129,13 @@
         background-size: 20px 20px;
         width: 20px;
         height: 20px;
+    }
+
+    &__btn-update-img {
+        background-image: url('../../../../assets/icon-group-update.png');
+        background-size: 30px 30px;
+        width: 30px;
+        height: 30px;
     }
 
     &____error-container {
