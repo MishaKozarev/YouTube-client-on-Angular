@@ -7,8 +7,11 @@ import {
 } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { getGroupAction } from 'src/app/store/actions/group.action';
-import { GroupItem } from 'src/app/store/models/group.models';
+import {
+  createGroupAction,
+  getGroupAction
+} from 'src/app/store/actions/group.action';
+import { CustomGroup, GroupItem } from 'src/app/store/models/group.models';
 import { selectGroup } from 'src/app/store/selectors/group.selectors';
 
 @Component({
@@ -17,10 +20,11 @@ import { selectGroup } from 'src/app/store/selectors/group.selectors';
   styleUrls: ['./group-list.component.scss']
 })
 export class GroupListComponent implements OnInit {
-  public groupList$: Observable<GroupItem[]> | undefined;
+  public groupList$: Observable<GroupItem[] | null> | undefined;
   public groupNameForm!: FormGroup<{ nameGroup: FormControl }>;
   public isShowForm = false;
   public errorMessage = 'Please enter a details';
+  public uidLocalStorage!: string;
 
   constructor(
     private store: Store,
@@ -30,11 +34,14 @@ export class GroupListComponent implements OnInit {
     this.groupList$ = this.store.select(selectGroup);
     this.store.dispatch(getGroupAction());
     this.groupNameForm = this.fb.group({
-      nameGroup: ['',
-      [
-        Validators.required,
-        Validators.maxLength(30),
-        Validators.pattern(/^[a-zA-Z0-9 ]*$/),]]
+      nameGroup: [
+        '',
+        [
+          Validators.required,
+          Validators.maxLength(30),
+          Validators.pattern(/^[a-zA-Z0-9 ]*$/)
+        ]
+      ]
     });
   }
 
@@ -49,5 +56,23 @@ export class GroupListComponent implements OnInit {
   public hideForm(): void {
     this.isShowForm = false;
     this.groupNameForm.reset();
+  }
+
+  public getUidLocalStorage() {
+    const uid = localStorage.getItem('uid');
+    if (uid) {
+      this.uidLocalStorage = JSON.parse(uid);
+    }
+  }
+
+  public createGroup(): void {
+    if (this.groupNameForm.status === 'VALID') {
+      const newCustomGroup: CustomGroup = {
+        name: this.groupNameForm.value.nameGroup,
+        createdAt: new Date().toISOString(),
+        createdBy: this.uidLocalStorage
+      };
+      this.store.dispatch(createGroupAction(newCustomGroup));
+    }
   }
 }

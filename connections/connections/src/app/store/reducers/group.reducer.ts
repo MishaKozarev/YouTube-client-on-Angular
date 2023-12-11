@@ -1,6 +1,9 @@
 import { createReducer, on } from '@ngrx/store';
 
 import {
+  createGroupAction,
+  createGroupFailedAction,
+  createGroupSuccessfulAction,
   getGroupAction,
   getGroupFailedAction,
   getGroupSuccessfulAction
@@ -26,6 +29,24 @@ export const groupReducer = createReducer(
   ),
   on(
     getGroupFailedAction,
+    (state, { error }): GroupState => ({
+      ...state,
+      error,
+      loading: false
+    })
+  ),
+  on(createGroupAction, (state): GroupState => ({ ...state, loading: true })),
+  on(
+    createGroupSuccessfulAction,
+    (state, action): GroupState => ({
+      ...state,
+      groups: [...state.groups, action],
+      loading: false,
+      error: null
+    })
+  ),
+  on(
+    createGroupFailedAction,
     (state, { error }): GroupState => ({
       ...state,
       error,

@@ -12,3 +12,25 @@ export const getGroupFailedAction = createAction(
   GroupActionTypes.GET_GROUP_FAILED,
   props<{ error: ErrorFailed }>()
 );
+
+export const createGroupAction = createAction(
+  GroupActionTypes.CREATE_GROUP,
+  props<{
+    name: string;
+    createdAt: string;
+    createdBy: string;
+  }>()
+);
+export const createGroupSuccessfulAction = createAction(
+  GroupActionTypes.CREATE_GROUP_SUCCESSFUL,
+  props<{
+    id: { S: string };
+    name: { S: string };
+    createdAt: { S: string };
+    createdBy: { S: string };
+  }>()
+);
+export const createGroupFailedAction = createAction(
+  GroupActionTypes.CREATE_GROUP_FAILED,
+  props<{ error: ErrorFailed }>()
+);
