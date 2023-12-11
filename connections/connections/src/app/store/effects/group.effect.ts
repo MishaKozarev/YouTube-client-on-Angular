@@ -66,7 +66,7 @@ export class GroupEffect {
               }
             };
             this.toastMessagesService.showToastMessage(
-              'The group was successfully created',
+              'The group was successful created',
               true
             );
             return createGroupSuccessfulAction(newGroup);
@@ -93,7 +93,7 @@ export class GroupEffect {
         this.groupService.sendDeleteGroupRequest(groupId).pipe(
           map(() => {
             this.toastMessagesService.showToastMessage(
-              'The group was successfully delete',
+              'The group was successful delete',
               true
             );
             return deleteGroupSuccessfulAction(groupId);

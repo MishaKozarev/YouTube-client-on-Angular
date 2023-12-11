@@ -62,15 +62,17 @@ export const groupReducer = createReducer(
   ),
 
   on(deleteGroupAction, (state): GroupState => ({ ...state, loading: true })),
-  on(
-    deleteGroupSuccessfulAction,
-    (state, groupId): GroupState => ({
+  on(deleteGroupSuccessfulAction, (state, groupId): GroupState => {
+    const updatedListGroup = state.groups?.filter(
+      (group) => group.id.S !== groupId.groupID
+    );
+    return {
       ...state,
-      groupId,
+      groups: updatedListGroup,
       error: null,
       loading: false
-    })
-  ),
+    };
+  }),
   on(
     deleteGroupFailedAction,
     (state, { error }): GroupState => ({
