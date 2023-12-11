@@ -109,16 +109,24 @@
             box-shadow: 5px 0px 3px $font-grey;
 
         }
-    &__btn_add {
+    &__btn_add,
+    &__btn_delete {
         border: none;
         background: inherit;
         cursor: pointer;
+        font-weight: 700;
     }
     &__btn-add-img {
         background-image: url('../../../../assets/icon-add-group.png');
         background-size: 30px 30px;
         width: 30px;
         height: 30px;
+    }
+    &__btn-delete-img {
+        background-image: url('../../../../assets/icons-group-delete.png');
+        background-size: 20px 20px;
+        width: 20px;
+        height: 20px;
     }
 
     &____error-container {

@@ -4,6 +4,9 @@ import {
   createGroupAction,
   createGroupFailedAction,
   createGroupSuccessfulAction,
+  deleteGroupAction,
+  deleteGroupFailedAction,
+  deleteGroupSuccessfulAction,
   getGroupAction,
   getGroupFailedAction,
   getGroupSuccessfulAction
@@ -13,7 +16,11 @@ import { GroupState } from '../models/group.models';
 export const initialStateGroup: GroupState = {
   groups: [],
   loading: false,
-  error: null
+  error: null,
+  groupId: {
+    groupID: '',
+    type: ''
+  }
 };
 
 export const groupReducer = createReducer(
@@ -47,6 +54,25 @@ export const groupReducer = createReducer(
   ),
   on(
     createGroupFailedAction,
+    (state, { error }): GroupState => ({
+      ...state,
+      error,
+      loading: false
+    })
+  ),
+
+  on(deleteGroupAction, (state): GroupState => ({ ...state, loading: true })),
+  on(
+    deleteGroupSuccessfulAction,
+    (state, groupId): GroupState => ({
+      ...state,
+      groupId,
+      error: null,
+      loading: false
+    })
+  ),
+  on(
+    deleteGroupFailedAction,
     (state, { error }): GroupState => ({
       ...state,
       error,

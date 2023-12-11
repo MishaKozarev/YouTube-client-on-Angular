@@ -49,6 +49,13 @@
     <ul *ngIf="groupList$ | async as groupList" class="group__list">
       <li *ngFor="let item of groupList" class="group__item">
         <a class="group__link">{{ item.name.S }}</a>
+        <button
+          class="group__btn_delete"
+          type="button"
+          *ngIf="item.createdBy.S === currentUid"
+          (click)="deleteGroup(item.id.S)">
+          <div class="group__btn-delete-img"></div>
+        </button>
       </li>
     </ul>
   </div>

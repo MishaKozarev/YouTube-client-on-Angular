@@ -8,6 +8,8 @@ import {
   createGroupAction,
   createGroupFailedAction,
   createGroupSuccessfulAction,
+  deleteGroupAction,
+  deleteGroupSuccessfulAction,
   getGroupAction,
   getGroupFailedAction,
   getGroupSuccessfulAction
@@ -68,6 +70,33 @@ export class GroupEffect {
               true
             );
             return createGroupSuccessfulAction(newGroup);
+          }),
+          catchError((error) => {
+            let message = error.statusText;
+            if (error.status === 0) {
+              message = 'No internet connection';
+            } else {
+              message = error.error.message;
+            }
+            this.toastMessagesService.showToastMessage(message, false);
+            return of(createGroupFailedAction({ error }));
+          })
+        )
+      )
+    );
+  });
+
+  deleteGroup$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(deleteGroupAction),
+      switchMap((groupId) =>
+        this.groupService.sendDeleteGroupRequest(groupId).pipe(
+          map(() => {
+            this.toastMessagesService.showToastMessage(
+              'The group was successfully delete',
+              true
+            );
+            return deleteGroupSuccessfulAction(groupId);
           }),
           catchError((error) => {
             let message = error.statusText;

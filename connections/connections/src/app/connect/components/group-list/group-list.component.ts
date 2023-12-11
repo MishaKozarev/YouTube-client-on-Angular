@@ -9,6 +9,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import {
   createGroupAction,
+  deleteGroupAction,
   getGroupAction
 } from 'src/app/store/actions/group.action';
 import { CustomGroup, GroupItem } from 'src/app/store/models/group.models';
@@ -24,7 +25,7 @@ export class GroupListComponent implements OnInit {
   public groupNameForm!: FormGroup<{ nameGroup: FormControl }>;
   public isShowForm = false;
   public errorMessage = 'Please enter a details';
-  public uidLocalStorage!: string;
+  public currentUid!: string;
 
   constructor(
     private store: Store,
@@ -33,6 +34,8 @@ export class GroupListComponent implements OnInit {
   ngOnInit(): void {
     this.groupList$ = this.store.select(selectGroup);
     this.store.dispatch(getGroupAction());
+    this.getLocalStorageUid();
+
     this.groupNameForm = this.fb.group({
       nameGroup: [
         '',
@@ -58,10 +61,10 @@ export class GroupListComponent implements OnInit {
     this.groupNameForm.reset();
   }
 
-  public getUidLocalStorage() {
-    const uid = localStorage.getItem('uid');
-    if (uid) {
-      this.uidLocalStorage = JSON.parse(uid);
+  private getLocalStorageUid(): void {
+    const uidLocalStorage = localStorage.getItem('uid');
+    if (uidLocalStorage) {
+      this.currentUid = uidLocalStorage;
     }
   }
 
@@ -70,9 +73,13 @@ export class GroupListComponent implements OnInit {
       const newCustomGroup: CustomGroup = {
         name: this.groupNameForm.value.nameGroup,
         createdAt: new Date().toISOString(),
-        createdBy: this.uidLocalStorage
+        createdBy: this.currentUid
       };
       this.store.dispatch(createGroupAction(newCustomGroup));
     }
+  }
+
+  public deleteGroup(groupID: string) {
+    this.store.dispatch(deleteGroupAction({ groupID }));
   }
 }

@@ -2,6 +2,10 @@ export interface GroupState {
   groups: GroupItem[];
   loading: boolean;
   error: ErrorFailed | null;
+  groupId: {
+    groupID: string;
+    type: string;
+  };
 }
 
 export interface Group {

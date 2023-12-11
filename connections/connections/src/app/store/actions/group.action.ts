@@ -34,3 +34,16 @@ export const createGroupFailedAction = createAction(
   GroupActionTypes.CREATE_GROUP_FAILED,
   props<{ error: ErrorFailed }>()
 );
+
+export const deleteGroupAction = createAction(
+  GroupActionTypes.DELETE_GROUP,
+  props<{ groupID: string }>()
+);
+export const deleteGroupSuccessfulAction = createAction(
+  GroupActionTypes.DELETE_GROUP_SUCCESSFUL,
+  props<{ groupID: string }>()
+);
+export const deleteGroupFailedAction = createAction(
+  GroupActionTypes.DELETE_GROUP_FAILED,
+  props<{ error: ErrorFailed }>()
+);
