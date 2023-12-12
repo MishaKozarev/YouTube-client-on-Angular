@@ -40,7 +40,12 @@
           id="group-name"
           type="text"
           class="group__input" />
-        <button (click)="createGroup()" class="group__btn">Add</button>
+        <button
+          (click)="createGroup()"
+          [disabled]="nameGroup.invalid"
+          class="group__btn">
+          Add
+        </button>
         <button (click)="hideForm()" class="group__btn">Cancel</button>
         <div
           *ngIf="nameGroup.invalid && (nameGroup.dirty || nameGroup.touched)"
