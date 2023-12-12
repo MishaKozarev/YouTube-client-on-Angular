@@ -118,6 +118,21 @@
         cursor: pointer;
         font-weight: 700;
     }
+
+    &__btn-disabled {
+        border: none;
+        background: inherit;
+        cursor: not-allowed;
+    }
+
+    &__btn-img-disabled {
+        opacity: .3;
+        background-image: url('../../../../assets/icon-group-update.png');
+        background-size: 30px 30px;
+        width: 30px;
+        height: 30px;
+    }
+
     &__btn-add-img {
         background-image: url('../../../../assets/icon-add-group.png');
         background-size: 30px 30px;

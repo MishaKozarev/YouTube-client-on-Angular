@@ -47,3 +47,15 @@ export const deleteGroupFailedAction = createAction(
   GroupActionTypes.DELETE_GROUP_FAILED,
   props<{ error: ErrorFailed }>()
 );
+
+export const updateGroupList = createAction(GroupActionTypes.UPDATE_GROUP);
+
+export const updateGroupListSuccess = createAction(
+  GroupActionTypes.UPDATE_GROUP_SUCCESSFUL,
+  props<{ Count: number; Items: GroupItem[] }>()
+);
+
+export const updateGroupListFailure = createAction(
+  GroupActionTypes.UPDATE_GROUP_FAILED,
+  props<{ error: ErrorFailed }>()
+);

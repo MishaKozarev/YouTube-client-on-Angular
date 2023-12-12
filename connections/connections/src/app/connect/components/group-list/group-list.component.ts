@@ -7,10 +7,12 @@ import {
 } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { TimerService } from 'src/app/core/services/timer/timer.service';
 import {
   createGroupAction,
   deleteGroupAction,
-  getGroupAction
+  getGroupAction,
+  updateGroupList
 } from 'src/app/store/actions/group.action';
 import { CustomGroup, GroupItem } from 'src/app/store/models/group.models';
 import { selectGroup } from 'src/app/store/selectors/group.selectors';
@@ -22,14 +24,18 @@ import { selectGroup } from 'src/app/store/selectors/group.selectors';
 })
 export class GroupListComponent implements OnInit {
   public groupList$: Observable<GroupItem[] | null> | undefined;
+  public timerSubscription: Observable<number | null> | undefined;
   public groupNameForm!: FormGroup<{ nameGroup: FormControl }>;
+  public currentUid!: string;
   public isShowForm = false;
   public errorMessage = 'Please enter a details';
-  public currentUid!: string;
+  public timerName = 'timerUpdateGroup';
+
 
   constructor(
     private store: Store,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private timerService: TimerService
   ) {}
   ngOnInit(): void {
     this.groupList$ = this.store.select(selectGroup);
@@ -46,6 +52,7 @@ export class GroupListComponent implements OnInit {
         ]
       ]
     });
+    this.timerSubscription = this.timerService.getTimer(this.timerName);
   }
 
   get nameGroup() {
@@ -81,5 +88,9 @@ export class GroupListComponent implements OnInit {
 
   public deleteGroup(groupID: string) {
     this.store.dispatch(deleteGroupAction({ groupID }));
+  }
+
+  public updateGroup() {
+    this.store.dispatch(updateGroupList());
   }
 }

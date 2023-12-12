@@ -2,11 +2,24 @@
   <h2 class="group__title">Groups</h2>
   <div class="group__header">
     <div class="group__box-update">
-      <button class="group__btn_update">
-        <div class="group__btn-update-img"></div>
+      <button
+        [disabled]="timerSubscription | async"
+        (click)="updateGroup()"
+        [class]="
+          (timerSubscription | async)
+            ? 'group__btn-disabled'
+            : 'group__btn_update'
+        ">
+        <div
+          [class]="
+            (timerSubscription | async)
+              ? 'group__btn-img-disabled'
+              : 'group__btn-update-img'
+          "></div>
       </button>
-      <div>
-        0 : 00 second
+      <p>Update group:</p>
+      <div *ngIf="timerSubscription | async">
+        {{ timerSubscription | async }} second
       </div>
     </div>
     <div class="group__box-create">

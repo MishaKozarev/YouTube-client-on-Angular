@@ -9,7 +9,10 @@ import {
   deleteGroupSuccessfulAction,
   getGroupAction,
   getGroupFailedAction,
-  getGroupSuccessfulAction
+  getGroupSuccessfulAction,
+  updateGroupList,
+  updateGroupListFailure,
+  updateGroupListSuccess
 } from '../actions/group.action';
 import { GroupState } from '../models/group.models';
 
@@ -75,6 +78,26 @@ export const groupReducer = createReducer(
   }),
   on(
     deleteGroupFailedAction,
+    (state, { error }): GroupState => ({
+      ...state,
+      error,
+      loading: false
+    })
+  ),
+
+  on(updateGroupList, (state): GroupState => ({ ...state, loading: true })),
+
+  on(
+    updateGroupListSuccess,
+    (state, action): GroupState => ({
+      ...state,
+      groups: action.Items,
+      loading: false
+    })
+  ),
+
+  on(
+    updateGroupListFailure,
     (state, { error }): GroupState => ({
       ...state,
       error,
