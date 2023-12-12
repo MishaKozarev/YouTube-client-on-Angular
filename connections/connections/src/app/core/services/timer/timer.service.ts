@@ -16,19 +16,19 @@ export class TimerService {
     timer(0, 1000)
       .pipe(
         takeWhile(() => {
-          let value = this.timer[nameTimer]?.value;
+          const value = this.timer[nameTimer]?.value;
           return value != null && value > 0;
         })
       )
       .subscribe(() => {
-        let value = this.timer[nameTimer]?.value;
+        const value = this.timer[nameTimer]?.value;
         if (value != null && value > 0) {
           this.timer[nameTimer]?.next(value - 1);
         }
       });
   }
 
-  getTimer(nameTimer: string): Observable<number | null > | undefined {
+  getTimer(nameTimer: string): Observable<number | null> | undefined {
     this.timer[nameTimer] ??= new BehaviorSubject<number | null>(null);
     return this.timer[nameTimer]?.asObservable();
   }

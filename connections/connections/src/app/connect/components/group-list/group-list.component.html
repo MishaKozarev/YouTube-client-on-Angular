@@ -28,7 +28,7 @@
       </button>
       <p>Create new group</p>
     </div>
-    <div *ngIf="isShowForm" class="groop__form-container">
+    <div *ngIf="isShowForm" class="group__form-container">
       <form
         *ngIf="groupNameForm"
         class="group__form"
@@ -71,10 +71,23 @@
         <button
           class="group__btn_delete"
           type="button"
-          *ngIf="item.createdBy.S === currentUid"
-          (click)="deleteGroup(item.id.S)">
+          *ngIf="item.createdBy.S === currentUid && !isShowDeleteGroup"
+          (click)="deleteGroup()">
           <div class="group__btn-delete-img"></div>
         </button>
+        <div
+          class="group__popup-delete"
+          *ngIf="item.createdBy.S === currentUid && isShowDeleteGroup">
+          <p>Are you sure?</p>
+          <div class="group__popup-box-btn">
+            <button (click)="confirmDeleteGroup(item.id.S)" class="group__btn">
+              Yes
+            </button>
+            <button (click)="noConfirmDeleteGroup()" class="group__btn">
+              No
+            </button>
+          </div>
+        </div>
       </li>
     </ul>
   </div>

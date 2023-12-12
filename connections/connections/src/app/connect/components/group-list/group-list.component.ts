@@ -28,9 +28,9 @@ export class GroupListComponent implements OnInit {
   public groupNameForm!: FormGroup<{ nameGroup: FormControl }>;
   public currentUid!: string;
   public isShowForm = false;
+  public isShowDeleteGroup = false;
   public errorMessage = 'Please enter a details';
   public timerName = 'timerUpdateGroup';
-
 
   constructor(
     private store: Store,
@@ -86,11 +86,20 @@ export class GroupListComponent implements OnInit {
     }
   }
 
-  public deleteGroup(groupID: string) {
-    this.store.dispatch(deleteGroupAction({ groupID }));
-  }
-
   public updateGroup() {
     this.store.dispatch(updateGroupList());
+  }
+
+  public deleteGroup() {
+    this.isShowDeleteGroup = true;
+  }
+
+  public confirmDeleteGroup(groupID: string) {
+    this.store.dispatch(deleteGroupAction({ groupID }));
+    this.isShowDeleteGroup = false;
+  }
+
+  public noConfirmDeleteGroup() {
+    this.isShowDeleteGroup = false;
   }
 }
