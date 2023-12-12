@@ -1,0 +1,33 @@
+<div class="people">
+  <h2 class="people__title">Groups</h2>
+  <div class="people__header">
+    <div class="people__box-update">
+      <button
+        [disabled]="timerSubscription | async"
+        (click)="updatePeople()"
+        [class]="
+          (timerSubscription | async)
+            ? 'people__btn-disabled'
+            : 'people__btn_update'
+        ">
+        <div
+          [class]="
+            (timerSubscription | async)
+              ? 'people__btn-img-disabled'
+              : 'people__btn-update-img'
+          "></div>
+      </button>
+      <p>Update people:</p>
+      <div *ngIf="timerSubscription | async">
+        {{ timerSubscription | async }} second
+      </div>
+    </div>
+  </div>
+  <div class="people__main">
+    <ul *ngIf="peopleList$ | async as peopleList" class="people__list">
+      <li *ngFor="let item of peopleList" class="people__item">
+        <a class="people__link">{{ item.name.S }}</a>
+      </li>
+    </ul>
+  </div>
+</div>

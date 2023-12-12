@@ -1,7 +1,7 @@
 @import '../../../../styles.scss';
 
 .group {
-    width: 90%;
+    width: 80%;
     height: 730px;
     margin: 20px;
     background-color: $form-background;
@@ -27,7 +27,14 @@
 
     }
 
-    &__box-create,
+    &__box-create {
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid rgb(0, 0, 0, .2);
+        font-size: 1rem;
+        font-weight: 500;
+    }
+
     &__box-update {
         display: flex;
         align-items: center;

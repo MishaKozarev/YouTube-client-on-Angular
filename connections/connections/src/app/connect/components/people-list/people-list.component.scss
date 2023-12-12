@@ -1,0 +1,73 @@
+@import '../../../../styles.scss';
+
+.people {
+    width: 80%;
+    height: 730px;
+    margin: 20px;
+    background-color: $form-background;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    position: relative;
+
+    &__title {
+        text-align: center;
+        color: $black;
+        font-size: 1.125rem;
+        font-weight: 700;
+        margin: 0 0 20px 0;
+    }
+
+    &__header {
+        border: 1px solid rgb(0, 0, 0, .2);
+        border-radius: 15px;
+        padding: 20px;
+
+    }
+
+    &__main {
+        height: 80%;
+        border: 1px solid rgb(0, 0, 0, .2);
+        border-radius: 15px;
+        overflow: auto;
+    }
+
+    &__box-update {
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid rgb(0, 0, 0, .2);
+        font-size: 1rem;
+        font-weight: 500;
+        margin: 0;
+    }
+
+    &__btn_update {
+        border: none;
+        background: inherit;
+        cursor: pointer;
+        font-weight: 700;
+    }
+
+    &__btn-disabled {
+        border: none;
+        background: inherit;
+        cursor: not-allowed;
+    }
+
+    &__btn-img-disabled {
+        opacity: .3;
+        background-image: url('../../../../assets/icon-group-update.png');
+        background-size: 30px 30px;
+        width: 30px;
+        height: 30px;
+    }
+
+    &__btn-update-img {
+        background-image: url('../../../../assets/icon-group-update.png');
+        background-size: 30px 30px;
+        width: 30px;
+        height: 30px;
+    }
+}
