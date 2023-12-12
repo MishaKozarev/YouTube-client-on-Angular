@@ -16,7 +16,7 @@ import {
   getGroupSuccessfulAction,
   updateGroupList,
   updateGroupListSuccess
-} from '../actions/group.action';
+} from '../actions/group.actions';
 import { GroupItem } from '../models/group.models';
 
 @Injectable()

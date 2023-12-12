@@ -3,23 +3,23 @@
   <div class="group__header">
     <div class="group__box-update">
       <button
-        [disabled]="timerSubscription | async"
+        [disabled]="timerGroupSubscription | async"
         (click)="updateGroup()"
         [class]="
-          (timerSubscription | async)
+          (timerGroupSubscription | async)
             ? 'group__btn-disabled'
             : 'group__btn_update'
         ">
         <div
           [class]="
-            (timerSubscription | async)
+            (timerGroupSubscription | async)
               ? 'group__btn-img-disabled'
               : 'group__btn-update-img'
           "></div>
       </button>
       <p>Update group:</p>
-      <div *ngIf="timerSubscription | async">
-        {{ timerSubscription | async }} second
+      <div *ngIf="timerGroupSubscription | async">
+        {{ timerGroupSubscription | async }} second
       </div>
     </div>
     <div class="group__box-create">

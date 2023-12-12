@@ -7,8 +7,10 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { GroupEffect } from '../store/effects/group.effect';
+import { PeopleEffect } from '../store/effects/people.effect';
 import { ProfileEffects } from '../store/effects/profile.effect';
 import { groupReducer } from '../store/reducers/group.reducer';
+import { peopleReducer } from '../store/reducers/people.reducer';
 import { profileReducer } from '../store/reducers/profile.reducer';
 import { HeaderComponent } from './components/header/header.component';
 import { ToastMessageComponent } from './components/toast-message/toast-message.component';
@@ -37,7 +39,8 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
     StoreModule.forRoot(),
     StoreModule.forFeature('profileState', profileReducer),
     StoreModule.forFeature('groupState', groupReducer),
-    EffectsModule.forRoot([ProfileEffects, GroupEffect]),
+    StoreModule.forFeature('peopleState', peopleReducer),
+    EffectsModule.forRoot([ProfileEffects, GroupEffect, PeopleEffect]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
   ],
   exports: [HeaderComponent, ToastMessageComponent]

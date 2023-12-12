@@ -3,23 +3,23 @@
   <div class="people__header">
     <div class="people__box-update">
       <button
-        [disabled]="timerSubscription | async"
+        [disabled]="timerPeopleSubscription | async"
         (click)="updatePeople()"
         [class]="
-          (timerSubscription | async)
+          (timerPeopleSubscription | async)
             ? 'people__btn-disabled'
             : 'people__btn_update'
         ">
         <div
           [class]="
-            (timerSubscription | async)
+            (timerPeopleSubscription | async)
               ? 'people__btn-img-disabled'
               : 'people__btn-update-img'
           "></div>
       </button>
       <p>Update people:</p>
-      <div *ngIf="timerSubscription | async">
-        {{ timerSubscription | async }} second
+      <div *ngIf="timerPeopleSubscription | async">
+        {{ timerPeopleSubscription | async }} second
       </div>
     </div>
   </div>

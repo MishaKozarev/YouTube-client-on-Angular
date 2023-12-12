@@ -1,3 +1,5 @@
+import { ErrorFailed } from 'src/app/core/models/core.models';
+
 export interface GroupState {
   groups: GroupItem[];
   loading: boolean;
@@ -18,11 +20,6 @@ export interface GroupItem {
   name: { S: string };
   createdAt: { S: string };
   createdBy: { S: string };
-}
-
-export interface ErrorFailed {
-  type: string;
-  message: string;
 }
 
 export interface GroupCreateById {

@@ -13,7 +13,7 @@ import {
   updateGroupList,
   updateGroupListFailure,
   updateGroupListSuccess
-} from '../actions/group.action';
+} from '../actions/group.actions';
 import { GroupState } from '../models/group.models';
 
 export const initialStateGroup: GroupState = {

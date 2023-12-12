@@ -1,7 +1,8 @@
 import { createAction, props } from '@ngrx/store';
+import { ErrorFailed } from 'src/app/core/models/core.models';
 
 import { GroupActionTypes } from '../action-type/group-action.types';
-import { ErrorFailed, GroupItem } from '../models/group.models';
+import { GroupItem } from '../models/group.models';
 
 export const getGroupAction = createAction(GroupActionTypes.GET_GROUP);
 export const getGroupSuccessfulAction = createAction(

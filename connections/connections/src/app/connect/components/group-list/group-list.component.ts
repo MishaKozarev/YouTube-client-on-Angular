@@ -13,7 +13,7 @@ import {
   deleteGroupAction,
   getGroupAction,
   updateGroupList
-} from 'src/app/store/actions/group.action';
+} from 'src/app/store/actions/group.actions';
 import { CustomGroup, GroupItem } from 'src/app/store/models/group.models';
 import { selectGroup } from 'src/app/store/selectors/group.selectors';
 
@@ -24,7 +24,7 @@ import { selectGroup } from 'src/app/store/selectors/group.selectors';
 })
 export class GroupListComponent implements OnInit {
   public groupList$: Observable<GroupItem[] | null> | undefined;
-  public timerSubscription: Observable<number | null> | undefined;
+  public timerGroupSubscription: Observable<number | null> | undefined;
   public groupNameForm!: FormGroup<{ nameGroup: FormControl }>;
   public currentUid!: string;
   public isShowForm = false;
@@ -52,7 +52,7 @@ export class GroupListComponent implements OnInit {
         ]
       ]
     });
-    this.timerSubscription = this.timerService.getTimer(this.timerName);
+    this.timerGroupSubscription = this.timerService.getTimer(this.timerName);
   }
 
   get nameGroup() {
@@ -83,6 +83,7 @@ export class GroupListComponent implements OnInit {
         createdBy: this.currentUid
       };
       this.store.dispatch(createGroupAction(newCustomGroup));
+      this.isShowForm = false;
     }
   }
 
