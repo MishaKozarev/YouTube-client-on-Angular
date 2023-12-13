@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ConversationPageComponent } from 'src/app/connect/pages/conversation-page/conversation-page.component';
-import { MainPageComponent } from 'src/app/connect/pages/main-page/main-page.component';
 import { ProfilePageComponent } from 'src/app/core/pages/profile-page/profile-page.component';
 
 import { SigninPageComponent } from './auth/pages/signin-page/signin-page.component';
@@ -24,15 +22,12 @@ const routes: Routes = [
   },
   {
     path: 'main',
-    component: MainPageComponent
+    loadChildren: () =>
+      import('./connect/connect.module').then((m) => m.ConnectModule)
   },
   {
     path: 'profile',
     component: ProfilePageComponent
-  },
-  {
-    path: 'conversation',
-    component: ConversationPageComponent
   },
   {
     path: '**',

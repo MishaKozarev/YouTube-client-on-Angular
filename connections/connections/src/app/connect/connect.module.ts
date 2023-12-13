@@ -4,17 +4,16 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { GroupListComponent } from './components/group-list/group-list.component';
 import { PeopleListComponent } from './components/people-list/people-list.component';
-import { ConversationPageComponent } from './pages/conversation-page/conversation-page.component';
+import { ConnectRoutingModule } from './connect-routing.module';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 
 @NgModule({
   declarations: [
     MainPageComponent,
     GroupListComponent,
-    ConversationPageComponent,
     PeopleListComponent
   ],
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, ConnectRoutingModule],
   exports: [MainPageComponent, GroupListComponent, PeopleListComponent]
 })
 export class ConnectModule {}
