@@ -8,6 +8,7 @@ import { GroupListComponent } from './components/group-list/group-list.component
 import { PeopleListComponent } from './components/people-list/people-list.component';
 import { ConnectRoutingModule } from './connect-routing.module';
 import { MainPageComponent } from './pages/main-page/main-page.component';
+import { CompanionsColorPipe } from './pipes/companions-color.pipe';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
     GroupListComponent,
     GroupDetailsComponent,
     PeopleListComponent,
-    ConversationComponent
+    ConversationComponent,
+    CompanionsColorPipe
   ],
   imports: [CommonModule, ReactiveFormsModule, ConnectRoutingModule]
 })

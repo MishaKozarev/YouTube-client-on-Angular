@@ -22,14 +22,12 @@ import { selectPeopleConversation } from 'src/app/store/selectors/people-convers
   styleUrls: ['./people-list.component.scss']
 })
 export class PeopleListComponent implements OnInit, OnDestroy {
-  private ngUnsubscribe = new Subject<void>();
   public peopleList$!: Observable<PeopleItem[] | null>;
-  public peopleList: PeopleItem[] | null = null;
-  public peopleConversationList$!: Observable<CompanionsItem[] | null>;
-  public peopleConversationList: CompanionsItem[] | null = null;
+  public peopleConversationList$!: Observable<CompanionsItem[]>;
+  public peopleConversationList: CompanionsItem[] | [] = [];
   public timerPeopleSubscription: Observable<number | null> | undefined;
   public timerName = 'timerUpdatePeoples';
-  public isPeopleActiveConversation: boolean | undefined = false;
+  private ngUnsubscribe$ = new Subject<void>();
 
   constructor(
     private store: Store,
@@ -38,19 +36,20 @@ export class PeopleListComponent implements OnInit, OnDestroy {
   ) {}
   ngOnInit(): void {
     this.peopleList$ = this.store.select(selectPeople);
-    this.peopleList$
-      .pipe(takeUntil(this.ngUnsubscribe))
-      .subscribe((peopleList) => {
-        this.peopleList = peopleList;
-      });
     this.peopleConversationList$ = this.store.select(selectPeopleConversation);
     this.peopleConversationList$
-      .pipe(takeUntil(this.ngUnsubscribe))
+      .pipe(takeUntil(this.ngUnsubscribe$))
       .subscribe((conversationList) => {
-        this.peopleConversationList = conversationList;
+        if (this.peopleConversationList) {
+          this.peopleConversationList = conversationList;
+        }
       });
     this.store.dispatch(getPeopleAction());
-    this.store.dispatch(getPeopleConversationAction());
+    this.peopleList$.pipe().subscribe((items) => {
+      if (items) {
+        this.store.dispatch(getPeopleConversationAction());
+      }
+    });
     this.timerPeopleSubscription = this.timerService.getTimer(this.timerName);
   }
 
@@ -58,13 +57,20 @@ export class PeopleListComponent implements OnInit, OnDestroy {
     this.store.dispatch(updatePeopleAction());
   }
 
-  public openPeopleConversation(companion: string) {
-    this.router.navigate(['conversation', companion]);
-    this.store.dispatch(createPeopleConversationAction({ companion }));
+  public openPeopleConversation(companion: string): void {
+    const currentCompanion =
+      this.peopleConversationList.find(
+        (item) => item.companionID.S === companion
+      ) || null;
+    if (currentCompanion) {
+      this.router.navigate(['conversation', companion]);
+    } else {
+      this.store.dispatch(createPeopleConversationAction({ companion }));
+    }
   }
 
-  ngOnDestroy() {
-    this.ngUnsubscribe.next();
-    this.ngUnsubscribe.complete();
+  ngOnDestroy(): void {
+    this.ngUnsubscribe$.next();
+    this.ngUnsubscribe$.complete();
   }
 }

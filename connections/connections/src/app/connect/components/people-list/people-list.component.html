@@ -1,5 +1,5 @@
 <div class="people">
-  <h2 class="people__title">Groups</h2>
+  <h2 class="people__title">People</h2>
   <div class="people__header">
     <div class="people__box-update">
       <button
@@ -27,6 +27,10 @@
     <ul *ngIf="peopleList$ | async as peopleList" class="people__list">
       <li
         *ngFor="let item of peopleList"
+        [ngClass]="{
+          people__companions:
+            item.uid.S | companionsColorPipe: peopleConversationList
+        }"
         class="people__item">
         <button
           (click)="openPeopleConversation(item.uid.S)"
