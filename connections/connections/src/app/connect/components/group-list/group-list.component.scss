@@ -89,6 +89,14 @@
         padding: 10px;
     }
 
+    &__link {
+        text-decoration: none;
+        color: black;
+    }
+    &__link:hover {
+        font-weight: 700;
+    }
+
     &__btn {
         cursor: pointer;
         border-radius: 5px;
