@@ -8,11 +8,6 @@ import { NotFoundPageComponent } from './core/pages/not-found-page/not-found-pag
 
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: 'signup',
-    pathMatch: 'full'
-  },
-  {
     path: 'signup',
     component: SignupPageComponent
   },
@@ -21,7 +16,7 @@ const routes: Routes = [
     component: SigninPageComponent
   },
   {
-    path: 'main',
+    path: '',
     loadChildren: () =>
       import('./connect/connect.module').then((m) => m.ConnectModule)
   },

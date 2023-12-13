@@ -11,7 +11,7 @@ const routes: Routes = [
     component: MainPageComponent
   },
   {
-    path: 'group/:groupId',
+    path: 'group/:groupID',
     component: GroupDetailsComponent
   },
   {

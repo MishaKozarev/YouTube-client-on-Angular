@@ -16,7 +16,7 @@ export class HeaderComponent {
     this.route.navigate(['/signin']);
   }
   public routingToMain() {
-    this.route.navigate(['/main']);
+    this.route.navigate(['']);
   }
   public routingToProfile() {
     this.route.navigate(['/profile']);

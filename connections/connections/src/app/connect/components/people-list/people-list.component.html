@@ -26,7 +26,9 @@
   <div class="people__main">
     <ul *ngIf="peopleList$ | async as peopleList" class="people__list">
       <li *ngFor="let item of peopleList" class="people__item">
-        <a class="people__link">{{ item.name.S }}</a>
+        <a
+          [routerLink]="'/conversation/' + item.uid.S"
+          class="people__link">{{ item.name.S }}</a>
       </li>
     </ul>
   </div>
