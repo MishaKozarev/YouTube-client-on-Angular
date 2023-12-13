@@ -85,10 +85,27 @@
         border: 1px solid rgb(0, 0, 0, .2);
         border-radius: 15px;
         padding: 10px;
+        background-color: beige;
     }
 
-    &__link {
-        text-decoration: none;
-        color: black;
+    &__item-active {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border: 1px solid rgb(0, 0, 0, .2);
+        border-radius: 15px;
+        padding: 10px;
+        background-color: aqua;
+    }
+
+    &__btn-link {
+        border: none;
+        cursor: pointer;
+    }
+
+    &__btn-link-active {
+        border: none;
+        cursor: pointer;
+        color: green;
     }
 }

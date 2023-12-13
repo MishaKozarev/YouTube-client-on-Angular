@@ -17,6 +17,6 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
     PeopleListComponent,
     ConversationComponent
   ],
-  imports: [CommonModule, ReactiveFormsModule, ConnectRoutingModule],
+  imports: [CommonModule, ReactiveFormsModule, ConnectRoutingModule]
 })
 export class ConnectModule {}

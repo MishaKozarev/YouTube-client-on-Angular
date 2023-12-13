@@ -25,10 +25,14 @@
   </div>
   <div class="people__main">
     <ul *ngIf="peopleList$ | async as peopleList" class="people__list">
-      <li *ngFor="let item of peopleList" class="people__item">
-        <a
-          [routerLink]="'/conversation/' + item.uid.S"
-          class="people__link">{{ item.name.S }}</a>
+      <li
+        *ngFor="let item of peopleList"
+        class="people__item">
+        <button
+          (click)="openPeopleConversation(item.uid.S)"
+          class="people__btn-link">
+          {{ item.name.S }}
+        </button>
       </li>
     </ul>
   </div>

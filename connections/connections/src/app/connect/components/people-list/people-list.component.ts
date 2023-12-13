@@ -1,35 +1,70 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, Subject, takeUntil } from 'rxjs';
 import { TimerService } from 'src/app/core/services/timer/timer.service';
 import {
   getPeopleAction,
   updatePeopleAction
 } from 'src/app/store/actions/people.actions';
+import {
+  createPeopleConversationAction,
+  getPeopleConversationAction
+} from 'src/app/store/actions/people-conversation.actions';
 import { PeopleItem } from 'src/app/store/models/people.models';
+import { CompanionsItem } from 'src/app/store/models/people-conversation.models';
 import { selectPeople } from 'src/app/store/selectors/people.selectors';
+import { selectPeopleConversation } from 'src/app/store/selectors/people-conversation.selectors';
 
 @Component({
   selector: 'app-people-list',
   templateUrl: './people-list.component.html',
   styleUrls: ['./people-list.component.scss']
 })
-export class PeopleListComponent implements OnInit {
-  public peopleList$!: Observable<PeopleItem[] | null> | undefined;
+export class PeopleListComponent implements OnInit, OnDestroy {
+  private ngUnsubscribe = new Subject<void>();
+  public peopleList$!: Observable<PeopleItem[] | null>;
+  public peopleList: PeopleItem[] | null = null;
+  public peopleConversationList$!: Observable<CompanionsItem[] | null>;
+  public peopleConversationList: CompanionsItem[] | null = null;
   public timerPeopleSubscription: Observable<number | null> | undefined;
   public timerName = 'timerUpdatePeoples';
+  public isPeopleActiveConversation: boolean | undefined = false;
 
   constructor(
     private store: Store,
+    private router: Router,
     private timerService: TimerService
   ) {}
   ngOnInit(): void {
     this.peopleList$ = this.store.select(selectPeople);
+    this.peopleList$
+      .pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe((peopleList) => {
+        this.peopleList = peopleList;
+      });
+    this.peopleConversationList$ = this.store.select(selectPeopleConversation);
+    this.peopleConversationList$
+      .pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe((conversationList) => {
+        this.peopleConversationList = conversationList;
+      });
     this.store.dispatch(getPeopleAction());
+    this.store.dispatch(getPeopleConversationAction());
     this.timerPeopleSubscription = this.timerService.getTimer(this.timerName);
   }
 
   public updatePeople(): void {
     this.store.dispatch(updatePeopleAction());
+  }
+
+  public openPeopleConversation(companion: string) {
+    this.router.navigate(['conversation', companion]);
+    this.store.dispatch(createPeopleConversationAction({ companion }));
+  }
+
+  ngOnDestroy() {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
   }
 }
