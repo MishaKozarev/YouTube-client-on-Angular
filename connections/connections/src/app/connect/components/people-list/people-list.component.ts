@@ -45,11 +45,7 @@ export class PeopleListComponent implements OnInit, OnDestroy {
         }
       });
     this.store.dispatch(getPeopleAction());
-    this.peopleList$.pipe().subscribe((items) => {
-      if (items) {
-        this.store.dispatch(getPeopleConversationAction());
-      }
-    });
+    this.store.dispatch(getPeopleConversationAction());
     this.timerPeopleSubscription = this.timerService.getTimer(this.timerName);
   }
 

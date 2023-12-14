@@ -1,1 +1,57 @@
-<p>group-details works!</p>
+<div class="group-details">
+  <div class="group-details__title">Group conversation</div>
+  <button class="group-details__btn">
+    <div class="group-details__btn-delete-img"></div>
+  </button>
+
+  <div class="group-details__header">
+    <div class="group-details__box-update">
+      <button
+        [disabled]="timerGroupSubscription | async"
+        (click)="updateMessage()"
+        [class]="
+          (timerGroupSubscription | async)
+            ? 'group-details__btn-disabled'
+            : 'group-details__btn_update'
+        ">
+        <div
+          [class]="
+            (timerGroupSubscription | async)
+              ? 'group-details__btn-img-disabled'
+              : 'group-details__btn-update-img'
+          "></div>
+      </button>
+      <p>Update message:</p>
+      <div *ngIf="timerGroupSubscription | async">
+        {{ timerGroupSubscription | async }} second
+      </div>
+    </div>
+    <a class="group-details__link" [routerLink]="['/']">Go to Home</a>
+  </div>
+  <div class="group-details__main"></div>
+  <div class="group-details__footer">
+    <form
+      *ngIf="groupMessageForm"
+      class="group-details__form"
+      [formGroup]="groupMessageForm">
+      <label class="group-details__label" for="group-message"></label>
+      <input
+        placeholder="Enter the message"
+        formControlName="groupMessage"
+        id="group-message"
+        type="text"
+        class="group-details__input" />
+      <button
+        [ngClass]="
+          groupMessage.invalid
+            ? 'group-details__btn-message-error'
+            : 'group-details__btn-message'
+        "
+        (click)="createMessage()"
+        [disabled]="groupMessage.invalid"
+        class="group-details__btn-message">
+        Add
+      </button>
+    </form>
+  </div>
+</div>

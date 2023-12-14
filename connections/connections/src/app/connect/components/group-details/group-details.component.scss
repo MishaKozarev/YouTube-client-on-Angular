@@ -1,0 +1,173 @@
+@import '../../../../styles.scss';
+
+.group-details {
+    width: 80%;
+    height: 730px;
+    margin: 20px auto;
+    background-color: $form-background;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    position: relative;
+
+    &__title {
+        text-align: center;
+        color: $black;
+        font-size: 1.125rem;
+        font-weight: 700;
+        margin: 0 0 20px 0;
+    }
+
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border: 1px solid rgb(0, 0, 0, .2);
+        border-radius: 15px;
+        padding: 20px;
+    }
+
+    &__link {
+        text-decoration: none;
+        color: $white-color;
+        border: none;
+        padding: 5px 20px;
+        border-radius: 15px;
+        background-color: $blue-color;
+        box-shadow: 5px 0px 3px $blue-color;
+        transition: .5s;
+        font-size: .75rem;
+        font-weight: 400;
+    }
+
+    &__btn {
+        border: none;
+        background: inherit;
+        font-weight: 900;
+        cursor: pointer;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+
+    &__btn-delete-img {
+        background-image: url('../../../../assets/icons-group-delete.png');
+        background-size: 30px 30px;
+        width: 30px;
+        height: 30px;
+    }
+
+    &__box-update {
+        display: flex;
+        align-items: center;
+        font-size: 1rem;
+        font-weight: 500;
+    }
+
+
+    &__btn_update {
+        border: none;
+        background: inherit;
+        cursor: pointer;
+        font-weight: 700;
+    }
+
+    &__btn-disabled {
+        border: none;
+        background: inherit;
+        cursor: not-allowed;
+    }
+
+    &__btn-img-disabled {
+        opacity: .3;
+        background-image: url('../../../../assets/icon-group-update.png');
+        background-size: 30px 30px;
+        width: 30px;
+        height: 30px;
+    }
+
+    &__btn-update-img {
+        background-image: url('../../../../assets/icon-group-update.png');
+        background-size: 30px 30px;
+        width: 30px;
+        height: 30px;
+    }
+
+    &__main {
+        height: 70%;
+        border: 1px solid rgb(0, 0, 0, .2);
+        border-radius: 15px;
+        overflow: auto;
+    }
+
+    &__footer {
+        width: 100%;
+        height: 10%;
+        border: 1px solid rgb(0, 0, 0, .2);
+        border-radius: 15px;
+        overflow: auto;
+        display: flex;
+        align-items: center;
+    }
+
+    &__form {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__btn-message {
+        cursor: pointer;
+        border-radius: 5px;
+        align-self: flex-end;
+        border: none;
+        color: $white-color;
+        background-color: $blue-color;
+        width: 50px;
+        height: 27px;
+        box-shadow: 5px 0px 3px $blue-color;
+        transition: .5s;
+        font-size: .75rem;
+        font-weight: 400;
+        margin: 0 0 0 15px;
+    }
+
+    &__btn-message-error {
+        cursor: pointer;
+        border-radius: 5px;
+        align-self: flex-end;
+        border: none;
+        color: $white-color;
+        background-color: grey;
+        box-shadow: 5px 0px 3px grey;
+
+        width: 50px;
+        height: 27px;
+        transition: .5s;
+        font-size: .75rem;
+        font-weight: 400;
+        margin: 0 0 0 15px;
+    }
+
+    &__label {
+        margin-left: 10px;
+        color: $font-grey;
+        font-size: 1rem;
+        margin-bottom: 2px;
+    }
+
+    &__input {
+        box-sizing: border-box;
+        padding: 0 10px;
+        border: none;
+        border-radius: 10px;
+        background-color: $input-background;
+        width: 80%;
+        height: 30px;
+    }
+
+
+}
