@@ -8,9 +8,11 @@ import {
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { TimerService } from 'src/app/core/services/timer/timer.service';
 import {
   getGroupMessageAction,
-  sendGroupMessageAction
+  sendGroupMessageAction,
+  updateGroupMessageAction
 } from 'src/app/store/actions/group-message.actions';
 import { getPeopleAction } from 'src/app/store/actions/people.actions';
 import { PeopleItem } from 'src/app/store/models/people.models';
@@ -29,6 +31,7 @@ export class GroupDetailsComponent implements OnInit {
   public peopleList$!: Observable<PeopleItem[]>;
   public peopleList!: PeopleItem[];
   public uid = localStorage.getItem('uid');
+  public timerName = 'timerUpdateGroupMessage';
 
   public currentId = '';
   public peopleItem!: PeopleItem[];
@@ -36,6 +39,7 @@ export class GroupDetailsComponent implements OnInit {
   constructor(
     private store: Store,
     private route: ActivatedRoute,
+    private timerService: TimerService,
     private fb: FormBuilder
   ) {}
   ngOnInit(): void {
@@ -54,13 +58,16 @@ export class GroupDetailsComponent implements OnInit {
       }
     });
     this.store.dispatch(getPeopleAction());
+    this.timerGroupSubscription = this.timerService.getTimer(this.timerName);
   }
 
   get groupMessage() {
     return this.groupMessageForm.get('groupMessage') as FormControl;
   }
 
-  public updateMessage() {}
+  public updateMessage() {
+    this.store.dispatch(updateGroupMessageAction({ groupID: this.currentId }));
+  }
 
   public createMessage() {
     localStorage.setItem(

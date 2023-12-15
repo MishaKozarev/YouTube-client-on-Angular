@@ -29,3 +29,16 @@ export const sendGroupMessageFailedAction = createAction(
   GroupMessageActionTypes.SEND_GROUP__MESSAGE_FAILED,
   props<{ error: ErrorFailed }>()
 );
+
+export const updateGroupMessageAction = createAction(
+  GroupMessageActionTypes.UPDATE_GROUP_MESSAGE,
+  props<{ groupID: string }>()
+);
+export const updateGroupMessageSuccessfulAction = createAction(
+  GroupMessageActionTypes.UPDATE_GROUP_MESSAGE_SUCCESSFUL,
+  props<{ groupID: string; items: GroupMessageItem[] }>()
+);
+export const updateGroupMessageFailedAction = createAction(
+  GroupMessageActionTypes.UPDATE_GROUP_MESSAGE_FAILED,
+  props<{ error: ErrorFailed }>()
+);
