@@ -7,7 +7,10 @@ import { ToastMessagesService } from 'src/app/core/services/toast-message/toast-
 import {
   getGroupMessageAction,
   getGroupMessageFailedAction,
-  getGroupMessageSuccessfulAction
+  getGroupMessageSuccessfulAction,
+  sendGroupMessageAction,
+  sendGroupMessageFailedAction,
+  sendGroupMessageSuccessfulAction
 } from '../actions/group-message.actions';
 
 @Injectable()
@@ -43,6 +46,42 @@ export class GroupMessageEffect {
             return of(getGroupMessageFailedAction({ error }));
           })
         )
+      )
+    );
+  });
+
+  sendGroupMessageEffect$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(sendGroupMessageAction),
+      switchMap((groupMessage) =>
+        this.groupMessageService
+          .sendGroupSendNewMessageRequest(
+            groupMessage.groupID,
+            groupMessage.message
+          )
+          .pipe(
+            map(() => {
+              const date = new Date();
+              const messageItem = {
+                item: {
+                  authorID: { S: `${localStorage.getItem('uid')}` },
+                  message: { S: `${localStorage.getItem('groupMessage')}` },
+                  createdAt: { S: `${date}` }
+                }
+              };
+              return sendGroupMessageSuccessfulAction(messageItem);
+            }),
+            catchError((error) => {
+              let message = error.statusText;
+              if (error.status === 0) {
+                message = 'No internet connection';
+              } else {
+                message = error.error.message;
+              }
+              this.toastMessagesService.showToastMessage(message, false);
+              return of(sendGroupMessageFailedAction({ error }));
+            })
+          )
       )
     );
   });

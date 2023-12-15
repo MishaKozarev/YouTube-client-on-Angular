@@ -4,7 +4,10 @@ import { ErrorFailed } from 'src/app/core/models/core.models';
 import {
   getGroupMessageAction,
   getGroupMessageFailedAction,
-  getGroupMessageSuccessfulAction
+  getGroupMessageSuccessfulAction,
+  sendGroupMessageAction,
+  sendGroupMessageFailedAction,
+  sendGroupMessageSuccessfulAction
 } from '../actions/group-message.actions';
 import { GroupMessageItem } from '../models/group-message.models';
 
@@ -36,6 +39,27 @@ export const groupMessageReducer = createReducer(
   ),
   on(
     getGroupMessageFailedAction,
+    (state, { error }): GroupMessageState => ({
+      ...state,
+      error,
+      loading: false
+    })
+  ),
+
+  on(
+    sendGroupMessageAction,
+    (state): GroupMessageState => ({ ...state, loading: true })
+  ),
+  on(
+    sendGroupMessageSuccessfulAction,
+    (state, action): GroupMessageState => ({
+      ...state,
+      message: [...state.message, action.item],
+      loading: true
+    })
+  ),
+  on(
+    sendGroupMessageFailedAction,
     (state, { error }): GroupMessageState => ({
       ...state,
       error,

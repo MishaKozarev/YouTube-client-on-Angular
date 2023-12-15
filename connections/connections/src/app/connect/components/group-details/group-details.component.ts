@@ -8,7 +8,10 @@ import {
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { getGroupMessageAction } from 'src/app/store/actions/group-message.actions';
+import {
+  getGroupMessageAction,
+  sendGroupMessageAction
+} from 'src/app/store/actions/group-message.actions';
 import { getPeopleAction } from 'src/app/store/actions/people.actions';
 import { PeopleItem } from 'src/app/store/models/people.models';
 import { selectGroupMessage } from 'src/app/store/selectors/group-message.selectors';
@@ -39,6 +42,7 @@ export class GroupDetailsComponent implements OnInit {
       this.currentId = params['groupID'];
     });
     this.store.dispatch(getGroupMessageAction({ groupID: this.currentId }));
+
     this.groupMessageForm = this.fb.group({
       groupMessage: ['', [Validators.required]]
     });
@@ -57,5 +61,16 @@ export class GroupDetailsComponent implements OnInit {
 
   public updateMessage() {}
 
-  public createMessage() {}
+  public createMessage() {
+    localStorage.setItem(
+      'groupMessage',
+      this.groupMessageForm.value.groupMessage
+    );
+    const message = {
+      groupID: this.currentId,
+      message: this.groupMessageForm.value.groupMessage
+    };
+    this.store.dispatch(sendGroupMessageAction(message));
+    this.groupMessageForm.reset();
+  }
 }
