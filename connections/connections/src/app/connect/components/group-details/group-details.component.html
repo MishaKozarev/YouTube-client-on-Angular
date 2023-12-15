@@ -31,7 +31,9 @@
 
   <div class="group-details__main">
     <ul *ngIf="groupMessage$ | async as message" class="group-details__list">
-      <li *ngFor="let item of message" class="message">
+      <li *ngFor="let item of message"
+        [ngClass]="item.authorID.S === uid ? 'message' : 'message-outside' "
+        class="message">
         <div class="message__img"></div>
         <div class="message__content">
           <div class="message__header">

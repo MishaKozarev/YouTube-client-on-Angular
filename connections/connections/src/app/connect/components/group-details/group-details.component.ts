@@ -28,6 +28,7 @@ export class GroupDetailsComponent implements OnInit {
   public timerGroupSubscription: Observable<number | null> | undefined;
   public peopleList$!: Observable<PeopleItem[]>;
   public peopleList!: PeopleItem[];
+  public uid = localStorage.getItem('uid');
 
   public currentId = '';
   public peopleItem!: PeopleItem[];

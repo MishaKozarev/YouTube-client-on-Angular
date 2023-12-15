@@ -184,8 +184,10 @@
         border: 1px solid rgb(0, 0, 0, .2);
         border-radius: 15px;
         padding: 10px;
-        background-color: $form-background;
+        background-color: rgb(211, 250, 237);
         width: 40%;
+        align-self: flex-end;
+
 
         &__img {
             background-image: url('../../../../assets/icon-user.png');
@@ -214,6 +216,11 @@
             font-weight: 300;
             font-size: 8px;
         }
+    }
+
+    .message-outside {
+        background-color: $form-background;
+        align-self: flex-start;
     }
 
 
