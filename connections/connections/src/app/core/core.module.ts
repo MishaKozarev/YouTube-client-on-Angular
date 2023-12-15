@@ -7,10 +7,12 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { GroupEffect } from '../store/effects/group.effect';
+import { GroupMessageEffect } from '../store/effects/group-message.effect';
 import { PeopleEffect } from '../store/effects/people.effect';
 import { PeopleConversationEffect } from '../store/effects/people-conversation.effect';
 import { ProfileEffects } from '../store/effects/profile.effect';
 import { groupReducer } from '../store/reducers/group.reducer';
+import { groupMessageReducer } from '../store/reducers/group-message.reducers';
 import { peopleReducer } from '../store/reducers/people.reducer';
 import { peopleConversationReducer } from '../store/reducers/people-conversation.reducer';
 import { profileReducer } from '../store/reducers/profile.reducer';
@@ -41,6 +43,7 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
     StoreModule.forRoot(),
     StoreModule.forFeature('profileState', profileReducer),
     StoreModule.forFeature('groupState', groupReducer),
+    StoreModule.forFeature('groupMessageState', groupMessageReducer),
     StoreModule.forFeature('peopleState', peopleReducer),
     StoreModule.forFeature(
       'peopleConversationState',
@@ -51,7 +54,7 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
       GroupEffect,
       PeopleEffect,
       PeopleConversationEffect,
-      PeopleConversationEffect
+      GroupMessageEffect
     ]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
   ],

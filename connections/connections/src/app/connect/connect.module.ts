@@ -9,6 +9,7 @@ import { PeopleListComponent } from './components/people-list/people-list.compon
 import { ConnectRoutingModule } from './connect-routing.module';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { CompanionsColorPipe } from './pipes/companions-color.pipe';
+import { NameUserTransformPipe } from './pipes/name-user-transform.pipe';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { CompanionsColorPipe } from './pipes/companions-color.pipe';
     GroupDetailsComponent,
     PeopleListComponent,
     ConversationComponent,
-    CompanionsColorPipe
+    CompanionsColorPipe,
+    NameUserTransformPipe
   ],
   imports: [CommonModule, ReactiveFormsModule, ConnectRoutingModule]
 })

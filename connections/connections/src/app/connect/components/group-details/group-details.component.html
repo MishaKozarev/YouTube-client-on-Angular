@@ -28,7 +28,26 @@
     </div>
     <a class="group-details__link" [routerLink]="['/']">Go to Home</a>
   </div>
-  <div class="group-details__main"></div>
+
+  <div class="group-details__main">
+    <ul *ngIf="groupMessage$ | async as message" class="group-details__list">
+      <li *ngFor="let item of message" class="message">
+        <div class="message__img"></div>
+        <div class="message__content">
+          <div class="message__header">
+            <div class="message__author">
+              {{ item.authorID.S | nameUserTransformPipe: peopleList }}
+            </div>
+            <div class="message__data">
+              {{ item.createdAt.S | date: 'shortDate' }}
+            </div>
+          </div>
+          <div class="message__text">{{ item.message.S }}</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
   <div class="group-details__footer">
     <form
       *ngIf="groupMessageForm"
