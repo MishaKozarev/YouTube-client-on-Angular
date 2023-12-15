@@ -9,6 +9,7 @@ import { PeopleListComponent } from './components/people-list/people-list.compon
 import { ConnectRoutingModule } from './connect-routing.module';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { CompanionsColorPipe } from './pipes/companions-color.pipe';
+import { DateSortPipe } from './pipes/data-sort.pipe';
 import { NameUserTransformPipe } from './pipes/name-user-transform.pipe';
 
 @NgModule({
@@ -19,7 +20,8 @@ import { NameUserTransformPipe } from './pipes/name-user-transform.pipe';
     PeopleListComponent,
     ConversationComponent,
     CompanionsColorPipe,
-    NameUserTransformPipe
+    NameUserTransformPipe,
+    DateSortPipe
   ],
   imports: [CommonModule, ReactiveFormsModule, ConnectRoutingModule]
 })

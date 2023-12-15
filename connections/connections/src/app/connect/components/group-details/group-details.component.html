@@ -32,7 +32,7 @@
   <div class="group-details__main">
     <ul *ngIf="groupMessage$ | async as message" class="group-details__list">
       <li
-        *ngFor="let item of message"
+        *ngFor="let item of message | dateSort"
         [ngClass]="item.authorID.S === uid ? 'message' : 'message-outside'"
         class="message">
         <div class="message__img"></div>
@@ -42,7 +42,7 @@
               {{ item.authorID.S | nameUserTransformPipe: peopleList }}
             </div>
             <div class="message__data">
-              {{ item.createdAt.S | date: 'shortDate' }}
+              {{ item.createdAt.S | date: 'medium' }}
             </div>
           </div>
           <div class="message__text">{{ item.message.S }}</div>
