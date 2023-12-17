@@ -1,0 +1,17 @@
+<div>
+  <ul *ngIf="peopleMessage$ | async as message">
+    <li *ngFor="let item of message">
+      <div>
+        <div>
+          <div class="message__author">
+            {{ item.authorID.S }}
+          </div>
+          <div class="message__data">
+            {{ item.createdAt.S | date: 'medium' }}
+          </div>
+        </div>
+        <div class="message__text">{{ item.message.S }}</div>
+      </div>
+    </li>
+  </ul>
+</div>

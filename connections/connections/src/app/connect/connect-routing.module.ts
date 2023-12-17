@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ConversationComponent } from './components/conversation/conversation.component';
 import { GroupDetailsComponent } from './components/group-details/group-details.component';
+import { PeopleDetailsComponent } from './components/people-details/people-details.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 
 const routes: Routes = [
@@ -16,7 +16,7 @@ const routes: Routes = [
   },
   {
     path: 'conversation/:conversationID',
-    component: ConversationComponent
+    component: PeopleDetailsComponent
   }
 ];
 

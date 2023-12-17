@@ -10,11 +10,13 @@ import { GroupEffect } from '../store/effects/group.effect';
 import { GroupMessageEffect } from '../store/effects/group-message.effect';
 import { PeopleEffect } from '../store/effects/people.effect';
 import { PeopleConversationEffect } from '../store/effects/people-conversation.effect';
+import { PeopleMessageEffect } from '../store/effects/people-message.effect';
 import { ProfileEffects } from '../store/effects/profile.effect';
 import { groupReducer } from '../store/reducers/group.reducer';
 import { groupMessageReducer } from '../store/reducers/group-message.reducers';
 import { peopleReducer } from '../store/reducers/people.reducer';
 import { peopleConversationReducer } from '../store/reducers/people-conversation.reducer';
+import { peopleMessageReducer } from '../store/reducers/people-message.reducers';
 import { profileReducer } from '../store/reducers/profile.reducer';
 import { HeaderComponent } from './components/header/header.component';
 import { ToastMessageComponent } from './components/toast-message/toast-message.component';
@@ -45,6 +47,7 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
     StoreModule.forFeature('groupState', groupReducer),
     StoreModule.forFeature('groupMessageState', groupMessageReducer),
     StoreModule.forFeature('peopleState', peopleReducer),
+    StoreModule.forFeature('peopleMessageState', peopleMessageReducer),
     StoreModule.forFeature(
       'peopleConversationState',
       peopleConversationReducer
@@ -54,7 +57,8 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
       GroupEffect,
       PeopleEffect,
       PeopleConversationEffect,
-      GroupMessageEffect
+      GroupMessageEffect,
+      PeopleMessageEffect
     ]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
   ],

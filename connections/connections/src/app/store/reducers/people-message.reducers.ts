@@ -1,0 +1,45 @@
+import { createReducer, on } from '@ngrx/store';
+import { ErrorFailed } from 'src/app/core/models/core.models';
+
+import {
+  getPeopleMessageAction,
+  getPeopleMessageFailedAction,
+  getPeopleMessageSuccessfulAction
+} from '../actions/people-message.actions';
+import { PeopleMessageItem } from '../models/people-message.model';
+
+export interface PeopleMessageState {
+  message: PeopleMessageItem[];
+  loading: boolean;
+  error: ErrorFailed | null;
+}
+
+export const initialStatePeopleMessage: PeopleMessageState = {
+  message: [],
+  loading: false,
+  error: null
+};
+
+export const peopleMessageReducer = createReducer(
+  initialStatePeopleMessage,
+  on(
+    getPeopleMessageAction,
+    (state): PeopleMessageState => ({ ...state, loading: true })
+  ),
+  on(
+    getPeopleMessageSuccessfulAction,
+    (state, action): PeopleMessageState => ({
+      ...state,
+      message: action.items,
+      loading: false
+    })
+  ),
+  on(
+    getPeopleMessageFailedAction,
+    (state, { error }): PeopleMessageState => ({
+      ...state,
+      error,
+      loading: false
+    })
+  )
+);

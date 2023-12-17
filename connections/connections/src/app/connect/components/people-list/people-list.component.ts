@@ -59,7 +59,7 @@ export class PeopleListComponent implements OnInit, OnDestroy {
         (item) => item.companionID.S === companion
       ) || null;
     if (currentCompanion) {
-      this.router.navigate(['conversation', companion]);
+      this.router.navigate(['conversation', currentCompanion.id.S]);
     } else {
       this.store.dispatch(createPeopleConversationAction({ companion }));
     }
