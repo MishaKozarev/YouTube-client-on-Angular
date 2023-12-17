@@ -21,10 +21,4 @@ export class HeaderComponent {
   public routingToProfile() {
     this.route.navigate(['/profile']);
   }
-  public routingToGroup() {
-    this.route.navigate(['/group']);
-  }
-  public routingToConversation() {
-    this.route.navigate(['/conversation']);
-  }
 }

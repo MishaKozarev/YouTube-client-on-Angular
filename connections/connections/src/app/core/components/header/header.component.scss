@@ -13,8 +13,9 @@
         max-width: 1200px;
         height: 40px;
         display: flex;
+        gap: 50px;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
     }
 
     .header__link {
