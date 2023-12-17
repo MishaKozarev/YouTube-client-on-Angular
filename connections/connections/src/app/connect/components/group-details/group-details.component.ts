@@ -5,10 +5,11 @@ import {
   FormGroup,
   Validators
 } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { TimerService } from 'src/app/core/services/timer/timer.service';
+import { deleteGroupAction } from 'src/app/store/actions/group.actions';
 import {
   getGroupMessageAction,
   sendGroupMessageAction,
@@ -30,20 +31,20 @@ export class GroupDetailsComponent implements OnInit {
   public timerGroupSubscription: Observable<number | null> | undefined;
   public peopleList$!: Observable<PeopleItem[]>;
   public peopleList!: PeopleItem[];
-  public uid = localStorage.getItem('uid');
   public timerName = 'timerUpdateGroupMessage';
-
   public currentId = '';
-  public peopleItem!: PeopleItem[];
+  public uid = localStorage.getItem('uid');
+  public isShowDeleteGroup: boolean = false;
 
   constructor(
     private store: Store,
-    private route: ActivatedRoute,
+    private route: Router,
+    private routeActive: ActivatedRoute,
     private timerService: TimerService,
     private fb: FormBuilder
   ) {}
   ngOnInit(): void {
-    this.route.params.subscribe((params) => {
+    this.routeActive.params.subscribe((params) => {
       this.currentId = params['groupID'];
     });
     this.store.dispatch(getGroupMessageAction({ groupID: this.currentId }));
@@ -80,5 +81,18 @@ export class GroupDetailsComponent implements OnInit {
     };
     this.store.dispatch(sendGroupMessageAction(message));
     this.groupMessageForm.reset();
+  }
+
+  public deleteGroup() {
+    this.isShowDeleteGroup = true;
+  }
+
+  public confirmDeleteGroup(groupID: string) {
+    this.store.dispatch(deleteGroupAction({ groupID }));
+    this.route.navigate(['/']);
+  }
+
+  public noConfirmDeleteGroup() {
+    this.isShowDeleteGroup = false;
   }
 }

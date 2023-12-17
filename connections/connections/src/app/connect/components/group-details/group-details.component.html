@@ -1,9 +1,8 @@
 <div class="group-details">
   <div class="group-details__title">Group conversation</div>
-  <button class="group-details__btn">
+  <button (click)="deleteGroup()" class="group-details__btn">
     <div class="group-details__btn-delete-img"></div>
   </button>
-
   <div class="group-details__header">
     <div class="group-details__box-update">
       <button
@@ -75,5 +74,18 @@
         Add
       </button>
     </form>
+  </div>
+  <div class="group-details__popup-delete" *ngIf="isShowDeleteGroup">
+    <p>Are you sure?</p>
+    <div class="group-details__popup-box-btn">
+      <button
+        (click)="confirmDeleteGroup(currentId)"
+        class="group-details__popup-btn">
+        Yes
+      </button>
+      <button (click)="noConfirmDeleteGroup()" class="group-details__popup-btn">
+        No
+      </button>
+    </div>
   </div>
 </div>

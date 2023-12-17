@@ -223,5 +223,52 @@
         align-self: flex-start;
     }
 
+    &__popup-delete {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 200px;
+        height: 100px;
+        margin: -50px 0 0 -100px;
+        padding: 20px 0;
+        border-radius: 15px;
+        border: 2px solid black;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        background: rgb(201, 198, 198);
+        color: black;
+        font-weight: 700;
+    }
+
+    &__popup-box-btn {
+        display: flex;
+        gap: 15px;
+    }
+
+    &__popup-btn {
+        cursor: pointer;
+        border-radius: 5px;
+        align-self: flex-end;
+        border: none;
+        color: $white-color;
+        background-color: $blue-color;
+        width: 50px;
+        height: 27px;
+        box-shadow: 5px 0px 3px $blue-color;
+        transition: .5s;
+        font-size: .75rem;
+        font-weight: 400;
+
+        &:hover {
+            background-color: $blue-color-hover;
+            box-shadow: 5px 0px 3px $blue-color-hover;
+        }
+    }
+
+
+
 
 }
