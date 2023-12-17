@@ -70,7 +70,7 @@ export class GroupMessageEffect {
               const messageItem = {
                 item: {
                   authorID: { S: `${localStorage.getItem('uid')}` },
-                  message: { S: `${localStorage.getItem('groupMessage')}` },
+                  message: { S: `${localStorage.getItem('currentMessage')}` },
                   createdAt: { S: `${date}` }
                 }
               };

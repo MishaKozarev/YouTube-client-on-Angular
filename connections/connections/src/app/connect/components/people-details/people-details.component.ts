@@ -8,7 +8,10 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { getPeopleMessageAction } from 'src/app/store/actions/people-message.actions';
+import {
+  getPeopleMessageAction,
+  sendPeopleMessageAction
+} from 'src/app/store/actions/people-message.actions';
 import { PeopleItem } from 'src/app/store/models/people.models';
 import { selectPeople } from 'src/app/store/selectors/people.selectors';
 import { selectPeopleMessage } from 'src/app/store/selectors/people-message.selectors';
@@ -65,7 +68,16 @@ export class PeopleDetailsComponent implements OnInit {
     this.isShowDeletePeopleDialog = false;
   }
   public createMessage(): void {
-    this.isShowDeletePeopleDialog = false;
+    localStorage.setItem(
+      'currentMessage',
+      this.peopleMessageForm.value.peopleMessage
+    );
+    const message = {
+      conversationID: this.currentPeopleId,
+      message: this.peopleMessageForm.value.peopleMessage
+    };
+    this.store.dispatch(sendPeopleMessageAction(message));
+    this.peopleMessageForm.reset();
   }
   public confirmDeletePeopleDialog(peopleId: string): void {
     this.route.navigate(['/']);

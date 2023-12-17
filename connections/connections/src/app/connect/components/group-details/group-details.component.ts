@@ -72,7 +72,7 @@ export class GroupDetailsComponent implements OnInit {
 
   public createMessage() {
     localStorage.setItem(
-      'groupMessage',
+      'currentMessage',
       this.groupMessageForm.value.groupMessage
     );
     const message = {

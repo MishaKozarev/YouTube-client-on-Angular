@@ -16,3 +16,16 @@ export const getPeopleMessageFailedAction = createAction(
   PeopleMessageActionTypes.GET_PEOPLE_MESSAGE_FAILED,
   props<{ error: ErrorFailed }>()
 );
+
+export const sendPeopleMessageAction = createAction(
+  PeopleMessageActionTypes.SEND_PEOPLE_MESSAGE,
+  props<{ conversationID: string; message: string }>()
+);
+export const sendPeopleMessageSuccessfulAction = createAction(
+  PeopleMessageActionTypes.SEND_PEOPLE_MESSAGE_SUCCESSFUL,
+  props<{ item: PeopleMessageItem }>()
+);
+export const sendPeopleMessageFailedAction = createAction(
+  PeopleMessageActionTypes.SEND_PEOPLE_MESSAGE_FAILED,
+  props<{ error: ErrorFailed }>()
+);

@@ -1,6 +1,9 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HTTP_PEOPLE_MESSAGE } from 'src/app/constant/http-people-conversation';
+import {
+  HTTP_PEOPLE_MESSAGE,
+  HTTP_PEOPLE_MESSAGE_SEND
+} from 'src/app/constant/http-people-conversation';
 import { PeopleMessage } from 'src/app/store/models/people-message.model';
 
 @Injectable({
@@ -8,6 +11,7 @@ import { PeopleMessage } from 'src/app/store/models/people-message.model';
 })
 export class PeopleMessageService {
   private readonly httpPeopleMessage = HTTP_PEOPLE_MESSAGE;
+  private readonly httpPeopleMessageSend = HTTP_PEOPLE_MESSAGE_SEND;
 
   constructor(private http: HttpClient) {}
 
@@ -23,5 +27,19 @@ export class PeopleMessageService {
       headers,
       params
     });
+  }
+
+  public sendPeopleSendNewMessageRequest(
+    conversationID: string,
+    message: string
+  ) {
+    const headers = {
+      'rs-uid': localStorage.getItem('uid') || '',
+      'rs-email': localStorage.getItem('email') || '',
+      Authorization: `Bearer ${localStorage.getItem('token') || ''}`
+    };
+    const body = { conversationID, message };
+
+    return this.http.post(this.httpPeopleMessageSend, body, { headers });
   }
 }
