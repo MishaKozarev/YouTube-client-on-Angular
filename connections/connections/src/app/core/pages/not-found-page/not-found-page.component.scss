@@ -6,17 +6,36 @@
     align-items: center;
     justify-content: center;
 
-    .not-found__container {
+    &__container {
         display: flex;
         align-items: center;
         width: 40%;
         max-width: 360px;
         margin: 100px 0 0 0;
+        padding: 30px;
+        background-color: $form-background;
+        border-radius: 15px;
+        display: flex;
+        gap: 20px;
+        flex-direction: column;
 
         .not-found__title {
             font-size: 24px;
             color: $font-grey;
             margin: 0 0 0 15px;
         }
+    }
+
+    &__link {
+        text-decoration: none;
+        color: $white-color;
+        border: none;
+        padding: 5px 20px;
+        border-radius: 15px;
+        background-color: $blue-color;
+        box-shadow: 5px 0px 3px $blue-color;
+        transition: .5s;
+        font-size: .75rem;
+        font-weight: 400;
     }
 }
