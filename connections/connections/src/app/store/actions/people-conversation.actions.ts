@@ -28,3 +28,16 @@ export const createPeopleConversationFailedAction = createAction(
   PeopleConversationActionTypes.CREATE_PEOPLE_CONVERSATION_FAILED,
   props<{ error: ErrorFailed }>()
 );
+
+export const deletePeopleConversationAction = createAction(
+  PeopleConversationActionTypes.DELETE_PEOPLE_CONVERSATION,
+  props<{ conversationID: string }>()
+);
+export const deletePeopleConversationSuccessfulAction = createAction(
+  PeopleConversationActionTypes.DELETE_PEOPLE_CONVERSATION_SUCCESSFUL,
+  props<{ conversationID: string }>()
+);
+export const deletePeopleConversationFailedAction = createAction(
+  PeopleConversationActionTypes.DELETE_PEOPLE_CONVERSATION_FAILED,
+  props<{ error: ErrorFailed }>()
+);

@@ -8,3 +8,7 @@ export interface PeopleMessage {
   Count: number;
   Items: PeopleMessageItem[];
 }
+
+export interface PeopleDialogCreateById {
+  conversationID: string;
+}

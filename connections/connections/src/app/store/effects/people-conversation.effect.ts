@@ -9,6 +9,9 @@ import {
   createPeopleConversationAction,
   createPeopleConversationFailedAction,
   createPeopleConversationSuccessfulAction,
+  deletePeopleConversationAction,
+  deletePeopleConversationFailedAction,
+  deletePeopleConversationSuccessfulAction,
   getPeopleConversationAction,
   getPeopleConversationFailedAction,
   getPeopleConversationSuccessfulAction
@@ -76,6 +79,35 @@ export class PeopleConversationEffect {
               }
               this.toastMessagesService.showToastMessage(message, false);
               return of(createPeopleConversationFailedAction({ error }));
+            })
+          )
+      )
+    );
+  });
+
+  deletePeopleConversation$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(deletePeopleConversationAction),
+      switchMap((conversationID) =>
+        this.peopleConversationService
+          .sendDeletePeopleDialogRequest(conversationID)
+          .pipe(
+            map(() => {
+              this.toastMessagesService.showToastMessage(
+                'The conversation was successful delete',
+                true
+              );
+              return deletePeopleConversationSuccessfulAction(conversationID);
+            }),
+            catchError((error) => {
+              let message = error.statusText;
+              if (error.status === 0) {
+                message = 'No internet connection';
+              } else {
+                message = error.error.message;
+              }
+              this.toastMessagesService.showToastMessage(message, false);
+              return of(deletePeopleConversationFailedAction({ error }));
             })
           )
       )
