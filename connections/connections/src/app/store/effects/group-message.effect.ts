@@ -101,7 +101,7 @@ export class GroupMessageEffect {
             this.timerService.createTimer(timerName, 60);
             this.timerService.startTimer(timerName);
             this.toastMessagesService.showToastMessage(
-              'The group was successful update',
+              'The group message was successful update',
               true
             );
             const items = messages.Items;

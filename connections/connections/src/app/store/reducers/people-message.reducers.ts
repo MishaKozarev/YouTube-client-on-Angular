@@ -7,7 +7,10 @@ import {
   getPeopleMessageSuccessfulAction,
   sendPeopleMessageAction,
   sendPeopleMessageFailedAction,
-  sendPeopleMessageSuccessfulAction
+  sendPeopleMessageSuccessfulAction,
+  updatePeopleMessageAction,
+  updatePeopleMessageFailedAction,
+  updatePeopleMessageSuccessfulAction
 } from '../actions/people-message.actions';
 import { PeopleMessageItem } from '../models/people-message.model';
 
@@ -60,6 +63,27 @@ export const peopleMessageReducer = createReducer(
   ),
   on(
     sendPeopleMessageFailedAction,
+    (state, { error }): PeopleMessageState => ({
+      ...state,
+      error,
+      loading: false
+    })
+  ),
+
+  on(
+    updatePeopleMessageAction,
+    (state): PeopleMessageState => ({ ...state, loading: true })
+  ),
+  on(
+    updatePeopleMessageSuccessfulAction,
+    (state, action): PeopleMessageState => ({
+      ...state,
+      message: action.items,
+      loading: false
+    })
+  ),
+  on(
+    updatePeopleMessageFailedAction,
     (state, { error }): PeopleMessageState => ({
       ...state,
       error,

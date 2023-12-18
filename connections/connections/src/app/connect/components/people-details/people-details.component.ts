@@ -8,10 +8,12 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { TimerService } from 'src/app/core/services/timer/timer.service';
 import { deletePeopleConversationAction } from 'src/app/store/actions/people-conversation.actions';
 import {
   getPeopleMessageAction,
-  sendPeopleMessageAction
+  sendPeopleMessageAction,
+  updatePeopleMessageAction
 } from 'src/app/store/actions/people-message.actions';
 import { PeopleItem } from 'src/app/store/models/people.models';
 import { selectPeople } from 'src/app/store/selectors/people.selectors';
@@ -28,6 +30,7 @@ export class PeopleDetailsComponent implements OnInit {
   public currentPeopleId = '';
   public uid = localStorage.getItem('uid');
   public timerPeopleSubscription: Observable<number | null> | undefined;
+  public timerName = 'timerUpdatePeopleMessage';
   public peopleList$!: Observable<PeopleItem[]>;
   public peopleList!: PeopleItem[];
   public isShowDeletePeopleDialog: boolean = false;
@@ -36,6 +39,7 @@ export class PeopleDetailsComponent implements OnInit {
     private store: Store,
     private route: Router,
     private routeActive: ActivatedRoute,
+    private timerService: TimerService,
     private fb: FormBuilder
   ) {}
   public ngOnInit(): void {
@@ -56,6 +60,7 @@ export class PeopleDetailsComponent implements OnInit {
         this.peopleList = peoples;
       }
     });
+    this.timerPeopleSubscription = this.timerService.getTimer(this.timerName);
   }
 
   public get peopleMessage() {
@@ -63,7 +68,9 @@ export class PeopleDetailsComponent implements OnInit {
   }
 
   public updateMessage(): void {
-    this.isShowDeletePeopleDialog = false;
+    this.store.dispatch(
+      updatePeopleMessageAction({ conversationID: this.currentPeopleId })
+    );
   }
 
   public createMessage(): void {

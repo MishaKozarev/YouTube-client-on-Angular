@@ -29,3 +29,16 @@ export const sendPeopleMessageFailedAction = createAction(
   PeopleMessageActionTypes.SEND_PEOPLE_MESSAGE_FAILED,
   props<{ error: ErrorFailed }>()
 );
+
+export const updatePeopleMessageAction = createAction(
+  PeopleMessageActionTypes.UPDATE_PEOPLE_MESSAGE,
+  props<{ conversationID: string }>()
+);
+export const updatePeopleMessageSuccessfulAction = createAction(
+  PeopleMessageActionTypes.UPDATE_PEOPLE_MESSAGE_SUCCESSFUL,
+  props<{ conversationID: string; items: PeopleMessageItem[] }>()
+);
+export const updatePeopleMessageFailedAction = createAction(
+  PeopleMessageActionTypes.UPDATE_PEOPLE_MESSAGE_FAILED,
+  props<{ error: ErrorFailed }>()
+);
