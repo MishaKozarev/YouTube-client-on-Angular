@@ -44,7 +44,9 @@ export class PeopleListComponent implements OnInit, OnDestroy {
           this.peopleConversationList = conversationList;
         }
       });
+    // eslint-disable-next-line @ngrx/avoid-dispatching-multiple-actions-sequentially
     this.store.dispatch(getPeopleAction());
+    // eslint-disable-next-line @ngrx/avoid-dispatching-multiple-actions-sequentially
     this.store.dispatch(getPeopleConversationAction());
     this.timerPeopleSubscription = this.timerService.getTimer(this.timerName);
   }
