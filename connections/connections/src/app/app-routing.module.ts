@@ -2,11 +2,18 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProfilePageComponent } from 'src/app/core/pages/profile-page/profile-page.component';
 
+import { AuthGuard } from './auth/guards/auth.guard';
 import { SigninPageComponent } from './auth/pages/signin-page/signin-page.component';
 import { SignupPageComponent } from './auth/pages/signup-page/signup-page.component';
 import { NotFoundPageComponent } from './core/pages/not-found-page/not-found-page.component';
 
 const routes: Routes = [
+  {
+    path: '',
+    loadChildren: () =>
+      import('./connect/connect.module').then((m) => m.ConnectModule),
+    canActivate: [AuthGuard]
+  },
   {
     path: 'signup',
     component: SignupPageComponent
@@ -16,13 +23,9 @@ const routes: Routes = [
     component: SigninPageComponent
   },
   {
-    path: '',
-    loadChildren: () =>
-      import('./connect/connect.module').then((m) => m.ConnectModule)
-  },
-  {
     path: 'profile',
-    component: ProfilePageComponent
+    component: ProfilePageComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: '**',

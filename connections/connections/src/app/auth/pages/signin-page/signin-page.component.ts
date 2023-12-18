@@ -106,6 +106,6 @@ export class SigninPageComponent implements OnInit {
     this.route.navigate(['/signup']);
   }
   private routingToMain() {
-    this.route.navigate(['/main']);
+    this.route.navigate(['/']);
   }
 }
