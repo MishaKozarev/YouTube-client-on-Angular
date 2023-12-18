@@ -23,6 +23,7 @@ import { selectPeopleConversation } from 'src/app/store/selectors/people-convers
 })
 export class PeopleListComponent implements OnInit, OnDestroy {
   public peopleList$!: Observable<PeopleItem[] | null>;
+  public peopleList!: PeopleItem[];
   public peopleConversationList$!: Observable<CompanionsItem[]>;
   public peopleConversationList: CompanionsItem[] | [] = [];
   public timerPeopleSubscription: Observable<number | null> | undefined;
@@ -35,20 +36,39 @@ export class PeopleListComponent implements OnInit, OnDestroy {
     private timerService: TimerService
   ) {}
   ngOnInit(): void {
+    this.initPeopleList();
+    this.initPeopleConversationList();
+    this.timerPeopleSubscription = this.timerService.getTimer(this.timerName);
+  }
+
+  public initPeopleList(): void {
     this.peopleList$ = this.store.select(selectPeople);
+    this.peopleList$
+      .pipe(takeUntil(this.ngUnsubscribe$))
+      .subscribe((peopleList) => {
+        if (peopleList) {
+          this.peopleList = peopleList;
+        }
+      });
+    if (!this.peopleList.length) {
+      // eslint-disable-next-line @ngrx/avoid-dispatching-multiple-actions-sequentially
+      this.store.dispatch(getPeopleAction());
+    }
+  }
+
+  public initPeopleConversationList() {
     this.peopleConversationList$ = this.store.select(selectPeopleConversation);
     this.peopleConversationList$
       .pipe(takeUntil(this.ngUnsubscribe$))
       .subscribe((conversationList) => {
-        if (this.peopleConversationList) {
+        if (conversationList) {
           this.peopleConversationList = conversationList;
         }
       });
-    // eslint-disable-next-line @ngrx/avoid-dispatching-multiple-actions-sequentially
-    this.store.dispatch(getPeopleAction());
-    // eslint-disable-next-line @ngrx/avoid-dispatching-multiple-actions-sequentially
-    this.store.dispatch(getPeopleConversationAction());
-    this.timerPeopleSubscription = this.timerService.getTimer(this.timerName);
+    if (!this.peopleConversationList.length) {
+      // eslint-disable-next-line @ngrx/avoid-dispatching-multiple-actions-sequentially
+      this.store.dispatch(getPeopleConversationAction());
+    }
   }
 
   public updatePeople(): void {

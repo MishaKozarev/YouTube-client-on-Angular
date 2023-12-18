@@ -26,6 +26,7 @@ import { selectProfile } from 'src/app/store/selectors/profile.selectors';
 })
 export class ProfilePageComponent implements OnInit {
   public profile$: Observable<UserProfile | null> | undefined;
+  public profile!: UserProfile;
   public editNameForm!: FormGroup<{ name: FormControl }>;
   public isEditName = false;
 
@@ -35,11 +36,22 @@ export class ProfilePageComponent implements OnInit {
     private route: Router
   ) {}
   ngOnInit(): void {
-    this.profile$ = this.store.select(selectProfile);
-    this.store.dispatch(getProfileAction());
+    this.initProfile();
     this.editNameForm = this.fb.group({
       name: ['', [Validators.required, Validators.maxLength(40)]]
     });
+  }
+
+  public initProfile(): void {
+    this.profile$ = this.store.select(selectProfile);
+    this.profile$.subscribe((profile) => {
+      if (profile) {
+        this.profile = profile;
+      }
+    });
+    if (this.profile.name.S === '') {
+      this.store.dispatch(getProfileAction());
+    }
   }
 
   public get name() {

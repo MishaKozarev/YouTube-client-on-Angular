@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -6,7 +6,7 @@ import {
   Validators
 } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, Subject, takeUntil } from 'rxjs';
 import { TimerService } from 'src/app/core/services/timer/timer.service';
 import {
   createGroupAction,
@@ -22,8 +22,9 @@ import { selectGroup } from 'src/app/store/selectors/group.selectors';
   templateUrl: './group-list.component.html',
   styleUrls: ['./group-list.component.scss']
 })
-export class GroupListComponent implements OnInit {
+export class GroupListComponent implements OnInit, OnDestroy {
   public groupList$: Observable<GroupItem[] | null> | undefined;
+  public groupList!: GroupItem[];
   public timerGroupSubscription: Observable<number | null> | undefined;
   public groupNameForm!: FormGroup<{ nameGroup: FormControl }>;
   public currentUid!: string;
@@ -31,6 +32,7 @@ export class GroupListComponent implements OnInit {
   public isShowDeleteGroup = false;
   public errorMessage = 'Please enter a details';
   public timerName = 'timerUpdateGroup';
+  private ngUnsubscribe$ = new Subject<void>();
 
   constructor(
     private store: Store,
@@ -38,8 +40,8 @@ export class GroupListComponent implements OnInit {
     private timerService: TimerService
   ) {}
   ngOnInit(): void {
-    this.groupList$ = this.store.select(selectGroup);
-    this.store.dispatch(getGroupAction());
+    this.initGroupList();
+
     this.getLocalStorageUid();
 
     this.groupNameForm = this.fb.group({
@@ -53,6 +55,20 @@ export class GroupListComponent implements OnInit {
       ]
     });
     this.timerGroupSubscription = this.timerService.getTimer(this.timerName);
+  }
+
+  public initGroupList(): void {
+    this.groupList$ = this.store.select(selectGroup);
+    this.groupList$
+      .pipe(takeUntil(this.ngUnsubscribe$))
+      .subscribe((groupsList) => {
+        if (groupsList) {
+          this.groupList = groupsList;
+        }
+      });
+    if (!this.groupList.length) {
+      this.store.dispatch(getGroupAction());
+    }
   }
 
   get nameGroup() {
@@ -102,5 +118,10 @@ export class GroupListComponent implements OnInit {
 
   public noConfirmDeleteGroup() {
     this.isShowDeleteGroup = false;
+  }
+
+  ngOnDestroy(): void {
+    this.ngUnsubscribe$.next();
+    this.ngUnsubscribe$.complete();
   }
 }

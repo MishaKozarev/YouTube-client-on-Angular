@@ -4,6 +4,9 @@ import {
   createPeopleConversationAction,
   createPeopleConversationFailedAction,
   createPeopleConversationSuccessfulAction,
+  deletePeopleConversationAction,
+  deletePeopleConversationFailedAction,
+  deletePeopleConversationSuccessfulAction,
   getPeopleConversationAction,
   getPeopleConversationFailedAction,
   getPeopleConversationSuccessfulAction
@@ -53,6 +56,32 @@ export const peopleConversationReducer = createReducer(
   ),
   on(
     createPeopleConversationFailedAction,
+    (state, { error }): PeopleConversationState => ({
+      ...state,
+      error,
+      loading: false
+    })
+  ),
+
+  on(
+    deletePeopleConversationAction,
+    (state): PeopleConversationState => ({ ...state, loading: true })
+  ),
+  on(
+    deletePeopleConversationSuccessfulAction,
+    (state, conversationID): PeopleConversationState => {
+      const updatedPeopleConversation = state.peopleConversation?.filter(
+        (conversation) => conversation.id.S !== conversationID.conversationID
+      );
+      return {
+        ...state,
+        peopleConversation: updatedPeopleConversation,
+        loading: false
+      };
+    }
+  ),
+  on(
+    deletePeopleConversationFailedAction,
     (state, { error }): PeopleConversationState => ({
       ...state,
       error,
