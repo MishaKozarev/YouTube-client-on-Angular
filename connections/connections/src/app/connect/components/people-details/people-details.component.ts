@@ -16,6 +16,7 @@ import {
   updatePeopleMessageAction
 } from 'src/app/store/actions/people-message.actions';
 import { PeopleItem } from 'src/app/store/models/people.models';
+import { PeopleMessageItem } from 'src/app/store/models/people-message.model';
 import { selectPeople } from 'src/app/store/selectors/people.selectors';
 import { selectPeopleMessage } from 'src/app/store/selectors/people-message.selectors';
 
@@ -26,7 +27,7 @@ import { selectPeopleMessage } from 'src/app/store/selectors/people-message.sele
 })
 export class PeopleDetailsComponent implements OnInit {
   public peopleMessageForm!: FormGroup<{ peopleMessageControl: FormControl }>;
-  public peopleMessage$ = this.store.select(selectPeopleMessage);
+  public peopleMessage$: Observable<PeopleMessageItem[]> | undefined;
   public currentPeopleId = '';
   public uid = localStorage.getItem('uid');
   public timerPeopleSubscription: Observable<number | null> | undefined;
@@ -46,21 +47,30 @@ export class PeopleDetailsComponent implements OnInit {
     this.routeActive.params.subscribe((params) => {
       this.currentPeopleId = params['conversationID'];
     });
-    this.store.dispatch(
-      getPeopleMessageAction({ conversationID: this.currentPeopleId })
-    );
+    this.initPeopleMessage();
 
     this.peopleMessageForm = this.fb.group({
       peopleMessageControl: ['', [Validators.required]]
     });
 
+    this.initPeopleList();
+    this.timerPeopleSubscription = this.timerService.getTimer(this.timerName);
+  }
+
+  public initPeopleList(): void {
     this.peopleList$ = this.store.select(selectPeople);
     this.peopleList$.subscribe((peoples) => {
       if (peoples) {
         this.peopleList = peoples;
       }
     });
-    this.timerPeopleSubscription = this.timerService.getTimer(this.timerName);
+  }
+
+  public initPeopleMessage() {
+    this.peopleMessage$ = this.store.select(selectPeopleMessage);
+    this.store.dispatch(
+      getPeopleMessageAction({ conversationID: this.currentPeopleId })
+    );
   }
 
   public get peopleMessageControl() {
