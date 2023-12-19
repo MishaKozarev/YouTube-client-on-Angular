@@ -1,13 +1,13 @@
 <div
   [ngClass]="
-    currentTheme === 'light' ? 'header__container' : 'header__container-dark'
+    currentTheme === 'dark' ? 'header__container-dark' : 'header__container'
   ">
   <div class="header__row">
     <li class="header__link">
       <button
         (click)="routingToSignUp()"
         [ngClass]="
-          currentTheme === 'light' ? 'header__btn' : 'header__btn-dark'
+          currentTheme === 'dark' ? 'header__btn-dark' : 'header__btn'
         ">
         Signup
       </button>
@@ -16,7 +16,7 @@
       <button
         (click)="routingToSignIn()"
         [ngClass]="
-          currentTheme === 'light' ? 'header__btn' : 'header__btn-dark'
+          currentTheme === 'dark' ? 'header__btn-dark' : 'header__btn'
         ">
         Signin
       </button>
@@ -25,7 +25,7 @@
       <button
         (click)="routingToMain()"
         [ngClass]="
-          currentTheme === 'light' ? 'header__btn' : 'header__btn-dark'
+          currentTheme === 'dark' ? 'header__btn-dark' : 'header__btn'
         ">
         Main
       </button>
@@ -34,7 +34,7 @@
       <button
         (click)="routingToProfile()"
         [ngClass]="
-          currentTheme === 'light' ? 'header__btn' : 'header__btn-dark'
+          currentTheme === 'dark' ? 'header__btn-dark' : 'header__btn'
         ">
         Profile
       </button>

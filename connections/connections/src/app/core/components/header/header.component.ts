@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
   public currentTheme$: Observable<string> = this.themeService.stateTheme$;
   public currentTheme = localStorage.getItem('theme')
     ? localStorage.getItem('theme')
-    : 'light';
+    : localStorage.setItem('theme', 'light');
 
   constructor(
     private route: Router,
