@@ -38,11 +38,9 @@ export class HeaderComponent implements OnInit {
 
   public switchTheme() {
     if (this.currentTheme === 'dark') {
-      // this.currentTheme = 'light';
       this.themeService.changeTheme('light');
       localStorage.setItem('theme', 'light');
     } else {
-      // this.currentTheme = 'dark';
       this.themeService.changeTheme('dark');
       localStorage.setItem('theme', 'dark');
     }
