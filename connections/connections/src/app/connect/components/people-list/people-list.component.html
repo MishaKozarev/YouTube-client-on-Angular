@@ -1,4 +1,6 @@
-<div class="people">
+<div
+  [ngClass]="currentTheme === 'light' ? 'people' : 'people-dark'"
+  class="people">
   <h2 class="people__title">People</h2>
   <div class="people__header">
     <div class="people__box-update">

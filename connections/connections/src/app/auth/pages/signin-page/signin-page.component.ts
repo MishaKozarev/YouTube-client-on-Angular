@@ -7,7 +7,8 @@ import {
   Validators
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Subject, takeUntil } from 'rxjs';
+import { Observable, Subject, takeUntil } from 'rxjs';
+import { ThemeService } from 'src/app/core/services/theme/theme.service';
 import { ToastMessagesService } from 'src/app/core/services/toast-message/toast-messages.service';
 
 import { UserDataSignin, UserResponseSignin } from '../../models/user-data';
@@ -30,11 +31,14 @@ export class SigninPageComponent implements OnInit {
     email: FormControl;
     password: FormControl;
   }>;
+  public currentTheme$: Observable<string> = this.themeService.stateTheme$;
+  public currentTheme = localStorage.getItem('theme');
   constructor(
     private fb: FormBuilder,
     private route: Router,
     private authService: AuthService,
-    private toastMessagesService: ToastMessagesService
+    private toastMessagesService: ToastMessagesService,
+    private themeService: ThemeService
   ) {}
   ngOnInit(): void {
     this.signinForm = this.fb.group({
@@ -42,6 +46,9 @@ export class SigninPageComponent implements OnInit {
       password: ['', [Validators.required, validationPassword()]]
     });
     this.subscribeToForm();
+    this.currentTheme$.subscribe((theme) => {
+      this.currentTheme = theme;
+    });
   }
   get email() {
     return this.signinForm.get('email') as FormControl;

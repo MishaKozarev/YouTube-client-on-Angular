@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable, Subject, takeUntil } from 'rxjs';
+import { ThemeService } from 'src/app/core/services/theme/theme.service';
 import { TimerService } from 'src/app/core/services/timer/timer.service';
 import {
   createGroupAction,
@@ -33,11 +34,14 @@ export class GroupListComponent implements OnInit, OnDestroy {
   public errorMessage = 'Please enter a details';
   public timerName = 'timerUpdateGroup';
   private ngUnsubscribe$ = new Subject<void>();
+  public currentTheme$: Observable<string> = this.themeService.stateTheme$;
+  public currentTheme = localStorage.getItem('theme');
 
   constructor(
     private store: Store,
     private fb: FormBuilder,
-    private timerService: TimerService
+    private timerService: TimerService,
+    private themeService: ThemeService
   ) {}
   ngOnInit(): void {
     this.initGroupList();
@@ -55,6 +59,9 @@ export class GroupListComponent implements OnInit, OnDestroy {
       ]
     });
     this.timerGroupSubscription = this.timerService.getTimer(this.timerName);
+    this.currentTheme$.subscribe((theme) => {
+      this.currentTheme = theme;
+    });
   }
 
   public initGroupList(): void {

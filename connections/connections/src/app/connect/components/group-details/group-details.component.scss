@@ -11,6 +11,7 @@
     gap: 20px;
     flex-direction: column;
     position: relative;
+    color: black;
 
     &__title {
         text-align: center;
@@ -18,6 +19,7 @@
         font-size: 1.125rem;
         font-weight: 700;
         margin: 0 0 20px 0;
+        color: inherit;
     }
 
     &__header {
@@ -176,99 +178,110 @@
         width: 80%;
         height: 30px;
     }
+}
 
-    .message {
-        display: flex;
-        gap: 10px;
-        align-items: center;
-        border: 1px solid rgb(0, 0, 0, .2);
-        border-radius: 15px;
-        padding: 10px;
-        background-color: rgb(211, 250, 237);
-        width: 40%;
-        align-self: flex-end;
+.message {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    border: 1px solid rgb(0, 0, 0, .2);
+    border-radius: 15px;
+    padding: 10px;
+    background-color: rgb(211, 250, 237);
+    width: 40%;
+    align-self: flex-end;
+    color: black;
 
-
-        &__img {
-            background-image: url('../../../../assets/icon-user.png');
-            background-size: 30px 30px;
-            width: 30px;
-            height: 30px;
-        }
-
-        &__content {
-            display: flex;
-            flex-direction: column;
-            width: 80%;
-        }
-
-        &__header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        &__author {
-            font-weight: 700;
-        }
-
-        &__data {
-            font-weight: 300;
-            font-size: 8px;
-        }
+    &__img {
+        background-image: url('../../../../assets/icon-user.png');
+        background-size: 30px 30px;
+        width: 30px;
+        height: 30px;
     }
 
-    .message-outside {
-        background-color: $form-background;
-        align-self: flex-start;
-    }
-
-    &__popup-delete {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 200px;
-        height: 100px;
-        margin: -50px 0 0 -100px;
-        padding: 20px 0;
-        border-radius: 15px;
-        border: 2px solid black;
+    &__content {
         display: flex;
         flex-direction: column;
+        width: 80%;
+    }
+
+    &__header {
+        display: flex;
         align-items: center;
-        justify-content: center;
-        gap: 10px;
-        background: rgb(201, 198, 198);
-        color: black;
+        justify-content: space-between;
+    }
+
+    &__author {
         font-weight: 700;
     }
 
-    &__popup-box-btn {
-        display: flex;
-        gap: 15px;
+    &__data {
+        font-weight: 300;
+        font-size: 8px;
     }
+}
 
-    &__popup-btn {
-        cursor: pointer;
-        border-radius: 5px;
-        align-self: flex-end;
-        border: none;
-        color: $white-color;
-        background-color: $blue-color;
-        width: 50px;
-        height: 27px;
-        box-shadow: 5px 0px 3px $blue-color;
-        transition: .5s;
-        font-size: .75rem;
-        font-weight: 400;
+.message-outside {
+    background-color: $form-background;
+    align-self: flex-start;
+}
 
-        &:hover {
-            background-color: $blue-color-hover;
-            box-shadow: 5px 0px 3px $blue-color-hover;
-        }
+.people-detail__popup-delete {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 100px;
+    margin: -50px 0 0 -100px;
+    padding: 20px 0;
+    border-radius: 15px;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: rgb(201, 198, 198);
+    color: black;
+    font-weight: 700;
+}
+
+.people-detail__popup-box-btn {
+    display: flex;
+    gap: 15px;
+}
+
+.people-detail__popup-btn {
+    cursor: pointer;
+    border-radius: 5px;
+    align-self: flex-end;
+    border: none;
+    color: $white-color;
+    background-color: $blue-color;
+    width: 50px;
+    height: 27px;
+    box-shadow: 5px 0px 3px $blue-color;
+    transition: .5s;
+    font-size: .75rem;
+    font-weight: 400;
+
+    &:hover {
+        background-color: $blue-color-hover;
+        box-shadow: 5px 0px 3px $blue-color-hover;
     }
+}
 
-
-
-
+.group-details-dark {
+    width: 80%;
+    height: 730px;
+    margin: 20px auto;
+    background-color: #293133;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    position: relative;
+    color: white;
+    background-color: #646B63;
 }

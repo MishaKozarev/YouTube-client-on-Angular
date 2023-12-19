@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subject, takeUntil } from 'rxjs';
+import { ThemeService } from 'src/app/core/services/theme/theme.service';
 import { TimerService } from 'src/app/core/services/timer/timer.service';
 import {
   getPeopleAction,
@@ -29,16 +30,22 @@ export class PeopleListComponent implements OnInit, OnDestroy {
   public timerPeopleSubscription: Observable<number | null> | undefined;
   public timerName = 'timerUpdatePeoples';
   private ngUnsubscribe$ = new Subject<void>();
+  public currentTheme$: Observable<string> = this.themeService.stateTheme$;
+  public currentTheme = localStorage.getItem('theme');
 
   constructor(
     private store: Store,
     private router: Router,
-    private timerService: TimerService
+    private timerService: TimerService,
+    private themeService: ThemeService
   ) {}
   ngOnInit(): void {
     this.initPeopleList();
     this.initPeopleConversationList();
     this.timerPeopleSubscription = this.timerService.getTimer(this.timerName);
+    this.currentTheme$.subscribe((theme) => {
+      this.currentTheme = theme;
+    });
   }
 
   public initPeopleList(): void {

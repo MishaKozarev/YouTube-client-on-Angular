@@ -11,17 +11,20 @@
     gap: 20px;
     flex-direction: column;
     position: relative;
+    border: 1px solid rgb(0, 0, 0, .2);
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    color: black;
 
     &__title {
         text-align: center;
-        color: $black;
+        color: inherit;
         font-size: 1.125rem;
         font-weight: 700;
         margin: 0 0 20px 0;
     }
 
     &__header {
-        border: 1px solid rgb(0, 0, 0, .2);
+        border: inherit;
         border-radius: 15px;
         padding: 20px;
 
@@ -68,9 +71,11 @@
 
     &__main {
         height: 80%;
-        border: 1px solid rgb(0, 0, 0, .2);
+        border: inherit;
         border-radius: 15px;
         overflow: auto;
+        color: inherit;
+        box-shadow: inherit;
     }
 
     &__list {
@@ -78,26 +83,31 @@
         display: flex;
         flex-direction: column;
         gap: 10px;
+        border: inherit;
+        border-radius: 15px;
+        color: inherit;
+        box-shadow: inherit;
     }
 
     &__item {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        border: 1px solid rgb(0, 0, 0, .2);
+        border: inherit;
         border-radius: 15px;
         padding: 10px;
+        color: inherit;
     }
 
     &__item:hover {
         transform: scale(1.07);
-        box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        box-shadow: inherit;
         font-weight: 700;
     }
 
     &__link {
         text-decoration: none;
-        color: black;
+        color: inherit;
     }
 
     &__link:hover {
@@ -247,4 +257,20 @@
         color: black;
         font-weight: 700;
     }
+}
+
+.group-dark {
+    width: 80%;
+    height: 730px;
+    margin: 20px;
+    background-color: #293133;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    position: relative;
+    color: white;
+    border: 1px solid white;
+    box-shadow: 0 0 10px white;
 }

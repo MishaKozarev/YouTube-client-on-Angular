@@ -8,6 +8,7 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { ThemeService } from 'src/app/core/services/theme/theme.service';
 import { TimerService } from 'src/app/core/services/timer/timer.service';
 import { deletePeopleConversationAction } from 'src/app/store/actions/people-conversation.actions';
 import {
@@ -35,13 +36,16 @@ export class PeopleDetailsComponent implements OnInit {
   public peopleList$!: Observable<PeopleItem[]>;
   public peopleList!: PeopleItem[];
   public isShowDeletePeopleDialog: boolean = false;
+  public currentTheme$: Observable<string> = this.themeService.stateTheme$;
+  public currentTheme = localStorage.getItem('theme');
 
   constructor(
     private store: Store,
     private route: Router,
     private routeActive: ActivatedRoute,
     private timerService: TimerService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private themeService: ThemeService
   ) {}
   public ngOnInit(): void {
     this.routeActive.params.subscribe((params) => {
@@ -55,6 +59,9 @@ export class PeopleDetailsComponent implements OnInit {
 
     this.initPeopleList();
     this.timerPeopleSubscription = this.timerService.getTimer(this.timerName);
+    this.currentTheme$.subscribe((theme) => {
+      this.currentTheme = theme;
+    });
   }
 
   public initPeopleList(): void {

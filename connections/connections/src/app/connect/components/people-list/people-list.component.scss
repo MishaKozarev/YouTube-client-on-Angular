@@ -11,6 +11,9 @@
     gap: 20px;
     flex-direction: column;
     position: relative;
+    border: 1px solid rgb(0, 0, 0, .2);
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    color: black;
 
     &__title {
         text-align: center;
@@ -18,10 +21,12 @@
         font-size: 1.125rem;
         font-weight: 700;
         margin: 0 0 20px 0;
+        color: inherit;
+
     }
 
     &__header {
-        border: 1px solid rgb(0, 0, 0, .2);
+        border: inherit;
         border-radius: 15px;
         padding: 20px;
 
@@ -29,18 +34,21 @@
 
     &__main {
         height: 80%;
-        border: 1px solid rgb(0, 0, 0, .2);
+        border: inherit;
         border-radius: 15px;
         overflow: auto;
+        box-shadow: inherit;
     }
 
     &__box-update {
         display: flex;
         align-items: center;
-        border-bottom: 1px solid rgb(0, 0, 0, .2);
+        border: inherit;
+        border-radius: 15px;
         font-size: 1rem;
         font-weight: 500;
         margin: 0;
+        padding: 10px;
     }
 
     &__btn_update {
@@ -76,20 +84,24 @@
         display: flex;
         flex-direction: column;
         gap: 10px;
+        border: inherit;
+        border-radius: 15px;
+        box-shadow: inherit;
+
     }
 
     &__item {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        border: 1px solid rgb(0, 0, 0, .2);
+        border: inherit;
         border-radius: 15px;
         padding: 10px;
     }
 
     &__item:hover {
         transform: scale(1.07);
-        box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        box-shadow: inherit;
         font-weight: 700;
     }
 
@@ -98,11 +110,30 @@
         cursor: pointer;
         background: inherit;
         font-weight: inherit;
+        color: inherit;
     }
 
     &__companions {
         border: 1px solid black;
         cursor: pointer;
         background-color: rgb(183, 252, 183);
+        color: black;
     }
+}
+
+
+.people-dark {
+    width: 80%;
+    height: 730px;
+    margin: 20px;
+    background-color: #293133;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    position: relative;
+    color: white;
+    border: 1px solid white;
+    box-shadow: 0 0 10px white;
 }

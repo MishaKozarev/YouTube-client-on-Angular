@@ -1,4 +1,7 @@
-<div class="profile" *ngIf="profile$ | async as profile">
+<div
+  [ngClass]="currentTheme === 'light' ? 'profile' : 'profile-dark'"
+  class="profile"
+  *ngIf="profile$ | async as profile">
   <div class="profile__header">
     <h2 class="profile__title">User Profile</h2>
     <button (click)="logout()" type="button" class="profile__btn_logout">

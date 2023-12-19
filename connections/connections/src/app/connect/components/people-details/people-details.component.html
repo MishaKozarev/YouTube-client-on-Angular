@@ -1,4 +1,7 @@
-<div class="people-details">
+<div
+  [ngClass]="
+    currentTheme === 'light' ? 'people-details' : 'people-details-dark'
+  ">
   <div class="people-details__title">People conversation</div>
   <button (click)="deletePeopleDialog()" class="people-details__btn">
     <div class="people-details__btn-delete-img"></div>

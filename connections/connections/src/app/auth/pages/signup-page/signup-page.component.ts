@@ -7,9 +7,10 @@ import {
   Validators
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Subject, takeUntil } from 'rxjs';
+import { Observable, Subject, takeUntil } from 'rxjs';
 import { UserDataSignup } from 'src/app/auth/models/user-data';
 import { AuthService } from 'src/app/auth/services/auth/auth.service';
+import { ThemeService } from 'src/app/core/services/theme/theme.service';
 import { ToastMessagesService } from 'src/app/core/services/toast-message/toast-messages.service';
 
 import { validationPassword } from '../../validators/password.validator';
@@ -32,12 +33,15 @@ export class SignupPageComponent implements OnInit, OnDestroy {
     name: FormControl;
     password: FormControl;
   }>;
+  public currentTheme$: Observable<string> = this.themeService.stateTheme$;
+  public currentTheme = localStorage.getItem('theme');
 
   constructor(
     private fb: FormBuilder,
     private route: Router,
     private authService: AuthService,
-    private toastMessagesService: ToastMessagesService
+    private toastMessagesService: ToastMessagesService,
+    private themeService: ThemeService
   ) {}
 
   public ngOnInit(): void {
@@ -47,6 +51,9 @@ export class SignupPageComponent implements OnInit, OnDestroy {
       password: ['', [Validators.required, validationPassword()]]
     });
     this.subscribeToEmailForm();
+    this.currentTheme$.subscribe((theme) => {
+      this.currentTheme = theme;
+    });
   }
 
   get email(): FormControl {

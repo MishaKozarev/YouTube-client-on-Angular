@@ -19,6 +19,8 @@ import {
 } from 'src/app/store/models/profile.models';
 import { selectProfile } from 'src/app/store/selectors/profile.selectors';
 
+import { ThemeService } from '../../services/theme/theme.service';
+
 @Component({
   selector: 'app-profile-page',
   templateUrl: './profile-page.component.html',
@@ -29,11 +31,14 @@ export class ProfilePageComponent implements OnInit {
   public profile!: UserProfile;
   public editNameForm!: FormGroup<{ name: FormControl }>;
   public isEditName = false;
+  public currentTheme$: Observable<string> = this.themeService.stateTheme$;
+  public currentTheme = localStorage.getItem('theme');
 
   constructor(
     private store: Store,
     private fb: FormBuilder,
-    private route: Router
+    private route: Router,
+    private themeService: ThemeService
   ) {}
   ngOnInit(): void {
     this.initProfile();
@@ -52,6 +57,9 @@ export class ProfilePageComponent implements OnInit {
     if (this.profile.name.S === '') {
       this.store.dispatch(getProfileAction());
     }
+    this.currentTheme$.subscribe((theme) => {
+      this.currentTheme = theme;
+    });
   }
 
   public get name() {

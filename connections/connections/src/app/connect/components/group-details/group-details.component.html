@@ -1,4 +1,5 @@
-<div class="group-details">
+<div
+  [ngClass]="currentTheme === 'light' ? 'group-details' : 'group-details-dark'">
   <div class="group-details__title">Group conversation</div>
   <button (click)="deleteGroup()" class="group-details__btn">
     <div class="group-details__btn-delete-img"></div>

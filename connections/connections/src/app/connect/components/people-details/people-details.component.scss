@@ -11,264 +11,278 @@
     gap: 20px;
     flex-direction: column;
     position: relative;
+    color: black;
+}
 
-    &__title {
-        text-align: center;
-        color: $black;
-        font-size: 1.125rem;
-        font-weight: 700;
-        margin: 0 0 20px 0;
+.people-details__title {
+    text-align: center;
+    color: $black;
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin: 0 0 20px 0;
+    color: inherit;
+}
+
+.people-details__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid rgb(0, 0, 0, .2);
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.people-details__link {
+    text-decoration: none;
+    color: $white-color;
+    border: none;
+    padding: 5px 20px;
+    border-radius: 15px;
+    background-color: $blue-color;
+    box-shadow: 5px 0px 3px $blue-color;
+    transition: .5s;
+    font-size: .75rem;
+    font-weight: 400;
+}
+
+.people-details__btn {
+    border: none;
+    background: inherit;
+    font-weight: 900;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.people-details__btn-delete-img {
+    background-image: url('../../../../assets/icons-group-delete.png');
+    background-size: 30px 30px;
+    width: 30px;
+    height: 30px;
+}
+
+.people-details__box-update {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+
+.people-details__btn_update {
+    border: none;
+    background: inherit;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.people-details__btn-disabled {
+    border: none;
+    background: inherit;
+    cursor: not-allowed;
+}
+
+.people-details__btn-img-disabled {
+    opacity: .3;
+    background-image: url('../../../../assets/icon-group-update.png');
+    background-size: 30px 30px;
+    width: 30px;
+    height: 30px;
+}
+
+.people-details__btn-update-img {
+    background-image: url('../../../../assets/icon-group-update.png');
+    background-size: 30px 30px;
+    width: 30px;
+    height: 30px;
+}
+
+.people-details__main {
+    height: 70%;
+    border: 1px solid rgb(0, 0, 0, .2);
+    border-radius: 15px;
+    overflow: auto;
+    background-color: #DCDCDC;
+}
+
+.people-details__list {
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.people-details__footer {
+    width: 100%;
+    height: 10%;
+    border: 1px solid rgb(0, 0, 0, .2);
+    border-radius: 15px;
+    overflow: auto;
+    display: flex;
+    align-items: center;
+}
+
+.people-details__form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.people-details__btn-message {
+    cursor: pointer;
+    border-radius: 5px;
+    align-self: flex-end;
+    border: none;
+    color: $white-color;
+    background-color: $blue-color;
+    width: 50px;
+    height: 27px;
+    box-shadow: 5px 0px 3px $blue-color;
+    transition: .5s;
+    font-size: .75rem;
+    font-weight: 400;
+    margin: 0 0 0 15px;
+}
+
+.people-details__btn-message-error {
+    cursor: pointer;
+    border-radius: 5px;
+    align-self: flex-end;
+    border: none;
+    color: $white-color;
+    background-color: grey;
+    box-shadow: 5px 0px 3px grey;
+
+    width: 50px;
+    height: 27px;
+    transition: .5s;
+    font-size: .75rem;
+    font-weight: 400;
+    margin: 0 0 0 15px;
+}
+
+.people-details__label {
+    margin-left: 10px;
+    color: $font-grey;
+    font-size: 1rem;
+    margin-bottom: 2px;
+}
+
+.people-details__input {
+    box-sizing: border-box;
+    padding: 0 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: $input-background;
+    width: 80%;
+    height: 30px;
+}
+
+.message {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    border: 1px solid rgb(0, 0, 0, .2);
+    border-radius: 15px;
+    padding: 10px;
+    background-color: rgb(211, 250, 237);
+    width: 40%;
+    align-self: flex-end;
+    color: black;
+
+
+    &__img {
+        background-image: url('../../../../assets/icon-user.png');
+        background-size: 30px 30px;
+        width: 30px;
+        height: 30px;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
     }
 
     &__header {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        border: 1px solid rgb(0, 0, 0, .2);
-        border-radius: 15px;
-        padding: 20px;
     }
 
-    &__link {
-        text-decoration: none;
-        color: $white-color;
-        border: none;
-        padding: 5px 20px;
-        border-radius: 15px;
-        background-color: $blue-color;
-        box-shadow: 5px 0px 3px $blue-color;
-        transition: .5s;
-        font-size: .75rem;
-        font-weight: 400;
-    }
-
-    &__btn {
-        border: none;
-        background: inherit;
-        font-weight: 900;
-        cursor: pointer;
-        position: absolute;
-        top: 10px;
-        right: 10px;
-    }
-
-    &__btn-delete-img {
-        background-image: url('../../../../assets/icons-group-delete.png');
-        background-size: 30px 30px;
-        width: 30px;
-        height: 30px;
-    }
-
-    &__box-update {
-        display: flex;
-        align-items: center;
-        font-size: 1rem;
-        font-weight: 500;
-    }
-
-
-    &__btn_update {
-        border: none;
-        background: inherit;
-        cursor: pointer;
+    &__author {
         font-weight: 700;
     }
 
-    &__btn-disabled {
-        border: none;
-        background: inherit;
-        cursor: not-allowed;
+    &__data {
+        font-weight: 300;
+        font-size: 8px;
     }
+}
 
-    &__btn-img-disabled {
-        opacity: .3;
-        background-image: url('../../../../assets/icon-group-update.png');
-        background-size: 30px 30px;
-        width: 30px;
-        height: 30px;
+.message-outside {
+    background-color: $form-background;
+    align-self: flex-start;
+}
+
+.people-details__popup-delete {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 100px;
+    margin: -50px 0 0 -100px;
+    padding: 20px 0;
+    border-radius: 15px;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: rgb(201, 198, 198);
+    color: black;
+    font-weight: 700;
+}
+
+.people-details__popup-box-btn {
+    display: flex;
+    gap: 15px;
+}
+
+.people-details__popup-btn {
+    cursor: pointer;
+    border-radius: 5px;
+    align-self: flex-end;
+    border: none;
+    color: $white-color;
+    background-color: $blue-color;
+    width: 50px;
+    height: 27px;
+    box-shadow: 5px 0px 3px $blue-color;
+    transition: .5s;
+    font-size: .75rem;
+    font-weight: 400;
+
+    &:hover {
+        background-color: $blue-color-hover;
+        box-shadow: 5px 0px 3px $blue-color-hover;
     }
+}
 
-    &__btn-update-img {
-        background-image: url('../../../../assets/icon-group-update.png');
-        background-size: 30px 30px;
-        width: 30px;
-        height: 30px;
-    }
-
-    &__main {
-        height: 70%;
-        border: 1px solid rgb(0, 0, 0, .2);
-        border-radius: 15px;
-        overflow: auto;
-        background-color: #DCDCDC;
-    }
-
-    &__list {
-        padding: 0 20px;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    &__footer {
-        width: 100%;
-        height: 10%;
-        border: 1px solid rgb(0, 0, 0, .2);
-        border-radius: 15px;
-        overflow: auto;
-        display: flex;
-        align-items: center;
-    }
-
-    &__form {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    &__btn-message {
-        cursor: pointer;
-        border-radius: 5px;
-        align-self: flex-end;
-        border: none;
-        color: $white-color;
-        background-color: $blue-color;
-        width: 50px;
-        height: 27px;
-        box-shadow: 5px 0px 3px $blue-color;
-        transition: .5s;
-        font-size: .75rem;
-        font-weight: 400;
-        margin: 0 0 0 15px;
-    }
-
-    &__btn-message-error {
-        cursor: pointer;
-        border-radius: 5px;
-        align-self: flex-end;
-        border: none;
-        color: $white-color;
-        background-color: grey;
-        box-shadow: 5px 0px 3px grey;
-
-        width: 50px;
-        height: 27px;
-        transition: .5s;
-        font-size: .75rem;
-        font-weight: 400;
-        margin: 0 0 0 15px;
-    }
-
-    &__label {
-        margin-left: 10px;
-        color: $font-grey;
-        font-size: 1rem;
-        margin-bottom: 2px;
-    }
-
-    &__input {
-        box-sizing: border-box;
-        padding: 0 10px;
-        border: none;
-        border-radius: 10px;
-        background-color: $input-background;
-        width: 80%;
-        height: 30px;
-    }
-
-    .message {
-        display: flex;
-        gap: 10px;
-        align-items: center;
-        border: 1px solid rgb(0, 0, 0, .2);
-        border-radius: 15px;
-        padding: 10px;
-        background-color: rgb(211, 250, 237);
-        width: 40%;
-        align-self: flex-end;
-
-
-        &__img {
-            background-image: url('../../../../assets/icon-user.png');
-            background-size: 30px 30px;
-            width: 30px;
-            height: 30px;
-        }
-
-        &__content {
-            display: flex;
-            flex-direction: column;
-            width: 80%;
-        }
-
-        &__header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        &__author {
-            font-weight: 700;
-        }
-
-        &__data {
-            font-weight: 300;
-            font-size: 8px;
-        }
-    }
-
-    .message-outside {
-        background-color: $form-background;
-        align-self: flex-start;
-    }
-
-    &__popup-delete {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 200px;
-        height: 100px;
-        margin: -50px 0 0 -100px;
-        padding: 20px 0;
-        border-radius: 15px;
-        border: 2px solid black;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        background: rgb(201, 198, 198);
-        color: black;
-        font-weight: 700;
-    }
-
-    &__popup-box-btn {
-        display: flex;
-        gap: 15px;
-    }
-
-    &__popup-btn {
-        cursor: pointer;
-        border-radius: 5px;
-        align-self: flex-end;
-        border: none;
-        color: $white-color;
-        background-color: $blue-color;
-        width: 50px;
-        height: 27px;
-        box-shadow: 5px 0px 3px $blue-color;
-        transition: .5s;
-        font-size: .75rem;
-        font-weight: 400;
-
-        &:hover {
-            background-color: $blue-color-hover;
-            box-shadow: 5px 0px 3px $blue-color-hover;
-        }
-    }
-
-
-
-
+.people-details-dark {
+    width: 80%;
+    height: 730px;
+    margin: 20px auto;
+    background-color: #293133;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    position: relative;
+    color: white;
+    background-color: #646B63;
 }

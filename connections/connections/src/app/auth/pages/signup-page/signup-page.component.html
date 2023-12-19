@@ -1,5 +1,8 @@
 <main class="signup__container">
-  <form [formGroup]="signupForm" (ngSubmit)="submitForm()" class="signup__form">
+  <form
+    [formGroup]="signupForm"
+    (ngSubmit)="submitForm()"
+    [ngClass]="currentTheme === 'light' ? 'signup__form' : 'signup__form-dark'">
     <p class="signup__title">Signup</p>
 
     <div class="signup__field">

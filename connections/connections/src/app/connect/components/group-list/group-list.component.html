@@ -1,4 +1,6 @@
-<div class="group">
+<div
+  [ngClass]="currentTheme === 'light' ? 'group' : 'group-dark'"
+  class="group">
   <h2 class="group__title">Groups</h2>
   <div class="group__header">
     <div class="group__box-update">

@@ -8,6 +8,7 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subject, takeUntil } from 'rxjs';
+import { ThemeService } from 'src/app/core/services/theme/theme.service';
 import { TimerService } from 'src/app/core/services/timer/timer.service';
 import { deleteGroupAction } from 'src/app/store/actions/group.actions';
 import {
@@ -38,13 +39,16 @@ export class GroupDetailsComponent implements OnInit, OnDestroy {
   public uid = localStorage.getItem('uid');
   public isShowDeleteGroup: boolean = false;
   private ngUnsubscribe$ = new Subject<void>();
+  public currentTheme$: Observable<string> = this.themeService.stateTheme$;
+  public currentTheme = localStorage.getItem('theme');
 
   constructor(
     private store: Store,
     private route: Router,
     private routeActive: ActivatedRoute,
     private timerService: TimerService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private themeService: ThemeService
   ) {}
   ngOnInit(): void {
     this.initPeopleList();
@@ -57,6 +61,9 @@ export class GroupDetailsComponent implements OnInit, OnDestroy {
       groupMessageControl: ['', [Validators.required]]
     });
     this.timerGroupSubscription = this.timerService.getTimer(this.timerName);
+    this.currentTheme$.subscribe((theme) => {
+      this.currentTheme = theme;
+    });
   }
 
   public initPeopleList(): void {
