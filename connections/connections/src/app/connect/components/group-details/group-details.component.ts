@@ -83,9 +83,7 @@ export class GroupDetailsComponent implements OnInit, OnDestroy {
           this.groupMessage = groupMessage;
         }
       });
-    if (!this.groupMessage.length) {
-      this.store.dispatch(getGroupMessageAction({ groupID: this.currentId }));
-    }
+    this.store.dispatch(getGroupMessageAction({ groupID: this.currentId }));
   }
 
   get groupMessageControl() {

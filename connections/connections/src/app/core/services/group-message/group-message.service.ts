@@ -15,13 +15,15 @@ export class GroupMessageService {
 
   constructor(private http: HttpClient) {}
 
-  public sendGroupMessageRequest(groupId: string) {
+  public sendGroupMessageRequest(groupId: string, since?: number) {
     const headers = {
       'rs-uid': localStorage.getItem('uid') || '',
       'rs-email': localStorage.getItem('email') || '',
       Authorization: `Bearer ${localStorage.getItem('token') || ''}`
     };
-    const params = new HttpParams().set('groupID', groupId);
+    const params = since
+      ? new HttpParams().set('groupID', groupId).set('since', since)
+      : new HttpParams().set('groupID', groupId);
 
     return this.http.get<GroupMessage>(this.httpGroupMessage, {
       headers,
