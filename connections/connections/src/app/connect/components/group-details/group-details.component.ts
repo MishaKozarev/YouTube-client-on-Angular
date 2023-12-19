@@ -17,8 +17,10 @@ import {
   updateGroupMessageAction
 } from 'src/app/store/actions/group-message.actions';
 import { getPeopleAction } from 'src/app/store/actions/people.actions';
+import { GroupItem } from 'src/app/store/models/group.models';
 import { GroupMessageItem } from 'src/app/store/models/group-message.models';
 import { PeopleItem } from 'src/app/store/models/people.models';
+import { selectGroup } from 'src/app/store/selectors/group.selectors';
 import { selectGroupMessage } from 'src/app/store/selectors/group-message.selectors';
 import { selectPeople } from 'src/app/store/selectors/people.selectors';
 
@@ -28,6 +30,8 @@ import { selectPeople } from 'src/app/store/selectors/people.selectors';
   styleUrls: ['./group-details.component.scss']
 })
 export class GroupDetailsComponent implements OnInit, OnDestroy {
+  public groupList$: Observable<GroupItem[] | null> | undefined;
+  public groupList!: GroupItem[];
   public groupMessageForm!: FormGroup<{ groupMessageControl: FormControl }>;
   public groupMessage$: Observable<GroupMessageItem[]> | undefined;
   public groupMessage!: GroupMessageItem[];
@@ -41,6 +45,7 @@ export class GroupDetailsComponent implements OnInit, OnDestroy {
   private ngUnsubscribe$ = new Subject<void>();
   public currentTheme$: Observable<string> = this.themeService.stateTheme$;
   public currentTheme = localStorage.getItem('theme');
+  public isMyGroup!: boolean;
 
   constructor(
     private store: Store,
@@ -63,6 +68,19 @@ export class GroupDetailsComponent implements OnInit, OnDestroy {
     this.timerGroupSubscription = this.timerService.getTimer(this.timerName);
     this.currentTheme$.subscribe((theme) => {
       this.currentTheme = theme;
+    });
+
+    this.groupList$ = this.store.select(selectGroup);
+    this.groupList$.subscribe((groups) => {
+      if (groups?.length) {
+        const currentGroup = groups.find(
+          (group) => group.id.S === this.currentId
+        );
+        if (currentGroup) {
+          this.isMyGroup =
+            currentGroup.createdBy.S === localStorage.getItem('uid');
+        }
+      }
     });
   }
 
