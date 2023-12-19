@@ -1,4 +1,14 @@
-@import '../../../../styles.scss';
+$background-color: #E5E5E5;
+$form-background: #F2F2F2;
+$input-background: #E0E0E0;
+$input-color: #EFEFEF;
+$blue-color: #2F80ED;
+$blue-color-hover: #5EA2FF;
+$grey-color: #929292;
+$white-color: #FFFFFF;
+$font-grey: #828282;
+$red: #ff0000;
+$black: #000000;
 
 .people-details {
     width: 80%;
@@ -53,13 +63,6 @@
     position: absolute;
     top: 10px;
     right: 10px;
-}
-
-.people-details__btn-delete-img {
-    background-image: url('../../../../assets/icons-group-delete.png');
-    background-size: 30px 30px;
-    width: 30px;
-    height: 30px;
 }
 
 .people-details__box-update {
