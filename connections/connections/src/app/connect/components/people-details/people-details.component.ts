@@ -25,7 +25,7 @@ import { selectPeopleMessage } from 'src/app/store/selectors/people-message.sele
   styleUrls: ['./people-details.component.scss']
 })
 export class PeopleDetailsComponent implements OnInit {
-  public peopleMessageForm!: FormGroup<{ peopleMessage: FormControl }>;
+  public peopleMessageForm!: FormGroup<{ peopleMessageControl: FormControl }>;
   public peopleMessage$ = this.store.select(selectPeopleMessage);
   public currentPeopleId = '';
   public uid = localStorage.getItem('uid');
@@ -51,7 +51,7 @@ export class PeopleDetailsComponent implements OnInit {
     );
 
     this.peopleMessageForm = this.fb.group({
-      peopleMessage: ['', [Validators.required]]
+      peopleMessageControl: ['', [Validators.required]]
     });
 
     this.peopleList$ = this.store.select(selectPeople);
@@ -63,8 +63,8 @@ export class PeopleDetailsComponent implements OnInit {
     this.timerPeopleSubscription = this.timerService.getTimer(this.timerName);
   }
 
-  public get peopleMessage() {
-    return this.peopleMessageForm.get('peopleMessage') as FormControl;
+  public get peopleMessageControl() {
+    return this.peopleMessageForm.get('peopleMessageControl') as FormControl;
   }
 
   public updateMessage(): void {
@@ -76,11 +76,11 @@ export class PeopleDetailsComponent implements OnInit {
   public createMessage(): void {
     localStorage.setItem(
       'currentMessage',
-      this.peopleMessageForm.value.peopleMessage
+      this.peopleMessageForm.value.peopleMessageControl
     );
     const message = {
       conversationID: this.currentPeopleId,
-      message: this.peopleMessageForm.value.peopleMessage
+      message: this.peopleMessageForm.value.peopleMessageControl
     };
     this.store.dispatch(sendPeopleMessageAction(message));
     this.peopleMessageForm.reset();

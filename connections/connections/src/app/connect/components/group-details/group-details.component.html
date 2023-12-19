@@ -58,18 +58,18 @@
       <label class="group-details__label" for="group-message"></label>
       <input
         placeholder="Enter the message"
-        formControlName="groupMessage"
+        formControlName="groupMessageControl"
         id="group-message"
         type="text"
         class="group-details__input" />
       <button
         [ngClass]="
-          groupMessage.invalid
+          groupMessageControl.invalid
             ? 'group-details__btn-message-error'
             : 'group-details__btn-message'
         "
         (click)="createMessage()"
-        [disabled]="groupMessage.invalid"
+        [disabled]="groupMessageControl.invalid"
         class="group-details__btn-message">
         Add
       </button>

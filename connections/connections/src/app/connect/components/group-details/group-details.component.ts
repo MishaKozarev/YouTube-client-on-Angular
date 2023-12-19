@@ -16,6 +16,7 @@ import {
   updateGroupMessageAction
 } from 'src/app/store/actions/group-message.actions';
 import { getPeopleAction } from 'src/app/store/actions/people.actions';
+import { GroupMessageItem } from 'src/app/store/models/group-message.models';
 import { PeopleItem } from 'src/app/store/models/people.models';
 import { selectGroupMessage } from 'src/app/store/selectors/group-message.selectors';
 import { selectPeople } from 'src/app/store/selectors/people.selectors';
@@ -26,8 +27,9 @@ import { selectPeople } from 'src/app/store/selectors/people.selectors';
   styleUrls: ['./group-details.component.scss']
 })
 export class GroupDetailsComponent implements OnInit, OnDestroy {
-  public groupMessageForm!: FormGroup<{ groupMessage: FormControl }>;
-  public groupMessage$ = this.store.select(selectGroupMessage);
+  public groupMessageForm!: FormGroup<{ groupMessageControl: FormControl }>;
+  public groupMessage$: Observable<GroupMessageItem[]> | undefined;
+  public groupMessage!: GroupMessageItem[];
   public timerGroupSubscription: Observable<number | null> | undefined;
   public peopleList$!: Observable<PeopleItem[]>;
   public peopleList!: PeopleItem[];
@@ -49,10 +51,10 @@ export class GroupDetailsComponent implements OnInit, OnDestroy {
     this.routeActive.params.subscribe((params) => {
       this.currentId = params['groupID'];
     });
-    this.store.dispatch(getGroupMessageAction({ groupID: this.currentId }));
+    this.initMessage();
 
     this.groupMessageForm = this.fb.group({
-      groupMessage: ['', [Validators.required]]
+      groupMessageControl: ['', [Validators.required]]
     });
     this.timerGroupSubscription = this.timerService.getTimer(this.timerName);
   }
@@ -72,8 +74,22 @@ export class GroupDetailsComponent implements OnInit, OnDestroy {
     }
   }
 
-  get groupMessage() {
-    return this.groupMessageForm.get('groupMessage') as FormControl;
+  public initMessage(): void {
+    this.groupMessage$ = this.store.select(selectGroupMessage);
+    this.groupMessage$
+      .pipe(takeUntil(this.ngUnsubscribe$))
+      .subscribe((groupMessage) => {
+        if (groupMessage) {
+          this.groupMessage = groupMessage;
+        }
+      });
+    if (!this.groupMessage.length) {
+      this.store.dispatch(getGroupMessageAction({ groupID: this.currentId }));
+    }
+  }
+
+  get groupMessageControl() {
+    return this.groupMessageForm.get('groupMessageControl') as FormControl;
   }
 
   public updateMessage(): void {
@@ -83,11 +99,11 @@ export class GroupDetailsComponent implements OnInit, OnDestroy {
   public createMessage(): void {
     localStorage.setItem(
       'currentMessage',
-      this.groupMessageForm.value.groupMessage
+      this.groupMessageForm.value.groupMessageControl
     );
     const message = {
       groupID: this.currentId,
-      message: this.groupMessageForm.value.groupMessage
+      message: this.groupMessageForm.value.groupMessageControl
     };
     this.store.dispatch(sendGroupMessageAction(message));
     this.groupMessageForm.reset();

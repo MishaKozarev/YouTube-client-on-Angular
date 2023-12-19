@@ -58,18 +58,18 @@
       <label class="people-details__label" for="people-message"></label>
       <input
         placeholder="Enter the message"
-        formControlName="peopleMessage"
+        formControlName="peopleMessageControl"
         id="people-message"
         type="text"
         class="people-details__input" />
       <button
         [ngClass]="
-          peopleMessage.invalid
+          peopleMessageControl.invalid
             ? 'people-details__btn-message-error'
             : 'people-details__btn-message'
         "
         (click)="createMessage()"
-        [disabled]="peopleMessage.invalid"
+        [disabled]="peopleMessageControl.invalid"
         class="people-details__btn-message">
         Add
       </button>
