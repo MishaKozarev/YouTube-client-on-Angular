@@ -220,7 +220,11 @@ $black: #000000;
 
     &__data {
         font-weight: 300;
-        font-size: 8px;
+        font-size: 10px;
+    }
+
+    &__text {
+        overflow: hidden;
     }
 }
 
@@ -229,7 +233,7 @@ $black: #000000;
     align-self: flex-start;
 }
 
-.people-detail__popup-delete {
+.group-details__popup-delete {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -249,12 +253,12 @@ $black: #000000;
     font-weight: 700;
 }
 
-.people-detail__popup-box-btn {
+.group-details__popup-box-btn {
     display: flex;
     gap: 15px;
 }
 
-.people-detail__popup-btn {
+.group-details__popup-btn {
     cursor: pointer;
     border-radius: 5px;
     align-self: flex-end;
