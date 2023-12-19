@@ -14,7 +14,7 @@ export interface UserProfileName {
   name: string;
 }
 export interface ProfileState {
-  dataUserprofile: UserProfile | null;
+  dataUserprofile: UserProfile;
   loading: boolean;
   error: UserProfileError | null;
 }

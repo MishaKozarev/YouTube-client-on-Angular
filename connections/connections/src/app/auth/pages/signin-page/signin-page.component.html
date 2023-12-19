@@ -2,6 +2,7 @@
   <form
     [formGroup]="signinForm"
     (ngSubmit)="submitForm()"
+    class="signin__form"
     [ngClass]="currentTheme === 'light' ? 'signin__form' : 'signin__form-dark'">
     <p class="signin__title">Signin</p>
 

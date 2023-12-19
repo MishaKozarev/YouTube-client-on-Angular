@@ -94,7 +94,11 @@ export class ProfilePageComponent implements OnInit {
 
   public logout(): void {
     this.store.dispatch(logoutProfileAction());
-    localStorage.clear();
+    // localStorage.clear();
+    localStorage.removeItem('token');
+    localStorage.removeItem('uid');
+    localStorage.removeItem('email');
+    localStorage.removeItem('currentMessage');
     this.route.navigate(['/signin']);
   }
 }

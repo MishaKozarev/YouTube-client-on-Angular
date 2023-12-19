@@ -1,6 +1,6 @@
 <div
-  [ngClass]="currentTheme === 'light' ? 'profile' : 'profile-dark'"
   class="profile"
+  [ngClass]="currentTheme === 'light' ? 'profile' : 'profile-dark'"
   *ngIf="profile$ | async as profile">
   <div class="profile__header">
     <h2 class="profile__title">User Profile</h2>

@@ -19,13 +19,11 @@ const routes: Routes = [
     path: 'signup',
     component: SignupPageComponent,
     canActivate: [noAuthGuard]
-
   },
   {
     path: 'signin',
     component: SigninPageComponent,
     canActivate: [noAuthGuard]
-
   },
   {
     path: 'profile',

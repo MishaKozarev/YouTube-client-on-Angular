@@ -37,7 +37,12 @@ export const profileReducer = createReducer(
       ...state,
       dataUserprofile: state.dataUserprofile
         ? { ...state.dataUserprofile, name: { S: name } }
-        : null,
+        : {
+          email: { S: '' },
+          name: { S: '' },
+          uid: { S: '' },
+          createdAt: { S: '' }
+        },
       loading: false,
       error: null
     })
@@ -50,7 +55,12 @@ export const profileReducer = createReducer(
     logoutProfileActionSuccess,
     (state): ProfileState => ({
       ...state,
-      dataUserprofile: null,
+      dataUserprofile: {
+        email: { S: '' },
+        name: { S: '' },
+        uid: { S: '' },
+        createdAt: { S: '' }
+      },
       loading: false
     })
   ),

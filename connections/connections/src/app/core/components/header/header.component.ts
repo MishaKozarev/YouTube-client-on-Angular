@@ -11,7 +11,9 @@ import { ThemeService } from '../../services/theme/theme.service';
 })
 export class HeaderComponent implements OnInit {
   public currentTheme$: Observable<string> = this.themeService.stateTheme$;
-  public currentTheme = localStorage.getItem('theme');
+  public currentTheme = localStorage.getItem('theme')
+    ? localStorage.getItem('theme')
+    : 'light';
 
   constructor(
     private route: Router,
