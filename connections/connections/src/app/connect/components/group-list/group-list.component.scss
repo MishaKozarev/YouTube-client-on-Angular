@@ -97,10 +97,11 @@
         border-radius: 15px;
         padding: 10px;
         color: inherit;
+        overflow: hidden;
+
     }
 
     &__item:hover {
-        transform: scale(1.02);
         box-shadow: inherit;
         font-weight: 700;
     }
@@ -108,8 +109,9 @@
     &__link {
         text-decoration: none;
         color: inherit;
-    }
 
+       }
+л
     &__link:hover {
         font-weight: 700;
     }
@@ -212,6 +214,7 @@
         background: rgb(201, 198, 198);
         color: black;
         font-weight: 700;
+        z-index: 10;
     }
 
     &__popup-box-btn {
