@@ -1,0 +1,26 @@
+html, body { height: 100%; }
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    background: url('./assets/background.jpg');
+    background-size: cover;;
+    background-repeat: no-repeat;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+$background-color: #E5E5E5;
+$form-background: #F2F2F2;
+$input-background: #E0E0E0;
+$input-color: #EFEFEF;
+$blue-color: #2F80ED;
+$blue-color-hover: #5EA2FF;
+$grey-color: #929292;
+$white-color: #FFFFFF;
+$font-grey: #828282;
+$red: #ff0000;
+$black: #000000;
+

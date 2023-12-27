@@ -1,0 +1,65 @@
+<div
+  [ngClass]="
+    currentTheme === 'dark' ? 'header__container-dark' : 'header__container'
+  ">
+  <div class="header__row">
+    <li class="header__link">
+      <button
+        (click)="routingToSignUp()"
+        [ngClass]="
+          currentTheme === 'dark' ? 'header__btn-dark' : 'header__btn'
+        ">
+        Signup
+      </button>
+    </li>
+    <li class="header__link">
+      <button
+        (click)="routingToSignIn()"
+        [ngClass]="
+          currentTheme === 'dark' ? 'header__btn-dark' : 'header__btn'
+        ">
+        Signin
+      </button>
+    </li>
+    <li class="header__link">
+      <button
+        (click)="routingToMain()"
+        [ngClass]="
+          currentTheme === 'dark' ? 'header__btn-dark' : 'header__btn'
+        ">
+        Main
+      </button>
+    </li>
+    <li class="header__link">
+      <button
+        (click)="routingToProfile()"
+        [ngClass]="
+          currentTheme === 'dark' ? 'header__btn-dark' : 'header__btn'
+        ">
+        Profile
+      </button>
+    </li>
+    <div class="theme-switcher">
+      <label>
+        Light
+        <input
+          type="radio"
+          class="radio-light-theme"
+          name="theme"
+          value="light"
+          (change)="switchTheme()"
+          [checked]="currentTheme === 'light'" />
+      </label>
+      <label>
+        Dark
+        <input
+          type="radio"
+          class="radio-dark-theme"
+          name="theme"
+          value="dark"
+          (change)="switchTheme()"
+          [checked]="currentTheme === 'dark'" />
+      </label>
+    </div>
+  </div>
+</div>

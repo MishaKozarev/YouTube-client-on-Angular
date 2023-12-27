@@ -1,0 +1,23 @@
+.toast__container {
+    visibility: visible;
+    position: fixed;
+    left: 50%;
+    bottom: 30px;
+    margin: 0 0 0 -125px;
+    min-width: 250px;
+    background: #e5e5e5;
+    text-align: center;
+    border-radius: 5px;
+    padding: 16px;
+    z-index: 1;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.success__message {
+    color: rgb(3, 104, 3);
+}
+.error__message {
+    color: red;
+}
+
